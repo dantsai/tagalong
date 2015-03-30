@@ -20,7 +20,7 @@
 				<div>{{profileimg}}</div>
 				<div>{{activitytype}}</div>
 				<div>with {{activityhost}}</div>
-				<div>at {{activitylocation}}</div>
+				{{#if activitylocation}}<div>at {{activitylocation}}</div>{{/if}}
 				</a>
 			</li>
 			{{/each}}
