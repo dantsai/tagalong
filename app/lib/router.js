@@ -10,3 +10,5 @@ Router.route('activities/:_id', {
 	name: 'activity',
 	data: function() {return Activities.findOne(this.params._id)}
 });
+
+Route.route('/add', {name: 'addActivity'});
