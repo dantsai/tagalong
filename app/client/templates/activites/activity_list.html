@@ -1,7 +1,20 @@
 <template name='activityList'>
-	<div>
-		{{#each activities}}
-			{{> activityItem}}
+	<ul>
+		{{#each days}}
+			<li>{{datestring}}</li>
+			<ul>
+				{{#each children_activities}}
+				<li>
+					<a href='{{pathFor 'activity'}}'>
+						<div>{{starttime}} - {{endtime}}</div>
+						<div>{{profileimg}}</div>
+						<div>{{activitytype}}</div>
+						<div>with {{activityhost}}</div>
+						{{#if activitylocation}}<div>at {{activitylocation}}</div>{{/if}}
+					</a>
+				</li>
+				{{/each}}
+			</ul>
 		{{/each}}
-	</div>
+	</ul>
 </template>

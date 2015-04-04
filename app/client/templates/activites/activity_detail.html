@@ -1,0 +1,25 @@
+<!-- <template name='activityItem'>
+	<div class='post'>
+		<div class='post-content'>
+			<a href='{{pathFor 'activity'}}'>
+				<span><label>{{start_time}}</label><label>{{activity_type}}</label><label>{{creator}}</label><label>{{location}}</label></span>
+			</a>			
+		</div>		
+	</div>
+</template>
+ -->
+
+<template name="activity">
+	<h1>{{title}}</h1>
+	<div>with {{activity_host}}</div>
+	<div>{{profile_img}}</div>
+	<div>{{date_string}}</div>
+	<div>{{start_time}} - {{end_time}}</div>
+	{{#if friends}}
+		{{#if friend_count value=1}}
+			<div>{{friend_count}} friend tagging along with {{activity_host}}</div>
+		{{else}}
+			<div>{{friend_count}} friends tagging along with {{activity_host}}</div>
+		{{/if}}
+	{{/if}}
+</template>
