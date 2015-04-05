@@ -1,0 +1,30 @@
+<head>
+  <title>activity list</title>
+</head>
+
+<body>
+  <h1>Search for an activity</h1>
+
+  {{> days}}
+</body>
+
+<template name="days">
+	<ul>
+	{{#each days}}
+	<li>{{datestring}}<li>
+		<ul>
+			{{#each children_activities}}
+			<li>
+				<a href="{{activityurl}}">
+				<div>{{starttime}} - {{endtime}}</div>
+				<div>{{profileimg}}</div>
+				<div>{{activitytype}}</div>
+				<div>with {{activityhost}}</div>
+				{{#if activitylocation}}<div>at {{activitylocation}}</div>{{/if}}
+				</a>
+			</li>
+			{{/each}}
+		</ul>
+	{{/each}}
+	</ul>
+</template>

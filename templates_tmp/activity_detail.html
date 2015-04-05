@@ -1,0 +1,22 @@
+<head>
+  <title>activity detail</title>
+</head>
+
+<body>
+  {{> activity}}
+</body>
+
+<template name="activity">
+	<h1>{{title}}</h1>
+	<div>with {{activityhost}}</div>
+	<div>{{profileimg}}</div>
+	<div>{{datestring}}</div>
+	<div>{{starttime}} - {{endtime}}</div>
+	{{#if friendcount > 0}}
+		{{#if friendcount == 1}}
+			<div>{{friendcount}} friend tagging along with {{activityhost}}</div>
+		{{else}}
+			<div>{{friendcount}} friends tagging along with {{activityhost}}</div>
+		{{/if}}
+	{{/if}}
+</template>

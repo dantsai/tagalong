@@ -1,6 +1,5 @@
 Router.configure({
 	layoutTemplate: 'layout',
-	loadingTemplate: 'loading',
 	waitOn: function () { return Meteor.subscribe('activities');}
 });
 
@@ -10,3 +9,7 @@ Router.route('activities/:_id', {
 	name: 'activity',
 	data: function() {return Activities.findOne(this.params._id)}
 });
+
+Router.route('/add', {name: 'activityAdd'});
+
+Router.route('/login', {name: 'login'});
