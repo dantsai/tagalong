@@ -1,0 +1,14 @@
+<template name="activity">
+	<h1>{{type}}</h1>
+	<div>with {{host.name}}</div>
+	<div>{{profile_img}}</div>
+	<div>{{time.date}}</div>
+	<div>{{time.time}} for {{duration}} hrs</div>
+	{{#if tagalongs}}
+		{{#if friend_count value=1}}
+			<div>{{friend_count}} friend tagging along with {{activity_host}}</div>
+		{{else}}
+			<div>{{friend_count}} friends tagging along with {{activity_host}}</div>
+		{{/if}}
+	{{/if}}
+</template>
