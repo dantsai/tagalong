@@ -3,9 +3,8 @@ Activities = new Mongo.Collection('activities');
 Meteor.methods({
 	activityInsert: function(activityDetails) {
 		var user = Meteor.user();
-		var activity = _.extend(activityDetails, {
-			userId: user._id, 
-			activity_host: user.profile.name, 
+		var activity = _.extend(activityDetails, {			
+			host: {userId: user._id, host: user.profile.name}, 
 			submitted: new Date()
 		});
 

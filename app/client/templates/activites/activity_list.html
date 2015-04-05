@@ -1,16 +1,16 @@
-<template name='activityList'>
+<!-- <template name='activityList'>
 	<ul>
-		{{#each days}}
-			<li>{{datestring}}</li>
+		{{#each activities}}
+			<li>{{_id}}</li>
 			<ul>
-				{{#each children_activities}}
+				{{#each activities}}
 				<li>
 					<a href='{{pathFor 'activity'}}'>
-						<div>{{starttime}} - {{endtime}}</div>
+						<div>{{starttime}} for {{duration}}</div>
 						<div>{{profileimg}}</div>
-						<div>{{activitytype}}</div>
-						<div>with {{activityhost}}</div>
-						{{#if activitylocation}}<div>at {{activitylocation}}</div>{{/if}}
+						<div>{{type}}</div>
+						<div>with {{host}}</div>
+						{{#if location}}<div>at {{location}}</div>{{/if}}
 					</a>
 				</li>
 				{{/each}}
@@ -18,3 +18,19 @@
 		{{/each}}
 	</ul>
 </template>
+ -->
+<template name='activityList'>
+	<ul>
+		{{#each activities}}
+			<a href='{{pathFor 'activity'}}'>
+				<div>{{prettifyDate time.date}}</div>
+				<div>{{date.time}} for {{duration}} hrs</div>
+				<div>{{profileimg}}</div>
+				<div>{{type}}</div>
+				<div>with {{host.name}}</div>
+				{{#if location}}<div>at {{location.name}}</div>{{/if}}
+			</a>
+		{{/each}}
+	</ul>
+</template>
+

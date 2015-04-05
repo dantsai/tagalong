@@ -12,3 +12,5 @@ iron:router
 sacha:spin
 accounts-facebook
 service-configuration
+accounts-ui
+accounts-password
