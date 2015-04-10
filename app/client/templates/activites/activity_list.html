@@ -20,17 +20,21 @@
 </template>
  -->
 <template name='activityList'>
-	<ul>
 		{{#each activities}}
-			<a href='{{pathFor 'activity'}}'>
-				<div>{{prettifyDate time.date}}</div>
-				<div>{{date.time}} for {{duration}} hrs</div>
-				<div>{{profileimg}}</div>
-				<div>{{type}}</div>
-				<div>with {{host.name}}</div>
-				{{#if location}}<div>at {{location.name}}</div>{{/if}}
-			</a>
+		<a href='{{pathFor 'activity'}}'>
+		<div class="activity">
+				<div class="activity_dates">
+					<div class="activity_start">{{prettifyDate time.date}}</div>
+					<div>{{duration}} hrs</div>
+				</div>
+				<div class="activity_img"><img src="http://dantsai.com/_/profile.jpg"></div> <!-- {{profileimg}} instead of hardcoded -->
+				<div class="activity_text">
+					<div class="activity_type">{{type}}</div>
+					<div class="activity_host">with {{host.name}}</div>
+				{{#if location}}<div class="activity_location">>{{location.name}}</div>{{/if}}
+				</div>
+		</div>
+		</a>
 		{{/each}}
-	</ul>
 </template>
 
