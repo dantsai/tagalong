@@ -2,13 +2,18 @@
 	<h1>{{type}}</h1>
 	<div>with {{host.name}}</div>
 	<div>{{profile_img}}</div>
-	<div>{{time.date}}</div>
+	<div>{{prettifyDate time.date}}</div>
 	<div>{{time.time}} for {{duration}} hrs</div>
 	{{#if tagalongs}}
-		{{#if friend_count value=1}}
-			<div>{{friend_count}} friend tagging along with {{activity_host}}</div>
-		{{else}}
-			<div>{{friend_count}} friends tagging along with {{activity_host}}</div>
-		{{/if}}
+		<div>{{friendCount}} tagging along with {{host.name}}</div>
+ 		{{#each tagalongs}}
+			<div>{{this}}</div>		
+		{{/each}}
 	{{/if}}
+	{{#unless notHost}}
+		<button id="activity-join">Tagalong</button>
+	{{else}}
+		<a href='{{pathFor 'activityEdit'}}'>Edit Activity</a>
+	{{/unless}}
+	<div>{{comment}}</div>
 </template>

@@ -12,7 +12,7 @@ if (Activities.find().count() === 0 ) {
 	    time: {
 	        epoch: '',
 	        date: new Date('4/3/2015'),
-	        time: 1000
+	        time: '10:00'
 	    },
 	    tagalongs: [],
 	    duration: 2,
@@ -35,7 +35,7 @@ if (Activities.find().count() === 0 ) {
 	    time: {
 	        epoch: '',
 	        date: new Date('4/6/2015'),
-	        time: 1000
+	        time: '14:00'
 	    },
 	    tagalongs: [],
 	    duration: 2.3,
@@ -58,7 +58,7 @@ if (Activities.find().count() === 0 ) {
 	    time: {
 	        epoch: '',
 	        date: new Date('4/9/2015'),
-	        time: 800
+	        time: '08:00'
 	    },
 	    tagalongs: [],
 	    duration: 1,
@@ -81,7 +81,7 @@ if (Activities.find().count() === 0 ) {
 	    time: {
 	        epoch: '',
 	        date: new Date('4/11/2015'),
-	        time: 1500
+	        time: '15:00'
 	    },
 	    tagalongs: [],
 	    duration: 1.5,
@@ -104,7 +104,7 @@ if (Activities.find().count() === 0 ) {
 	    time: {
 	        epoch: '',
 	        date: new Date('4/11/2015'),
-	        time: 1900
+	        time: '19:00'
 	    },
 	    tagalongs: [],
 	    duration: 2,
@@ -127,7 +127,7 @@ if (Activities.find().count() === 0 ) {
 	    time: {
 	        epoch: '',
 	        date: new Date('4/8/2015'),
-	        time: 1800
+	        time: '18:00'
 	    },
 	    tagalongs: [],
 	    duration: 1,
@@ -150,7 +150,7 @@ if (Activities.find().count() === 0 ) {
 	    time: {
 	        epoch: '',
 	        date: new Date('4/3/2015'),
-	        time: 1900
+	        time: '19:03'
 	    },
 	    tagalongs: [],
 	    duration: 3,

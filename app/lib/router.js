@@ -10,6 +10,14 @@ Router.route('activities/:_id', {
 	data: function() {return Activities.findOne(this.params._id)}
 });
 
+Router.route('edit/:_id', {
+	name: 'activityEdit',
+	data: function() {return Activities.findOne(this.params._id)}
+});
+
 Router.route('/add', {name: 'activityAdd'});
 
+Router.route('/preferences', {name: 'userPreferences'});
+
 Router.route('/login', {name: 'login'});
+
