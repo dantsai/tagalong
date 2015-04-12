@@ -1,0 +1,17 @@
+<template name="footer">
+	{{#if isAndroid}}
+		{{#ionTabs style="android"}}
+			{{>ionTab title="Profile" path="profile" iconOn="ios-person" iconOff='ios-person-outline' }}
+			{{>ionTab iconOn="ios-list" iconOff='ios-list-outline'}}
+			{{>ionTab iconOn="ios-search-strong" iconOff='ios-search'}}
+			{{>ionTab iconOn="ios-gear" iconOff='ios-gear-outline'}}
+		{{/ionTabs}}
+	{{else}}
+		{{#ionTabs style="ios"}}
+			{{>ionTab title="Profile" path="profile" iconOn="ios-person" iconOff='ios-person-outline' }}
+			{{>ionTab title="tagalongs" path="tagalongs" iconOn="ios-list" iconOff='ios-list-outline'}}
+			{{>ionTab title="Search" path="activityList" iconOn="ios-search-strong" iconOff='ios-search'}}
+			{{>ionTab title="Preferences" path="preferences" iconOn="ios-gear" iconOff='ios-gear-outline'}}
+		{{/ionTabs}}
+	{{/if}}
+</template>

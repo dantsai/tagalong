@@ -10,8 +10,10 @@ twbs:bootstrap
 underscore
 iron:router
 sacha:spin
-accounts-facebook
 service-configuration
-accounts-ui
-accounts-password
 mrt:moment
+meteoric:ionic-sass
+fourseven:scss
+meteoric:ionicons-sass
+iron:layout
+meteoric:ionic
