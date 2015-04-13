@@ -15,9 +15,11 @@ Template.activity.helpers({
 
 Template.activity.events({
 	'click #activity-join': function(event) {
-		Meteor.call('tagalong', this._id)		
+		console.log('tagging along...');
+		//Meteor.call('tagalong', this._id)		
 	},
 	'click #activity-edit': function(event) {
-		Meteor.call('tagalong', this._id)		
+		console.log(event);
+		Meteor.call('activityEdit', this._id)		
 	}
 });
