@@ -17,7 +17,19 @@ Router.route('edit/:_id', {
 
 Router.route('/add', {name: 'activityAdd'});
 
-Router.route('/preferences', {name: 'userPreferences'});
+Router.route('/preferences', {
+	name: 'preferences'
+});
 
-Router.route('/login', {name: 'login'});
+Router.route('/login', {
+	name: 'login'
+});
+
+Router.route('/profile', {
+	name: 'profile'
+})
+
+Router.route('/tagalongs',{
+	name: 'tagalongs'
+})
 
