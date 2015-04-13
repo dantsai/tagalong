@@ -19,5 +19,7 @@ Router.route('/add', {name: 'activityAdd'});
 
 Router.route('/preferences', {name: 'userPreferences'});
 
+Router.route('/my', {name: 'activitiesUser'});
+
 Router.route('/login', {name: 'login'});
 

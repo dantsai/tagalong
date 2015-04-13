@@ -1,0 +1,26 @@
+<template name='activitiesUser'>
+	<div>
+		Upcoming Events
+		{{#each activitiesUpcoming}}
+			<div>
+				<label>{{time.time}}</label>
+				<label>{{time.date}}</label>
+				<label>{{duration}}</label>
+				<label>{{host.name}}</label>
+				<label>{{type}}</label>
+				<label>{{friendCount}}</label>
+			</div>
+		{{/each}}
+		Past Events
+		{{#each activitiesPast}}
+			<div>
+				<label>{{time.time}}</label>
+				<label>{{time.date}}</label>
+				<label>{{duration}}</label>
+				<label>{{host.name}}</label>
+				<label>{{type}}</label>
+				<label>{{friendCount}}</label>
+			</div>
+		{{/each}}
+	</div>
+</template>

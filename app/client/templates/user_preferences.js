@@ -1,20 +1,19 @@
-Template.activityEdit.events({
-	'click #preferences-edit': function(event) {
+Template.userPreferences.events({
+	'click #preferences-edit': function(event) {		
 		var userPreferences = {
-			'running': $('#running').val(),
-			'hiking': $('#hiking').val(),
-			'swimming': $('#swimming').val(),
-			'cycling': $('#cycling').val(),
-			'basketball': $('#basketball').val(),
-			'duration': $('#duration').val(),
-			'comments': $('#comments').val()
+			'running': $('#running').prop('checked'),
+			'hiking': $('#hiking').prop('checked'),
+			'swimming': $('#swimming').prop('checked'),
+			'cycling': $('#cycling').prop('checked'),
+			'basketball': $('#basketball').prop('checked')
 		};
 
-		Meteor.call('activityUpdate', activity, function(error, result) { 	
-			if (error)
-				return alert(error.reason);
-		    Router.go('activity',  {_id: activity.activityId});
-		});
+		console.log(userPreferences);
+		// Meteor.call('activityUpdate', activity, function(error, result) { 	
+		// 	if (error)
+		// 		return alert(error.reason);
+		//     Router.go('activity',  {_id: activity.activityId});
+		// });
 	}
 })
 

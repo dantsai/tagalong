@@ -34,7 +34,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/6/2015'),
+	        date: new Date('4/26/2015'),
 	        time: '14:00'
 	    },
 	    tagalongs: [],
@@ -57,7 +57,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/9/2015'),
+	        date: new Date('4/19/2015'),
 	        time: '08:00'
 	    },
 	    tagalongs: [],
@@ -94,6 +94,29 @@ if (Activities.find().count() === 0 ) {
 
 	Activities.insert({
 	    host: {
+	        _id: "zbXtjq2Evr2ymC4ew",
+	        name: "Suhaib Syaed"
+	    },
+	    type: "Swimming",
+	    location: {
+	        name: "Spieker Pool"
+	    },
+	    time: {
+	        epoch: '',
+	        date: new Date('4/16/2015'),
+	        time: '19:30'
+	    },
+	    tagalongs: [],
+	    duration: 1.5,
+	    pictures: [],
+	    status: 'Available',
+	    invitations: [],
+	    visibility: true,
+	    comments: ''
+	});
+
+	Activities.insert({
+	    host: {
 	        _id: "p5sKnZEPTDFpTNxey",
 	        name: "Pablo Arvizu"
 	    },
@@ -103,7 +126,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/11/2015'),
+	        date: new Date('4/16/2015'),
 	        time: '19:00'
 	    },
 	    tagalongs: [],
@@ -126,7 +149,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/8/2015'),
+	        date: new Date('4/18/2015'),
 	        time: '18:00'
 	    },
 	    tagalongs: [],
@@ -149,7 +172,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/3/2015'),
+	        date: new Date('4/23/2015'),
 	        time: '19:03'
 	    },
 	    tagalongs: [],
