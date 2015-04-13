@@ -8,8 +8,11 @@
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15); }
 
 body {
-  background: #eee;
-  color: #666666; }
+  background: #f9f9f9;
+  color: #666666;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-size: 14px;
+}
 
 #main {
   position: relative;
@@ -159,6 +162,13 @@ body {
   pointer-events: auto;
 }
 
+a {
+  color: #000;
+}
+.activity {
+  margin: 20px;
+}
+
 .activity_img img {
   width: 50px;
   height: 50px;
@@ -181,4 +191,18 @@ body {
 .activity_text {
   float: left;
   width: 33%;  
+}
+
+.map-canvas {
+  width: 100%;
+  height: 400px;
+  position: relative;
+}
+
+.map-overlay {
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.75);
 }

@@ -1,9 +1,33 @@
 <template name="activity">
-	<h1>{{type}}</h1>
-	<div>with {{host.name}}</div>
-	<div>{{profile_img}}</div>
-	<div>{{time.date}}</div>
-	<div>{{time.time}} for {{duration}} hrs</div>
+	<div id="map-canvas">
+		<div id="map-overlay">
+			<p class="map-overlay-text">[location] {{activity_location}}</p>
+			<p class="map-overlay-text">[time] {{time.date}}, {{time.time}} for {{duration}} hrs</p>
+		</div>
+	</div>
+	<div id="activity-detail-main">
+		<div class="activity-detail-title">
+			<div class="activity-detail-title-img">
+				<img src="http://dantsai.com/_/profile.jpg"> <!-- {{profileimg}} instead of hardcoded -->
+			</div>
+			<div class="activity-detail-title-text">
+				<h1>{{type}}</h1>
+				<p class="activity-detail-with">with {{host.name}}</p>
+			</div>
+		</div>
+
+		{{#if tagalongs}}
+		<div class="activity-detail-tagalongs">
+			<div class="activity-detail-tagalongs-text">Others tagging along:</div>
+			
+			{{#each tagalong}}
+			<div class="activity-detail-tagalong-img">
+				<a href="/"><img src="http://dantsai.com/_/profile.jpg"></a> <!-- {{tagalongurl}} and {{tagalongimg}} instead of hardcoded -->
+			</div>
+			{{/each}}
+		</div>
+		{{/if}}
+
 	{{#if tagalongs}}
 		{{#if friend_count value=1}}
 			<div>{{friend_count}} friend tagging along with {{activity_host}}</div>
@@ -11,4 +35,5 @@
 			<div>{{friend_count}} friends tagging along with {{activity_host}}</div>
 		{{/if}}
 	{{/if}}
+	</div>
 </template>
