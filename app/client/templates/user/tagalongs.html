@@ -6,9 +6,27 @@
 
 		{{#ionContent class='padding'}}
 			<h3>Upcoming Tagalongs</h3>
-
+			{{#each activitiesUpcoming}}
+				<div>
+					<label>{{time.time}}</label>
+					<label>{{time.date}}</label>
+					<label>{{duration}}</label>
+					<label>{{host.name}}</label>
+					<label>{{type}}</label>
+					<label>{{friendCount}}</label>
+				</div>
+			{{/each}}
 			<h3>Past Tagalongs</h3>
+			{{#each activitiesPast}}
+				<div>
+					<label>{{time.time}}</label>
+					<label>{{time.date}}</label>
+					<label>{{duration}}</label>
+					<label>{{host.name}}</label>
+					<label>{{type}}</label>
+					<label>{{friendCount}}</label>
+				</div>
+			{{/each}}			
 		{{/ionContent}}
-
 	{{/ionView}}
 </template>

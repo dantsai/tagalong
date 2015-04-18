@@ -4,6 +4,7 @@
 	    {{>ionNavBackButton path="activityList" text="Back"}}
 	{{/contentFor}}
 
+	<!-- Re-added the logic to check user -->
 	<!-- Commented out the logic to check if the user is the owner of the activity -->
 	<!-- {{#if noHost}} -->
 		
@@ -59,9 +60,14 @@
 					<h3>Tagalongs</h3>
 					{{#if tagalongs}}
 						<div>{{friendCount}} tagging along with {{host.name}}</div>
+						{{#each taggers}}
+							<div>{{names.first}}</div>
+							<div>{{names.last}}</div>
+						{{/each}}
+						<!-- <div>{{friendCount}} tagging along with {{host.name}}</div>
 				 		{{#each tagalongs}}
 							<div>{{this}}</div>
-						{{/each}}
+						{{/each}} -->
 					{{/if}}
 				{{/ionItem}}
 
@@ -74,12 +80,20 @@
 			
 		{{/ionContent}}
 		{{#unless notHost}}
-			<div id="activityAction" class="tagalong">Tagalong!</div>
+			<div id="activity-join" class="tagalong">Tagalong!</div>
 		{{else}}
 			<!-- <a href='{{pathFor 'activityEdit'}}'>Edit Activity</a>  -->
-			<div id="activityAction" class="message">Message myself</div>
+			<div id="activity-join" class="message">Message myself</div>
+
+			<!-- Adds the EDIT button to the header -->
+			{{#contentFor "headerButtonRight"}}
+			    <button id="activity-edit" class="button button-clear" data-ion-modal="activityEdit" data-id="{{activity.id}}">
+			    	Edit<!-- {{> ionIcon icon="ios-plus-empty"}} -->
+			    </button>
+			{{/contentFor}}	
 		{{/unless}}
 
 	{{/ionView}}
 
+>>>>>>> master
 </template>

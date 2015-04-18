@@ -14,29 +14,31 @@
 	{{#ionView}}
 		{{#ionContent}}
 			{{#ionList}}
-				{{#each activities}}
-					{{#ionItem buttonRight=true class="item-icon-right activityItem" path="activity"}}
-						{{> ionIcon icon="ios-arrow-forward" class='positive'}}
-						<div class="activityImage">
-							<img class="activity_img" src="http://dantsai.com/_/profile.jpg">
-						</div>
-						<div class="activityInfo">
-							<h2>{{type}}</h2>
-							with <strong>{{host.name}}</strong><br>
-							<div class="activityLogistics">
-								{{> ionIcon icon='calendar' class="activityLogistic"}}{{time.time}} &nbsp;&nbsp;&nbsp;
-								{{> ionIcon icon='ios-stopwatch'}}{{duration}} hours&nbsp;&nbsp;&nbsp;
-								{{#if location}}
-									{{> ionIcon icon='ios-location'}}{{location.name}}
-								{{/if}}
-							</div> 							
-						</div>
-					{{/ionItem}}
+				{{#each activitiesAll}}
+					{{this.name}}
+					{{#each this.activities}}
+						{{#ionItem buttonRight=true class="item-icon-right activityItem" path="activity"}}
+							{{> ionIcon icon="ios-arrow-forward" class='positive'}}
+							<div class="activityImage">
+								<img class="activity_img" src="http://dantsai.com/_/profile.jpg">
+							</div>
+							<div class="activityInfo">
+								<h2>{{type}}</h2>
+								with <strong>{{host.name}}</strong><br>
+								<div class="activityLogistics">
+									{{> ionIcon icon='calendar' class="activityLogistic"}}{{time.time}} &nbsp;&nbsp;&nbsp;
+									{{> ionIcon icon='ios-stopwatch'}}{{duration}} hours&nbsp;&nbsp;&nbsp;
+									{{#if location}}
+										{{> ionIcon icon='ios-location'}}{{location.name}}
+									{{/if}}
+								</div> 							
+							</div>
+						{{/ionItem}}
+					{{/each}}
 				{{/each}}
 			{{/ionList}}
 		{{/ionContent}}
 	{{/ionView}}
-
 </template>
 
 

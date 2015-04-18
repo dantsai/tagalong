@@ -21,6 +21,7 @@ Router.route('/preferences', {
 	name: 'preferences'
 });
 
+
 Router.route('/login', {
 	name: 'login'
 });
@@ -33,3 +34,4 @@ Router.route('/tagalongs',{
 	name: 'tagalongs'
 })
 
+// Router.route('/login', {name: 'login'});
