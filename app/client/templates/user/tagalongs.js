@@ -2,8 +2,8 @@ Template.tagalongs.helpers({
 	activitiesUpcoming: function () {
 		return Activities.find(
 			{ $and : [ { 'time.date' : { $gte: new Date() } },
-					{ $or: [ {'host._id': Meteor.userId() },
-						{ 'tagalongs': Meteor.userId() }
+					{ $or: [ {'host._id': Meteor.userId()},
+						{ 'tagalongs': Meteor.userId()}
 						]
 					}
 				]

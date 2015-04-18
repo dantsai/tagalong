@@ -1,0 +1,18 @@
+<template name="testing">
+	{{#ionView}}
+		{{#ionContent}}
+
+			<h5> Change active user for testing:</h5>
+
+
+			<button id="Chalenge" class="changeUser {{#if ifActiveUser 'Chalenge'}}selectedUser{{/if}}">
+				Chalenge
+			</button>
+			<button id="Suhaib"  class="changeUser {{#if ifActiveUser 'Suhaib'}}selectedUser{{/if}}">Suhaib</button>
+			<button id="Dan" class="changeUser {{#if ifActiveUser 'Dan'}}selectedUser{{/if}}">Dan</button>
+			<button id="Pablo" class="changeUser {{#if ifActiveUser 'Pablo'}}selectedUser{{/if}}">Pablo</button>
+
+		{{/ionContent}}
+	{{/ionView}}
+
+</template>

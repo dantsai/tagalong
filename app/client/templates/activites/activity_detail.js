@@ -28,6 +28,6 @@ Template.activity.events({
 	},
 	'click #activity-edit': function(event) {
 		console.log(event);
-		Meteor.call('activityEdit', this._id)		
+		Meteor.call('activityEdit', this._id)	
 	}
 });
