@@ -5,7 +5,6 @@
 	{{/contentFor}}
 
 	<!-- Re-added the logic to check user -->
-
 	<!-- Commented out the logic to check if the user is the owner of the activity -->
 	<!-- {{#if noHost}} -->
 		
@@ -15,44 +14,86 @@
 		<h1 class="title">{{type}}</h1>
 	{{/contentFor}}
 
-<!-- 	{{#contentFor "headerButtonRight"}}
-	    <button id="activity-edit" class="button button-clear" data-ion-modal="activityEdit" data-id="{{activity.id}}"> -->
-	    	<!--Edit<! {{> ionIcon icon="ios-plus-empty"}} -->
-<!-- 	    </button>
+	{{#contentFor "headerButtonRight"}}
+	    <button id="activity-edit" class="button button-clear" data-ion-modal="activityEdit" data-id="{{activity.id}}">
+	    	Edit<!-- {{> ionIcon icon="ios-plus-empty"}} -->
+	    </button>
 	{{/contentFor}}
- -->
+
 
 	{{#ionView }}
-		{{#ionContent class='padding'}}
-			<h1>{{type}}</h1>
-			<div>with {{host.name}}</div>
-			<div>{{profile_img}}</div>
-			<div>{{prettifyDate time.date}}</div>
-			<div>{{time.time}} for {{duration}} hrs</div>
-			{{#if tagalongs}}
-				<div>{{friendCount}} tagging along with {{host.name}}</div>
-				<!-- This will get the actual user names from database -->
-				{{#each taggers}}
-					<div>{{names.first}}</div>
-					<div>{{names.last}}</div>
-				{{/each}}
-<!--  		 		{{#each tagalongs}}
-					<div>{{this}}</div>
-				{{/each}} -->
-			{{/if}}
-			{{#unless notHost}}
-				<button id="activity-join">Tagalong</button>
-			{{else}}
-				{{#contentFor "headerButtonRight"}}
-				    <button id="activity-edit" class="button button-clear" data-ion-modal="activityEdit" data-id="{{activity.id}}">
-				    	Edit<!-- {{> ionIcon icon="ios-plus-empty"}} -->
-				    </button>
-				{{/contentFor}}			
-				<!-- <a href='{{pathFor 'activityEdit'}}'>Edit Activity</a> -->
-			{{/unless}}
-			<div>{{comment}}</div>
+		{{#ionContent class='padding activityDetail'}}
+			{{#ionList class="card"}}
+				{{#ionItem avatar=true class='header'}}
+					<img class="activity_img" src="http://dantsai.com/_/profile.jpg">
+					<h1>{{type}} </h1>
+					{{> ionIcon icon="android-bicycle" class="activityIcon"}}
+
+					<p>with <span>{{host.name}}</span></p>
+				{{/ionItem}}
+
+				<!-- Date time Details -->
+				{{#ionItem body=true class='details'}}
+					<div>
+						{{>ionIcon icon="ios-calendar-outline"}}
+						{{prettifyDate time.date}}
+					</div>
+					<div>
+						{{>ionIcon icon="ios-clock-outline"}}
+						{{time.time}} for {{duration}} hrs
+					</div>
+
+				{{/ionItem}}
+
+				<!-- Location Details -->
+				{{#if location}}
+					{{#ionItem body=true class="activityLocation"}}
+						<div class="info">
+							{{> ionIcon icon='ios-location'}}  {{location.name}}
+						</div>
+						<img src="/img/RSF.png" class="locationMap">
+					{{/ionItem}}
+				{{/if}}
+
+				<!-- Tagalongs Information-->
+				{{#ionItem body=true class="activityTagalongs"}}
+					<h3>Tagalongs</h3>
+					{{#if tagalongs}}
+						<div>{{friendCount}} tagging along with {{host.name}}</div>
+						{{#each taggers}}
+							<div>{{names.first}}</div>
+							<div>{{names.last}}</div>
+						{{/each}}
+						<!-- <div>{{friendCount}} tagging along with {{host.name}}</div>
+				 		{{#each tagalongs}}
+							<div>{{this}}</div>
+						{{/each}} -->
+					{{/if}}
+				{{/ionItem}}
+
+				<!-- Messages Section-->
+				{{#ionItem body=true class="activityTagalongs"}}
+					<div>Comments</div>
+				{{/ionItem}}
+
+			{{/ionList}}
+			
 		{{/ionContent}}
+		{{#unless notHost}}
+			<div id="activity-join" class="tagalong">Tagalong!</div>
+		{{else}}
+			<!-- <a href='{{pathFor 'activityEdit'}}'>Edit Activity</a>  -->
+			<div id="activity-join" class="message">Message myself</div>
+
+			<!-- Adds the EDIT button to the header -->
+			{{#contentFor "headerButtonRight"}}
+			    <button id="activity-edit" class="button button-clear" data-ion-modal="activityEdit" data-id="{{activity.id}}">
+			    	Edit<!-- {{> ionIcon icon="ios-plus-empty"}} -->
+			    </button>
+			{{/contentFor}}	
+		{{/unless}}
+
 	{{/ionView}}
 
-	
+>>>>>>> master
 </template>

@@ -21,6 +21,11 @@ Router.route('/preferences', {
 	name: 'preferences'
 });
 
+
+Router.route('/login', {
+	name: 'login'
+});
+
 Router.route('/profile', {
 	name: 'profile'
 })

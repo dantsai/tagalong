@@ -7,6 +7,7 @@ $loading-font-size: 22px;
   background: $stable;
 }
 
+/****** Activity List *********/
 .activityItem {
 	font-size: 11px;
 	padding: 10px;
@@ -62,6 +63,87 @@ $loading-font-size: 22px;
 			width:0px;
 		}
 	}
+}
+
+/******* Activity Detail ********/
+
+.activityDetail {
+
+	background-color: ghostwhite;
+	height:75%;
+
+	.header {
+		padding-top: 0px ;
+
+		img {
+			left: 10px;
+			max-width: none;
+			max-height: none;
+			width: 50px;
+			height: 50px;
+		}
+
+		h1 {
+			margin-top:10px;
+			display: inline-block;
+			font-size: 32px;
+		}
+
+		p {
+			font-size: 12px;
+		}
+
+		span {
+			font-weight: bold;
+		}
+	}
+
+	.activityIcon {
+		font-size: 25pt;
+		padding-top: 15px;
+		color: lightgray;
+		float: right;
+	}
+
+	.details {
+
 		
 
+
+	}
+
+	.activityLocation {
+		padding: 0px;
+
+		.info {
+			padding:10px;
+		}
+
+		.locationMap {
+			/*height:200px;*/
+			width:100%;
+			padding:0px;
+		}
+	}
+
+}
+
+#activity-join {
+	position: fixed;
+	width: 100%;
+	/*border-radius:5px;*/
+	bottom:9%;
+	padding:10px;
+	color: white;
+	/*border: 1px solid gray;*/
+	text-align: center;
+	font-size: 12pt;
+}
+
+.tagalong {
+	background-color: green;
+}
+
+.message  {
+	background-color: orange;
 }
