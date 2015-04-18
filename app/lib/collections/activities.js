@@ -49,16 +49,17 @@ Meteor.methods({
 		return grouped;
 	},
 	tagalong: function(activityId) {
-		//this.setUserId('p5sKnZEPTDFpTNxey');
+		// this.setUserId('p5sKnZEPTDFpTNxey');
+		this.setUserId(Meteor.userId());
+		console.log(this.userId);
+		// console.log(typeof Meteor.userId());
+		check(this.userId, String);
 
-		console.log(typeof Meteor.userId);
-		//check(Meteor.userId(), String);
-
-		var t = Meteor.userId();
-		console.log(Meteor.userId());
-		console.log(t);
+		// var t = Meteor.userId();
+		// console.log(Meteor.userId());
+		// console.log(t);
 		Activities.update(activityId, {
-			$addToSet: {tagalongs: t}
+			$addToSet: {tagalongs: this.userId}
 		});
 	}
 });

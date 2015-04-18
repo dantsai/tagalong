@@ -12,10 +12,10 @@ iron:router
 sacha:spin
 service-configuration
 mrt:moment
-meteoric:ionic-sass
-fourseven:scss
-meteoric:ionicons-sass
 iron:layout
+fourseven:scss
 meteoric:ionic
+meteoric:ionic-sass
+meteoric:ionicons-sass
 meteoric:autoform-ionic
 tinytest
