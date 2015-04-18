@@ -1,4 +1,4 @@
-Template.activitiesUser.helpers({
+Template.tagalongs.helpers({
 	activitiesUpcoming: function () {
 		return Activities.find(
 			{ $and : [ { 'time.date' : { $gte: new Date() } },

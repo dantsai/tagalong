@@ -1,4 +1,4 @@
-Template.userPreferences.events({
+Template.preferences.events({
 	'click #preferences-edit': function(event) {		
 		var userPreferences = {
 			'running': $('#running').prop('checked'),

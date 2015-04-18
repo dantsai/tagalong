@@ -1,5 +1,6 @@
 Template.activityEdit.events({
 	'click #activity-edit': function(event) {
+		console.log('EDIT LINK');
 		var activity = {
 			'activityId': this._id,
 			'properties': {

@@ -1,9 +1,21 @@
 <template name='activityAdd'>
-	<span>Activity: <input id='type' type='text'></span>
-	<span>Location: <input id='location' type='text'></span>
-	<span>Date: <input id='date' type='date'></span>
-	<span>Time: <input id='time' type='time'></span>
-	<span>Duration: <input id='duration' type='number' min='0'></span>
-	<span>Comments: <input id='comments' type='text'></span>
-	<button id="activity-add">Add Activity</button>
+	{{#contentFor "headerButtonLeft"}}
+	    {{>ionNavBackButton path="activityList" text="Back"}}
+	{{/contentFor}}
+
+	{{#contentFor 'headerTitle'}}
+		<h1 class="title">Create Activity</h1>
+	{{/contentFor}}
+
+	{{#ionView }}
+		{{#ionContent class='padding'}}
+			<div>Activity: <input id='type' type='text'></div>
+			<div>Location: <input id='location' type='text'></div>
+			<div>Date: <input id='date' type='date'></div>
+			<div>Time: <input id='time' type='time'></div>
+			<div>Duration: <input id='duration' type='number' min='0'></div>
+			<div>Comments: <input id='comments' type='text'></div>
+			<button id="activity-add">Add Activity</button>
+		{{/ionContent}}
+	{{/ionView}}
 </template>

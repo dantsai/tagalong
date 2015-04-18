@@ -1,21 +1,45 @@
 <template name='activityList'>
-		{{#each activities}}
-		<a href='{{pathFor 'activity'}}'>
-		<div class="activity">
-			<div class="activity_dates">
-				<div class="activity_start">{{prettifyDate time.date}}</div>
-				<div>{{duration}} hrs</div>
-			</div>
-			<div class="activity_img"><img src="http://dantsai.com/_/profile.jpg"></div> <!-- {{profileimg}} instead of hardcoded -->
-			<div class="activity_text">
-				<div class="activity_type">{{type}}</div>
-				<div class="activity_host">with {{host.name}}</div>
-			{{#if location}}
-				<div class="activity_location">{{location.name}}</div>
-			{{/if}}
-			</div>
-		</div>
-		</a>
-		{{/each}}
+	{{#contentFor 'headerTitle'}}
+		<h1 class="title">Activities</h1>
+	{{/contentFor}}
+
+	<!-- {{#contentFor 'headerButtonLeft'}}
+		{{> ionIcon icon="navicon" class='headerIcons'}}
+	{{/contentFor}} -->
+
+	<!-- {{#contentFor 'headerButtonRight'}}
+		{{> ionIcon icon="ios-search-strong" class='headerIcons'}}
+	{{/contentFor}} -->
+
+	{{#ionView}}
+		{{#ionContent}}
+			{{#ionList}}
+				{{#each activitiesAll}}
+					{{this.name}}
+					{{#each this.activities}}
+						{{#ionItem buttonRight=true class="item-icon-right activityItem" path="activity"}}
+							{{> ionIcon icon="ios-arrow-forward" class='positive'}}
+							<div class="activityImage">
+								<img class="activity_img" src="http://dantsai.com/_/profile.jpg">
+							</div>
+							<div class="activityInfo">
+								<h2>{{type}}</h2>
+								with <strong>{{host.name}}</strong><br>
+								<div class="activityLogistics">
+									{{> ionIcon icon='calendar' class="activityLogistic"}}{{time.time}} &nbsp;&nbsp;&nbsp;
+									{{> ionIcon icon='ios-stopwatch'}}{{duration}} hours&nbsp;&nbsp;&nbsp;
+									{{#if location}}
+										{{> ionIcon icon='ios-location'}}{{location.name}}
+									{{/if}}
+								</div> 							
+							</div>
+						{{/ionItem}}
+					{{/each}}
+				{{/each}}
+			{{/ionList}}
+		{{/ionContent}}
+	{{/ionView}}
 </template>
+
+
 

@@ -1,12 +1,17 @@
-<template name='userPreferences'>
-	<div>My Preferences</div>
-	<div>
-		Activities I like
+<template name='preferences'>
+	{{#ionView}}
+		{{#contentFor 'headerTitle'}}
+			<h1 class="title">My Preferences</h1>
+		{{/contentFor}}
+
+		{{#ionContent class='padding'}}
+		<h3>Activities I like</h3>
 		<div>Running<input id='running' type='checkbox'></div>
 		<div>Hiking<input id='hiking' type='checkbox'></div>
 		<div>Swimming<input id='swimming' type='checkbox'></div>
 		<div>Cycling<input id='cycling' type='checkbox'></div>
 		<div>Basketball<input id='basketball' type='checkbox'></div>
-		<button id="preferences-edit">Update Preferences</button>
-	</div>
+		<button id="preferences-edit">Update Preferences</button>-->
+ 		{{/ionContent}}
+	{{/ionView}}
 </template>

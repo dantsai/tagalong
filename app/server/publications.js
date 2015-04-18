@@ -11,3 +11,7 @@ Meteor.publish('activities', function() {
 		// 	]
 		// );
 });
+
+Meteor.publish('userNameInfo', function () {
+	return Meteor.users.find({}, {fields: {'names': 1 }});
+});
