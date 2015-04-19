@@ -14,13 +14,6 @@
 		<h1 class="title">{{type}}</h1>
 	{{/contentFor}}
 
-	{{#contentFor "headerButtonRight"}}
-	    <button id="activity-edit" class="button button-clear" data-ion-modal="activityEdit" data-id="{{activity.id}}">
-	    	Edit<!-- {{> ionIcon icon="ios-plus-empty"}} -->
-	    </button>
-	{{/contentFor}}
-
-
 	{{#ionView }}
 		{{#ionContent class='padding activityDetail'}}
 			{{#ionList class="card"}}
@@ -87,13 +80,12 @@
 
 			<!-- Adds the EDIT button to the header -->
 			{{#contentFor "headerButtonRight"}}
-			    <button id="activity-edit" class="button button-clear" data-ion-modal="activityEdit" data-id="{{activity.id}}">
+<!-- 			    <button id="activity-edit" class="button button-clear" data-ion-modal="activityEdit" data-id="{{this._id}}" data-type="{{this.type}}" data-locationName="{{this.location.name}}" data-timeDate="{{this.time.date}}" data-timeTime="{{this.time.time}}" data-duration="{{this.duration}}" data-comments="{{this.comments}}" data-public="{{this.public}}"> -->
+			    <button id="activity-edit" class="button button-clear" data-ion-modal="activityEdit" data-id="{{this._id}}">
 			    	Edit<!-- {{> ionIcon icon="ios-plus-empty"}} -->
 			    </button>
 			{{/contentFor}}	
 		{{/unless}}
 
 	{{/ionView}}
-
->>>>>>> master
 </template>

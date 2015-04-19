@@ -23,10 +23,15 @@ Template.activityList.helpers({
 		// });
 		// console.log(grouped)
 
+		now = new Date();
+		date_now = moment(now).format('MM/DD/YYYY'); 
+		time_now = now.getHours() + ':' + now.getMinutes();
+		// console.log(date_now, time_now)
+
 		var activities = Activities.find(
 					{ 'time.date' : 
-						{ $gte: new Date() } 
-					},
+						{ $gte: new Date(date_now) } 
+					},						 
 					{ sort : 
 						{ 'time.date': 1, 'time.time': 1 } 
 					}					
