@@ -5,13 +5,13 @@ if (Activities.find().count() === 0 ) {
 	        _id: "BFvTf2JCqbRgiCshX",
 	        name: "Chalenge Masekera"
 	    },
-	    type: "Squash",
+	    type: "Cycling",
 	    location: {
-	        name: "RSF"
+	        name: "Grizzly Peak"
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/3/2015'),
+	        date: new Date('4/23/2015'),
 	        time: '10:00'
 	    },
 	    tagalongs: [],
@@ -21,7 +21,7 @@ if (Activities.find().count() === 0 ) {
 	    invitations: [],
 	    public: true,
 	    comments: '',
-	    createdAt: new Date('4/9/2015'),
+	    createdAt: new Date('4/26/2015'),
 	});
 
 	Activities.insert({
@@ -45,7 +45,7 @@ if (Activities.find().count() === 0 ) {
 	    invitations: [],
 	    public: true,
 	    comments: '',
-	    createdAt: new Date('4/12/2015'),
+	    createdAt: new Date('4/22/2015'),
 	});
 
 	Activities.insert({
@@ -59,7 +59,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/19/2015'),
+	        date: new Date('4/23/2015'),
 	        time: '08:00'
 	    },
 	    tagalongs: [],
@@ -83,7 +83,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/11/2015'),
+	        date: new Date('4/21/2015'),
 	        time: '15:00'
 	    },
 	    tagalongs: [],
@@ -107,7 +107,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/20/2015'),
+	        date: new Date('4/25/2015'),
 	        time: '19:30'
 	    },
 	    tagalongs: [],
@@ -131,7 +131,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/18/2015'),
+	        date: new Date('4/26/2015'),
 	        time: '19:00'
 	    },
 	    tagalongs: [],
@@ -149,13 +149,13 @@ if (Activities.find().count() === 0 ) {
 	        _id: "p5sKnZEPTDFpTNxey",
 	        name: "Pablo Arvizu"
 	    },
-	    type: "Circuit Training",
+	    type: "Soccer",
 	    location: {
 	        name: "RSF"
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/18/2015'),
+	        date: new Date('4/21/2015'),
 	        time: '18:00'
 	    },
 	    tagalongs: [],
@@ -214,7 +214,8 @@ if (Meteor.users.find().count() === 0) {
 	    }],
 	    "names": {
 	        "first": "Pablo",
-	        "last": "Arvizu"
+	        "last": "Arvizu",
+	        "pic": "/img/Pablo.jpg"
 	    }
 
 	}); 
@@ -237,7 +238,8 @@ if (Meteor.users.find().count() === 0) {
 	    }],
 	    "names": {
 	        "first": "Chalenge",
-	        "last": "Masekera"
+	        "last": "Masekera",
+	        "pic": "/img/Chalenge.jpg"
 	    }
 	});
 	console.log("Added user: chalenge@gmail.com"); 
@@ -259,7 +261,8 @@ if (Meteor.users.find().count() === 0) {
 	    }],
 	    "names": {
 	        "first": "Suhaib",
-	        "last": "Syaed"
+	        "last": "Syaed",
+	        "pic": "/img/Suhaib.jpg"
 	    }
 	}); 
 	console.log("Added user: suhaib@gmail.com");
@@ -280,8 +283,9 @@ if (Meteor.users.find().count() === 0) {
 	        "verified": false
 	    }],
 	    "names": {
-	        "first": "Daniel",
-	        "last": "Tsai"
+	        "first": "Dan",
+	        "last": "Tsai",
+	        "pic": "/img/Dan.jpg"
 	    }
 	});
 	console.log("Added user: dan@gmail.com");
