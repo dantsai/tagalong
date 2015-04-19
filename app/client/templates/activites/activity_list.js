@@ -85,6 +85,10 @@ Template.activityList.helpers({
 		console.log('array:', grouped_activities)
 
 		return grouped_activities
+	},
+	getUserPicUrl: function() {
+		var name = this.host.name.split(" ");
+		return '/img/'+name[0]+'.jpg';
 	}
 });
 

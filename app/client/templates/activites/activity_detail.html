@@ -1,7 +1,8 @@
 <template name="activity">
 
 	{{#contentFor "headerButtonLeft"}}
-	    {{>ionNavBackButton path="activityList" text="Back"}}
+	    {{>ionNavBackButton}}
+	    <!-- {{>ionNavBackButton path="activityList" text="Back"}} -->
 	{{/contentFor}}
 
 	<!-- Re-added the logic to check user -->
@@ -14,13 +15,6 @@
 		<h1 class="title">{{type}}</h1>
 	{{/contentFor}}
 
-	{{#contentFor "headerButtonRight"}}
-	    <button id="activity-edit" class="button button-clear" data-ion-modal="activityEdit" data-id="{{activity.id}}">
-	    	Edit<!-- {{> ionIcon icon="ios-plus-empty"}} -->
-	    </button>
-	{{/contentFor}}
-
-
 	{{#ionView }}
 		{{#ionContent class='padding activityDetail'}}
 			{{#ionList class="card"}}
@@ -30,7 +24,10 @@
 					{{> ionIcon icon="android-bicycle" class="activityIcon"}}
 
 					<p>with <span>{{host.name}}</span></p>
+
 				{{/ionItem}}
+
+
 
 				<!-- Date time Details -->
 				{{#ionItem body=true class='details'}}
@@ -57,13 +54,15 @@
 
 				<!-- Tagalongs Information-->
 				{{#ionItem body=true class="activityTagalongs"}}
-					<h3>Tagalongs</h3>
 					{{#if tagalongs}}
-						<div>{{friendCount}} tagging along with {{host.name}}</div>
-						{{#each taggers}}
-							<div>{{names.first}}</div>
-							<div>{{names.last}}</div>
-						{{/each}}
+						<p>
+							<strong>{{friendCount}}</strong> tagging along with <strong>{{host.name}}</strong>
+						</p>
+						<div>
+							{{#each taggers}}
+								<img class="tinyPic" src="/img/{{names.first}}.jpg">
+							{{/each}}
+						</div>
 						<!-- <div>{{friendCount}} tagging along with {{host.name}}</div>
 				 		{{#each tagalongs}}
 							<div>{{this}}</div>
@@ -87,7 +86,7 @@
 
 			<!-- Adds the EDIT button to the header -->
 			{{#contentFor "headerButtonRight"}}
-			    <button id="activity-edit" class="button button-clear" data-ion-modal="activityEdit" data-id="{{activity.id}}">
+			    <button id="activity-edit" class="button button-clear" data-ion-modal="activityEdit" data-id="{{this._id}}">
 			    	Edit<!-- {{> ionIcon icon="ios-plus-empty"}} -->
 			    </button>
 			{{/contentFor}}	

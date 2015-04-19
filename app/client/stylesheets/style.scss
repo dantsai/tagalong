@@ -8,8 +8,16 @@ $loading-font-size: 22px;
 }
 
 /****** Activity List *********/
+#activityListPill {
+	width:264px;
+
+	li {
+		width: 85px;
+	}
+}
+
 .activityItem {
-	font-size: 11px;
+	font-size: 10pt;
 	padding: 10px;
 
 	div {
@@ -126,6 +134,22 @@ $loading-font-size: 22px;
 		}
 	}
 
+	.activityTagalongs {
+
+		p {
+			font-size: 9pt;
+		}
+
+		img {
+			max-width: none;
+			max-height: none;
+			margin:3px;
+			width: 50px;
+			height: 50px;
+			border-radius:50%;
+		}
+	}
+
 }
 
 #activity-join {
@@ -149,23 +173,27 @@ $loading-font-size: 22px;
 }
 
 /********* My Tagalongs ***********/
+
+.pillSubmenu {
+	background-color: white;
+
+}
 .pillMenu {
 	margin: 0 auto;
 	font-size: 11px;
 	margin-bottom: 10px;
-	width: 69%;
+	width: 206px;
 	text-align: center;
 	border: solid 1px #387ef5;
 	color: #387ef5;
 	border-radius: 5px;
 
 	li {
-		  text-decoration: none;
-		  display: inline-block;
-		  width: 49%;
-		  text-align: center;
-		  padding: 3px;
-
+		text-decoration: none;
+		display: inline-block;
+		width: 100px;
+		text-align: center;
+		padding: 3px;
 	}
 
 	li.selected {
@@ -173,6 +201,86 @@ $loading-font-size: 22px;
 		color: white;
 	}
 }
+
+.myActivityItem {
+	font-size: 10pt;
+	padding: 10px;
+
+
+	h2 {
+		margin-left: 10px;
+		vertical-align: bottom;
+		font-size:24px;
+
+		i {
+			float:right;
+			margin-right: 15px;
+			font-size: 25pt;
+		}
+	}
+
+	/*i {
+		position: relative !important;
+	}*/
+
+	.timeDetails {
+		border-bottom: solid thin lightgray;
+
+		span {
+			margin-right: 15px;
+		}
+
+		.timeline {
+			height:3px;
+			background-color: orange;
+		}
+	}
+
+	.activityInfo {
+		display: inline-block;
+		padding: 10px;
+		vertical-align: top;
+
+		.icon {
+			font-size: 12pt;
+		}
+	}
+
+	.activityDuration {
+		float: right;
+	}
+
+	.submenu {
+		text-align: center;
+		margin-right: 20px;
+		margin-left: 20px;
+
+		li {
+			display: inline-block;
+			margin:5px;
+			width: 30%;
+		}
+
+		.icon {
+			font-size: 25pt;
+		}
+
+		label {
+			background-color: red;
+			width: 16px;
+			padding: 2px;
+			border-radius: 50%;
+			height: 16px;
+			text-align: center;
+			vertical-align: top;
+			font-size: 7pt;
+			color: white;
+			font-weight: bolder;
+		}
+	}
+}
+
+
 
 
 
@@ -187,5 +295,6 @@ $loading-font-size: 22px;
 }
 
 .selectedUser {
-	background-color: orange;
+	background-color: #387ef5;
+	color: white;
 }

@@ -5,9 +5,9 @@ if (Activities.find().count() === 0 ) {
 	        _id: "BFvTf2JCqbRgiCshX",
 	        name: "Chalenge Masekera"
 	    },
-	    type: "Squash",
+	    type: "Cycling",
 	    location: {
-	        name: "RSF"
+	        name: "Grizzly Peak"
 	    },
 	    time: {
 	        epoch: '',
@@ -214,7 +214,8 @@ if (Meteor.users.find().count() === 0) {
 	    }],
 	    "names": {
 	        "first": "Pablo",
-	        "last": "Arvizu"
+	        "last": "Arvizu",
+	        "pic": "/img/Pablo.jpg"
 	    }
 
 	}); 
@@ -237,7 +238,8 @@ if (Meteor.users.find().count() === 0) {
 	    }],
 	    "names": {
 	        "first": "Chalenge",
-	        "last": "Masekera"
+	        "last": "Masekera",
+	        "pic": "/img/Chalenge.jpg"
 	    }
 	});
 	console.log("Added user: chalenge@gmail.com"); 
@@ -259,7 +261,8 @@ if (Meteor.users.find().count() === 0) {
 	    }],
 	    "names": {
 	        "first": "Suhaib",
-	        "last": "Syaed"
+	        "last": "Syaed",
+	        "pic": "/img/Suhaib.jpg"
 	    }
 	}); 
 	console.log("Added user: suhaib@gmail.com");
@@ -280,8 +283,9 @@ if (Meteor.users.find().count() === 0) {
 	        "verified": false
 	    }],
 	    "names": {
-	        "first": "Daniel",
-	        "last": "Tsai"
+	        "first": "Dan",
+	        "last": "Tsai",
+	        "pic": "/img/Dan.jpg"
 	    }
 	});
 	console.log("Added user: dan@gmail.com");

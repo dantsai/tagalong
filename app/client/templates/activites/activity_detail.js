@@ -17,19 +17,15 @@ Template.activity.helpers({
 			'_id': { $in: this.tagalongs } 
 		});
 		// console.log(xcv);
-	}	
+	}
 
 });
 
 Template.activity.events({
 	'click #activity-join': function(event) {
-		// console.log('tagging along...');
-		console.log("Client side...");
-		console.log(Meteor)
 		Meteor.call('tagalong', this._id,Meteor.userId())		
 	},
 	'click #activity-edit': function(event) {
-		console.log(event);
 		Meteor.call('activityEdit', this._id);
 	}
 });
