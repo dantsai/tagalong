@@ -48,18 +48,14 @@ Meteor.methods({
 		for (var key in grouped_obj) grouped.push({'name':grouped_obj[key]['name'],'value':grouped_obj[key]['activities']})
 		return grouped;
 	},
-	tagalong: function(activityId) {
+	tagalong: function(activityId,userid) {
 		// this.setUserId('p5sKnZEPTDFpTNxey');
-		this.setUserId(Meteor.userId());
-		console.log(this.userId);
-		// console.log(typeof Meteor.userId());
-		check(this.userId, String);
 
-		// var t = Meteor.userId();
-		// console.log(Meteor.userId());
-		// console.log(t);
+		//this.setUserId(userid);
+		check(userid, String);
+
 		Activities.update(activityId, {
-			$addToSet: {tagalongs: this.userId}
+			$addToSet: {tagalongs: userid}
 		});
 	}
 });

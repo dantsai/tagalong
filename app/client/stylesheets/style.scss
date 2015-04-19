@@ -148,6 +148,33 @@ $loading-font-size: 22px;
 	background-color: orange;
 }
 
+/********* My Tagalongs ***********/
+.pillMenu {
+	margin: 0 auto;
+	font-size: 11px;
+	margin-bottom: 10px;
+	width: 69%;
+	text-align: center;
+	border: solid 1px #387ef5;
+	color: #387ef5;
+	border-radius: 5px;
+
+	li {
+		  text-decoration: none;
+		  display: inline-block;
+		  width: 49%;
+		  text-align: center;
+		  padding: 3px;
+
+	}
+
+	li.selected {
+		background-color: #387ef5;
+		color: white;
+	}
+}
+
+
 
 /********* TESTINT **********/
 

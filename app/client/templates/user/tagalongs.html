@@ -1,21 +1,36 @@
 <template name="tagalongs">
 	{{#ionView}}
 		{{#contentFor 'headerTitle'}}
-			<h1 class="title">Tagalongs</h1>
+			<h1 class="title">My Tagalongs</h1>
 		{{/contentFor}}
 
 		{{#ionContent class='padding'}}
-			<h3>Upcoming Tagalongs</h3>
-			{{#each activitiesUpcoming}}
-				<div>
-					<label>{{time.time}}</label>
-					<label>{{time.date}}</label>
-					<label>{{duration}}</label>
-					<label>{{host.name}}</label>
-					<label>{{type}}</label>
-					<label>{{friendCount}}</label>
-				</div>
-			{{/each}}
+			<ul class="pillMenu">
+				<li class="selected">Upcoming</li>
+				<li>Past</li>
+			</ul>
+
+			{{#ionList}}
+				{{#each activitiesUpcoming}}
+					{{#ionItem}}
+						{{time.date}}
+						<div class="timeDetails">
+							{{time.time}} {{duration}}
+						</div>
+						<h2>{{type}}</h2>
+						
+						{{#if notHost}}
+							{{host.name}}
+						{{else}}
+							My Activity
+						{{/if}}
+						<label>{{friendCount}}</label>
+					{{/ionItem}}
+				{{/each}}	
+
+			{{/ionList}}
+
+
 			<h3>Past Tagalongs</h3>
 			{{#each activitiesPast}}
 				<div>

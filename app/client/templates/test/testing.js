@@ -33,9 +33,6 @@ Template.testing.events({
 		$(event.currentTarget).toggleClass('selectedUser');
 		Meteor.userId= function () {
 			return users[event.currentTarget.id];
-
 		};
-		// Meteor.userId = users[event.currentTarget.id];
-		console.log(Meteor.userId());
 	}
 })

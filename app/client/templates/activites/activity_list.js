@@ -1,6 +1,6 @@
 Template.activityList.helpers({
 	activitiesAll: function() {
-
+		/*
 		//*** Will optimize this code for proper method calling once I get how to do it. Will also remove redundancy***
 		// var activities_options = {
 		// 	'search':
@@ -22,7 +22,7 @@ Template.activityList.helpers({
 	      	
 		// });
 		// console.log(grouped)
-
+		*/
 		var activities = Activities.find(
 					{ 'time.date' : 
 						{ $gte: new Date() } 

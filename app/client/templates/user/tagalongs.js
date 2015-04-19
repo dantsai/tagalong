@@ -25,6 +25,9 @@ Template.tagalongs.helpers({
 	},
 	friendCount: function() {
 		return this.tagalongs.length;
+	},
+	notHost: function() {		
+		return this.host._id === Meteor.userId(); 
 	}
 })
 
