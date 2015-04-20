@@ -4,7 +4,7 @@
 			<div class="bar bar-header bar-stable">
 		        <button data-dismiss="modal" type="button" class="button button-clear">Cancel</button>
 		        <h2 class="title">Edit Activity</h2>
-		     	<button type="submit" class="button button-positive button-clear">Save</button>
+		     	<button id="activity-save" class="button button-positive button-clear">Save</button>
 		    </div>
 
 
@@ -13,18 +13,25 @@
 		        {{> afQuickFields omitFields="avatarUrl"}}
 		    </div> -->
 
-		    {{#ionContent class="padding"}}
-		    	//CONTENT HERE
-		    {{/ionContent}}
+		{{#ionContent class='padding'}}			
+			<div>Activity: <input id='type' type='text' value='{{activity.type}}'></div>
+			<div>Location: <input id='location' type='text' value='{{activity.location.name}}'></div>
+			<div>Date: <input id='date' type='date' value='{{formatDate activity.time.date}}'></div>
+			<div>Time: <input id='time' type='time' value='{{activity.time.time}}'></div>
+			<div>Duration: <input id='duration' type='number' min='0' value='{{activity.duration}}'></div>
+			<div>Comments: <input id='comments' type='text' value='{{activity.comments}}'></div>
+			<div>Public: <input id="public" type="checkbox" checked="false"></div>
+			<button id="activity-edit">Edit Activity</button>
+		{{/ionContent}}
 		<!-- {{/autoForm}} -->
 	{{/ionModal}}
 
 
-	<!-- <div><span>Activity: <input id='type' type='text' value='{{type}}'></span></div>
-	<div><span>Location: <input id='location' type='text' value='{{location.name}}'></span></div>
-	<div><span>Date: <input id='date' type='date' value='{{formatDate time.date}}'></span></div>
-	<div><span>Time: <input id='time' type='time' value='{{time.time}}'></span></div>
-	<div><span>Duration: <input id='duration' type='number' min='0' value='{{duration}}'></span></div>
-	<div><span>Comments: <input id='comments' type='text' value='{{comments}}'></span></div>
+	<!-- <div><span></span></div>
+	<div><span></span></div>
+	<div><span></span></div>
+	<div><span></span></div>
+	<div><span>/span></div>
+	<div><span></div>
 	<button id="activity-edit">Edit Activity</button> -->
 </template>
