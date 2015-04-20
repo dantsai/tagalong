@@ -1,6 +1,6 @@
 Template.activityList.helpers({
 	activitiesAll: function() {
-
+		/*
 		//*** Will optimize this code for proper method calling once I get how to do it. Will also remove redundancy***
 		// var activities_options = {
 		// 	'search':
@@ -22,11 +22,10 @@ Template.activityList.helpers({
 	      	
 		// });
 		// console.log(grouped)
-
+		*/
 		now = new Date();
 		date_now = moment(now).format('MM/DD/YYYY'); 
 		time_now = now.getHours() + ':' + now.getMinutes();
-		// console.log(date_now, time_now)
 
 		var activities = Activities.find(
 					{ 'time.date' : 
@@ -90,6 +89,10 @@ Template.activityList.helpers({
 		console.log('array:', grouped_activities)
 
 		return grouped_activities
+	},
+	getUserPicUrl: function() {
+		var name = this.host.name.split(" ");
+		return '/img/'+name[0]+'.jpg';
 	}
 });
 

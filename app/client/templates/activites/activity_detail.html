@@ -1,7 +1,8 @@
 <template name="activity">
 
 	{{#contentFor "headerButtonLeft"}}
-	    {{>ionNavBackButton path="activityList" text="Back"}}
+	    {{>ionNavBackButton}}
+	    <!-- {{>ionNavBackButton path="activityList" text="Back"}} -->
 	{{/contentFor}}
 
 	<!-- Re-added the logic to check user -->
@@ -23,7 +24,10 @@
 					{{> ionIcon icon="android-bicycle" class="activityIcon"}}
 
 					<p>with <span>{{host.name}}</span></p>
+
 				{{/ionItem}}
+
+
 
 				<!-- Date time Details -->
 				{{#ionItem body=true class='details'}}
@@ -50,13 +54,15 @@
 
 				<!-- Tagalongs Information-->
 				{{#ionItem body=true class="activityTagalongs"}}
-					<h3>Tagalongs</h3>
 					{{#if tagalongs}}
-						<div>{{friendCount}} tagging along with {{host.name}}</div>
-						{{#each taggers}}
-							<div>{{names.first}}</div>
-							<div>{{names.last}}</div>
-						{{/each}}
+						<p>
+							<strong>{{friendCount}}</strong> tagging along with <strong>{{host.name}}</strong>
+						</p>
+						<div>
+							{{#each taggers}}
+								<img class="tinyPic" src="/img/{{names.first}}.jpg">
+							{{/each}}
+						</div>
 						<!-- <div>{{friendCount}} tagging along with {{host.name}}</div>
 				 		{{#each tagalongs}}
 							<div>{{this}}</div>
@@ -80,7 +86,6 @@
 
 			<!-- Adds the EDIT button to the header -->
 			{{#contentFor "headerButtonRight"}}
-<!-- 			    <button id="activity-edit" class="button button-clear" data-ion-modal="activityEdit" data-id="{{this._id}}" data-type="{{this.type}}" data-locationName="{{this.location.name}}" data-timeDate="{{this.time.date}}" data-timeTime="{{this.time.time}}" data-duration="{{this.duration}}" data-comments="{{this.comments}}" data-public="{{this.public}}"> -->
 			    <button id="activity-edit" class="button button-clear" data-ion-modal="activityEdit" data-id="{{this._id}}">
 			    	Edit<!-- {{> ionIcon icon="ios-plus-empty"}} -->
 			    </button>

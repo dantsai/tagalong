@@ -34,4 +34,8 @@ Router.route('/tagalongs',{
 	name: 'tagalongs'
 })
 
+Router.route('/testing', {
+	name: 'testing'
+})
+
 // Router.route('/login', {name: 'login'});

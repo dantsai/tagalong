@@ -16,12 +16,11 @@ Template.activity.helpers({
 		return Meteor.users.find({
 			'_id': { $in: this.tagalongs } 
 		});
-	}	
+	}
 });
 
 Template.activity.events({
 	'click #activity-join': function(event) {
-		// console.log('tagging along...');
-		Meteor.call('tagalong', this._id)		
+		Meteor.call('tagalong', this._id,Meteor.userId())		
 	}
 });
