@@ -1,0 +1,17 @@
+{
+  "apn": {
+    "passphrase": "!tagalongpassword!",
+    "key": "tagKey.pem",
+    "cert": "tagCert.pem"
+  },
+  "apn-dev": {
+    "passphrase": "!tagalongpassword!",
+    "key": "ios/apn-development/tagKey.pem",
+    "cert": "ios/apn-development/tagKey.pem"
+  }
+  "production": false,
+  "badge": true,
+  "sound": true,
+  "alert": true,
+  "vibrate": true
+}
