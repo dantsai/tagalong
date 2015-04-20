@@ -21,8 +21,30 @@
 			<button id="test-camera">CAMERA</button>
 			<button id="test-photo">CAMERA photo</button>
 			<button id="test-contacts">CONTACTS</button>
+			<button id="test-notifications">notifications!</button>
+
+		<table>
+			<thead>
+				<tr>
+					<td>Badge#</td>
+					<td>Added at</td>
+					<td>Recieved at</td>
+				</tr>
+			</thead>
+			{{> row}}
+		</table>
+
 
 		{{/ionContent}}
 	{{/ionView}}
+</template>
 
+<template name="row">
+	{{#each notificationHistory}}
+		<tr>
+			<td>{{badge}}</td>
+			<td>{{addedAt}}</td>
+			<td>{{recievedAt}}</td>
+		</tr>
+	{{/each}}
 </template>
