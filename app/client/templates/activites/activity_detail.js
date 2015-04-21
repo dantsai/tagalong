@@ -15,24 +15,18 @@ Template.activity.helpers({
 	},
 
 	taggers: function() {
-		// console.log(this.tagalongs)
 		return Meteor.users.find({
 			'_id': { $in: this.tagalongs } 
 		});
-		// console.log(xcv);
 	},
 	getUserPicUrl: function() {
 		var name = this.host.name.split(" ");
 		return '/img/'+name[0]+'.jpg';
 	}
-
 });
 
 Template.activity.events({
 	'click #activity-join': function(event) {
 		Meteor.call('tagalong', this._id,Meteor.userId())		
-	},
-	'click #activity-edit': function(event) {
-		Meteor.call('activityEdit', this._id);
 	}
 });

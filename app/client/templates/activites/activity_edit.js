@@ -1,14 +1,30 @@
+Template.activityEdit.helpers({
+	activity: function() {
+		var template = Template.instance()
+		return Activities.findOne({_id: template.data.id})
+	}
+})
+
 Template.activityEdit.events({
+	'click #activity-save': function(event) {
+		pushToEdit(this.id);
+	},
+
 	'click #activity-edit': function(event) {
-		console.log('EDIT LINK');
+		pushToEdit(this.id);
+	}
+})
+
+function pushToEdit(activityId) {
+		// console.log('EDIT LINK');
 		var activity = {
-			'activityId': this._id,
+			'activityId': activityId,
 			'properties': {
 				'type': $('#type').val(),
 				'location': $('#location').val(),
 			    'time': {
 				        'epoch': '',
-				        'date': new Date($('#date').val()),
+				        'date': new Date($('#date').val() + ' 00:00'), //Need proper handling of this
 						'time': $('#time').val(),
 			    	},
 				'duration': $('#duration').val(),
@@ -20,8 +36,7 @@ Template.activityEdit.events({
 		Meteor.call('activityUpdate', activity, function(error, result) { 	
 			if (error)
 				return alert(error.reason);
-		    Router.go('activity',  {_id: activity.activityId});
+			 IonModal.close();
 		});
-	}
-})
 
+}
