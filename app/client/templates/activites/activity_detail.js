@@ -1,6 +1,9 @@
 Template.activity.helpers({ 
 	notHost: function() {		
-		return this.host._id === Meteor.userId(); 
+		var inTagalongs = true;
+		if ($.inArray(Meteor.userId(),this.tagalongs) ==-1)
+			inTagalongs = false;
+		return (this.host._id === Meteor.userId() || inTagalongs); 
 	},
 
 	friendCount: function() {
@@ -17,6 +20,10 @@ Template.activity.helpers({
 			'_id': { $in: this.tagalongs } 
 		});
 		// console.log(xcv);
+	},
+	getUserPicUrl: function() {
+		var name = this.host.name.split(" ");
+		return '/img/'+name[0]+'.jpg';
 	}
 
 });
