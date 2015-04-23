@@ -281,6 +281,124 @@ $loading-font-size: 22px;
 }
 
 
+/*********** ADD ACTIVITY ***********/
+
+.addActivity {
+
+	/*padding: 2px;*/
+	top: 25px;
+	bottom: 10px;
+
+	.subsection {
+		margin:5px;
+		background-color: rgba(211,211,211,.15);
+		padding: 5px;
+		border-radius: 2px;
+		border: solid thin rgba(211,211,211,.4);
+		/*opacity: .3;*/
+	}
+
+	.selected {
+		background-color: #387ef5;
+	}
+
+	h5 {
+		/*color: white;*/
+		border-bottom: solid 1px black;
+		padding: 5px;
+		margin-top: 15px;
+		vertical-align: bottom;
+
+		span {
+			margin-left: 10px;
+			font-size: 12pt;
+			font-weight: bold;
+		}
+	}
+
+	.activityTypes {
+		div {
+			text-align: center;
+		}
+
+	}
+
+	.activityIcon {
+		text-decoration: none;
+		background-color: white;
+		display: inline-block;
+		border-radius: 50%;
+		border: solid thin black;
+		width: 20%;
+		margin: 5px;
+	}
+
+	.activityIcon.selected,
+	.activityDay li.selected {
+		background-color: #387ef5;
+	}
+
+	.activityDay {	
+	
+		/*color: white;*/
+
+		ul {
+			text-align: center;
+		}
+
+		li {
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			width: 35px;
+			padding:5px 5px 5px 5px;
+			background-color: lightgray;
+			opacity:1;
+			border-radius: 2px;
+			font-size: 7pt;
+			margin: 2px;
+			color: white;
+
+			div {
+				font-size: 14pt;
+				color: white;
+				display: block;
+
+			}
+		}
+	}
+
+	img {
+		width: 100%;
+		padding:0px;
+	}
+
+	input {
+		width: 50px;
+		display: inline-block;
+		background-color: lightgray;
+		padding:2px;
+		border-radius: 2px;
+		font-size: 12pt;
+		font-weight: bold;
+	}
+
+	#activityLocation {
+		width:75%;
+	}
+
+	#activityComments {
+		height: 80px;
+		width: 100%;
+		background-color: lightgray;
+		padding:5px;
+		border-radius: 2px;
+	}
+
+}
+
+
+
 
 
 

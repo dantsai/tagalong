@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="150px" height="150px" viewBox="0 0 150 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3 (11970) - http://www.bohemiancoding.com/sketch -->
+    <title>Gym</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Gym" sketch:type="MSArtboardGroup" fill="#000000">
+            <g id="Layer_2" sketch:type="MSLayerGroup" transform="translate(30.000000, 13.000000)">
+                <rect id="Rectangle-path" sketch:type="MSShapeGroup" x="0" y="53.41548" width="3.462" height="17.16904"></rect>
+                <rect id="Rectangle-path" sketch:type="MSShapeGroup" x="6.923" y="40.53808" width="3.462" height="42.9226"></rect>
+                <rect id="Rectangle-path" sketch:type="MSShapeGroup" x="13.846" y="31.95356" width="6.924" height="60.09288"></rect>
+                <rect id="Rectangle-path" sketch:type="MSShapeGroup" x="24.23" y="57.70836" width="41.539" height="8.58452"></rect>
+                <rect id="Rectangle-path" sketch:type="MSShapeGroup" x="86.538" y="53.41548" width="3.462" height="17.16904"></rect>
+                <rect id="Rectangle-path" sketch:type="MSShapeGroup" x="79.615" y="40.53808" width="3.462" height="42.9226"></rect>
+                <rect id="Rectangle-path" sketch:type="MSShapeGroup" x="69.23" y="31.95356" width="6.924" height="60.09288"></rect>
+            </g>
+        </g>
+    </g>
+</svg>
