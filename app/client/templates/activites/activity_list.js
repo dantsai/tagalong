@@ -96,3 +96,10 @@ Template.activityList.helpers({
 	}
 });
 
+Template.activityList.events({
+	// 'click #activity-new': function(event) {
+	// 	console.log(event);
+	// 	// Meteor.call('activityAdd');
+	// }
+});
+

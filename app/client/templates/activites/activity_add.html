@@ -1,22 +1,48 @@
-<template name='activityAdd'>
-	{{#contentFor "headerButtonLeft"}}
-	    {{>ionNavBackButton path="activityList" text="Back"}}
-	{{/contentFor}}
+<template name='activityNew'>
+	{{#ionModal customTemplate=true}}
+		<div class="bar bar-header bar-stable">
+	        <button data-dismiss="modal" type="button" class="button button-clear">Cancel</button>
+	        <h2 class="title">Create New Activity</h2>
+	     	<button id="activity-add" class="button button-positive button-clear">Save</button>
+	    </div>
 
-	{{#contentFor 'headerTitle'}}
-		<h1 class="title">Create Activity</h1>
-	{{/contentFor}}
+		{{#ionContent class='padding addActivity'}}
+			<div class="activityTypes">	
+				<h5>Activity Type: <span></span></h5>
+					<div>
+						<img src="/icons/walking.svg" activity="Walking" class='activityIcon'>
+						<img src="/icons/running.svg" activity="Running" class='activityIcon'>
+						<img src="/icons/hiking.svg" activity="Hiking" class='activityIcon'>
+						<img src="/icons/swimming.svg" activity="Swimming" class='activityIcon'>
+						<img src="/icons/cycling.svg" activity="Cycling" class='activityIcon'>
+						<img src="/icons/gym.svg" activity="Gym" class='activityIcon'>
+						<img src="/icons/meditation.svg" class='activityIcon' activity="Meditation">
+						<img src="/icons/soccer.svg" activity="Soccer" class='activityIcon'>
+				</div>
+			</div>
 
-	{{#ionView }}
-		{{#ionContent class='padding'}}
-			<div>Activity: <input id='type' type='text'></div>
-			<div>Location: <input id='location' type='text'></div>
-			<div>Date: <input id='date' type='date' value={{formatDate dateTomorrow}}></div>
-			<div>Time: <input id='time' type='time' value={{defaultTime}}></div>
-			<div>Duration: <input id='duration' type='number' min='1'></div>
-			<div>Comments: <input id='comments' type='text'></div>
-			<div>Public: <input id="public" type="checkbox" checked></div>
-			<button id="activity-add">Add Activity</button>
+			<div class="activityDay"> 
+				<h5>Date: <span></span></h5>
+				<ul>
+					{{#each getWeek}}
+						<li class='dayofweek' date="{{ this.full }}" value="{{this.date}}">{{ this.weekdayShort }}<div>{{ this.day }}</div></li>	
+					{{/each}}
+				</ul>
+
+				<h5>Time: <input id='activityTime' type='text'>    Duration: <input id='activityDuration' type='number' min='0'></h5>
+			</div>
+
+
+			<h5>Location: <input id='activityLocation' type='text'></h5>
+
+			<img src='/img/RSF.png'>
+			
+
+
+			<h5>Comments: </h5>
+			<textarea id='activityComments'></textarea>
+
 		{{/ionContent}}
-	{{/ionView}}
+	{{/ionModal}}
+
 </template>

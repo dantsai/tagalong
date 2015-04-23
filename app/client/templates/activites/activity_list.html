@@ -1,15 +1,11 @@
 <template name='activityList'>
 	{{#contentFor 'headerTitle'}}
 		<h1 class="title">Activities</h1>
+		
+		<button id="activity-new" class="button button-clear pull-right" data-ion-modal="activityNew">
+			  {{> ionIcon icon="ios-plus-empty"}} 
+		</button>
 	{{/contentFor}}
-
-	<!-- {{#contentFor 'headerButtonLeft'}}
-		{{> ionIcon icon="navicon" class='headerIcons'}}
-	{{/contentFor}} -->
-
-	<!-- {{#contentFor 'headerButtonRight'}}
-		{{> ionIcon icon="ios-search-strong" class='headerIcons'}}
-	{{/contentFor}}  -->
 
 	{{#ionView}}
 
