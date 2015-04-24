@@ -8,7 +8,9 @@ Template.tagalongs.helpers({
 					}
 				]
 			},
-			{ sort : { 'time.time': -1 } }
+			{ sort : 
+				{ 'time.date': 1, 'time.time': 1 }  
+			}
 		);
 
 		var activities = Activities.find(

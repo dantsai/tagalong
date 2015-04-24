@@ -9,7 +9,8 @@ Meteor.methods({
 			pictures: [],
 			status: 'Available',
 			tagalongs: [],
-			createdAt: new Date()
+			createdAt: new Date(),
+			available: true
 		});
 
 		var activityId = Activities.insert(activity);
