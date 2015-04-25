@@ -94,7 +94,7 @@ Template.activityNew.events({
 		}
 
 		selection.toggleClass('selected');
-		$(".activityTypes h5 span").text($(event.currentTarget).attr('activity')); // setting the value selected to the text in the h4
+		$(".activityTypes h5 span").text($(".dayofweek.selected").attr('value')); // setting the value selected to the text in the h4
 
 		return selection.attr('activity');
 	},
