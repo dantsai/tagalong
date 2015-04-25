@@ -76,15 +76,14 @@ Template.activityList.helpers({
 				  		{ $in : activityPrefs } 
 				},						 
 				{ sort : 
-					{ 'createdAt': -1} 
-				},
-				{ $limit : 4 }
+					{ 'time.date': 1, 'time.time': 1 } 
+				}
 			);
-			return groupActivities(activities)
+			console.log(groupActivities(activities))
 		}
 		else {
 			// Could return those with a lot of users.
-			retun 'Set Prefs'
+			return 'Set Prefs'
 		}
 		// var user_activities = Meteor.users.findOne(Meteor.use)
 
@@ -120,3 +119,4 @@ function groupActivities(activities) {
 
 	return grouped_activities	
 }
+

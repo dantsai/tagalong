@@ -1,12 +1,13 @@
 Template.preferences.helpers({
 	firstName: function() {
 		var user = Meteor.user();
-		return user.names.first
+		return Meteor.user().names.first
 	},
 	fullName: function() {
-		var user = Meteor.user();
-		console.log(user);
-		return user.names.first + ' ' + user.names.last;
+		return Meteor.user().names.first + ' ' + Meteor.user().names.last;
+	},
+	selectedActivities: function () {
+		//code to push already selected activity preferences
 	}
 });
 
