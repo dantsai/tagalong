@@ -5,13 +5,38 @@
 		{{/contentFor}}
 
 		{{#ionContent class='padding'}}
-		<h3>Activities I like</h3>
-		<div>Running<input id='running' type='checkbox'></div>
-		<div>Hiking<input id='hiking' type='checkbox'></div>
-		<div>Swimming<input id='swimming' type='checkbox'></div>
-		<div>Cycling<input id='cycling' type='checkbox'></div>
-		<div>Basketball<input id='basketball' type='checkbox'></div>
-		<button id="preferences-edit">Update Preferences</button>-->
+			{{#ionItem avatar=true class='header'}}
+				<img class="activity_img" src="/img/{{firstName}}.jpg">
+				<h1>{{fullName}} </h1>
+				{{> ionIcon icon="android-bicycle" class="activityIcon"}}
+
+				<p>with <span>{{host.name}}</span></p>
+
+			{{/ionItem}}
+			<h3>Activities I like</h3>
+			<div>Walking<input id='Walking' type='checkbox'></div>
+			<div>Running<input id='Running' type='checkbox'></div>
+			<div>Hiking<input id='Hiking' type='checkbox'></div>
+			<div>Swimming<input id='Swimming' type='checkbox'></div>
+			<div>Cycling<input id='Cycling' type='checkbox'></div>
+			<div>Gym<input id='Gym' type='checkbox'></div>
+			<div>Meditation<input id='Meditation' type='checkbox'></div>
+			<div>Soccer<input id='Soccer' type='checkbox'></div>
+
+<!-- 			<div class="activityTypes">	
+				<h5>Activity Type: <span></span></h5>
+					<div>
+						<img src="/icons/walking.svg" activity="Walking" class='activityIcon'>
+						<img src="/icons/running.svg" activity="Running" class='activityIcon'>
+						<img src="/icons/hiking.svg" activity="Hiking" class='activityIcon'>
+						<img src="/icons/swimming.svg" activity="Swimming" class='activityIcon'>
+						<img src="/icons/cycling.svg" activity="Cycling" class='activityIcon'>
+						<img src="/icons/gym.svg" activity="Gym" class='activityIcon'>
+						<img src="/icons/meditation.svg" class='activityIcon' activity="Meditation">
+						<img src="/icons/soccer.svg" activity="Soccer" class='activityIcon'>
+				</div>
+			</div> -->
+		<button id="preferences-edit">Update Preferences</button>
  		{{/ionContent}}
 	{{/ionView}}
 </template>

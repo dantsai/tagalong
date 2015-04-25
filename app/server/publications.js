@@ -13,5 +13,5 @@ Meteor.publish('activities', function() {
 });
 
 Meteor.publish('userNameInfo', function () {
-	return Meteor.users.find({}, {fields: {'names': 1 }});
+	return Meteor.users.find({}, {fields: {'names': 1, 'activities': 1 }});
 });

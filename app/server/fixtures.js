@@ -22,6 +22,7 @@ if (Activities.find().count() === 0 ) {
 	    public: true,
 	    comments: '',
 	    createdAt: new Date('4/26/2015'),
+	    available: true
 	});
 
 	Activities.insert({
@@ -46,6 +47,7 @@ if (Activities.find().count() === 0 ) {
 	    public: true,
 	    comments: '',
 	    createdAt: new Date('4/22/2015'),
+	    available: true
 	});
 
 	Activities.insert({
@@ -69,7 +71,8 @@ if (Activities.find().count() === 0 ) {
 	    invitations: [],
 	    public: true,
 	    comments: '',
-	    createdAt: new Date()
+	    createdAt: new Date(),
+	    available: true
 	});
 
 	Activities.insert({
@@ -83,7 +86,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/21/2015'),
+	        date: new Date('4/24/2015'),
 	        time: '15:00'
 	    },
 	    tagalongs: [],
@@ -93,7 +96,8 @@ if (Activities.find().count() === 0 ) {
 	    invitations: [],
 	    public: true,
 	    comments: '',
-	    createdAt: new Date()
+	    createdAt: new Date(),
+	    available: true
 	});
 
 	Activities.insert({
@@ -117,7 +121,8 @@ if (Activities.find().count() === 0 ) {
 	    invitations: [],
 	    public: true,
 	    comments: '',
-	    createdAt: new Date()
+	    createdAt: new Date(),
+	    available: true
 	});
 
 	Activities.insert({
@@ -141,7 +146,8 @@ if (Activities.find().count() === 0 ) {
 	    invitations: [],
 	    public: true,
 	    comments: '',
-	    createdAt: new Date()
+	    createdAt: new Date(),
+	    available: true
 	});
 
 	Activities.insert({
@@ -155,7 +161,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/21/2015'),
+	        date: new Date('4/24/2015'),
 	        time: '18:00'
 	    },
 	    tagalongs: [],
@@ -165,7 +171,8 @@ if (Activities.find().count() === 0 ) {
 	    invitations: [],
 	    public: true,
 	    comments: '',
-	    createdAt: new Date()
+	    createdAt: new Date(),
+	    available: true
 	});
 
 	Activities.insert({
@@ -179,7 +186,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/23/2015'),
+	        date: new Date('4/22/2015'),
 	        time: '19:03'
 	    },
 	    tagalongs: [],
@@ -189,7 +196,8 @@ if (Activities.find().count() === 0 ) {
 	    invitations: [],
 	    public: true,
 	    comments: '',
-	    createdAt: new Date()
+	    createdAt: new Date(),
+	    available: true
 	});
 	console.log('Added 7 activities to DB.');
 }
