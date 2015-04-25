@@ -26,6 +26,7 @@ Template.tagalongs.helpers({
 						{ 'time.date': 1, 'time.time': 1 } 
 					}					
 				);
+
 		var grouped_obj = {}
 		activities.forEach(function(activity) {
 			if (grouped_obj.hasOwnProperty(moment(activity.time.date).format('MMMDDYYYY'))) {
@@ -43,6 +44,7 @@ Template.tagalongs.helpers({
 		    return [value];
 		});
 		
+		console.log(grouped_activities);
 		return grouped_activities
 	},
 	
@@ -65,6 +67,7 @@ Template.tagalongs.helpers({
 		return this.host._id === Meteor.userId(); 
 	},
 	getUserPicUrl: function() {
+		// console.log(this);
 		var name = this.host.name.split(" ");
 		return '/img/'+name[0]+'.jpg';
 	},

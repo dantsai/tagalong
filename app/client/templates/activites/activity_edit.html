@@ -1,37 +1,48 @@
 <template name='activityEdit'>
-	{{#ionModal }}
-		<!-- {{#autoForm collection='Activities' doc=activity id="editActivityForm" type="update"}} -->
-			<div class="bar bar-header bar-stable">
-		        <button data-dismiss="modal" type="button" class="button button-clear">Cancel</button>
-		        <h2 class="title">Edit Activity</h2>
-		     	<button id="activity-save" class="button button-positive button-clear">Save</button>
-		    </div>
+	{{#ionModal customTemplate=true}}
+		<div class="bar bar-header bar-stable">
+	        <button data-dismiss="modal" type="button" class="button button-clear">Cancel</button>
+	        <h2 class="title">Edit Activity</h2>
+	     	<button id="activity-save" class="button button-positive button-clear">Save</button>
+	    </div>
 
 
+		{{#ionContent class='padding addActivity'}}
+			<div class="activityTypes">	
+				<h5>Activity Type: <span>{{this.type}}</span></h5>
+					<div>
+						<img src="/icons/walking.svg" activity="Walking" class='activityIcon {{ isActivity "Walking" }}'>
+						<img src="/icons/running.svg" activity="Running" class='activityIcon {{ isActivity "Running" }}'>
+						<img src="/icons/hiking.svg" activity="Hiking" class='activityIcon {{ isActivity "Hiking" }}'>
+						<img src="/icons/swimming.svg" activity="Swimming" class='activityIcon {{ isActivity "Swimming" }}'>
+						<img src="/icons/cycling.svg" activity="Cycling" class='activityIcon {{ isActivity "Cycling" }}'>
+						<img src="/icons/gym.svg" activity="Gym" class='activityIcon {{ isActivity "Gym" }}'>
+						<img src="/icons/meditation.svg" class='activityIcon {{ isActivity "Meditation" }}' activity="Meditation">
+						<img src="/icons/soccer.svg" activity="Soccer" class='activityIcon {{ isActivity "Scoccer" }}'>
+				</div>
+			</div>
 
-		    <!-- <div class="content has-header overflow-scroll">
-		        {{> afQuickFields omitFields="avatarUrl"}}
-		    </div> -->
+			<div class="activityDay"> 
+				<h5>Date: <span>{{ this.date }}</span></h5>
+				<ul>
+					{{#each getWeek}}
+						<li class='dayofweek {{ isSelectedDate .. this.date}}' date="{{ this.full }}" value="{{this.date}}">{{ this.weekdayShort }}<div>{{ this.day }}</div></li>	
+					{{/each}}
+				</ul>
 
-		{{#ionContent class='padding'}}			
-			<div>Activity: <input id='type' type='text' value='{{activity.type}}'></div>
-			<div>Location: <input id='location' type='text' value='{{activity.location.name}}'></div>
-			<div>Date: <input id='date' type='date' value='{{formatDate activity.time.date}}'></div>
-			<div>Time: <input id='time' type='time' value='{{activity.time.time}}'></div>
-			<div>Duration: <input id='duration' type='number' min='0' value='{{activity.duration}}'></div>
-			<div>Comments: <input id='comments' type='text' value='{{activity.comments}}'></div>
-			<div>Public: <input id="public" type="checkbox" checked="false"></div>
-			<button id="activity-edit">Edit Activity</button>
+				<h5>Time: <input id='activityTime' type='text' value="{{this.time}}">    Duration: <input id='activityDuration' type='number' min='0' value="{{this.duration}}"></h5>
+			</div>
+
+
+			<h5>Location: <input id='activityLocation' type='text' value="{{this.location}}"></h5>
+
+			<img src='/img/RSF.png'>
+			
+
+
+			<h5>Comments: </h5>
+			<textarea id='editActivityComments'>{{this.comments}}</textarea>
+
 		{{/ionContent}}
-		<!-- {{/autoForm}} -->
 	{{/ionModal}}
-
-
-	<!-- <div><span></span></div>
-	<div><span></span></div>
-	<div><span></span></div>
-	<div><span></span></div>
-	<div><span>/span></div>
-	<div><span></div>
-	<button id="activity-edit">Edit Activity</button> -->
 </template>

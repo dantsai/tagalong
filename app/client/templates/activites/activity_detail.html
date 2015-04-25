@@ -27,8 +27,6 @@
 
 				{{/ionItem}}
 
-
-
 				<!-- Date time Details -->
 				{{#ionItem body=true class='details'}}
 					<div>
@@ -73,23 +71,24 @@
 				<!-- Messages Section-->
 				{{#ionItem body=true class="activityTagalongs"}}
 					<div>Comments</div>
+					<textarea id='activityComments'>{{comments}}</textarea>
 				{{/ionItem}}
 
 			{{/ionList}}
 			
 		{{/ionContent}}
-		{{#unless notHost}}
+		{{#unless activityMember}}
 			<div id="activity-join" class="tagalong">Tagalong!</div>
 		{{else}}
-			<!-- <a href='{{pathFor 'activityEdit'}}'>Edit Activity</a>  -->
 			<div id="activity-join" class="message">Message myself</div>
-
-			<!-- Adds the EDIT button to the header -->
-			{{#contentFor "headerButtonRight"}}
-			    <button id="activity-edit" class="button button-clear" data-ion-modal="activityEdit" data-id="{{this._id}}">
-			    	Edit<!-- {{> ionIcon icon="ios-plus-empty"}} -->
-			    </button>
-			{{/contentFor}}	
+			{{#if notHost}}
+				<!-- Adds the EDIT button to the header -->
+				{{#contentFor "headerButtonRight"}}
+				    <button id="activity-edit" class="button button-clear" data-ion-modal="activityEdit" data-id="{{this._id}}" data-type="{{this.type}}" data-duration="{{this.duration}}" data-time="{{this.time.time}}" data-date="{{this.time.date}}" data-location="{{this.location.name}}" data-comments="{{this.comments}}">
+				    	Edit
+				    </button>
+				{{/contentFor}}	
+			{{/if}}
 		{{/unless}}
 
 	{{/ionView}}
