@@ -11,7 +11,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/23/2015'),
+	        date: new Date('4/28/2015'),
 	        time: '10:00'
 	    },
 	    tagalongs: [],
@@ -21,7 +21,7 @@ if (Activities.find().count() === 0 ) {
 	    invitations: [],
 	    public: true,
 	    comments: '',
-	    createdAt: new Date('4/26/2015'),
+	    createdAt: new Date('4/20/2015'),
 	    available: true
 	});
 
@@ -36,7 +36,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/26/2015'),
+	        date: new Date('4/29/2015'),
 	        time: '14:00'
 	    },
 	    tagalongs: [],
@@ -46,7 +46,7 @@ if (Activities.find().count() === 0 ) {
 	    invitations: [],
 	    public: true,
 	    comments: '',
-	    createdAt: new Date('4/22/2015'),
+	    createdAt: new Date('4/27/2015'),
 	    available: true
 	});
 
@@ -61,7 +61,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/23/2015'),
+	        date: new Date('4/30/2015'),
 	        time: '08:00'
 	    },
 	    tagalongs: [],
@@ -86,7 +86,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/24/2015'),
+	        date: new Date('5/1/2015'),
 	        time: '15:00'
 	    },
 	    tagalongs: [],
@@ -161,7 +161,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/24/2015'),
+	        date: new Date('4/27/2015'),
 	        time: '18:00'
 	    },
 	    tagalongs: [],
@@ -186,7 +186,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/22/2015'),
+	        date: new Date('4/30/2015'),
 	        time: '19:03'
 	    },
 	    tagalongs: [],
@@ -216,15 +216,16 @@ if (Meteor.users.find().count() === 0) {
 	            "loginTokens": []
 	        }
 	    },
-	    "emails": [{
+	    "emails": {
 	        "address": "parvizu@gmail.com",
 	        "verified": false
-	    }],
+	    },
 	    "names": {
 	        "first": "Pablo",
 	        "last": "Arvizu",
 	        "pic": "/img/Pablo.jpg"
-	    }
+	    },
+	    "activities": ['Running','Swimming','Hiking','Soccer']
 
 	}); 
 	console.log("Added user: parvizu@gmail.com");
@@ -240,15 +241,16 @@ if (Meteor.users.find().count() === 0) {
 	            "loginTokens": []
 	        }
 	    },
-	    "emails": [{
+	    "emails": {
 	        "address": "chalenge@gmail.com",
 	        "verified": false
-	    }],
+	    },
 	    "names": {
 	        "first": "Chalenge",
 	        "last": "Masekera",
 	        "pic": "/img/Chalenge.jpg"
-	    }
+	    },
+	    "activities": ['Soccer','Hiking','Walking']
 	});
 	console.log("Added user: chalenge@gmail.com"); 
 
@@ -263,15 +265,16 @@ if (Meteor.users.find().count() === 0) {
 	            "loginTokens": []
 	        }
 	    },
-	    "emails": [{
+	    "emails": {
 	        "address": "suhaib@gmail.com",
 	        "verified": false
-	    }],
+	    },
 	    "names": {
 	        "first": "Suhaib",
 	        "last": "Syaed",
 	        "pic": "/img/Suhaib.jpg"
-	    }
+	    },
+	    "activities": ['Running','Swimming','Cycling']
 	}); 
 	console.log("Added user: suhaib@gmail.com");
 
@@ -286,15 +289,16 @@ if (Meteor.users.find().count() === 0) {
 	            "loginTokens": []
 	        }
 	    },
-	    "emails": [{
+	    "emails": {
 	        "address": "dan@gmail.com",
 	        "verified": false
-	    }],
+	    },
 	    "names": {
 	        "first": "Dan",
 	        "last": "Tsai",
 	        "pic": "/img/Dan.jpg"
-	    }
+	    },
+	    "activities": ['Running','Swimming','Cycling']
 	});
 	console.log("Added user: dan@gmail.com");
 }
