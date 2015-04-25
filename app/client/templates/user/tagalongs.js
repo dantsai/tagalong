@@ -1,7 +1,12 @@
 Template.tagalongs.helpers({
 	activitiesUpcoming: function () {
+
+		now = new Date();
+		date_now = moment(now).format('MM/DD/YYYY'); 
+		time_now = now.getHours() + ':' + now.getMinutes();
+
 		return Activities.find(
-			{ $and : [ { 'time.date' : { $gte: new Date() } },
+			{ $and : [ { 'time.date' : { $gte: new Date(date_now) } },
 					{ $or: [ {'host._id': Meteor.userId()},
 						{ 'tagalongs': Meteor.userId()}
 						]
