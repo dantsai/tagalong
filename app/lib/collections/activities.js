@@ -61,5 +61,12 @@ Meteor.methods({
 		Activities.update(activityId, {
 			$addToSet: {tagalongs: userid}
 		});
-	}
+	},
+	activityCancel: function(activityId) {
+		check(userid, String);
+
+		Activities.update(activityId, {
+			available: false 
+		});
+	},	
 });

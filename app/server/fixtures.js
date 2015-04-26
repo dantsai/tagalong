@@ -11,7 +11,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/28/2015'),
+	        date: new Date('4/23/2015 10:00'),
 	        time: '10:00'
 	    },
 	    tagalongs: [],
@@ -36,7 +36,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/29/2015'),
+	        date: new Date('4/26/2015 14:00'),
 	        time: '14:00'
 	    },
 	    tagalongs: [],
@@ -61,7 +61,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/30/2015'),
+	        date: new Date('4/23/2015 08:00'),
 	        time: '08:00'
 	    },
 	    tagalongs: [],
@@ -86,7 +86,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('5/1/2015'),
+	        date: new Date('4/24/2015 15:00'),
 	        time: '15:00'
 	    },
 	    tagalongs: [],
@@ -111,7 +111,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/25/2015'),
+	        date: new Date('4/25/2015 19:30'),
 	        time: '19:30'
 	    },
 	    tagalongs: [],
@@ -136,7 +136,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/26/2015'),
+	        date: new Date('4/26/2015 19:00'),
 	        time: '19:00'
 	    },
 	    tagalongs: [],
@@ -161,7 +161,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/27/2015'),
+	        date: new Date('4/27/2015 18:00'),
 	        time: '18:00'
 	    },
 	    tagalongs: [],
@@ -186,7 +186,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/30/2015'),
+	        date: new Date('4/22/2015 19:03'),
 	        time: '19:03'
 	    },
 	    tagalongs: [],

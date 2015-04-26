@@ -1,8 +1,13 @@
 Template.activityEdit.helpers({
 	activity: function() {
-		var template = Template.instance()
+		var template = Template.instance();
+		a = Activities.findOne({_id: template.data.id});
+		console.log(a);
 		return Activities.findOne({_id: template.data.id})
 	},
+
+	 // data-type="{{this.type}}" data-duration="{{this.duration}}" data-time="{{this.time.time}}" 
+	 // data-date="{{this.time.date}}" data-location="{{this.location.name}}" data-comments="{{this.comments}}"
 
 	isActivity: function(type) {
 		if (this.type == type)
@@ -12,8 +17,8 @@ Template.activityEdit.helpers({
 		var weekdays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 		var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-		var date = new Date(this.date);
-
+		var date = new Date(this.time.date);
+		console.log(date)
 		this.activityDate = date;
 
 		return date;
@@ -22,18 +27,19 @@ Template.activityEdit.helpers({
 	},
 
 	isSelectedDate: function(activity, day) {
-		if (activity.date.substring(4,15) === day.toString().substring(4,15))
+		if (activity.time.date.toString().substring(4,15) === day.toString().substring(4,15))
 			return 'selected'
 	},
 
 	getWeek: function() {
 		var weekdays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 		var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-		actDay = new Date(this.date);
+
+		actDay = new Date(this.time.date);
 		var week =[];
 
 		for (var i = 0; i<7; i++) {
-			var day = new Date(this.date)
+			var day = new Date(this.time.date)
 			day.setDate(actDay.getDate()+i);
 
 			var t = {
@@ -78,13 +84,24 @@ Template.activityEdit.events({
 		}
 
 		selection.toggleClass('selected');
-		$(".activityDay h5 span").text($(".dayofweek.selected").attr('value'));
+		var selectedDate = $(".dayofweek.selected").attr('value');
+		var prettyDate = moment(selectedDate).format('MMM, DD, YYYY')
+		$(".activityDay h5 span").text(prettyDate);
 
 	}
 })
 
 function pushToEdit(activityId) {
 		console.log(activityId);
+
+		var dateToSet = new Date($(".dayofweek.selected").attr('value'))
+		var hourToSet = $('#activityTime').val().substring(0,2)
+		var minsToSet = $('#activityTime').val().slice(-2)
+		
+		dateToSet.setHours(hourToSet)
+		dateToSet.setMinutes(minsToSet)
+		console.log(dateToSet)
+
 		var activity = {
 			'activityId': activityId,
 			'properties': {
@@ -94,12 +111,13 @@ function pushToEdit(activityId) {
 				},
 			    'time': {
 				        'epoch': '',
-				        'date': new Date($(".dayofweek.selected").attr('value')), //Need proper handling of this
+				        'date': dateToSet, //Need proper handling of this
 						'time': $('#activityTime').val(),
 			    	},
 				'duration': $('#activityDuration').val(),
 				// 'invitations': [],
-				'comments': $('#editActivityComments').val()
+				'comments': $('#editActivityComments').val(),
+				'available': true
 			}
 		};
 

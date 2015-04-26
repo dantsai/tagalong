@@ -2,10 +2,9 @@ Template.tagalongs.helpers({
 	activitiesUpcoming: function () {
 
 		now = new Date();
-		date_now = moment(now).format('MM/DD/YYYY'); 
-		time_now = now.getHours() + ':' + now.getMinutes();
+		date_now = now.setSeconds(0);
 
-		return Activities.find(
+		var activities = Activities.find(
 			{ $and : [ { 'time.date' : { $gte: new Date(date_now) } },
 					{ $or: [ {'host._id': Meteor.userId()},
 						{ 'tagalongs': Meteor.userId()}
@@ -14,18 +13,9 @@ Template.tagalongs.helpers({
 				]
 			},
 			{ sort : 
-				{ 'time.date': 1, 'time.time': 1 }  
+				{ 'time.date': 1}  
 			}
 		);
-
-		var activities = Activities.find(
-					{ 'time.date' : 
-						{ $gte: new Date(now) } 
-					},
-					{ sort : 
-						{ 'time.date': 1, 'time.time': 1 } 
-					}					
-				);
 
 		var grouped_obj = {}
 		activities.forEach(function(activity) {
@@ -44,7 +34,6 @@ Template.tagalongs.helpers({
 		    return [value];
 		});
 		
-		console.log(grouped_activities);
 		return grouped_activities
 	},
 	
