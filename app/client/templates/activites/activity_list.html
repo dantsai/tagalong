@@ -12,14 +12,14 @@
 		{{#ionSubheaderBar class="pillSubmenu"}}
 			<ul class="pillMenu" id="activityListPill">
 				<li>New</li>
-				<li>Recommended</li>
-				<li class="selected">All</li>
+				<li class="selected">Recommended</li>
+				<li >All</li>
 			</ul>
 		{{/ionSubheaderBar}}
 
 		{{#ionContent}}
 			{{#ionList}}
-				{{#each activitiesAll}}
+				{{#each activityDisplay}}
 					{{this.name}}
 					{{#each this.activities}}
 						{{#ionItem buttonRight=true class="item-icon-right activityItem" path="activity"}}
