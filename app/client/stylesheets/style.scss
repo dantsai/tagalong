@@ -401,9 +401,103 @@ $loading-font-size: 22px;
 
 }
 
-/******* EDIT ACTIVITY ********/
 
 
+/******* USER PROFILE ********/
+
+.userProfile {
+
+	h3 {
+		border-bottom: solid 1px black;
+		padding: 5px;
+	}
+
+	h5 {
+		/*color: white;*/
+		margin-top: 15px;
+		vertical-align: bottom;
+	}
+
+	.stats {
+		display: none;
+	}
+
+	.viz {
+		height: 150px;
+		background-color: lightgray;
+		border-radius: 3px;
+	}
+
+	.item {
+		white-space: normal;
+	}
+
+
+
+	.activityIcon {
+		text-decoration: none;
+		background-color: white;
+		display: inline-block;
+		border-radius: 50%;
+		border: solid thin black;
+		width: 20%;
+		margin: 5px;
+	}
+
+	.activityIcon.selected,
+	.activityDay li.selected {
+		background-color: #387ef5;
+	}
+
+	.selected {
+		background-color: #387ef5;
+	}
+
+	.friends {
+		img {
+			max-width: none;
+			max-height: none;
+			margin:3px;
+			width: 50px;
+			height: 50px;
+			border-radius:50%;
+		}
+	}
+}
+
+/****** EDIT PROFILE *********/
+
+.selected {
+	background-color: #387ef5;
+}
+
+.editProfile {
+	vertical-align: bottom;
+
+	input {
+		width: 50%;
+		display: inline-block;
+		background-color: lightgray;
+		padding-left:5px;
+		border-radius: 2px;
+		font-size: 12pt;
+		font-weight: bold;
+	}
+
+	#editEmail {
+		width:80%;
+	}
+
+	.editLabel {
+		color: black;
+		font-size: 8pt;
+		margin-right: 5px;
+	}
+
+	.item {
+		white-space: normal;
+	}
+}
 
 
 

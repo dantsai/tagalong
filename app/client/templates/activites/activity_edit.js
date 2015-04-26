@@ -82,7 +82,7 @@ Template.activityEdit.events({
 		if ($(".dayofweek.selected").text() != selection.text()) {
 			$(".dayofweek").removeClass('selected');
 		}
-		
+
 		selection.toggleClass('selected');
 		var selectedDate = $(".dayofweek.selected").attr('value');
 		var prettyDate = moment(selectedDate).format('MMM, DD, YYYY')

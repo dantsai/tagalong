@@ -1,42 +1,41 @@
-<template name='preferences'>
-	{{#ionView}}
-		{{#contentFor 'headerTitle'}}
-			<h1 class="title">My Preferences</h1>
-		{{/contentFor}}
+<template name='userPreferences'>
+	{{#ionModal customTemplate=true}}
+		<div class="bar bar-header bar-stable">
+	        <button data-dismiss="modal" type="button" class="button button-clear">Cancel</button>
+	        <h2 class="title">User Preferences</h2>
+	     	<button id="user-preferences-save" class="button button-positive button-clear">Save</button>
+	    </div>
 
-		{{#ionContent class='padding'}}
-			{{#ionItem avatar=true class='header'}}
-				<img class="activity_img" src="/img/{{firstName}}.jpg">
-				<h1>{{fullName}} </h1>
-				{{> ionIcon icon="android-bicycle" class="activityIcon"}}
 
-				<p>with <span>{{host.name}}</span></p>
+		{{#ionContent class='padding editProfile'}}
+			{{#with getUser}}
+				{{#ionItem avatar=true class='header'}}
+					<img class="activity_img" src="{{names.pic}}">
+					<span class="editLabel">First:</span><input id="editFirstName" type="text" value="{{names.first}}"><br>
+					<span class="editLabel">Last:</span><input id="editLastName" type="text" value="{{names.last}}">
+					<p>
+						<span class="editLabel">Email:</span><input id="editEmail" type="email" value="{{emails.address}}">
+					</p>
 
-			{{/ionItem}}
-			<h3>Activities I like</h3>
-			<div>Walking<input id='Walking' type='checkbox'></div>
-			<div>Running<input id='Running' type='checkbox'></div>
-			<div>Hiking<input id='Hiking' type='checkbox'></div>
-			<div>Swimming<input id='Swimming' type='checkbox'></div>
-			<div>Cycling<input id='Cycling' type='checkbox'></div>
-			<div>Gym<input id='Gym' type='checkbox'></div>
-			<div>Meditation<input id='Meditation' type='checkbox'></div>
-			<div>Soccer<input id='Soccer' type='checkbox'></div>
+				{{/ionItem}}
+				
+			    {{#ionItem body=true class='padding addActivity'}}
+					<div class="activityTypes">	
+						<h5>Activities:</h5>
+							<div>
+								<img src="/icons/walking.svg" activity="Walking" class='activityIcon {{ inActivities "Walking"}}'>
+								<img src="/icons/running.svg" activity="Running" class='activityIcon {{ inActivities "Running"}}'>
+								<img src="/icons/hiking.svg" activity="Hiking" class='activityIcon {{ inActivities "Hiking"}}'>
+								<img src="/icons/swimming.svg" activity="Swimming" class='activityIcon {{ inActivities "Swimming"}}'>
+								<img src="/icons/cycling.svg" activity="Cycling" class='activityIcon {{ inActivities "Cycling"}}'>
+								<img src="/icons/gym.svg" activity="Gym" class='activityIcon {{ inActivities "Gym"}}'>
+								<img src="/icons/meditation.svg" class='activityIcon {{ inActivities "Meditation"}}' activity="Meditation">
+								<img src="/icons/soccer.svg" activity="Soccer" class='activityIcon {{ inActivities "Soccer"}}'>
+						</div>
+					</div>
+				{{/ionItem}}
+			{{/with}}
+		{{/ionContent}}
+	{{/ionModal}}
 
-<!-- 			<div class="activityTypes">	
-				<h5>Activity Type: <span></span></h5>
-					<div>
-						<img src="/icons/walking.svg" activity="Walking" class='activityIcon'>
-						<img src="/icons/running.svg" activity="Running" class='activityIcon'>
-						<img src="/icons/hiking.svg" activity="Hiking" class='activityIcon'>
-						<img src="/icons/swimming.svg" activity="Swimming" class='activityIcon'>
-						<img src="/icons/cycling.svg" activity="Cycling" class='activityIcon'>
-						<img src="/icons/gym.svg" activity="Gym" class='activityIcon'>
-						<img src="/icons/meditation.svg" class='activityIcon' activity="Meditation">
-						<img src="/icons/soccer.svg" activity="Soccer" class='activityIcon'>
-				</div>
-			</div> -->
-		<button id="preferences-edit">Update Preferences</button>
- 		{{/ionContent}}
-	{{/ionView}}
 </template>

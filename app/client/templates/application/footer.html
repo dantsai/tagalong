@@ -1,17 +1,19 @@
 <template name="footer">
 	{{#if isAndroid}}
 		{{#ionTabs style="android"}}
-			{{>ionTab title="Profile" path="profile" iconOn="android-person" iconOff='android-person' }}
+			{{>ionTab title="Home" path="home" iconOn="android-home" iconOff='android-home' }}
 			{{>ionTab title="tagalongs" path="tagalongs" iconOn="android-list" iconOff='android-list'}}
-			{{>ionTab title="Search" path="activityList" iconOn="android-search" iconOff='android-search'}}
+			{{>ionTab title="Explore" path="activityList" iconOn="android-search" iconOff='android-search'}}
+			{{>ionTab title="Profile" path="profile" iconOn="android-person" iconOff='android-person' }}
 			<!-- {{>ionTab title="Preferences" path="preferences" iconOn="android-settings" iconOff='android-settings'}} -->
 			{{>ionTab title="Testing" path="testing" iconOn="android-people" iconOff="android-people"}}
 		{{/ionTabs}}
 	{{else}}
 		{{#ionTabs style="ios" class="tabs-striped"}}
-			{{>ionTab title="Profile" path="preferences" iconOn="ios-person" iconOff='ios-person-outline' }}
+			{{>ionTab title="Home" path="home" iconOn="ios-home" iconOff='ios-home-outline' }}
 			{{>ionTab title="My Tagalongs" path="tagalongs" iconOn="ios-list" iconOff='ios-list-outline'}}
-			{{>ionTab title="Search" path="activityList" iconOn="ios-search-strong" iconOff='ios-search'}}
+			{{>ionTab title="Explore" path="activityList" iconOn="ios-search-strong" iconOff='ios-search'}}
+			{{>ionTab title="Profile" path="profile" iconOn="ios-person" iconOff='ios-person-outline' }}
 			<!-- {{>ionTab title="Preferences" path="preferences" iconOn="ios-gear" iconOff='ios-gear-outline'}} -->
 			{{>ionTab title="Testing" path="testing" iconOn="ios-people" iconOff="ios-people-outline"}}
 		{{/ionTabs}}

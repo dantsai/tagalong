@@ -1,4 +1,7 @@
-Template.preferences.helpers({
+Template.userPreferences.helpers({
+	getUser: function () {
+		return Meteor.user();
+	},
 	firstName: function() {
 		var user = Meteor.user();
 		return Meteor.user().names.first
@@ -8,48 +11,36 @@ Template.preferences.helpers({
 	},
 	selectedActivities: function () {
 		//code to push already selected activity preferences
+	},
+	inActivities: function (activity) {
+		var result = '';
+		if ($.inArray(activity, this.activities) != -1)
+			result = 'selected';
+		return result;
 	}
 });
 
-Template.preferences.events({
-	'click #preferences-edit': function(event) {		
+Template.userPreferences.events({
+	'click .modal .activityIcon': function (event) {
+		var selection = $(event.currentTarget);
+		selection.toggleClass('selected');
 
-	// 'click .activityIcon': function (event) {
-			
-	// 		var selection = $(event.currentTarget);
-	// 		if ($(".activityIcon.selected").attr('activity') != selection.attr('activity')) {
-	// 			$(".activityIcon").removeClass('selected');
-	// 		}
+	},
 
-	// 		selection.toggleClass('selected');
-	// 		$(".activityTypes h5 span").text($(event.currentTarget).attr('activity')); // setting the value selected to the text in the h4
+	'click #user-preferences-save': function(event) {	
 
-	// 		return selection.attr('activity');
-	// 	},
-		var user = Meteor.user();
-
-		console.log(user);
-		// console.log(user._id);
-		var selectedActivities = [];
-
-		$('input[type=checkbox]').each(function(){
-		    if ($(this).prop('checked')) {
-		    	console.log()
-		    	selectedActivities.push($(this).attr('id'))
-		    }
-
+		var activitiesSelected = $.map($('.modal .activityIcon.selected'), function(obj,i) {
+			return $(obj).attr('activity');
 		})
 
 		userPrefs = {
-			'user' : user._id,
-			'prefs': selectedActivities
+			'user' : Meteor.userId(),
+			'prefs': activitiesSelected
 		}
-		console.log(userPrefs);
 		Meteor.call('setPreferences', userPrefs, function(error, result) { 	
 			if (error)
 				return alert(error.reason);
-		    //Temporary going to my tagalongs page. Should go to user's profile page
-		    Router.go('/tagalongs');
+		    IonModal.close();
 		});
 	}
 })

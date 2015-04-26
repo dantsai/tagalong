@@ -2,21 +2,56 @@
 	{{#ionView}}
 		{{#contentFor 'headerTitle'}}
 			<h1 class="title">My Profile</h1>
+
+			<button id="user-preferences-edit" class="button button-clear pull-right" data-ion-modal="userPreferences">
+				  {{> ionIcon icon="ios-gear-outline"}} 
+			</button>
 		{{/contentFor}}
 
-		<!-- {{#contentFor 'headerButtonLeft'}}
-			{{> ionIcon icon="ios-arrow-back" class='headerIcons'}} Back
-		{{/contentFor}} -->
+		{{#ionContent class='padding userProfile'}}
+			{{#with userPreferences}}
+				{{#ionItem avatar=true class='header'}}
+					<img class="userPic" src="{{this.names.pic}}">
+					<h2>{{this.names.first}} {{this.names.last}}</h2>
 
-		<!-- {{#ionHeaderBar class="bar-positive"}}
-		    {{>ionNavBackButton path="main"}}
-		    <h1 class="title">My Profile</h1>
-		{{/ionHeaderBar}} -->
+					<p><span>{{this.emails.address}}</span></p>
 
-		{{#ionContent class='padding'}}
-			<h3>My Profile</h3>
+				{{/ionItem}}
 
-			<h3>My History</h3>
+				{{#ionItem class='body stats'}}
+					<h3>Tagalong Statistics</h3>
+					<h5>Streaks</h5>
+					<div class='viz'></div>
+
+					<h5>Habits</h5>
+					<div class='viz'></div>
+
+				{{/ionItem}}
+
+				{{#ionItem class="body"}}
+					<h3>Preferences</h3>
+					<div class="activityTypes">	
+						<h5>Activities:</h5>
+						<div>
+							<img src="/icons/walking.svg" activity="Walking" class='activityIcon {{ inActivities "Walking"}}'>
+							<img src="/icons/running.svg" activity="Running" class='activityIcon {{ inActivities "Running"}}'>
+							<img src="/icons/hiking.svg" activity="Hiking" class='activityIcon {{ inActivities "Hiking"}}'>
+							<img src="/icons/swimming.svg" activity="Swimming" class='activityIcon {{ inActivities "Swimming"}}'>
+							<img src="/icons/cycling.svg" activity="Cycling" class='activityIcon {{ inActivities "Cycling"}}'>
+							<img src="/icons/gym.svg" activity="Gym" class='activityIcon {{ inActivities "Gym"}}'>
+							<img src="/icons/meditation.svg" class='activityIcon {{ inActivities "Meditation"}}' activity="Meditation">
+							<img src="/icons/soccer.svg" activity="Soccer" class='activityIcon {{ inActivities "Soccer"}}'>
+						</div>
+					</div>
+					<div class='friends'>
+						<h5>Friends:</h5>
+						{{#each getFriends}}
+							<img class="tinyPic" src="{{this.names.pic}}">
+						{{/each}}
+					</div>
+				{{/ionItem}}
+
+			{{/with}}
 		{{/ionContent}}
 	{{/ionView}}
 

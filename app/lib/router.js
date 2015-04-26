@@ -3,7 +3,7 @@ Router.configure({
 	waitOn: function () { return Meteor.subscribe('activities');}
 });
 
-Router.route('/', {name: 'activityList'});
+Router.route('/', {name: 'home'});
 
 Router.route('activities/:_id', {
 	name: 'activity',
@@ -21,6 +21,9 @@ Router.route('/preferences', {
 	name: 'preferences'
 });
 
+Router.route('/activityList', {
+	name: 'activityList'
+});
 
 Router.route('/login', {
 	name: 'login'

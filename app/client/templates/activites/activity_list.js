@@ -1,28 +1,5 @@
 Template.activityList.helpers({
 	activitiesAll: function() {
-		/*
-		//*** Will optimize this code for proper method calling once I get how to do it. Will also remove redundancy***
-		// var activities_options = {
-		// 	'search':
-		// 		{ 'time.date' : 
-		// 			{ $gte: new Date() } 
-		// 		},
-		// 	'sort':
-		// 		{ sort : 
-		// 			{ 'time.date': -1, 'time.time': -1 } 
-		// 		}
-		// }; 
-
-		// Meteor.call('groupActivities', activities_options, function(error, result) { 	
-		// 	if (error)
-		// 		return alert(error.reason);
-		// 	console.log(result);
-		// 	grouped_activities = result;
-		// 	return grouped_activities
-	      	
-		// });
-		// console.log(grouped)
-		*/
 		now = new Date();
 		date_now = now.setSeconds(0);
 
@@ -77,7 +54,7 @@ Template.activityList.helpers({
 					{ 'time.date': 1, 'time.time': 1 } 
 				}
 			);
-			console.log(groupActivities(activities))
+			// console.log(groupActivities(activities))
 		}
 		else {
 			// Could return those with a lot of users.
@@ -118,4 +95,3 @@ function groupActivities(activities) {
 	console.log(grouped_activities);
 	return grouped_activities	
 }
-

@@ -30,7 +30,6 @@ Template.activityNew.helpers({
 
 			week.push(t);
 		}
-		console.log(week);
 		return week;
 	}
 });
@@ -103,7 +102,7 @@ Template.activityNew.events({
 		}
 
 		selection.toggleClass('selected');
-		$(".activityTypes h5 span").text($(".activityIcon.selected").attr('activity')); // setting the value selected to the text in the h4
+		$(".activityTypes h5 span").text(selection.attr('activity')); // setting the value selected to the text in the h4
 
 		return selection.attr('activity');
 	},
