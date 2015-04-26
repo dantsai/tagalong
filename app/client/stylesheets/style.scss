@@ -150,6 +150,10 @@ $loading-font-size: 22px;
 		}
 	}
 
+	.flake {
+
+	}
+
 }
 
 #activity-join {
@@ -157,11 +161,17 @@ $loading-font-size: 22px;
 	width: 100%;
 	/*border-radius:5px;*/
 	bottom:9%;
-	padding:10px;
+	/*padding:10px;*/
 	color: white;
 	/*border: 1px solid gray;*/
 	text-align: center;
 	font-size: 12pt;
+
+	.button.button-block,
+	.button.button-full {
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
 }
 
 .tagalong {

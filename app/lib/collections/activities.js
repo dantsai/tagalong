@@ -53,20 +53,22 @@ Meteor.methods({
 		return grouped;
 	},
 	tagalong: function(activityId,userid) {
-		// this.setUserId('p5sKnZEPTDFpTNxey');
-
-		//this.setUserId(userid);
-		check(userid, String);
 
 		Activities.update(activityId, {
 			$addToSet: {tagalongs: userid}
 		});
 	},
 	activityCancel: function(activityId) {
-		check(userid, String);
+		//check(userid, String);
 
 		Activities.update(activityId, {
 			available: false 
 		});
+
 	},	
+	activityFlake : function(activityId,userId) {
+		Activities.update(activityId, {
+			$pull : {tagalongs: userId}
+		});
+	}
 });

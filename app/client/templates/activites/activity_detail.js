@@ -1,5 +1,5 @@
 Template.activity.helpers({ 
-	notHost: function() {		
+	isHost: function() {		
 		return this.host._id === Meteor.userId(); 
 	},
 	notTagalong: function () {
@@ -37,6 +37,11 @@ Template.activity.events({
 		Meteor.call('tagalong', this._id, Meteor.userId())		
 	},
 	'click #activity-cancel': function(event) {
-		Meteor.call('cancel', this._id)		
-	}	
+		Meteor.call('activityCancel', this._id);
+		Router.go('tagalongs');
+	},
+	'click #activity-flake': function(event) {
+		Meteor.call('activityFlake', this._id,Meteor.userId());
+		// Router.go('tagalongs');
+	}		
 });
