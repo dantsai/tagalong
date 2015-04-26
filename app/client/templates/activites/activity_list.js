@@ -4,14 +4,11 @@ Template.activityList.helpers({
 			return 'selected';
 	},
 	activityDisplay: function() {
-
-		var filter = Session.get('activityFilter');
 		var activities;
 		now = new Date();
 		date_now = now.setSeconds(0);
 
-		console.log(filter);
-		if (filter =='All') {
+		if (Session.get('activityFilter') =='All') {
 			activities = Activities.find(
 				{ 
 					'available': true,
@@ -26,7 +23,7 @@ Template.activityList.helpers({
 				}					
 			);
 		}
-		else if (filter == 'New') {
+		else if (Session.get('activityFilter') == 'New') {
 			activities = Activities.find(
 				{ 
 					'available': true,

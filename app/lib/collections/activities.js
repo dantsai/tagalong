@@ -1,8 +1,5 @@
 Activities = new Mongo.Collection('activities');
 
-Session.set('activityFilter','Recommended');
-Session.set('myActivitiesFilter','Upcoming');
-
 Meteor.methods({
 	activityInsert: function(activityDetails) {
 		var user = Meteor.user();
