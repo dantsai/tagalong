@@ -8,41 +8,40 @@
 
 
 		{{#ionContent class='padding addActivity'}}
-			<div class="activityTypes">	
-				<h5>Activity Type: <span>{{this.type}}</span></h5>
-					<div>
-						<img src="/icons/walking.svg" activity="Walking" class='activityIcon {{ isActivity "Walking" }}'>
-						<img src="/icons/running.svg" activity="Running" class='activityIcon {{ isActivity "Running" }}'>
-						<img src="/icons/hiking.svg" activity="Hiking" class='activityIcon {{ isActivity "Hiking" }}'>
-						<img src="/icons/swimming.svg" activity="Swimming" class='activityIcon {{ isActivity "Swimming" }}'>
-						<img src="/icons/cycling.svg" activity="Cycling" class='activityIcon {{ isActivity "Cycling" }}'>
-						<img src="/icons/gym.svg" activity="Gym" class='activityIcon {{ isActivity "Gym" }}'>
-						<img src="/icons/meditation.svg" class='activityIcon {{ isActivity "Meditation" }}' activity="Meditation">
-						<img src="/icons/soccer.svg" activity="Soccer" class='activityIcon {{ isActivity "Scoccer" }}'>
+			{{#with activity}}
+				<div class="activityTypes">	
+					<h5>Activity Type: <span>{{this.type}}</span></h5>
+						<div>
+							<img src="/icons/walking.svg" activity="Walking" class='activityIcon {{ isActivity "Walking" }}'>
+							<img src="/icons/running.svg" activity="Running" class='activityIcon {{ isActivity "Running" }}'>
+							<img src="/icons/hiking.svg" activity="Hiking" class='activityIcon {{ isActivity "Hiking" }}'>
+							<img src="/icons/swimming.svg" activity="Swimming" class='activityIcon {{ isActivity "Swimming" }}'>
+							<img src="/icons/cycling.svg" activity="Cycling" class='activityIcon {{ isActivity "Cycling" }}'>
+							<img src="/icons/gym.svg" activity="Gym" class='activityIcon {{ isActivity "Gym" }}'>
+							<img src="/icons/meditation.svg" class='activityIcon {{ isActivity "Meditation" }}' activity="Meditation">
+							<img src="/icons/soccer.svg" activity="Soccer" class='activityIcon {{ isActivity "Scoccer" }}'>
+					</div>
 				</div>
-			</div>
 
-			<div class="activityDay"> 
-				<h5>Date: <span>{{ this.date }}</span></h5>
-				<ul>
-					{{#each getWeek}}
-						<li class='dayofweek {{ isSelectedDate .. this.date}}' date="{{ this.full }}" value="{{this.date}}">{{ this.weekdayShort }}<div>{{ this.day }}</div></li>	
-					{{/each}}
-				</ul>
+				<div class="activityDay"> 
+					<h5>Date: <span>{{prettifyDate this.time.date }}</span></h5>
+					<ul>
+						{{#each getWeek}}
+							<li class='dayofweek {{ isSelectedDate .. this.date}}' date="{{ this.full }}" value="{{this.date}}">{{ this.weekdayShort }}<div>{{ this.day }}</div></li>	
+						{{/each}}
+					</ul>
 
-				<h5>Time: <input id='activityTime' type='text' value="{{this.time}}">    Duration: <input id='activityDuration' type='number' min='0' value="{{this.duration}}"></h5>
-			</div>
-
-
-			<h5>Location: <input id='activityLocation' type='text' value="{{this.location}}"></h5>
-
-			<img src='/img/RSF.png'>
-			
+					<h5>Time: <input id='activityTime' type='time' value="{{this.time.time}}">    Duration: <input id='activityDuration' type='number' min='0' value="{{this.duration}}"></h5>
+				</div>
 
 
-			<h5>Comments: </h5>
-			<textarea id='editActivityComments'>{{this.comments}}</textarea>
+				<h5>Location: <input id='activityLocation' type='text' value="{{this.location.name}}"></h5>
 
+				<img src='/img/RSF.png'>
+
+				<h5>Comments: </h5>
+				<textarea id='editActivityComments'>{{this.comments}}</textarea>			
+			{{/with}}
 		{{/ionContent}}
 	{{/ionModal}}
 </template>

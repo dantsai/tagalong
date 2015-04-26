@@ -6,7 +6,7 @@ Template.activityNew.helpers({
 
 	defaultTime: function() {
 		now = new Date(); 
-		return now.getHours() + ':00'
+		return now.getHours() + 1 + ':00'
 	},
 
 	getWeek: function() {
@@ -59,6 +59,15 @@ Template.activityNew.events({
 
 		var user = Meteor.user();
 
+		var dateToSet = new Date($(".dayofweek.selected").attr('value'))
+		var hourToSet = $('#activityTime').val().substring(0,2)
+		var minsToSet = $('#activityTime').val().slice(-2)
+		
+		dateToSet.setHours(hourToSet)
+		dateToSet.setMinutes(minsToSet)
+		console.log(dateToSet)
+
+		//Bug when user is selecting a current day. Should not set time that has passed.
 		var activity = {
 			'type': $(".activityIcon.selected").attr('activity'),
 			'location': { 
@@ -66,7 +75,7 @@ Template.activityNew.events({
 			},
 		    'time': {
 			        'epoch': '',
-			        'date': new Date($(".dayofweek.selected").attr('value')), 
+			        'date': dateToSet, 
 			        //Need proper handling of this
 					'time': $('#activityTime').val(),
 		    	},
@@ -94,7 +103,7 @@ Template.activityNew.events({
 		}
 
 		selection.toggleClass('selected');
-		$(".activityTypes h5 span").text($(".dayofweek.selected").attr('value')); // setting the value selected to the text in the h4
+		$(".activityTypes h5 span").text($(".activityIcon.selected").attr('activity')); // setting the value selected to the text in the h4
 
 		return selection.attr('activity');
 	},

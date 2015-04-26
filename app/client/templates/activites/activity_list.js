@@ -24,8 +24,8 @@ Template.activityList.helpers({
 		// console.log(grouped)
 		*/
 		now = new Date();
-		date_now = moment(now).format('MM/DD/YYYY'); 
-		time_now = now.getHours() + ':' + now.getMinutes();
+		date_now = now.setSeconds(0);
+
 
 		var activities= Activities.find(
 			{ 'available': true,
@@ -33,7 +33,7 @@ Template.activityList.helpers({
 					{ $gte: new Date(date_now) } 
 			},						 
 			{ sort : 
-					{ 'time.date': 1, 'time.time': 1 } 
+					{ 'time.date': 1} 
 			}					
 		);
 		return groupActivities(activities);		
@@ -42,8 +42,7 @@ Template.activityList.helpers({
 	activitiesNew: function() {
 
 		now = new Date();
-		date_now = moment(now).format('MM/DD/YYYY'); 
-		time_now = now.getHours() + ':' + now.getMinutes();
+		date_now = now.setSeconds(0);
 
 		var activities = Activities.find(
 			{ 'available': true,
@@ -62,8 +61,7 @@ Template.activityList.helpers({
 	activitiesRecommend: function() {
 
 		now = new Date();
-		date_now = moment(now).format('MM/DD/YYYY'); 
-		time_now = now.getHours() + ':' + now.getMinutes();
+		date_now = now.setSeconds(0);
 
 		var activityPrefs = Meteor.user().activities
 		
@@ -117,6 +115,7 @@ function groupActivities(activities) {
 	    return [value];
 	});
 
+	console.log(grouped_activities);
 	return grouped_activities	
 }
 

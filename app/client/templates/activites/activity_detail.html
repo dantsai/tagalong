@@ -84,10 +84,11 @@
 			{{#if notHost}}
 				<!-- Adds the EDIT button to the header -->
 				{{#contentFor "headerButtonRight"}}
-				    <button id="activity-edit" class="button button-clear" data-ion-modal="activityEdit" data-id="{{this._id}}" data-type="{{this.type}}" data-duration="{{this.duration}}" data-time="{{this.time.time}}" data-date="{{this.time.date}}" data-location="{{this.location.name}}" data-comments="{{this.comments}}">
+				    <button id="activity-edit" class="button button-clear" data-ion-modal="activityEdit" data-id="{{this._id}}">
 				    	Edit
 				    </button>
 				{{/contentFor}}	
+				<div id="activity-cancel" >Cancel</div>
 			{{/if}}
 		{{/unless}}
 

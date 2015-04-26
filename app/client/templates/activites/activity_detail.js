@@ -34,6 +34,9 @@ Template.activity.helpers({
 
 Template.activity.events({
 	'click #activity-join': function(event) {
-		Meteor.call('tagalong', this._id,Meteor.userId())		
-	}
+		Meteor.call('tagalong', this._id, Meteor.userId())		
+	},
+	'click #activity-cancel': function(event) {
+		Meteor.call('cancel', this._id)		
+	}	
 });

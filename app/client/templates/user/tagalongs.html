@@ -19,56 +19,58 @@
 			
 			{{#ionList}}
 				{{#each activitiesUpcoming}}
-					{{#ionItem class="myActivityItem" path="activity"}}
-						<!-- {{> ionIcon icon="ios-arrow-forward" class='positive'}} -->
-						{{prettifyDate time.date}}
-						<div class="timeDetails">
-							{{time.time}} <span class="activityDuration">{{> ionIcon icon='ios-stopwatch'}}  {{duration}} hours</span>
+					{{this.name}}
+					{{#each this.activities}}
+						{{#ionItem class="myActivityItem" path="activity"}}
+							<!-- {{> ionIcon icon="ios-arrow-forward" class='positive'}} -->
+							<div class="timeDetails">
+								{{time.time}} <span class="activityDuration">{{> ionIcon icon='ios-stopwatch'}}  {{duration}} hours</span>
 
-							<div class="timeline" style="max-width:{{getTimeLength}};"></div>
-						</div>
-						<h2>{{type}} {{>ionIcon icon="android-bicycle"}}</h2>
-						
-						<img class="activity_img" src="{{getUserPicUrl}}">
+								<div class="timeline" style="max-width:{{getTimeLength}};"></div>
+							</div>
+							<h2>{{type}} {{>ionIcon icon="android-bicycle"}}</h2>
+							
+							<img class="activity_img" src="{{getUserPicUrl}}">
 
-						<div class="activityInfo">
-							{{#if notHost}}
-								My Activity
-							{{else}}
-								with <strong>{{host.name}}</strong>
-							{{/if}}
-
-							<div class="location">
-								{{> ionIcon icon="ios-location"}} {{ location.name}}
-							</div>	
-						</div>					
-
-						<ul class="submenu">
-							<li class="submenuItem">
-								{{> ionIcon icon="ios-people-outline" title="Friends"}}
-
-								{{#if friendCount}}
-									<label>{{friendCount}}</label>
+							<div class="activityInfo">
+								{{#if notHost}}
+									My Activity
+								{{else}}
+									with <strong>{{host.name}}</strong>
 								{{/if}}
 
-							</li>
-							<li class="submenuItem">
-								{{> ionIcon icon="ios-chatboxes-outline" title="Messages"}}
+								<div class="location">
+									{{> ionIcon icon="ios-location"}} {{ location.name}}
+								</div>	
+							</div>					
 
-								<!-- {{#if friendCount}}
-									<label>{{friendCount}}</label>
-								{{/if}} -->
-							</li>
+							<ul class="submenu">
+								<li class="submenuItem">
+									{{> ionIcon icon="ios-people-outline" title="Friends"}}
 
-							<li class="submenuItem">
-								{{> ionIcon icon='ios-information-outline' title="updates"}}
+									{{#if friendCount}}
+										<label>{{friendCount}}</label>
+									{{/if}}
 
-								<!-- {{#if friendCount}}
-									<label>{{friendCount}}</label>
-								{{/if}} -->
-							</li>
-						</ul>
-					{{/ionItem}}
+								</li>
+								<li class="submenuItem">
+									{{> ionIcon icon="ios-chatboxes-outline" title="Messages"}}
+
+									<!-- {{#if friendCount}}
+										<label>{{friendCount}}</label>
+									{{/if}} -->
+								</li>
+
+								<li class="submenuItem">
+									{{> ionIcon icon='ios-information-outline' title="updates"}}
+
+									<!-- {{#if friendCount}}
+										<label>{{friendCount}}</label>
+									{{/if}} -->
+								</li>
+							</ul>
+						{{/ionItem}}					
+					{{/each}}
 				{{/each}}	
 
 			{{/ionList}}			
