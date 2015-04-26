@@ -136,7 +136,7 @@ if (Activities.find().count() === 0 ) {
 	    },
 	    time: {
 	        epoch: '',
-	        date: new Date('4/26/2015 19:00'),
+	        date: new Date('4/21/2015 19:00'),
 	        time: '19:00'
 	    },
 	    tagalongs: [],

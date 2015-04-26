@@ -11,9 +11,9 @@
 
 		{{#ionSubheaderBar class="pillSubmenu"}}
 			<ul class="pillMenu" id="activityListPill">
-				<li>New</li>
-				<li class="selected">Recommended</li>
-				<li >All</li>
+				<li class="{{ selectedFilter 'New'}}">New</li>
+				<li class="{{ selectedFilter 'Recommended'}}">Recommended</li>
+				<li class="{{ selectedFilter 'All'}}">All</li>
 			</ul>
 		{{/ionSubheaderBar}}
 

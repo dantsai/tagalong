@@ -1,4 +1,8 @@
 Template.activityList.helpers({
+	selectedFilter : function(option) {
+		if(option == Session.get('activityFilter'))
+			return 'selected';
+	},
 	activityDisplay: function() {
 
 		var filter = Session.get('activityFilter');
@@ -65,71 +69,6 @@ Template.activityList.helpers({
 		}
 		return groupActivities(activities);
 	},
-	activitiesAll: function() {
-		now = new Date();
-		date_now = now.setSeconds(0);
-
-
-		var activities= Activities.find(
-			{ 'available': true,
-			  'time.date' : 
-					{ $gte: new Date(date_now) } 
-			},						 
-			{ sort : 
-					{ 'time.date': 1} 
-			}					
-		);
-		return groupActivities(activities);		
-	},
-
-	activitiesNew: function() {
-
-		now = new Date();
-		date_now = now.setSeconds(0);
-
-		var activities = Activities.find(
-			{ 'available': true,
-			  'time.date' : 
-					{ $gte: new Date(date_now) } 
-			},						 
-			{ sort : 
-				{ 'createdAt': -1} 
-			},
-			{ $limit : 4 }
-		); 
-
-		return groupActivities(activities)
-	},
-
-	activitiesRecommend: function() {
-
-		now = new Date();
-		date_now = now.setSeconds(0);
-
-		var activityPrefs = Meteor.user().activities
-		
-		if (activityPrefs) {
-			var activities = Activities.find(
-				{ 'available': true,
-				  'time.date' : 
-						{ $gte: new Date(date_now) },
-				  'type': 
-				  		{ $in : activityPrefs } 
-				},						 
-				{ sort : 
-					{ 'time.date': 1, 'time.time': 1 } 
-				}
-			);
-			// console.log(groupActivities(activities))
-		}
-		else {
-			// Could return those with a lot of users.
-			return 'Set Prefs'
-		}
-		// var user_activities = Meteor.users.findOne(Meteor.use)
-
-		
-	},
 
 	getUserPicUrl: function() {
 		var name = this.host.name.split(" ");
@@ -149,9 +88,7 @@ Template.activityList.events({
 	}
 })
 
-Session.set('activityFilter','Recommended');
-
-function groupActivities(activities) {
+groupActivities = function (activities) {
 	var grouped_obj = {}
 	
 	activities.forEach(function(activity) {
@@ -172,6 +109,5 @@ function groupActivities(activities) {
 	    return [value];
 	});
 
-	// console.log(grouped_activities);
 	return grouped_activities	
 }
