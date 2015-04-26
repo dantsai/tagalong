@@ -76,7 +76,7 @@ Template.activityEdit.events({
 		if ($(".dayofweek.selected").text() != selection.text()) {
 			$(".dayofweek").removeClass('selected');
 		}
-		
+
 		selection.toggleClass('selected');
 		$(".activityDay h5 span").text($(".dayofweek.selected").attr('value'));
 
