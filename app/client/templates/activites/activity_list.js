@@ -117,13 +117,9 @@ Template.activityList.events({
 	},
 	'input #search-activities': function (event) {
 		var input = event.target.value;
-		// if (input.length)
 		Session.set('activitySearchQuery',input);
-		console.log(Session.get('activitySearchQuery'));
 	}
 });
-
-
 
 groupActivities = function (activities) {
 	var grouped_obj = {}
