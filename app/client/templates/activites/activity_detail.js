@@ -27,8 +27,8 @@ Template.activity.helpers({
 		});
 	},
 	getUserPicUrl: function() {
-		var name = this.host.name.split(" ");
-		return '/img/'+name[0]+'.jpg';
+		user = Meteor.users.findOne(this.host._id)
+		return user.profile.names.pic;
 	}
 });
 

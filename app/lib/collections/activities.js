@@ -3,9 +3,14 @@ Activities = new Mongo.Collection('activities');
 Meteor.methods({
 	activityInsert: function(activityDetails) {
 		var user = Meteor.user();
+
 		var activity = _.extend(activityDetails, {	
 			//Need to change when we use the actual user info.		
 			
+			host: {
+				_id: user._id, 
+				name: user.profile.names.first + ' ' +user.profile.names.last
+				},
 			pictures: [],
 			status: 'Available',
 			tagalongs: [],
@@ -13,6 +18,7 @@ Meteor.methods({
 			available: true
 		});
 
+		console.log(activity);
 		var activityId = Activities.insert(activity);
 
 		return {

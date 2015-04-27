@@ -8,6 +8,9 @@ Template.profile.helpers({
 			result = 'selected';
 		return result;
 	},
+	emailAddress: function (emails) {
+		return emails['0'].address
+	},	
 
 	getFriends: function() {
 		var users = Meteor.users.find().fetch();

@@ -216,14 +216,15 @@ if (Meteor.users.find().count() === 0) {
 	            "loginTokens": []
 	        }
 	    },
-	    "emails": {
+	    "emails": [ {
 	        "address": "parvizu@gmail.com",
 	        "verified": false
-	    },
-	    "names": {
-	        "first": "Pablo",
-	        "last": "Arvizu",
-	        "pic": "/img/Pablo.jpg"
+	    }],
+	    "profile" : { "names" : {
+		        "first": "Pablo",
+		        "last": "Arvizu",
+		        "pic": "/img/Pablo.jpg"
+	    	}
 	    },
 	    "activities": ['Running','Swimming','Hiking','Soccer']
 
@@ -241,14 +242,15 @@ if (Meteor.users.find().count() === 0) {
 	            "loginTokens": []
 	        }
 	    },
-	    "emails": {
+	    "emails": [ {
 	        "address": "chalenge@gmail.com",
 	        "verified": false
-	    },
-	    "names": {
-	        "first": "Chalenge",
-	        "last": "Masekera",
-	        "pic": "/img/Chalenge.jpg"
+	    }],
+	    "profile" : { "names" : {
+		        "first": "Chalenge",
+		        "last": "Masekera",
+		        "pic": "/img/Chalenge.jpg"
+	    	}
 	    },
 	    "activities": ['Soccer','Hiking','Walking']
 	});
@@ -265,14 +267,15 @@ if (Meteor.users.find().count() === 0) {
 	            "loginTokens": []
 	        }
 	    },
-	    "emails": {
+	    "emails": [ {
 	        "address": "suhaib@gmail.com",
 	        "verified": false
-	    },
-	    "names": {
-	        "first": "Suhaib",
-	        "last": "Syaed",
-	        "pic": "/img/Suhaib.jpg"
+	    }],
+	    "profile" : { "names" : {
+		        "first": "Suhaib",
+		        "last": "Syaed",
+		        "pic": "/img/Suhaib.jpg"
+	    	}
 	    },
 	    "activities": ['Running','Swimming','Cycling']
 	}); 
@@ -289,14 +292,15 @@ if (Meteor.users.find().count() === 0) {
 	            "loginTokens": []
 	        }
 	    },
-	    "emails": {
+	    "emails": [ {
 	        "address": "dan@gmail.com",
 	        "verified": false
-	    },
-	    "names": {
-	        "first": "Dan",
-	        "last": "Tsai",
-	        "pic": "/img/Dan.jpg"
+	    }],
+	    "profile" : { "names" : {
+		        "first": "Dan",
+		        "last": "Tsai",
+		        "pic": "/img/Dan.jpg"
+		    }
 	    },
 	    "activities": ['Running','Swimming','Cycling']
 	});
