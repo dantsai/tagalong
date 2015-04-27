@@ -56,8 +56,6 @@ Template.activityNew.events({
 			return false;
 		}
 
-		var user = Meteor.user();
-
 		var dateToSet = new Date($(".dayofweek.selected").attr('value'))
 		var hourToSet = $('#activityTime').val().substring(0,2)
 		var minsToSet = $('#activityTime').val().slice(-2)
@@ -81,8 +79,7 @@ Template.activityNew.events({
 			'duration': $('#activityDuration').val(),
 			'invitations': [],
 			'public': true, //default to true for now.
-			'comments': $('#activityComments').text(),		
-			'host': {_id: user._id, name: user.names.first + ' ' +user.names.last}
+			'comments': $('#activityComments').text(),					
 		};
 
 		// console.log(activity);

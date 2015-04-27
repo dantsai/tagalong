@@ -29,6 +29,10 @@ Router.route('/login', {
 	name: 'login'
 });
 
+Router.route('/register', {
+	name: 'register'
+});
+
 Router.route('/profile', {
 	name: 'profile'
 })
@@ -40,5 +44,3 @@ Router.route('/tagalongs',{
 Router.route('/testing', {
 	name: 'testing'
 })
-
-// Router.route('/login', {name: 'login'});

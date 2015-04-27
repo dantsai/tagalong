@@ -66,8 +66,8 @@ Template.activityList.helpers({
 	},
 
 	getUserPicUrl: function() {
-		var name = this.host.name.split(" ");
-		return '/img/'+name[0]+'.jpg';
+		user = Meteor.users.findOne(this.host._id);
+		return user.profile.names.pic;
 	}
 });
 
@@ -92,6 +92,5 @@ function groupActivities(activities) {
 	    return [value];
 	});
 
-	console.log(grouped_activities);
 	return grouped_activities	
 }

@@ -3,7 +3,11 @@
 		{{>ionNavBar class='bar-positive'}}
 
 		{{#ionNavView}}
-			{{> yield}}
+		    {{#if currentUser}}
+		        {{> yield}}
+		    {{else}}		      
+		        {{> login}}
+		    {{/if}}			
 		{{/ionNavView}}
 
 		{{> footer}}

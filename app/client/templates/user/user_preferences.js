@@ -2,12 +2,8 @@ Template.userPreferences.helpers({
 	getUser: function () {
 		return Meteor.user();
 	},
-	firstName: function() {
-		var user = Meteor.user();
-		return Meteor.user().names.first
-	},
-	fullName: function() {
-		return Meteor.user().names.first + ' ' + Meteor.user().names.last;
+	emailAddress: function (emails) {
+		return emails['0'].address
 	},
 	selectedActivities: function () {
 		//code to push already selected activity preferences

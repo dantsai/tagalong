@@ -11,10 +11,10 @@
 		{{#ionContent class='padding userProfile'}}
 			{{#with userPreferences}}
 				{{#ionItem avatar=true class='header'}}
-					<img class="userPic" src="{{this.names.pic}}">
-					<h2>{{this.names.first}} {{this.names.last}}</h2>
+					<img class="userPic" src="{{this.profile.names.pic}}">
+					<h2>{{this.profile.names.first}} {{this.profile.names.last}}</h2>
 
-					<p><span>{{this.emails.address}}</span></p>
+					<p><span>{{emailAddress this.emails}}</span></p>
 
 				{{/ionItem}}
 
@@ -46,7 +46,7 @@
 					<div class='friends'>
 						<h5>Friends:</h5>
 						{{#each getFriends}}
-							<img class="tinyPic" src="{{this.names.pic}}">
+							<img class="tinyPic" src="{{this.profile.names.pic}}">
 						{{/each}}
 					</div>
 				{{/ionItem}}
