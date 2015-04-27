@@ -1,4 +1,14 @@
 Template.activityList.helpers({
+	headerDisplay: function() {
+		if (Session.get('headerDisplay') == 'List') {
+			return true;
+		}
+		return false;
+	},
+	getSearchQuery: function() {
+		return Session.get('activitySearchQuery');
+	},
+
 	selectedFilter : function(option) {
 		if(option == Session.get('activityFilter'))
 			return 'selected';
@@ -13,7 +23,12 @@ Template.activityList.helpers({
 				{ 
 					'available': true,
 				  	'time.date' : 
-						{ $gte: new Date(date_now) } 
+						{ $gte: new Date(date_now) },
+					$or: [ 
+						{'type': {$regex: ".*"+Session.get('activitySearchQuery')+".*"}}, 
+						{'host.name' :{$regex: ".*"+Session.get('activitySearchQuery')+".*"}},
+						{'location.name': {$regex: ".*"+Session.get('activitySearchQuery')+".*"}} 
+					]
 				},						 
 				{ 
 					sort : { 
@@ -28,7 +43,11 @@ Template.activityList.helpers({
 				{ 
 					'available': true,
 				  	'time.date' : { $gte: new Date(date_now) },
-					'host._id' : {$ne: Meteor.userId()}
+					'host._id' : {$ne: Meteor.userId()},
+					$or: [ 
+						{'type': {$regex: ".*"+Session.get('activitySearchQuery')+".*"}}, 
+						{'host.name' :{$regex: ".*"+Session.get('activitySearchQuery')+".*"}} 
+					]
 				},						 
 				{ 
 					sort : { 
@@ -48,7 +67,11 @@ Template.activityList.helpers({
 							{ $gte: new Date(date_now) },
 					  	'type': 
 					  		{ $in : Meteor.user().activities },
-						'host._id' : {$ne: Meteor.userId()} 
+						'host._id' : {$ne: Meteor.userId()},
+						$or: [ 
+							{'type': {$regex: ".*"+Session.get('activitySearchQuery')+".*"}}, 
+							{'host.name' :{$regex: ".*"+Session.get('activitySearchQuery')+".*"}} 
+						] 
 					},						 
 					{ 
 						sort : { 
@@ -82,8 +105,23 @@ Template.activityList.events({
 			selection.toggleClass('selected');
 			Session.set('activityFilter',selection.text());
 		}
+	},
+	'click #activity-search' : function(event) {
+		Session.set('headerDisplay','Search');
+	},
+	'click #search-cancel' : function(event) {
+		Session.set('headerDisplay','List');
+		Session.set('activitySearchQuery','');
+	},
+	'input #search-activities': function (event) {
+		var input = event.target.value;
+		// if (input.length)
+		Session.set('activitySearchQuery',input);
+		console.log(Session.get('activitySearchQuery'));
 	}
-})
+});
+
+
 
 groupActivities = function (activities) {
 	var grouped_obj = {}

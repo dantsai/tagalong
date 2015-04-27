@@ -59,12 +59,9 @@ Meteor.methods({
 		});
 	},
 	activityCancel: function(activityId) {
-		//check(userid, String);
-
 		Activities.update(activityId, {
 			available: false 
 		});
-
 	},	
 	activityFlake : function(activityId,userId) {
 		Activities.update(activityId, {
