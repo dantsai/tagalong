@@ -532,6 +532,47 @@ $loading-font-size: 22px;
 	}
 }
 
+/*********** REGISTER USER ***********/
+.registerUser {
+
+	/*padding: 2px;*/
+	top: 25px;
+	bottom: 10px;
+
+	.subsection {
+		margin:5px;
+		background-color: rgba(211,211,211,.15);
+		padding: 5px;
+		border-radius: 2px;
+		border: solid thin rgba(211,211,211,.4);
+		/*opacity: .3;*/
+	}
+
+	h5 {
+		/*color: white;*/
+		border-bottom: solid 1px black;
+		padding: 5px;
+		margin-top: 15px;
+		vertical-align: bottom;
+
+		span {
+			margin-left: 10px;
+			font-size: 12pt;
+			font-weight: bold;
+		}
+	}
+
+	input {
+		width: 55%;
+		display: inline-block;
+		background-color: lightgray;
+		padding:2px;
+		border-radius: 2px;
+		font-size: 12pt;
+		font-weight: bold;
+	}
+
+}
 
 
 /********* TESTINT **********/

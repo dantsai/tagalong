@@ -31,8 +31,16 @@ Template.testing.events({
 	'click .changeUser': function(event) {
 		$('.selectedUser').toggleClass('selectedUser');
 		$(event.currentTarget).toggleClass('selectedUser');
-		Meteor.userId= function () {
-			return users[event.currentTarget.id];
-		};
+
+		user = Meteor.users.findOne(users[event.currentTarget.id])
+		userEmail = user.emails[0].address;
+
+		Meteor.logout();
+		Meteor.loginWithPassword(userEmail, 'testing' , function(error) { 	
+			if ( error ) {
+				$('#login-password').focus();
+				return alert(error.reason);
+			}
+		});		
 	}
 })

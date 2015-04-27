@@ -63,9 +63,8 @@ Template.tagalongs.helpers({
 		return this.host._id === Meteor.userId(); 
 	},
 	getUserPicUrl: function() {
-		// console.log(this);
-		var name = this.host.name.split(" ");
-		return '/img/'+name[0]+'.jpg';
+		user = Meteor.users.findOne(this.host._id)
+		return user.profile.names.pic;
 	},
 	getTimeLength: function() {
 		var aprox = (this.duration/3)*100 ;
