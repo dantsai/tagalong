@@ -2,14 +2,7 @@
 
 	{{#contentFor "headerButtonLeft"}}
 	    {{>ionNavBackButton}}
-	    <!-- {{>ionNavBackButton path="activityList" text="Back"}} -->
 	{{/contentFor}}
-
-	<!-- Re-added the logic to check user -->
-	<!-- Commented out the logic to check if the user is the owner of the activity -->
-	<!-- {{#if noHost}} -->
-		
-	<!-- {{/if}} -->
 
 	{{#contentFor 'headerTitle'}}
 		<h1 class="title">{{type}}</h1>
@@ -51,8 +44,8 @@
 				{{/if}}
 
 				<!-- Tagalongs Information-->
-				{{#ionItem body=true class="activityTagalongs"}}
-					{{#if tagalongs}}
+				{{#if tagalongs}}
+					{{#ionItem body=true class="activityTagalongs"}}
 						<p>
 							<strong>{{friendCount}}</strong> tagging along with <strong>{{host.name}}</strong>
 						</p>
@@ -61,12 +54,8 @@
 								<img class="tinyPic" src="{{profile.names.pic}}">
 							{{/each}}
 						</div>
-						<!-- <div>{{friendCount}} tagging along with {{host.name}}</div>
-				 		{{#each tagalongs}}
-							<div>{{this}}</div>
-						{{/each}} -->
-					{{/if}}
-				{{/ionItem}}
+					{{/ionItem}}
+				{{/if}}
 
 				<!-- Messages Section-->
 				{{#ionItem body=true class="activityTagalongs"}}
@@ -75,20 +64,37 @@
 				{{/ionItem}}
 
 			{{/ionList}}
+
+			{{#if activityMember}}
+				<!-- {{#ionItem body=true}} -->
+					{{#if isHost}}
+						<button id="activity-cancel" class="button button-block button-assertive" path="tagalongs">Cancel Activity</button>
+					{{else}}
+						<button id="activity-flake" class="button button-block button-assertive">Bail from Tagalong</button>
+					{{/if}}
+				<!-- {{/ionItem}} -->
+			{{/if}}
+
+
 			
 		{{/ionContent}}
 		{{#unless activityMember}}
-			<div id="activity-join" class="tagalong">Tagalong!</div>
+			<div id="activity-join">
+				<button id="activity-join" class="button button-full button-energized">Tagalong!</button>
+			</div>
+			
 		{{else}}
-			<div id="activity-join" class="message">Message myself</div>
-			{{#if notHost}}
+			<div id="activity-join">
+				<button class="button button-full button-balanced">{{> ionIcon icon="ios-videocam"}} Record Message to myself</button>
+			</div>
+			
+			{{#if isHost}}
 				<!-- Adds the EDIT button to the header -->
 				{{#contentFor "headerButtonRight"}}
 				    <button id="activity-edit" class="button button-clear" data-ion-modal="activityEdit" data-id="{{this._id}}">
 				    	Edit
 				    </button>
 				{{/contentFor}}	
-				<div id="activity-cancel" >Cancel</div>
 			{{/if}}
 		{{/unless}}
 

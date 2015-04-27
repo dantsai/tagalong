@@ -16,6 +16,29 @@ $loading-font-size: 22px;
 	}
 }
 
+#searchMenu {
+	padding-bottom:5px;
+	text-align: center;
+}
+
+#search-activities {
+	margin-left: 5px;
+	background-color: ghostwhite;
+	border-radius: 4px;
+	width: 75%;
+	display: inline-block;
+	padding: 0px;
+	padding-left: 5px;
+	padding-right: 5px;
+	font-size: 10pt;
+}
+
+#activity-search {
+	/*right:30px;*/
+}
+
+
+
 .activityItem {
 	font-size: 10pt;
 	padding: 10px;
@@ -150,6 +173,10 @@ $loading-font-size: 22px;
 		}
 	}
 
+	.flake {
+
+	}
+
 }
 
 #activity-join {
@@ -157,11 +184,17 @@ $loading-font-size: 22px;
 	width: 100%;
 	/*border-radius:5px;*/
 	bottom:9%;
-	padding:10px;
+	/*padding:10px;*/
 	color: white;
 	/*border: 1px solid gray;*/
 	text-align: center;
 	font-size: 12pt;
+
+	.button.button-block,
+	.button.button-full {
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
 }
 
 .tagalong {

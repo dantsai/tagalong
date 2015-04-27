@@ -1,25 +1,37 @@
 <template name='activityList'>
-	{{#contentFor 'headerTitle'}}
-		<h1 class="title">Activities</h1>
+
+	<div class="bar bar-header bar-stable bar-positive">
+	{{#if headerDisplay}}	
+	        <button id="activity-search" class="button button-clear searchActivity">
+				{{> ionIcon icon="ios-search"}} 
+			</button>
+	        <h1 class="title">Activities</h1>
+			
+			<button id="activity-new" class="button button-clear pull-right" data-ion-modal="activityNew">
+				{{> ionIcon icon="ios-plus-empty"}} 
+			</button>
+	{{else}}
+	    <input type="search" id="search-activities" placeholder="Search activity, people, or location" value="{{ getSearchQuery }}">
 		
-		<button id="activity-new" class="button button-clear pull-right" data-ion-modal="activityNew">
-			  {{> ionIcon icon="ios-plus-empty"}} 
+		<button id="search-cancel" class="button button-clear pull-right">
+			Cancel
 		</button>
-	{{/contentFor}}
+	{{/if}}
+	</div>
 
 	{{#ionView}}
 
 		{{#ionSubheaderBar class="pillSubmenu"}}
 			<ul class="pillMenu" id="activityListPill">
-				<li>New</li>
-				<li>Recommended</li>
-				<li class="selected">All</li>
+				<li class="{{ selectedFilter 'New'}}">New</li>
+				<li class="{{ selectedFilter 'Recommended'}}">Recommended</li>
+				<li class="{{ selectedFilter 'All'}}">All</li>
 			</ul>
 		{{/ionSubheaderBar}}
 
 		{{#ionContent}}
 			{{#ionList}}
-				{{#each activitiesAll}}
+				{{#each activityDisplay}}
 					{{this.name}}
 					{{#each this.activities}}
 						{{#ionItem buttonRight=true class="item-icon-right activityItem" path="activity"}}

@@ -10,15 +10,15 @@
 		
 		{{#ionSubheaderBar class="pillSubmenu"}}
 			<ul class="pillMenu">
-				<li class="selected">Upcoming</li>
-				<li>Past</li>
+				<li class="{{ selectedFilter 'Upcoming'}}">Upcoming</li>
+				<li class="{{ selectedFilter 'Past'}}">Past</li>
 			</ul>
 		{{/ionSubheaderBar}}
 		
 		{{#ionContent}}
 			
 			{{#ionList}}
-				{{#each activitiesUpcoming}}
+				{{#each activityDisplay}}
 					{{this.name}}
 					{{#each this.activities}}
 						{{#ionItem class="myActivityItem" path="activity"}}

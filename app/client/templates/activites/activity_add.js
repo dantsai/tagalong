@@ -109,8 +109,11 @@ Template.activityNew.events({
 		if ($(".dayofweek.selected").text() != selection.text()) {
 			$(".dayofweek").removeClass('selected');
 		}
+		
 		selection.toggleClass('selected');
-		$(".activityDay h5 span").text(selection.attr('date'));
+		var selectedDate = $(".dayofweek.selected").attr('value');
+		var prettyDate = moment(selectedDate).format('MMM, DD, YYYY')
+		$(".activityDay h5 span").text(prettyDate);
 
 	}
 
