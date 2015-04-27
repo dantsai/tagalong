@@ -46,7 +46,8 @@ Template.activityList.helpers({
 					'host._id' : {$ne: Meteor.userId()},
 					$or: [ 
 						{'type': {$regex: ".*"+Session.get('activitySearchQuery')+".*"}}, 
-						{'host.name' :{$regex: ".*"+Session.get('activitySearchQuery')+".*"}} 
+						{'host.name' :{$regex: ".*"+Session.get('activitySearchQuery')+".*"}} ,
+						{'location.name': {$regex: ".*"+Session.get('activitySearchQuery')+".*"}} 
 					]
 				},						 
 				{ 
@@ -70,7 +71,8 @@ Template.activityList.helpers({
 						'host._id' : {$ne: Meteor.userId()},
 						$or: [ 
 							{'type': {$regex: ".*"+Session.get('activitySearchQuery')+".*"}}, 
-							{'host.name' :{$regex: ".*"+Session.get('activitySearchQuery')+".*"}} 
+							{'host.name' :{$regex: ".*"+Session.get('activitySearchQuery')+".*"}},
+							{'location.name': {$regex: ".*"+Session.get('activitySearchQuery')+".*"}}  
 						] 
 					},						 
 					{ 
