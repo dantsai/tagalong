@@ -16,6 +16,29 @@ $loading-font-size: 22px;
 	}
 }
 
+#searchMenu {
+	padding-bottom:5px;
+	text-align: center;
+}
+
+#search-activities {
+	margin-left: 5px;
+	background-color: ghostwhite;
+	border-radius: 4px;
+	width: 75%;
+	display: inline-block;
+	padding: 0px;
+	padding-left: 5px;
+	padding-right: 5px;
+	font-size: 10pt;
+}
+
+#activity-search {
+	/*right:30px;*/
+}
+
+
+
 .activityItem {
 	font-size: 10pt;
 	padding: 10px;
