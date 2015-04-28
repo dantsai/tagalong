@@ -1,12 +1,3 @@
-// Template.home.rendered = function() {
-//   IonSideMenu.snapper.disable();
-// };
-
-// Template.home.destroyed = function() {
-//   IonSideMenu.snapper.enable();
-// };
-
-
 Template.home.helpers({
 	friendCount: function() {
 		return this.tagalongs.length;
@@ -45,15 +36,16 @@ Template.home.helpers({
 				sort : { 
 						'time.date': 1, 
 						'time.time': 1
-					} 
+					} ,
+				limit: 3
 			});
-		console.log(upcoming);
 		return upcoming;
 	}
 });
 
 Template.home.events({
-	'click #logout': function() {
+	'click #logoutBtn': function() {
+		console.log('logout');
 		Meteor.logout();
 	}
 })

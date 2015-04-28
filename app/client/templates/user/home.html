@@ -3,12 +3,12 @@
 		{{#contentFor 'headerTitle'}}
 			<h1 class="title">Tagalong</h1>
 
-			<button class="button button-clear pull-right" id="logout">{{> ionIcon icon="log-out"}}</button>
+			<button class="button button-clear pull-right" id="logoutBtn">Logout</button>
 		{{/contentFor}}
 
 		{{#ionContent}}
 			<div class="upcomingTagalongs">
-				<h5>Upcoming Tagalongs</h5>
+				<h5 class="listSubHeader">Upcoming Tagalongs</h5>
 				{{#ionSlideBox }}
 					{{#each upcomingTagalongs}}
 						{{#ionSlide}}
@@ -67,7 +67,7 @@
 		    </div>
 
 		    <div class="notifications">
-		    	<h5>Notifications</h5>
+		    	<h5 class="listSubHeader">Notifications</h5>
 		    	<div id="homeNotifications">
 		    		You don't have new notifications.
 		    	</div>
