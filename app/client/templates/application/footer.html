@@ -6,7 +6,9 @@
 			{{>ionTab title="Explore" path="activityList" iconOn="android-search" iconOff='android-search'}}
 			{{>ionTab title="Profile" path="profile" iconOn="android-person" iconOff='android-person' }}
 			<!-- {{>ionTab title="Preferences" path="preferences" iconOn="android-settings" iconOff='android-settings'}} -->
-			{{>ionTab title="Testing" path="testing" iconOn="android-people" iconOff="android-people"}}
+			{{#if developer}}
+				{{>ionTab title="Testing" path="testing" iconOn="android-people" iconOff="android-people"}}
+			{{/if}}
 		{{/ionTabs}}
 	{{else}}
 		{{#ionTabs style="ios" class="tabs-striped"}}
@@ -15,7 +17,9 @@
 			{{>ionTab title="Explore" path="activityList" iconOn="ios-search-strong" iconOff='ios-search'}}
 			{{>ionTab title="Profile" path="profile" iconOn="ios-person" iconOff='ios-person-outline' }}
 			<!-- {{>ionTab title="Preferences" path="preferences" iconOn="ios-gear" iconOff='ios-gear-outline'}} -->
-			{{>ionTab title="Testing" path="testing" iconOn="ios-people" iconOff="ios-people-outline"}}
+			{{#if developer}}
+				{{>ionTab title="Testing" path="testing" iconOn="ios-people" iconOff="ios-people-outline"}}
+			{{/if}}
 		{{/ionTabs}}
 	{{/if}}
 </template>

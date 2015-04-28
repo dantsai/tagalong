@@ -1,15 +1,15 @@
 <template name='layout'>
     {{#ionBody}}
-		{{>ionNavBar class='bar-positive'}}
+		{{#if currentUser}}    	
+			{{>ionNavBar class='bar-positive'}}
 
-		{{#ionNavView}}
-		    {{#if currentUser}}
-		        {{> yield}}
-		    {{else}}		      
-		        {{> login}}
-		    {{/if}}			
-		{{/ionNavView}}
+			{{#ionNavView}}
+				{{> yield}}
+			{{/ionNavView}}
 
-		{{> footer}}
+			{{> footer}}
+		{{else}}		      
+	        {{> login}}
+	    {{/if}}	
 	{{/ionBody}}
 </template>

@@ -1,20 +1,21 @@
 <template name='login'>
-<!--     {{#if currentUser}}
-    	<span><label>{{currentUser.profile.name}}</label></span>
-        <button id='logout'>Logout</button>
-    {{else}}
-        <button id='login' class='btn btn-default'> Login with Facebook</button>
-    {{/if}} -->
-	{{#contentFor 'headerTitle'}}
+<!-- 	{{#contentFor 'headerTitle'}}
 		<h1 class="title">Log In</h1>
-	{{/contentFor}}
+	{{/contentFor}} -->
 
 	{{#ionView}}
 	    {{#ionContent class='padding registerUser'}}
-		    <h5>Email: <input type="email" id="login-email" required placeholder="me@example.com"> </h5>
-		    <h5>Password: <input type="password" id="login-password"> </h5>
-		    <button class="button button-positive button-block" id="login">Log In</button>
-		    <div><button data-ion-modal="register">Register New Account</button></div>
+	    	
+	    	<h3>Welcome to <strong>Tagalong!</strong></h3>
+	    	<div class="loginForm">
+			    <h5>Email: <input type="email" id="login-email" required placeholder="me@example.com"> </h5>
+			    <h5>Password: <input type="password" id="login-password"> </h5>
+			    <button class="button button-positive button-block" id="login">Log In</button>
+			    
+			</div>
+			<div id="signUpSection">
+		    	Not a user? Join us!<button class="button button-outline button-positive button-small" data-ion-modal="register">Sign up for Tagalong!</button>
+		    </div>
 	    {{/ionContent}}
 	{{/ionView}}	    
 </template>
