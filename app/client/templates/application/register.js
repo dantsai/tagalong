@@ -2,7 +2,7 @@ Template.register.events({
     'click #create-user': function(event) {
         createUser();    	
     },
-    'click #create': function(event) {
+    'click .modal #create': function(event) {
         createUser();
     }
 });
@@ -18,7 +18,6 @@ function createUser() {
 	})
 
 	if ( textbox ) {
-		console.log(textbox);
 		textbox.focus();
 		return false;
 	}
@@ -33,6 +32,7 @@ function createUser() {
         Accounts.createUser({
         	email: $('#register-email').val(),
         	password: $('#register-password').val(),
+            activities:[],
         	profile: { names: {
         				first: $('#first-name').val(),
         				last: $('#last-name').val(),
@@ -47,8 +47,6 @@ function createUser() {
 				}
 			}
         );
-        console.log('Tapinda');
-        console.log(Meteor.user());
         IonModal.close();
         Router.go('activityList');
     }
