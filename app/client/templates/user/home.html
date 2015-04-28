@@ -2,11 +2,76 @@
 	{{#ionView}}
 		{{#contentFor 'headerTitle'}}
 			<h1 class="title">Tagalong</h1>
+
+			<button class="button button-clear pull-right" id="logout">{{> ionIcon icon="log-out"}}</button>
 		{{/contentFor}}
 
 		{{#ionContent}}
-			// ADD CONTENT HERE
-		    <button class="button button-positive button-block" id="logout">Log Out</button>			
+			<div class="upcomingTagalongs">
+				<h5>Upcoming Tagalongs</h5>
+				{{#ionSlideBox }}
+					{{#each upcomingTagalongs}}
+						{{#ionSlide}}
+							{{#ionItem class="myActivityItem" path="activity"}}
+								<!-- {{> ionIcon icon="ios-arrow-forward" class='positive'}} -->
+								<div class="timeDetails">
+									{{time.time}} <span class="activityDuration">{{> ionIcon icon='ios-stopwatch'}}  {{duration}} hours</span>
+
+									<div class="timeline" style="max-width:{{getTimeLength}};"></div>
+								</div>
+								<h2>{{type}} {{>ionIcon icon="android-bicycle"}}</h2>
+								
+								<img class="activity_img" src="{{getUserPicUrl}}">
+
+								<div class="activityInfo">
+									{{#if notHost}}
+										My Activity
+									{{else}}
+										with <strong>{{host.name}}</strong>
+									{{/if}}
+
+									<div class="location">
+										{{> ionIcon icon="ios-location"}} {{ location.name}}
+									</div>	
+								</div>					
+
+								<ul class="submenu">
+									<li class="submenuItem">
+										{{> ionIcon icon="ios-people-outline" title="Friends"}}
+
+										{{#if friendCount}}
+											<label>{{friendCount}}</label>
+										{{/if}}
+
+									</li>
+									<li class="submenuItem">
+										{{> ionIcon icon="ios-chatboxes-outline" title="Messages"}}
+
+										<!-- {{#if friendCount}}
+											<label>{{friendCount}}</label>
+										{{/if}} -->
+									</li>
+
+									<li class="submenuItem">
+										{{> ionIcon icon='ios-information-outline' title="updates"}}
+
+										<!-- {{#if friendCount}}
+											<label>{{friendCount}}</label>
+										{{/if}} -->
+									</li>
+								</ul>
+							{{/ionItem}}
+						{{/ionSlide}}
+					{{/each}}
+				{{/ionSlideBox}}
+		    </div>
+
+		    <div class="notifications">
+		    	<h5>Notifications</h5>
+		    	<div id="homeNotifications">
+		    		You don't have new notifications.
+		    	</div>
+		    </div>	
 		{{/ionContent}}
 	{{/ionView}}
 </template>

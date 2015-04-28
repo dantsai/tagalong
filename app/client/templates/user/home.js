@@ -1,3 +1,57 @@
+// Template.home.rendered = function() {
+//   IonSideMenu.snapper.disable();
+// };
+
+// Template.home.destroyed = function() {
+//   IonSideMenu.snapper.enable();
+// };
+
+
+Template.home.helpers({
+	friendCount: function() {
+		return this.tagalongs.length;
+	},
+	notHost: function() {		
+		return this.host._id === Meteor.userId(); 
+	},
+	getUserPicUrl: function() {
+		user = Meteor.users.findOne(this.host._id)
+		return user.profile.names.pic;
+	},
+	getTimeLength: function() {
+		var aprox = (this.duration/3)*100 ;
+		return aprox +"%";
+	},
+	upcomingTagalongs: function() {
+		now = new Date();
+		date_now = now.setSeconds(0);
+		var upcoming = Activities.find(
+			{ 
+				$and : [ 
+					{ 
+						'time.date' : { 
+						$gte: new Date(date_now)
+						} 
+					},
+					{ 
+						$or: [ 
+							{'host._id': Meteor.userId()},
+							{ 'tagalongs': Meteor.userId()}
+						]
+					}
+				]
+			},
+			{ 
+				sort : { 
+						'time.date': 1, 
+						'time.time': 1
+					} 
+			});
+		console.log(upcoming);
+		return upcoming;
+	}
+});
+
 Template.home.events({
 	'click #logout': function() {
 		Meteor.logout();
