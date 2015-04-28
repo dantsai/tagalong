@@ -46,7 +46,9 @@
 					<div class='friends'>
 						<h5>Friends:</h5>
 						{{#each getFriends}}
-							<img class="tinyPic" src="{{this.profile.names.pic}}">
+							<li>
+								<img class="tinyPic" src="{{this.profile.names.pic}}"><span class="userNames">{{this.profile.names.first}} {{this.profile.names.last}}</span>
+							</li>
 						{{/each}}
 					</div>
 				{{/ionItem}}
