@@ -49,9 +49,11 @@
 						<p>
 							<strong>{{friendCount}}</strong> tagging along with <strong>{{host.name}}</strong>
 						</p>
-						<div>
+						<div class="friends">
 							{{#each taggers}}
-								<img class="tinyPic" src="{{profile.names.pic}}">
+								<li>
+									<img class="tinyPic" src="{{profile.names.pic}}"><span class="userNames">{{profile.names.first}} {{profile.names.last}}</span>
+								</li>
 							{{/each}}
 						</div>
 					{{/ionItem}}
