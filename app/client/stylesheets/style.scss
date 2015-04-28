@@ -180,7 +180,8 @@ $loading-font-size: 22px;
 }
 
 #activity-join {
-	position: fixed;
+	position: absolute;
+	z-index: 5;
 	width: 100%;
 	/*border-radius:5px;*/
 	bottom:9%;
