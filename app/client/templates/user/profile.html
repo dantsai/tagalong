@@ -22,7 +22,7 @@
 			<button id="test-photo">CAMERA photo</button>
 			<button id="test-contacts">CONTACTS</button>
 			<button id="test-notifications">notifications!</button>
-
+			<button id="removeHistory">Remove History</button>
 		<table>
 			<thead>
 				<tr>
@@ -33,6 +33,12 @@
 			</thead>
 			{{> row}}
 		</table>
+
+		<div class="map-container">
+			{{> googleMap name="exampleMap" options=exampleMapOptions}}
+			<div class="mapmarker"><img src="http://dantsai.com/_/mapmarker.png" width="32" height="32"></div>
+		</div>
+
 
 
 		{{/ionContent}}

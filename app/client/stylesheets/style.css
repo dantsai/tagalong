@@ -182,3 +182,16 @@ body {
   float: left;
   width: 33%;  
 }
+
+.map-container {
+  width: 350px;
+  max-width: 100%;
+  height: 300px;
+  position: relative;
+}
+
+.mapmarker {
+  position: absolute;
+  left: 159px;
+  top: 118px;
+}
