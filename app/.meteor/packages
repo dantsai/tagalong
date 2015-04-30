@@ -11,10 +11,10 @@ underscore
 service-configuration
 iron:router
 fourseven:scss
-meteoric:ionic-sass
-meteoric:ionicons-sass
 meteoric:ionic
 meteoric:autoform-ionic
+meteoric:ionic-sass
+meteoric:ionicons-sass
 iron:layout
 mrt:moment
 tinytest
