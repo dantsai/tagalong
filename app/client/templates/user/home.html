@@ -70,6 +70,9 @@
 		    	<h5 class="listSubHeader">Notifications</h5>
 		    	<div id="homeNotifications">
 		    		You don't have new notifications.
+		    		{{#each messages}}
+		    			<a href="{{messageUrl}}"></a>
+		    		{{/each}}
 		    	</div>
 		    </div>	
 		{{/ionContent}}
