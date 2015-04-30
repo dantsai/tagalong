@@ -39,7 +39,10 @@
 						<div class="info">
 							{{> ionIcon icon='ios-location'}}  {{location.name}}
 						</div>
-						<img src="/img/RSF.png" class="locationMap">
+						<!-- <img src="/img/RSF.png" class="locationMap"> -->
+						<div class="map-container">
+							{{> googleMap name="exampleMap" options=exampleMapOptions}}
+						</div>						
 					{{/ionItem}}
 				{{/if}}
 
@@ -87,7 +90,7 @@
 			
 		{{else}}
 			<div id="activity-join">
-				<button class="button button-full button-balanced">{{> ionIcon icon="ios-videocam"}} Record Message to myself</button>
+				<button id="message-self" class="button button-full button-balanced">{{> ionIcon icon="ios-videocam"}} Record Message to myself</button>
 			</div>
 			
 			{{#if isHost}}

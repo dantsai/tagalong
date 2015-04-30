@@ -18,7 +18,6 @@ Meteor.methods({
 			available: true
 		});
 
-		console.log(activity);
 		var activityId = Activities.insert(activity);
 
 		return {
