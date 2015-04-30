@@ -134,7 +134,9 @@ Template.activityNew.events({
 })
 
 Meteor.startup(function () {
+	console.log('startup function...');
 	if(Meteor.isClient) {
+		console.log("loading google maps...");
 		GoogleMaps.load();
 	}
 	// get location
