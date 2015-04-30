@@ -1,3 +1,6 @@
+var latitude = 37.871667;
+var longitude = -122.272778;
+
 Template.activityNew.helpers({
 	dateTomorrow: function() {
 		now = new Date(); 
@@ -31,6 +34,16 @@ Template.activityNew.helpers({
 			week.push(t);
 		}
 		return week;
+	},
+	exampleMapOptions: function() {
+	  // Make sure the maps API has loaded
+	  if (GoogleMaps.loaded()) {
+	    // Map initialization options
+	    return {
+	      center: new google.maps.LatLng(latitude, longitude),
+	      zoom: 8
+	    };
+	  }
 	}
 });
 
@@ -68,7 +81,8 @@ Template.activityNew.events({
 		var activity = {
 			'type': $(".activityIcon.selected").attr('activity'),
 			'location': { 
-				'name' : $('#activityLocation').val()
+				'name' : $('#activityLocation').val(),
+				'position' : GoogleMaps.maps.exampleMap.instance.getCenter()	//get map center
 			},
 		    'time': {
 			        'epoch': '',
@@ -82,7 +96,7 @@ Template.activityNew.events({
 			'comments': $('#activityComments').text(),					
 		};
 
-		// console.log(activity);
+		console.log(activity);
 		Meteor.call('activityInsert', activity, function(error, result) { 	
 			if (error)
 				return alert(error.reason);
@@ -119,3 +133,30 @@ Template.activityNew.events({
 
 })
 
+Meteor.startup(function () {
+	if(Meteor.isClient) {
+		GoogleMaps.load();
+	}
+	// get location
+	var onSuccess = function(position) {
+	    console.log('Latitude: '          + position.coords.latitude          + '\n' +
+	          'Longitude: '         + position.coords.longitude         + '\n' +
+	          'Altitude: '          + position.coords.altitude          + '\n' +
+	          'Accuracy: '          + position.coords.accuracy          + '\n' +
+	          'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+	          'Heading: '           + position.coords.heading           + '\n' +
+	          'Speed: '             + position.coords.speed             + '\n' +
+	          'Timestamp: '         + position.timestamp                + '\n');
+	    latitude = position.coords.latitude;
+	    longitude = position.coords.longitude;
+	};
+
+	// onError Callback receives a PositionError object
+	//
+	function onError(error) {
+	    alert('code: '    + error.code    + '\n' +
+	          'message: ' + error.message + '\n');
+	}
+
+	navigator.geolocation.getCurrentPosition(onSuccess, onError);
+});
