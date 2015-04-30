@@ -7,6 +7,37 @@ $loading-font-size: 22px;
   background: $stable;
 }
 
+/*Blue */
+/*Orange bar: #FEC178*/
+/*Orange text: #FFA437*/
+
+
+.listSubHeader {
+	background-color: #5ED1EC;
+	color: white;
+	width : 100%;
+	padding: 10px;
+	margin-top: 0px;
+}
+/********** HOME SCREEN ******/
+
+.upcomingTagalongs {
+	height: 250px;
+
+	.slick-slide img {
+		display: inline-block;
+	}
+}
+
+.notifications {
+	margin-top: 35px;
+	
+	#homeNotifications {
+		padding:10px;
+		font-size: 10pt;		
+	}
+}
+
 /****** Activity List *********/
 #activityListPill {
 	width:264px;
@@ -158,8 +189,9 @@ $loading-font-size: 22px;
 	}
 
 	.activityTagalongs {
+		white-space: normal;
 
-		p {
+/*		p {
 			font-size: 9pt;
 		}
 
@@ -170,17 +202,44 @@ $loading-font-size: 22px;
 			width: 50px;
 			height: 50px;
 			border-radius:50%;
+		}*/
+
+		.friends {			
+			img {
+				max-width: none;
+				max-height: none;
+				margin:3px;
+				width: 50px;
+				height: 50px;
+				border-radius:50%;
+			}
+
+			span.userNames {
+				font-size: 8pt;
+			}
+
+			li {
+				width: 20%;
+				margin:2px;
+				display: inline-block;
+				text-decoration: none;
+				line-height: 10px;
+				vertical-align: top;
+				text-align: center;
+			}
 		}
 	}
+
+
 
 	.flake {
 
 	}
-
 }
 
 #activity-join {
-	position: fixed;
+	position: absolute;
+	z-index: 5;
 	width: 100%;
 	/*border-radius:5px;*/
 	bottom:9%;
@@ -195,6 +254,10 @@ $loading-font-size: 22px;
 		margin-top: 0px;
 		margin-bottom: 0px;
 	}
+}
+
+.tab-item.active {
+	color: #444;
 }
 
 .tagalong {
@@ -495,6 +558,20 @@ $loading-font-size: 22px;
 			height: 50px;
 			border-radius:50%;
 		}
+
+		span.userNames {
+			font-size: 8pt;
+		}
+
+		li {
+			width: 20%;
+			margin:2px;
+			display: inline-block;
+			text-decoration: none;
+			line-height: 10px;
+			vertical-align: top;
+			text-align: center;
+		}
 	}
 }
 
@@ -535,41 +612,61 @@ $loading-font-size: 22px;
 /*********** REGISTER USER ***********/
 .registerUser {
 
-	/*padding: 2px;*/
-	top: 25px;
-	bottom: 10px;
+	padding:25px;
 
-	.subsection {
-		margin:5px;
-		background-color: rgba(211,211,211,.15);
-		padding: 5px;
-		border-radius: 2px;
-		border: solid thin rgba(211,211,211,.4);
-		/*opacity: .3;*/
+	h3 {
+		text-align: center;
 	}
 
-	h5 {
-		/*color: white;*/
-		border-bottom: solid 1px black;
-		padding: 5px;
-		margin-top: 15px;
-		vertical-align: bottom;
+	.loginForm {
+		margin-top: 20px;
+		border: solid thin #387ef5;
+		border-radius: 5px;
+		padding: 10px;
 
-		span {
-			margin-left: 10px;
-			font-size: 12pt;
-			font-weight: bold;
+		font-size: 10pt;
+
+		h5 {
+			font-size: 9pt;
 		}
+
+		input {
+			padding: 10px;
+			background-color: ghostwhite;
+			height: 40px;
+			font-size: 12pt;
+		}
+
+
+	}
+
+}
+
+#signUpSection {
+	font-size: 9pt;
+	margin-top: 30px;
+	vertical-align: bottom;
+
+	button {
+		width: 100%;
+	}
+}
+
+.modal .registerUser {
+	padding:20px;
+
+
+	h4 {
+		vertical-align: center;
 	}
 
 	input {
-		width: 55%;
-		display: inline-block;
-		background-color: lightgray;
-		padding:2px;
-		border-radius: 2px;
-		font-size: 12pt;
-		font-weight: bold;
+		height: 25px;
+	}
+
+	.button-assertive {
+		margin-top: 15px;
+		width: 100%;
 	}
 
 }
