@@ -48,7 +48,6 @@ function createUser() {
 			}
         );
         console.log('Tapinda');
-        console.log(Meteor.user());
         IonModal.close();
         Router.go('activityList');
     }
