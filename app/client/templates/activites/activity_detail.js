@@ -70,7 +70,8 @@ Template.activity.events({
 
 		// alert('camera...')
 		console.log('camera...')
-
+		console.log(this);
+		console.log(Meteor.userId());
 		// success callback
 	    function captureSuccess(mediaFiles) {
 	        var i, len, path;
@@ -105,6 +106,14 @@ Template.activity.events({
 	                console.log('Upload success: ' + result.responseCode);
 	                console.log('response: ' + result.response); // url of video. SAVE THIS
 	                console.log(result.bytesSent + ' bytes sent');
+
+	                message = {'activity_id': this._id,
+	                			'user': Meteor.userId(),
+	                			'messageUrl' : result.response
+	            				}
+
+	                var msgId = Messages.insert(message);
+	                //place to store the url for video.
 	            },
 	            function(error) {
 	                alert('Error uploading file ' + path + ': ' + error.code + '. source: ' + error.source + '. target: ' + error.target);

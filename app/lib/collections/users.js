@@ -1,5 +1,3 @@
-// Users = new Mongo.Collection('users');
-
 Meteor.methods({
 	setPreferences: function (userActivities) {
 

@@ -11,3 +11,7 @@ Meteor.publish('userNameInfo', function () {
 		}
 	});
 });
+
+Meteor.publish('messages', function() {
+	return Messages.find();
+})

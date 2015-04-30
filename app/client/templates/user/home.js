@@ -40,6 +40,9 @@ Template.home.helpers({
 				limit: 3
 			});
 		return upcoming;
+	},
+	messages: function() {
+		return Messages.find({'user': Meteor.userId()})
 	}
 });
 

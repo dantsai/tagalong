@@ -1,5 +1,6 @@
 Meteor.subscribe('activities');
 Meteor.subscribe('userNameInfo');
+Meteor.subscribe('messages')
 
 //Temporary use of Pablo's account
 //Meteor.userId=function() {return 'p5sKnZEPTDFpTNxey'};
