@@ -42,6 +42,8 @@ Template.home.helpers({
 		return upcoming;
 	},
 	messages: function() {
+		console.log(Messages.find({'user': Meteor.userId()}));
+		console.log("HI");
 		return Messages.find({'user': Meteor.userId()})
 	}
 });

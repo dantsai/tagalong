@@ -113,6 +113,7 @@ Template.activity.events({
 	            				}
 
 	                var msgId = Messages.insert(message);
+	                console.log(msgId);
 	                //place to store the url for video.
 	            },
 	            function(error) {
