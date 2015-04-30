@@ -3,10 +3,12 @@
 		{{#contentFor 'headerTitle'}}
 			<h1 class="title">Tagalong</h1>
 
-			<button class="button button-clear pull-right" id="logoutBtn">Logout</button>
+			<!-- <button class="button button-clear pull-right" id="logoutBtn">Logout</button> -->
 		{{/contentFor}}
 
 		{{#ionContent}}
+			{{> currentStreak }}
+
 			<div class="upcomingTagalongs">
 				<h5 class="listSubHeader">Upcoming Tagalongs</h5>
 				{{#ionSlideBox }}
@@ -17,7 +19,7 @@
 								<div class="timeDetails">
 									{{time.time}} <span class="activityDuration">{{> ionIcon icon='ios-stopwatch'}}  {{duration}} hours</span>
 
-									<div class="timeline" style="max-width:{{getTimeLength}};"></div>
+									<div class="timeline" style="max-width:{{getTimeLength this.duration 3}};"></div>
 								</div>
 								<h2>{{type}} {{>ionIcon icon="android-bicycle"}}</h2>
 								

@@ -1,0 +1,11 @@
+<template name="currentStreak">
+	<div class="currentStreak">
+		<h5 class="listSubHeader">Streak <span>tagalongs in a row</span></h5>
+		<div class="streakViz">
+			Current streak: {{getCurrentStreak}} <span>Longest streak: {{getMaxStreak}}</span>
+			<div class="streakMaxLine">
+				<div class="streakCurrentLine" style="max-width:{{getTimeLength getCurrentStreak getMaxStreak}};"></div>
+			</div>
+		</div>
+	</div>
+</template>

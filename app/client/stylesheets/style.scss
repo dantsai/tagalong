@@ -7,22 +7,60 @@ $loading-font-size: 22px;
   background: $stable;
 }
 
-/*Blue */
+/*Blue #5ED1EC*/
 /*Orange bar: #FEC178*/
 /*Orange text: #FFA437*/
 
-
+.bar.bar-positive,
+.btn.btn-positive {
+	background-color:#5ED1EC;
+}
 .listSubHeader {
-	background-color: #5ED1EC;
-	color: white;
+	background-color: lightgray;
+	color: #666;
 	width : 100%;
 	padding: 10px;
 	margin-top: 0px;
+	border-bottom: solid thin #999;
 }
 /********** HOME SCREEN ******/
 
+.currentStreak {	
+
+	.streakViz {
+		padding:10px;
+		font-size: 10pt;
+
+		span {
+			float: right;
+		}
+	}
+
+	.streakMaxLine,
+	.streakCurrentLine {
+		padding:0px;
+		height: 5px;
+	}
+
+
+	.streakMaxLine {
+		background-color: rgba(0,204,102,.35);
+		margin-top:5px;
+		margin-bottom:5px;
+		width:100%;
+		/*border-top-right-radius: 2px;
+		border-bottom-right-radius: 2px;*/
+	}
+
+	.streakCurrentLine {
+		background-color: rgba(0,204,102,1);
+		border-top-right-radius: 2px;
+		border-bottom-right-radius: 2px;
+	}
+}
+
 .upcomingTagalongs {
-	height: 250px;
+	height: 235px;
 
 	.slick-slide img {
 		display: inline-block;
@@ -280,8 +318,8 @@ $loading-font-size: 22px;
 	margin-bottom: 10px;
 	width: 206px;
 	text-align: center;
-	border: solid 1px #387ef5;
-	color: #387ef5;
+	border: solid 1px #5ED1EC;
+	color: #5ED1EC;
 	border-radius: 5px;
 
 	li {
@@ -293,7 +331,7 @@ $loading-font-size: 22px;
 	}
 
 	li.selected {
-		background-color: #387ef5;
+		background-color: #5ED1EC;
 		color: white;
 	}
 }
@@ -395,7 +433,7 @@ $loading-font-size: 22px;
 	}
 
 	.selected {
-		background-color: #387ef5;
+		background-color: #5ED1EC;
 	}
 
 	h5 {
@@ -431,7 +469,7 @@ $loading-font-size: 22px;
 
 	.activityIcon.selected,
 	.activityDay li.selected {
-		background-color: #387ef5;
+		background-color: #5ED1EC;
 	}
 
 	.activityDay {	
@@ -542,11 +580,11 @@ $loading-font-size: 22px;
 
 	.activityIcon.selected,
 	.activityDay li.selected {
-		background-color: #387ef5;
+		background-color: #5ED1EC;
 	}
 
 	.selected {
-		background-color: #387ef5;
+		background-color: #5ED1EC;
 	}
 
 	.friends {
@@ -578,7 +616,7 @@ $loading-font-size: 22px;
 /****** EDIT PROFILE *********/
 
 .selected {
-	background-color: #387ef5;
+	background-color: #5ED1EC;
 }
 
 .editProfile {
@@ -620,7 +658,7 @@ $loading-font-size: 22px;
 
 	.loginForm {
 		margin-top: 20px;
-		border: solid thin #387ef5;
+		border: solid thin #5ED1EC;
 		border-radius: 5px;
 		padding: 10px;
 
@@ -683,6 +721,6 @@ $loading-font-size: 22px;
 }
 
 .selectedUser {
-	background-color: #387ef5;
+	background-color: #5ED1EC;
 	color: white;
 }

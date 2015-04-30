@@ -9,8 +9,9 @@ Template.home.helpers({
 		user = Meteor.users.findOne(this.host._id)
 		return user.profile.names.pic;
 	},
-	getTimeLength: function() {
-		var aprox = (this.duration/3)*100 ;
+	getTimeLength: function(duration,max) {
+		var aprox = (duration/max)*100 ;
+		console.log(aprox);
 		return aprox +"%";
 	},
 	upcomingTagalongs: function() {
@@ -27,7 +28,7 @@ Template.home.helpers({
 					{ 
 						$or: [ 
 							{'host._id': Meteor.userId()},
-							{ 'tagalongs': Meteor.userId()}
+							{'tagalongs': Meteor.userId()}
 						]
 					}
 				]
@@ -39,6 +40,7 @@ Template.home.helpers({
 					} ,
 				limit: 3
 			});
+		// console.log(upcoming);
 		return upcoming;
 	}
 });
