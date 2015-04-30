@@ -35,7 +35,7 @@ Template.activityNew.helpers({
 		}
 		return week;
 	},
-	exampleMapOptions: function() {
+	activityaddMapOptions: function() {
 	  // Make sure the maps API has loaded
 	  if (GoogleMaps.loaded()) {
 	    // Map initialization options
@@ -82,7 +82,7 @@ Template.activityNew.events({
 			'type': $(".activityIcon.selected").attr('activity'),
 			'location': { 
 				'name' : $('#activityLocation').val(),
-				'position' : GoogleMaps.maps.exampleMap.instance.getCenter()	//get map center
+				'position' : GoogleMaps.maps.activityaddmap.instance.getCenter()	//get map center
 			},
 		    'time': {
 			        'epoch': '',
