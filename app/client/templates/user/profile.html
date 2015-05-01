@@ -8,50 +8,91 @@
 			</button>
 		{{/contentFor}}
 
-		{{#ionContent class='padding userProfile'}}
+		{{#ionContent class=' userProfile'}}
 			{{#with userPreferences}}
-				{{#ionItem avatar=true class='header'}}
+				{{#ionItem class='header'}}
 					<img class="userPic" src="{{this.profile.names.pic}}">
 					<h2>{{this.profile.names.first}} {{this.profile.names.last}}</h2>
 
 					<p><span>{{emailAddress this.emails}}</span></p>
+					
 
 				{{/ionItem}}
 
-				{{#ionItem class='body stats'}}
-					<h3>Tagalong Statistics</h3>
-					<h5>Streaks</h5>
-					<div class='viz'></div>
-
-					<h5>Habits</h5>
-					<div class='viz'></div>
-
+				{{#ionItem class="body profileMenu"}}
+					<ul>
+						<li class='{{#if getProfileSectionSelection "History"}}selected{{/if}}'>History</li>
+						<li class='{{#if getProfileSectionSelection "Friends"}}selected{{/if}}'>Friends</li>
+						<li class='{{#if getProfileSectionSelection "Preferences"}}selected{{/if}}'>Preferences</li>
+					</ul>
 				{{/ionItem}}
 
-				{{#ionItem class="body"}}
-					<h3>Preferences</h3>
-					<div class="activityTypes">	
-						<h5>Activities:</h5>
-						<div>
-							<img src="/icons/walking.svg" activity="Walking" class='activityIcon {{ inActivities "Walking"}}'>
-							<img src="/icons/running.svg" activity="Running" class='activityIcon {{ inActivities "Running"}}'>
-							<img src="/icons/hiking.svg" activity="Hiking" class='activityIcon {{ inActivities "Hiking"}}'>
-							<img src="/icons/swimming.svg" activity="Swimming" class='activityIcon {{ inActivities "Swimming"}}'>
-							<img src="/icons/cycling.svg" activity="Cycling" class='activityIcon {{ inActivities "Cycling"}}'>
-							<img src="/icons/gym.svg" activity="Gym" class='activityIcon {{ inActivities "Gym"}}'>
-							<img src="/icons/meditation.svg" class='activityIcon {{ inActivities "Meditation"}}' activity="Meditation">
-							<img src="/icons/soccer.svg" activity="Soccer" class='activityIcon {{ inActivities "Soccer"}}'>
-						</div>
-					</div>
-					<div class='friends'>
-						<h5>Friends:</h5>
-						{{#each getFriends}}
-							<li>
-								<img class="tinyPic" src="{{this.profile.names.pic}}"><span class="userNames">{{this.profile.names.first}} {{this.profile.names.last}}</span>
-							</li>
-						{{/each}}
-					</div>
-				{{/ionItem}}
+				{{#if getProfileSectionSelection 'History'}}
+					{{#ionItem class='body stats'}}
+						{{> currentStreak }}
+					{{/ionItem}}
+				{{else}}
+					{{#if getProfileSectionSelection 'Preferences'}}
+						{{#ionItem class="body preferences"}}
+							<div class="activityTypes">	
+								<h5 class="listSubHeader">
+									Activities you like
+									<!-- <button id="user-preferences-edit" class="button button-clear pull-right" data-ion-modal="userPreferences">Edit</button>  -->
+								</h5>
+								{{#if this.activities }}
+									{{> activities}}
+								{{else}}
+									<div class="emptyPref">
+										<p>You have no activities selected.<br>Add some!</p>
+										<button id="user-preferences-edit" class="button button-stable" data-ion-modal="userPreferences">{{> ionIcon icon="ios-gear-outline"}} Edit Preferences</button> 
+									</div>
+								{{/if}}
+								<!-- <div>
+									{{ inActivities "Walking"}}
+										<img src="/icons/walking.svg" activity="Walking" class='activityIcon selected'>
+									{{/if}}
+
+									{{ inActivities "Running"}}
+										<img src="/icons/running.svg" activity="Running" class='activityIcon selected'>
+									{{/if}}
+									
+									{{ inActivities "Hiking"}}
+										<img src="/icons/hiking.svg" activity="Hiking" class='activityIcon selected'>
+									{{/if}}
+
+									{{ inActivities "Swimming"}}
+										<img src="/icons/swimming.svg" activity="Swimming" class='activityIcon selected'>
+									{{/if}}
+
+									{{ inActivities "Cycling"}}
+										<img src="/icons/cycling.svg" activity="Cycling" class='activityIcon selected'>
+									{{/if}}
+
+									{{ inActivities "Gym"}}
+										<img src="/icons/gym.svg" activity="Gym" class='activityIcon selected'>
+									{{/if}}
+
+									{{ inActivities "Meditation"}}
+										<img src="/icons/meditation.svg" class='activityIcon selected' activity="Meditation">
+									{{/if}}
+
+									{{ inActivities "Soccer"}}
+										<img src="/icons/soccer.svg" activity="Soccer" class='activityIcon selected'>
+									{{/if}}
+								</div> -->
+							</div>
+						{{/ionItem}}
+					{{else}}
+						{{#ionItem class="body friends"}}
+							<h5 class="listSubHeader">Your friends on Tagalong</h5>
+							{{#each getFriends}}
+								<li>
+									<img class="tinyPic" src="{{this.profile.names.pic}}"><span class="userNames">{{this.profile.names.first}} {{this.profile.names.last}}</span>
+								</li>
+							{{/each}}
+						{{/ionItem}}
+					{{/if}}
+				{{/if}}
 
 			{{/with}}
 		{{/ionContent}}

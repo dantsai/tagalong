@@ -1,7 +1,6 @@
 Template.currentStreak.helpers({
 	getTimeLength: function(duration,max) {
 		var aprox = (duration/max)*100 ;
-		console.log(aprox);
 		return aprox +"%";
 	},
 	getCurrentStreak: function () {

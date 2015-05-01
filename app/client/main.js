@@ -8,3 +8,4 @@ Session.set('headerDisplay','List');
 Session.set('activitySearchQuery','');
 Session.set('activityFilter','Recommended');
 Session.set('myActivitiesFilter','Upcoming');
+Session.set('profileSection','History');
