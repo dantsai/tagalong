@@ -20,11 +20,23 @@ Template.profile.helpers({
 				res.push(user);
 		});
 		return res;
+	},
+	getProfileSectionSelection: function(section) {
+		return Session.get('profileSection') == section;
 	}
+
 });
 
-// Template.profile.events({
-// 	"click .activityIcon": function(event) {
-// 		$(event.currentTarget).toggleClass('selected');
-// 	}
-// })
+Template.profile.events({
+	"click .profileMenu ul li": function(event) {
+
+		var selection = $(event.target);
+
+		if ($("#profileMenu li.selected").text() != selection.text()) {
+			$("#profileMenu li.selected").removeClass('selected');
+			selection.toggleClass('selected');
+			Session.set('profileSection',selection.text());
+		}
+		
+	}
+})

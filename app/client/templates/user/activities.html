@@ -1,0 +1,55 @@
+<template name="activities">
+	<div class="activityTypeGroups">
+		{{#if inActivities "Walking"}}
+			<div class="activityIconGroup">
+				<img src="/icons/walking.svg" activity="Walking" class='activityIcon selected'>Walking
+			</div>
+		{{/if}}
+
+		{{#if inActivities "Running"}}
+			<div class="activityIconGroup">
+				<img src="/icons/running.svg" activity="Running" class='activityIcon selected'>Running
+			</div>
+		{{/if}}
+		
+		{{#if inActivities "Hiking"}}
+			<div class="activityIconGroup">
+				<img src="/icons/hiking.svg" activity="Hiking" class='activityIcon selected'>
+			Hiking
+			</div>
+		{{/if}}
+
+		{{#if inActivities "Swimming"}}
+			<div class="activityIconGroup">
+				<img src="/icons/swimming.svg" activity="Swimming" class='activityIcon selected'>Swimming
+			</div>
+		{{/if}}
+
+		{{#if inActivities "Cycling"}}
+			<div class="activityIconGroup">
+				<img src="/icons/cycling.svg" activity="Cycling" class='activityIcon selected'>
+			Cycling
+			</div>
+		{{/if}}
+
+		{{#if inActivities "Gym"}}
+			<div class="activityIconGroup">
+				<img src="/icons/gym.svg" activity="Gym" class='activityIcon selected'>
+			Gym
+			</div>
+		{{/if}}
+
+		{{#if inActivities "Meditation"}}
+			<div class="activityIconGroup">
+				<img src="/icons/meditation.svg" class='activityIcon selected' activity="Meditation">
+			Meditation
+			</div>
+		{{/if}}
+
+		{{#if inActivities "Soccer"}}
+			<div class="activityIconGroup">
+				<img src="/icons/soccer.svg" activity="Soccer" class='activityIcon selected'>Soccer
+			</div>
+		{{/if}}
+	</div>
+</template>
