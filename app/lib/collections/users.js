@@ -13,5 +13,15 @@ Meteor.methods({
 				{ 'profile.names.pic': pic_url }
 			}
 		)
+	},
+	addMessageToSelf: function (message) {
+		Meteor.users.update(Meteor.userId(), {
+			$addToSet: {messages: message}
+		})
+	},
+	addNotification: function (notification) {
+		Meteor.users.update(Meteor.userId(), {
+			$addToSet: {notifications: notification}
+		})		
 	}
 });

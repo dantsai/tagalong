@@ -106,13 +106,11 @@ Template.activity.events({
 	                console.log('Upload success: ' + result.responseCode);
 	                console.log('response: ' + result.response); // url of video. SAVE THIS
 	                console.log(result.bytesSent + ' bytes sent');
-
-	                message = {'activity_id': this._id,
-	                			'user': Meteor.userId(),
-	                			'messageUrl' : result.response
+ 					var message = { 'activity_id': this._id,	                				
+	                				'messageUrl' : result.response
 	            				}
-
-	                var msgId = Messages.insert(message);
+	                Meteor.call('addMessageToSelf', message);
+	                // var msgId = Messages.insert(message);
 	                //place to store the url for video.
 	            },
 	            function(error) {
