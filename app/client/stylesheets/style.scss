@@ -275,6 +275,24 @@ $loading-font-size: 22px;
 		}
 	}
 
+	.activityMessages {
+		
+
+		#messageInput {
+			width: 80%;
+			display: inline-block;
+			border: solid thin lightgray;
+			margin: 5px;
+		}
+
+		.messageArea {
+			height: 150px;
+			border-radius: 3px;
+			border: solid thin lightgray;
+			padding: 5px;
+
+		}
+	}
 
 
 	.flake {
@@ -512,6 +530,10 @@ $loading-font-size: 22px;
 	img {
 		width: 100%;
 		padding:0px;
+	}
+
+	.mapmarker img {
+		width: 32px;	
 	}
 
 	.map-container {

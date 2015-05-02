@@ -64,11 +64,20 @@
 
 				<!-- Messages Section-->
 				{{#ionItem body=true class="activityTagalongs"}}
-					<div>Comments</div>
 					<textarea id='activityComments'>{{comments}}</textarea>
 				{{/ionItem}}
 
+
+				{{#if tagalongs }}
+					{{#ionItem body=true class="activityMessages"}}
+						<input type="text" id="messageInput" placeholder="Leave a message..."><button class="button button-empty button-small" id='submitMessage'>Send</button>
+						<div class="messageArea"></div>
+					{{/ionItem}}
+				{{/if }}
+
 			{{/ionList}}
+
+
 
 			{{#if activityMember}}
 				<!-- {{#ionItem body=true}} -->

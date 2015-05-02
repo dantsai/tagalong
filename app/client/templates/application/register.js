@@ -30,15 +30,20 @@ function createUser() {
     if ( /(.+)@(.+){2,}\.(.+){2,}/.test($('#register-email').val()) ) {
     	console.log('aaa')
         Accounts.createUser({
-        	email: $('#register-email').val(),
-        	password: $('#register-password').val(),
-            activities:[],
-        	profile: { names: {
-        				first: $('#first-name').val(),
-        				last: $('#last-name').val(),
-        				pic: '/img/default-avatar.png'
-        			}
-        		}
+            	email: $('#register-email').val(),
+            	password: $('#register-password').val(),
+                activities:[],
+                friends : {},
+            	profile: { names: {
+            				first: $('#first-name').val(),
+            				last: $('#last-name').val(),
+            				pic: '/img/default-avatar.png'
+            			}
+            		},
+                notifications: {
+                    all : {},
+                    new : {}
+                }
         	},
         	function(error) { 	
 				if ( error ) {
