@@ -62,13 +62,31 @@
 					{{/ionItem}}
 				{{/if}}
 
-				<!-- Messages Section-->
-				{{#ionItem body=true class="activityTagalongs"}}
-					<div>Comments</div>
-					<textarea id='activityComments'>{{comments}}</textarea>
-				{{/ionItem}}
+				<!-- Description Section-->
+				{{#if comments}}
+					{{#ionItem body=true class="activityTagalongs"}}
+						<textarea id='activityComments'>{{comments}}</textarea>
+					{{/ionItem}}
+				{{/if }}
+
+				<!-- Messages section -->
+				{{#if activityMember }}
+					{{#ionItem body=true class="activityMessages"}}
+						<ul class="messageArea">
+							{{#if hasMessages}}
+								{{#each messages}}
+									<li>{{this}}</li>
+								{{/each}}
+								{{ scrollMessages }}
+							{{/if}}
+						</ul>
+						<input type="text" id="messageInput" placeholder="Leave a message..."><button class="button button-empty button-small" id='submitMessage'>Send</button>
+					{{/ionItem}}
+				{{/if }}
 
 			{{/ionList}}
+
+
 
 			{{#if activityMember}}
 				<!-- {{#ionItem body=true}} -->

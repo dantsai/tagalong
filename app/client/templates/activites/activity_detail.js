@@ -8,6 +8,16 @@ Template.activity.helpers({
 			inTagalongs = false;
 		return inTagalongs;
 	},
+	hasMessages: function() {
+		if (this.messages.length) 
+			return true;
+		return false;
+	},
+	scrollMessages: function() {
+		setTimeout(function() {
+			$(".messageArea").scrollTop($(".messageArea").prop("scrollHeight"));
+		},300);
+	},
 	activityMember: function () {
 		var inTagalongs = true;
 		if ($.inArray(Meteor.userId(),this.tagalongs) ==-1)
@@ -54,6 +64,27 @@ Template.activity.onCreated(function() {
 });
 
 Template.activity.events({
+	'click #submitMessage': function() {
+		var msg = $('#messageInput').val();
+		if (msg) { 
+			var input = '['+Meteor.user().profile.names.first+'] '+msg;
+			this.messages.push(input); //saving the text at the beginning of the messages array.
+			var update = {
+				'activityId': this._id,
+				'properties': {
+					'messages': this.messages
+				}
+			}
+			Meteor.call('activityUpdate', update, function(error, result) { 	
+				if (error)
+					return alert(error.reason);
+			});
+			setTimeout(function() {
+				$(".messageArea").scrollTop($(".messageArea").prop("scrollHeight"));
+			},300);
+			$('#messageInput').val('');
+		}
+	},
 	'click #activity-join': function(event) {
 		Meteor.call('tagalong', this._id, Meteor.userId())		
 	},
