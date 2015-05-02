@@ -75,7 +75,7 @@ Template.activityNew.events({
 		
 		dateToSet.setHours(hourToSet)
 		dateToSet.setMinutes(minsToSet)
-		console.log(dateToSet)
+		//console.log(dateToSet)
 
 		//Bug when user is selecting a current day. Should not set time that has passed.
 		var activity = {
@@ -98,7 +98,7 @@ Template.activityNew.events({
 			'messages':[]					
 		};
 
-		console.log(activity);
+		//console.log(activity);
 		Meteor.call('activityInsert', activity, function(error, result) { 	
 			if (error)
 				return alert(error.reason);
@@ -136,21 +136,21 @@ Template.activityNew.events({
 })
 
 Meteor.startup(function () {
-	console.log('startup function...');
+	//console.log('startup function...');
 	if(Meteor.isClient) {
-		console.log("loading google maps...");
+		//console.log("loading google maps...");
 		GoogleMaps.load();
 	}
 	// get location
 	var onSuccess = function(position) {
-	    console.log('Latitude: '          + position.coords.latitude          + '\n' +
-	          'Longitude: '         + position.coords.longitude         + '\n' +
-	          'Altitude: '          + position.coords.altitude          + '\n' +
-	          'Accuracy: '          + position.coords.accuracy          + '\n' +
-	          'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-	          'Heading: '           + position.coords.heading           + '\n' +
-	          'Speed: '             + position.coords.speed             + '\n' +
-	          'Timestamp: '         + position.timestamp                + '\n');
+	    // console.log('Latitude: '          + position.coords.latitude          + '\n' +
+	    //       'Longitude: '         + position.coords.longitude         + '\n' +
+	    //       'Altitude: '          + position.coords.altitude          + '\n' +
+	    //       'Accuracy: '          + position.coords.accuracy          + '\n' +
+	    //       'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+	    //       'Heading: '           + position.coords.heading           + '\n' +
+	    //       'Speed: '             + position.coords.speed             + '\n' +
+	    //       'Timestamp: '         + position.timestamp                + '\n');
 	    latitude = position.coords.latitude;
 	    longitude = position.coords.longitude;
 	};

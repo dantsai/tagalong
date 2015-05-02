@@ -18,8 +18,24 @@
 					</p>
 
 				{{/ionItem}}
+
+				{{#ionItem class="body friends"}}
+					<h5 class="listSubHeader">Select the people you want to see on Tagalong</h5>
+						{{#each getFriends}}
+							<li uid='{{this._id}}' class="friendAvatar selected">
+								<img class="tinyPic" src="{{this.profile.names.pic}}"><span class="userNames">{{this.profile.names.first}} {{this.profile.names.last}}</span>
+							</li>
+						{{/each}}
+
+						{{#each getUsers}} 
+							<li uid='{{this._id}}' class="friendAvatar">
+								<img class="tinyPic" src="{{this.profile.names.pic}}"><span class="userNames">{{this.profile.names.first}} {{this.profile.names.last}}</span>
+							</li>
+						{{/each}}
+				{{/ionItem}}
+
 				
-			    {{#ionItem body=true class='padding addActivity'}}
+			    {{#ionItem body=true class='addActivity'}}
 					<div class="activityTypes">	
 						<h5>Activities:</h5>
 							<div>

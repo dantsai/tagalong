@@ -41,8 +41,7 @@ function createUser() {
             			}
             		},
                 notifications: {
-                    all : {},
-                    new : {}
+                    new : []
                 }
         	},
         	function(error) { 	

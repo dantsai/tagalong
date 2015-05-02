@@ -3,7 +3,10 @@ Meteor.methods({
 
 		Meteor.users.update(userActivities.user, 
 			{ $set: 
-				{ activities: userActivities.prefs } 
+				{ 
+					activities: userActivities.activities,
+					friends: userActivities.friends 
+				} 
 			}
 		)
 	},

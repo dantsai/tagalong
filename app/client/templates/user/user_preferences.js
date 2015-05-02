@@ -2,6 +2,9 @@ Template.userPreferences.helpers({
 	getUser: function () {
 		return Meteor.user();
 	},
+	getUserInformation: function(id) {
+		returnMeteor.users.find({_id:id});
+	},
 	emailAddress: function (emails) {
 		return emails['0'].address
 	},
@@ -13,6 +16,32 @@ Template.userPreferences.helpers({
 		if ($.inArray(activity, this.activities) != -1)
 			result = 'selected';
 		return result;
+	},
+	isFriend: function(friendId) {
+		if ($.inArray(friendId, Meteor.user().friends) != -1) 
+			return true;
+		return false;
+	},
+	getUsers: function() {
+		var users = Meteor.users.find({},{
+			'_id':1,
+			"profile.names.first":1,
+			"profile.names.last":1,
+			"profile.names.pic":1
+		}).fetch();
+		var friends = this.friends;
+		var res = [];
+		friends.push(this._id);
+		$.each(users, function(i,user) {
+			if ($.inArray(user._id,friends) ==-1 )
+				res.push(user);
+		});
+		return res;
+	},
+	getFriends: function() {
+		var test = Meteor.users.find({_id: {$in: this.friends} }).fetch();
+		return Meteor.users.find({_id: {$in: this.friends} });
+
 	}
 });
 
@@ -22,6 +51,9 @@ Template.userPreferences.events({
 		selection.toggleClass('selected');
 
 	},
+	'click .modal .friendAvatar': function(event) {
+		$(event.currentTarget).toggleClass('selected');
+	},
 
 	'click #user-preferences-save': function(event) {	
 
@@ -29,9 +61,14 @@ Template.userPreferences.events({
 			return $(obj).attr('activity');
 		})
 
+		var friendsSelected = $.map($(".modal .friendAvatar.selected"), function(obj,i) {
+			return $(obj).attr('uid');
+		})
+
 		userPrefs = {
 			'user' : Meteor.userId(),
-			'prefs': activitiesSelected
+			'activities': activitiesSelected,
+			'friends': friendsSelected
 		}
 		Meteor.call('setPreferences', userPrefs, function(error, result) { 	
 			if (error)
