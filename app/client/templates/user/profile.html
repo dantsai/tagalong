@@ -85,11 +85,18 @@
 					{{else}}
 						{{#ionItem class="body friends"}}
 							<h5 class="listSubHeader">Your friends on Tagalong</h5>
-							{{#each getFriends}}
-								<li>
-									<img class="tinyPic" src="{{this.profile.names.pic}}"><span class="userNames">{{this.profile.names.first}} {{this.profile.names.last}}</span>
-								</li>
-							{{/each}}
+							{{#if this.friends}}
+								{{#each getFriends}}
+									<li>
+										<img class="tinyPic" src="{{this.profile.names.pic}}"><span class="userNames">{{this.profile.names.first}} {{this.profile.names.last}}</span>
+									</li>
+								{{/each}}
+							{{else}}
+								<div class="emptyPref">
+									<p>You have not selected the friends you would like to Tagalong. Why not do it know?</p>
+									<button id="user-preferences-edit" class="button button-stable" data-ion-modal="userPreferences">{{> ionIcon icon="ios-gear-outline"}} Edit Preferences</button> 
+								</div>
+							{{/if}}
 						{{/ionItem}}
 					{{/if}}
 				{{/if}}
