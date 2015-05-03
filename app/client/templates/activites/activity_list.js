@@ -161,7 +161,6 @@ groupActivities = function (activities) {
 	var grouped_activities = $.map(grouped_obj, function(value, index) {
 	    return [value];
 	});
-
-	console.log(grouped_activities);
+	// console.log(grouped_activities);
 	return grouped_activities	
 }
