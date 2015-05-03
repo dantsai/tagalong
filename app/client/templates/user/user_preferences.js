@@ -77,6 +77,44 @@ Template.userPreferences.events({
             ft.upload(imageURI, encodeURI("http://dantsai.com/_/upload.php"), win, fail, options, true);
         }
 
+	},
+	'click #change-photo-camera': function(event) {
+		// camera upload profile photo
+		console.log("take a new photo...");
+		navigator.camera.getPicture(uploadPhoto,
+            function(message) { console.log('get picture failed'); },
+            { quality: 50, 
+            destinationType: navigator.camera.DestinationType.FILE_URI,
+            sourceType: navigator.camera.PictureSourceType.CAMERA }
+            );
+
+		function win(r) {
+		    // console.log("Code = " + r.responseCode);
+		    console.log("Response = " + r.response);
+		    // console.log("Sent = " + r.bytesSent);
+		    // console.log(r.response);
+		    
+			Meteor.call('updateProfilePic', r.response), function(error, result) { 	
+				if (error)
+					return alert(error.reason);
+			};		    
+		}
+
+		function fail(error) {
+		    console.log("An error has occurred: Code = " + error.code + '. source: ' + error.source + '. target: ' + error.target);
+		    console.log("upload error source " + error.source);
+		    console.log("upload error target " + error.target);
+		}
+
+        function uploadPhoto(imageURI) {
+            var options = new FileUploadOptions();
+            options.fileKey="file";
+            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+            options.mimeType="image/jpeg";
+
+            var ft = new FileTransfer();
+            ft.upload(imageURI, encodeURI("http://dantsai.com/_/upload.php"), win, fail, options, true);
+        }
 	}	
 })
 
