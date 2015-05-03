@@ -68,17 +68,22 @@ Meteor.methods({
 			available: false 
 		});
 	},	
-	activityFlake : function(activityId,userId) {
+	activityFlake : function(activityId) {
 		Activities.update(activityId, {
 			$pull : {tagalongs: Meteor.userId()}
 		});
 	},
-	addMessageToActivity: function(message) {
-		Activities.update(activityId, {
-			$addToSet : { messages: {
-							user: Meteor.userId(), message: message.messageUrl
-						}
-				}
-		});
+	addMessageToActivity: function(messageUrl) {
+		// Activities.update(activityId, {
+		// 	$addToSet : { messages: {
+		// 					user: Meteor.userId(), message: message.messageUrl
+		// 				}
+		// 		}
+		// });
+		Activities.users.update(Meteor.userId(), {
+			$push: { messages: { $each: [ {
+							user: Meteor.userId(), message: messageUrl
+						} ], $position: 0 } }
+		});		
 	}
 });

@@ -3,7 +3,10 @@ Meteor.methods({
 
 		Meteor.users.update(userActivities.user, 
 			{ $set: 
-				{ activities: userActivities.prefs } 
+				{ 
+					activities: userActivities.activities,
+					friends: userActivities.friends 
+				} 
 			}
 		)
 	},
@@ -16,14 +19,10 @@ Meteor.methods({
 	},
 
 	addMessageToSelf: function (message) {
-		// console.log(message)
-		// Meteor.users.update(Meteor.userId(), {
-		// 	$push: { messages: 
-		// 				{ type: message.activity_type, message: message.messageUrl }
-		// 	}
-		// 	$push: { messages: { $each: [ notification ], $position: 0 } }
-		// 	messages: { $push: { $each: [ notification ], $position: 0 } } 			
-		// });
+		console.log(message)
+		Meteor.users.update(Meteor.userId(), {
+			$push: { messages: { $each: [ message ], $position: 0 } }
+		});
 	},
 	addNotification: function (notification, user) {
 		Meteor.users.update(user, {

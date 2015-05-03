@@ -6,15 +6,20 @@ if (Activities.find().count() === 0 ) {
 	        name: "Chalenge Masekera"
 	    },
 	    type: "Cycling",
-	    location: {
-	        name: "Grizzly Peak"
-	    },
+	    "location" : {
+			"name" : "RSF",
+			"position" : {
+				"A" : 37.85755980460739,
+				"F" : -122.2449414512207
+			}
+		},
 	    time: {
 	        epoch: '',
-	        date: new Date('5/2/2015 10:00'),
+	        date: new Date('5/5/2015 10:00'),
 	        time: '10:00'
 	    },
 	    tagalongs: [],
+	    messages:[],
 	    duration: 2,
 	    pictures: [],
 	    status: 'Available',
@@ -31,22 +36,27 @@ if (Activities.find().count() === 0 ) {
 	        name: "Chalenge Masekera"
 	    },
 	    type: "Swimming",
-	    location: {
-	        name: "Hearst Pool"
-	    },
+	    "location" : {
+			"name" : "RSF",
+			"position" : {
+				"A" : 37.85755980460739,
+				"F" : -122.2449414512207
+			}
+		},
 	    time: {
 	        epoch: '',
-	        date: new Date('5/12/2015 14:00'),
+	        date: new Date('5/3/2015 14:00'),
 	        time: '14:00'
 	    },
 	    tagalongs: [],
+	    messages:[],
 	    duration: 2.3,
 	    pictures: [],
 	    status: 'Available',
 	    invitations: [],
 	    public: true,
 	    comments: '',
-	    createdAt: new Date('4/27/2015'),
+	    createdAt: new Date('5/1/2015'),
 	    available: true
 	});
 
@@ -56,15 +66,20 @@ if (Activities.find().count() === 0 ) {
 	        name: "Dan Tsai"
 	    },
 	    type: "Swimming",
-	    location: {
-	        name: "Hearst Pool"
-	    },
+	    "location" : {
+			"name" : "RSF",
+			"position" : {
+				"A" : 37.85755980460739,
+				"F" : -122.2449414512207
+			}
+		},
 	    time: {
 	        epoch: '',
-	        date: new Date('4/30/2015 08:00'),
+	        date: new Date('5/2/2015 08:00'),
 	        time: '08:00'
 	    },
 	    tagalongs: [],
+	    messages:[],
 	    duration: 1,
 	    pictures: [],
 	    status: 'Available',
@@ -81,15 +96,20 @@ if (Activities.find().count() === 0 ) {
 	        name: "Suhaib Syaed"
 	    },
 	    type: "Swimming",
-	    location: {
-	        name: "Spieker Pool"
-	    },
-	    time: {
+	    "location" : {
+			"name" : "RSF",
+			"position" : {
+				"A" : 37.85755980460739,
+				"F" : -122.2449414512207
+			}
+		},
+		time: {
 	        epoch: '',
-	        date: new Date('5/3/2015 15:00'),
-	        time: '15:00'
+	        date: new Date('5/3/2015 19:30'),
+	        time: '19:30'
 	    },
 	    tagalongs: [],
+	    messages:[],
 	    duration: 1.5,
 	    pictures: [],
 	    status: 'Available',
@@ -106,15 +126,20 @@ if (Activities.find().count() === 0 ) {
 	        name: "Suhaib Syaed"
 	    },
 	    type: "Swimming",
-	    location: {
-	        name: "Spieker Pool"
-	    },
+	    "location" : {
+			"name" : "RSF",
+			"position" : {
+				"A" : 37.85755980460739,
+				"F" : -122.2449414512207
+			}
+		},
 	    time: {
 	        epoch: '',
 	        date: new Date('5/2/2015 19:30'),
 	        time: '19:30'
 	    },
 	    tagalongs: [],
+	    messages:[],
 	    duration: 1.5,
 	    pictures: [],
 	    status: 'Available',
@@ -131,15 +156,20 @@ if (Activities.find().count() === 0 ) {
 	        name: "Pablo Arvizu"
 	    },
 	    type: "Running",
-	    location: {
-	        name: "Spieker Pool"
-	    },
+	    "location" : {
+			"name" : "RSF",
+			"position" : {
+				"A" : 37.85755980460739,
+				"F" : -122.2449414512207
+			}
+		},
 	    time: {
 	        epoch: '',
-	        date: new Date('4/29/2015 19:00'),
+	        date: new Date('5/7/2015 19:00'),
 	        time: '19:00'
 	    },
 	    tagalongs: [],
+	    messages:[],
 	    duration: 2,
 	    pictures: [],
 	    status: 'Available',
@@ -156,15 +186,20 @@ if (Activities.find().count() === 0 ) {
 	        name: "Pablo Arvizu"
 	    },
 	    type: "Soccer",
-	    location: {
-	        name: "RSF"
-	    },
+	    "location" : {
+			"name" : "RSF",
+			"position" : {
+				"A" : 37.85755980460739,
+				"F" : -122.2449414512207
+			}
+		},
 	    time: {
 	        epoch: '',
 	        date: new Date('5/1/2015 18:00'),
 	        time: '18:00'
 	    },
 	    tagalongs: [],
+	    messages:[],
 	    duration: 1,
 	    pictures: [],
 	    status: 'Available',
@@ -181,15 +216,20 @@ if (Activities.find().count() === 0 ) {
 	        name: "Pablo Arvizu"
 	    },
 	    type: "Hiking",
-	    location: {
-	        name: "Big C"
-	    },
+	    "location" : {
+			"name" : "RSF",
+			"position" : {
+				"A" : 37.85755980460739,
+				"F" : -122.2449414512207
+			}
+		},
 	    time: {
 	        epoch: '',
 	        date: new Date('4/30/2015 19:03'),
 	        time: '19:03'
 	    },
 	    tagalongs: [],
+	    messages:[],
 	    duration: 3,
 	    pictures: [],
 	    status: 'Available',
@@ -226,6 +266,7 @@ if (Meteor.users.find().count() === 0) {
 		        "pic": "/img/Pablo.jpg"
 	    	}
 	    },
+	    "friends":[],
 	    "activities": ['Running','Swimming','Hiking','Soccer']
 
 	}); 
@@ -252,6 +293,7 @@ if (Meteor.users.find().count() === 0) {
 		        "pic": "/img/Chalenge.jpg"
 	    	}
 	    },
+	    "friends":[],
 	    "activities": ['Soccer','Hiking','Walking']
 	});
 	console.log("Added user: chalenge@gmail.com"); 
@@ -277,6 +319,7 @@ if (Meteor.users.find().count() === 0) {
 		        "pic": "/img/Suhaib.jpg"
 	    	}
 	    },
+	    "friends":[],
 	    "activities": ['Running','Swimming','Cycling']
 	}); 
 	console.log("Added user: suhaib@gmail.com");
@@ -302,6 +345,7 @@ if (Meteor.users.find().count() === 0) {
 		        "pic": "/img/Dan.jpg"
 		    }
 	    },
+	    "friends":[],
 	    "activities": ['Running','Swimming','Cycling']
 	});
 	console.log("Added user: dan@gmail.com");

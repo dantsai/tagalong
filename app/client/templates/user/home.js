@@ -11,7 +11,6 @@ Template.home.helpers({
 	},
 	getTimeLength: function(duration,max) {
 		var aprox = (duration/max)*100 ;
-		console.log(aprox);	
 		return aprox +"%";
 	},
 	upcomingTagalongs: function() {
@@ -50,7 +49,6 @@ Template.home.helpers({
 
 Template.home.events({
 	'click #logoutBtn': function() {
-		console.log('logout');
 		Meteor.logout();
 	},
 	'click #remove-notification': function () {

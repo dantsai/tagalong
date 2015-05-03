@@ -24,6 +24,7 @@ Template.activityList.helpers({
 					'available': true,
 				  	'time.date' : 
 						{ $gte: new Date(date_now) },
+					// 'friends': { $in : Meteor.user().friends },
 					$or: [ 
 						{'type': {$regex: ".*"+Session.get('activitySearchQuery')+".*"}}, 
 						{'host.name' :{$regex: ".*"+Session.get('activitySearchQuery')+".*"}},
@@ -39,11 +40,19 @@ Template.activityList.helpers({
 			);
 		}
 		else if (Session.get('activityFilter') == 'New') {
+			var yesterday = new Date();
+			yesterday.setDate(yesterday.getDate() -1)
 			activities = Activities.find(
 				{ 
 					'available': true,
 				  	'time.date' : { $gte: new Date(date_now) },
-					'host._id' : {$ne: Meteor.userId()},
+				  	'createdAt': { $gte: new Date(yesterday)},
+				  	'type': 
+					  		{ $in : Meteor.user().activities },
+					$and: [
+						{'host._id': { $ne: Meteor.userId()} },
+						{'host._id': { $in: Meteor.user().friends}}
+					],
 					$or: [ 
 						{'type': {$regex: ".*"+Session.get('activitySearchQuery')+".*"}}, 
 						{'host.name' :{$regex: ".*"+Session.get('activitySearchQuery')+".*"}} ,
@@ -68,7 +77,10 @@ Template.activityList.helpers({
 							{ $gte: new Date(date_now) },
 					  	'type': 
 					  		{ $in : Meteor.user().activities },
-						'host._id' : {$ne: Meteor.userId()},
+						$and: [
+							{'host._id': { $ne: Meteor.userId()} },
+							{'host._id': { $in: Meteor.user().friends}}
+						],
 						$or: [ 
 							{'type': {$regex: ".*"+Session.get('activitySearchQuery')+".*"}}, 
 							{'host.name' :{$regex: ".*"+Session.get('activitySearchQuery')+".*"}},
@@ -89,7 +101,10 @@ Template.activityList.helpers({
 			}
 
 		}
-		return groupActivities(activities);
+		if (activities.count()) 
+			return groupActivities(activities);
+		return null;
+		
 	},
 
 	getUserPicUrl: function() {
@@ -123,7 +138,7 @@ Template.activityList.events({
 
 groupActivities = function (activities) {
 	var grouped_obj = {}
-	
+
 	activities.forEach(function(activity) {
 		if (grouped_obj.hasOwnProperty(moment(activity.time.date).format('MMMDDYYYY'))) {
 			grouped_obj[moment(activity.time.date).format('MMMDDYYYY')].activities.push(activity);	

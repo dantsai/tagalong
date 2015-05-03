@@ -286,6 +286,7 @@ $loading-font-size: 22px;
 			margin-left: 0px;
 			vertical-align: top;
 			padding-left: 5px;	
+			border-radius: 3px;
 		}
 
 		button {
@@ -652,6 +653,7 @@ $loading-font-size: 22px;
 
 		p {
 			margin: 10px;
+			white-space: normal;
 		}
 	}
 
@@ -689,6 +691,7 @@ $loading-font-size: 22px;
 	}
 
 	.friends {
+
 		img {
 			max-width: none;
 			max-height: none;
@@ -731,9 +734,7 @@ $loading-font-size: 22px;
 }
 /****** EDIT PROFILE *********/
 
-.selected {
-	background-color: #5ED1EC;
-}
+
 
 .editProfile {
 	vertical-align: bottom;
@@ -748,6 +749,10 @@ $loading-font-size: 22px;
 		font-weight: bold;
 	}
 
+	.activityIcon.selected {
+		background-color: #5ED1EC;
+	}
+
 	#editEmail {
 		width:80%;
 	}
@@ -760,6 +765,49 @@ $loading-font-size: 22px;
 
 	.item {
 		white-space: normal;
+	}
+
+	.friends {
+
+		img {
+			max-width: none;
+			max-height: none;
+			margin:3px;
+			width: 50px;
+			height: 50px;
+			border-radius:50%;
+			opacity: .5;
+			filter: grayscale(100%);
+			-webkit-filter: grayscale(100%);
+		}
+
+		span.userNames {
+			font-size: 8pt;
+		}
+
+		li {
+			width: 20%;
+			margin:2px;
+			display: inline-block;
+			text-decoration: none;
+			line-height: 10px;
+			vertical-align: top;
+			text-align: center;
+
+			&.selected {
+				
+
+				img {
+					-webkit-filter: grayscale(0%);
+					border:solid 3px #5ED1EC;
+					opacity: 1;
+				}
+
+				span.userNames {
+					color: #5ED1EC;
+				}
+			}
+		}
 	}
 }
 

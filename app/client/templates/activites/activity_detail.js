@@ -42,13 +42,13 @@ Template.activity.helpers({
 	},
 	exampleMapOptions: function() {
 	  // Make sure the maps API has loaded
-	  console.log(this.location.position.A, this.location.position.F);
+	  // console.log(this.location.position.A, this.location.position.F);
 
 	  if (GoogleMaps.loaded()) {
 	    // Map initialization options
 	    return {
 	      center: new google.maps.LatLng(this.location.position.A, this.location.position.F),
-	      zoom: 8
+	      zoom: 17
 	    };
 	  }
 	}	
@@ -89,7 +89,7 @@ Template.activity.events({
 		Meteor.call('tagalong', this._id)
 
 		var name = Meteor.user().profile.names.first + ' ' + Meteor.user().profile.names.last
-		var notification = { message: name + ' is tagging along you ' + this.type,
+		var notification = { message: name + ' is tagging along ' + this.type,
 							 _id: this._id }
 		
 		Meteor.call('addNotification', notification, this.host._id)
@@ -102,26 +102,6 @@ Template.activity.events({
 			Meteor.call('addNotification', notification, taggee)
 		})
 
-	},
-	'click #activity-cancel': function(event) {
-		
-		var notification = { message: this.host.name + ' cancelled ' + this.type }
-		this.tagalongs.forEach(function(taggee) {
-			Meteor.call('addNotification', notification, taggee)
-		});		
-
-		Meteor.call('activityCancel', this._id);
-		Router.go('tagalongs');
-	},
-	'click #activity-flake': function(event) {
-		Meteor.call('activityFlake', this._id,Meteor.userId());
-		
-
-		var name = Meteor.user().profile.names.first + ' ' + Meteor.user().profile.names.last
-		var notification = { message: name + ' bailed on you ' + this.type,
-							 _id: this._id }
-		
-		Meteor.call('addNotification', notification, this.host._id)
 	},
 	'click #message-self': function(event) {
 		// just as a test of camera functionality
@@ -179,15 +159,91 @@ Template.activity.events({
 
 		// // start video capture
 		// navigator.device.capture.captureVideo(captureSuccess, captureError, {limit:1});
-		var message = { 'activity_id': this.id,
+		var message = { 'activity_id': this._id,
 						'activity_type': this.type,	                				
     					'messageUrl' : '/img/Dan2.jpg'
 					}
 
 	    Meteor.call('addMessageToSelf', message);
-	    Meteor.call('addMessageToActivity', message);   
+	    Meteor.call('addMessageToActivity', '/img/Dan2.jpg');   
+
+	},
+	'click #activity-cancel': function(event,template) {
+		var actId = this._id;
+		var tagalongs = this.tagalongs;
+		var notification = { message: this.host.name + ' cancelled ' + this.type }
+		IonActionSheet.show({
+	      titleText: 'Are you sure you want to Cancel the activity?',
+	      buttons: [
+	        { text: 'Yes, Cancel <i class="icon ion-ios-cancel"></i>' },
+	      ],
+	      cancelText: 'No, take me back!',
+	      buttonClicked: function(index) {
+	        if (index === 0) {
+	          	console.log('Canceled');
+				
+				tagalongs.forEach(function(taggee) {
+					Meteor.call('addNotification', notification, taggee)
+				});		
+
+				Meteor.call('activityCancel', this._id);
+				Router.go('tagalongs');
+	        }
+	        return true;
+	      }
+	    });
+	},
+	'click #activity-flake': function(event,template) {
+		var actId = this._id;
+		var host = this.host.name;
+		var hostId = this.host._id;
+		var actType = this.type;
+		IonActionSheet.show({
+	      titleText: 'Bail on '+host+ '?',
+	      buttons: [
+	        { text: 'Yes, bail. <i class="icon ion-ios-cancel"></i>' },
+	      ],
+	      cancelText: 'No, take me back!',
+	      buttonClicked: function(index) {
+	      	// console.log(this)
+	        if (index === 0) {
+				Meteor.call('activityFlake', actId);
+				
+				var name = Meteor.user().profile.names.first + ' ' + Meteor.user().profile.names.last
+				var notification = { message: name + ' bailed on ' + actType,
+									 _id: actId }
+				
+				Meteor.call('addNotification', notification, hostId)
+
+	        }
+	        return true;
+	      }
+	    });
 	}			
 });
+
+function recordVideo(activityId) {
+	//passing the activity as a parameter so you can access the id.
+
+	// alert('camera...')
+	console.log('Video...')
+	console.log(activityId);
+	console.log(Meteor.userId());
+
+	//ADD CODE FOR RECORDING VIDEO HERE.
+}
+
+function takePhoto(activityId) {
+	//passing the activity as a parameter so you can access the id.
+
+	// alert('camera...')
+	console.log('Photo...')
+	console.log(activityId);
+	console.log(Meteor.userId());
+
+	//ADD CODE FOR TAKING PHOTO HERE.
+  
+}
 
 Meteor.startup(function () {
 	if(Meteor.isClient) {

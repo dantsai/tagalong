@@ -8,7 +8,8 @@ Meteor.publish('userNameInfo', function () {
 			'profile': 1 , 
 			'emails':1,
 			'activities':1,
-			'notifications':1
+			'notifications':1,
+			'friends':1
 		}
 	});
 });

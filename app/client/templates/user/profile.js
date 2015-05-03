@@ -13,13 +13,14 @@ Template.profile.helpers({
 	},	
 
 	getFriends: function() {
-		var users = Meteor.users.find().fetch();
-		var res = [];
-		$.each(users, function(i,user) {
-			if (user._id != Meteor.userId())
-				res.push(user);
-		});
-		return res;
+		var users = Meteor.users.find({_id: {$in: this.friends}}).fetch();
+		// var res = [];
+		// $.each(users, function(i,user) {
+		// 	if (user._id != Meteor.userId())
+		// 		res.push(user);
+		// });
+		// return res;
+		return users;
 	},
 	getProfileSectionSelection: function(section) {
 		return Session.get('profileSection') == section;

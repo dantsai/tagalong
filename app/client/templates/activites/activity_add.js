@@ -41,7 +41,7 @@ Template.activityNew.helpers({
 	    // Map initialization options
 	    return {
 	      center: new google.maps.LatLng(latitude, longitude),
-	      zoom: 8
+	      zoom: 17
 	    };
 	  }
 	}
@@ -75,7 +75,7 @@ Template.activityNew.events({
 		
 		dateToSet.setHours(hourToSet)
 		dateToSet.setMinutes(minsToSet)
-		console.log(dateToSet)
+		//console.log(dateToSet)
 
 		//Bug when user is selecting a current day. Should not set time that has passed.
 		var activity = {
@@ -98,7 +98,7 @@ Template.activityNew.events({
 			'messages':[]					
 		};
 
-		console.log(activity);
+		//console.log(activity);
 		Meteor.call('activityInsert', activity, function(error, result) { 	
 			if (error)
 				return alert(error.reason);
@@ -136,9 +136,9 @@ Template.activityNew.events({
 })
 
 Meteor.startup(function () {
-	console.log('startup function...');
+	//console.log('startup function...');
 	if(Meteor.isClient) {
-		console.log("loading google maps...");
+		//console.log("loading google maps...");
 		GoogleMaps.load();
 	}
 	// get location
