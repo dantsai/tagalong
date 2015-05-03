@@ -88,14 +88,14 @@ Template.activity.events({
 	'click #activity-join': function(event) {
 		Meteor.call('tagalong', this._id, Meteor.userId())		
 	},
-	'click #activity-cancel': function(event) {
-		Meteor.call('activityCancel', this._id);
-		Router.go('tagalongs');
-	},
-	'click #activity-flake': function(event) {
-		Meteor.call('activityFlake', this._id,Meteor.userId());
-		// Router.go('tagalongs');
-	},
+	// 'click #activity-cancel': function(event) {
+	// 	Meteor.call('activityCancel', this._id);
+	// 	Router.go('tagalongs');
+	// },
+	// 'click #activity-flake': function(event) {
+	// 	Meteor.call('activityFlake', this._id,Meteor.userId());
+	// 	// Router.go('tagalongs');
+	// },
 	// 'click #message-self': function(event) {
 	// 	// just as a test of camera functionality
 
@@ -175,7 +175,38 @@ Template.activity.events({
 	        return true;
 	      }
 	    });
-	}			
+	},
+	'click [data-action=cancelActionSheet]': function (event,template) {
+		var actId = this._id;
+
+		IonActionSheet.show({
+	      titleText: 'Are you sure you want to cancel the activity?',
+	      buttons: [
+	        { text: 'Cancel Activity' }
+	      ],
+	      cancelText: 'Never Mind',
+	      buttonClicked: function(index) {
+			Meteor.call('activityCancel', this._id);
+			Router.go('tagalongs');
+	        return true;
+	      }
+	    });
+	},
+	'click [data-action=bailActionSheet]': function (event,template) {
+		var actId = this._id;
+
+		IonActionSheet.show({
+	      titleText: 'Are you sure you want to bail on the tagalong?',
+	      buttons: [
+	        { text: 'Confirm' }
+	      ],
+	      cancelText: 'Cancel',
+	      buttonClicked: function(index) {
+			Meteor.call('activityFlake', this._id,Meteor.userId());
+	        return true;
+	      }
+	    });
+	}
 });
 
 function recordVideo(activityId) {
