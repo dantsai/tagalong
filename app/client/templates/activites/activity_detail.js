@@ -145,7 +145,8 @@ Template.activity.events({
 	            function(error) {
 	                alert('Error uploading file ' + path + ': ' + error.code + '. source: ' + error.source + '. target: ' + error.target);
 	            },
-	            { fileName: name });   
+	            { fileName: name }
+	        );   
 	    }
 
 		// start video capture
@@ -177,7 +178,7 @@ Template.activity.events({
 		var actId = this._id;
 		var host = this.host.name;
 		IonActionSheet.show({
-	      titleText: 'Bail on '+host+ '?',
+	      titleText: 'Are you sure you want to bail on '+host+ '?',
 	      buttons: [
 	        { text: 'Yes, bail. <i class="icon ion-ios-cancel"></i>' },
 	      ],
@@ -195,29 +196,6 @@ Template.activity.events({
 	    });
 	}			
 });
-
-function recordVideo(activityId) {
-	//passing the activity as a parameter so you can access the id.
-
-	// alert('camera...')
-	console.log('Video...')
-	console.log(activityId);
-	console.log(Meteor.userId());
-
-	//ADD CODE FOR RECORDING VIDEO HERE.
-}
-
-function takePhoto(activityId) {
-	//passing the activity as a parameter so you can access the id.
-
-	// alert('camera...')
-	console.log('Photo...')
-	console.log(activityId);
-	console.log(Meteor.userId());
-
-	//ADD CODE FOR TAKING PHOTO HERE.
-  
-}
 
 Meteor.startup(function () {
 	if(Meteor.isClient) {

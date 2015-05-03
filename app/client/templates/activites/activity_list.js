@@ -13,6 +13,11 @@ Template.activityList.helpers({
 		if(option == Session.get('activityFilter'))
 			return 'selected';
 	},
+	hasCompleteSettings: function() {
+		if (Meteor.user().activities.length && Meteor.user().friends.length)
+			return true;
+		return false;
+	}, 
 	activityDisplay: function() {
 		var activities;
 		now = new Date();
@@ -103,7 +108,7 @@ Template.activityList.helpers({
 		}
 		if (activities.count()) 
 			return groupActivities(activities);
-		return null;
+		return activities;
 		
 	},
 

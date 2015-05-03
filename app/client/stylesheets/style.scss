@@ -106,6 +106,19 @@ $loading-font-size: 22px;
 	/*right:30px;*/
 }
 
+.emptyPref {
+	font-size: 10pt;
+	text-align: center;
+	padding: 5px;
+	font-size: 14px;
+	color: #666;
+	margin: 10px;
+
+	p {
+		margin: 10px;
+		white-space: normal;
+	}
+}
 
 
 .activityItem {
@@ -308,8 +321,6 @@ $loading-font-size: 22px;
 			font-size: 9pt;
 			width: 100%;
 			white-space: normal;
-
-
 		}
 	}
 
