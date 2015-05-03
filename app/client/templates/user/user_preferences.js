@@ -86,13 +86,13 @@ Template.userPreferences.events({
             sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY }
             );
 
-		function win(r) {
+		function win(result) {
 		    // console.log("Code = " + r.responseCode);
-		    console.log("Response = " + r.response);
+		    console.log("Response = " + result.response);
 		    // console.log("Sent = " + r.bytesSent);
 		    // console.log(r.response);
 		    
-			Meteor.call('updateProfilePic', r.response), function(error, result) { 	
+			Meteor.call('updateProfilePic', result.response), function(error, result) { 	
 				if (error)
 					return alert(error.reason);
 			};		    

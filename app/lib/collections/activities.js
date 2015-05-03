@@ -57,10 +57,10 @@ Meteor.methods({
 		for (var key in grouped_obj) grouped.push({'name':grouped_obj[key]['name'],'value':grouped_obj[key]['activities']})
 		return grouped;
 	},
-	tagalong: function(activityId,userid) {
+	tagalong: function(activityId) {
 
 		Activities.update(activityId, {
-			$addToSet: {tagalongs: userid}
+			$addToSet: {tagalongs: Meteor.userId()}
 		});
 	},
 	activityCancel: function(activityId) {
@@ -68,9 +68,22 @@ Meteor.methods({
 			available: false 
 		});
 	},	
-	activityFlake : function(activityId,userId) {
+	activityFlake : function(activityId) {
 		Activities.update(activityId, {
-			$pull : {tagalongs: userId}
+			$pull : {tagalongs: Meteor.userId()}
 		});
+	},
+	addMessageToActivity: function(messageUrl) {
+		// Activities.update(activityId, {
+		// 	$addToSet : { messages: {
+		// 					user: Meteor.userId(), message: message.messageUrl
+		// 				}
+		// 		}
+		// });
+		Activities.users.update(Meteor.userId(), {
+			$push: { messages: { $each: [ {
+							user: Meteor.userId(), message: messageUrl
+						} ], $position: 0 } }
+		});		
 	}
 });
