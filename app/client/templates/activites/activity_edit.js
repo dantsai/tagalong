@@ -59,11 +59,7 @@ Template.activityEdit.helpers({
 
 Template.activityEdit.events({
 	'click #activity-save': function(event) {
-		pushToEdit(this.id);
-	},
-
-	'click #activity-edit': function(event) {
-		pushToEdit(this.id);
+		pushToEdit(this.id, this.host.name, this.tagalongs);
 	},
 	'click .modal .activityIcon': function (event) {
 		
@@ -91,7 +87,7 @@ Template.activityEdit.events({
 	}
 })
 
-function pushToEdit(activityId) {
+function pushToEdit(activityId, hostname,tagalongs) {
 		console.log(activityId);
 
 		var dateToSet = new Date($(".dayofweek.selected").attr('value'))
@@ -101,6 +97,17 @@ function pushToEdit(activityId) {
 		dateToSet.setHours(hourToSet)
 		dateToSet.setMinutes(minsToSet)
 		console.log(dateToSet)
+
+		var notification = { 
+				message: hostname + ' changed an activity you are tagging along',
+				type: 'update',
+				_id: activityId 
+			}
+
+		tagalongs.forEach(function(taggee) {
+			console.log(notification)
+			Meteor.call('addNotification', notification, taggee)
+		});
 
 		var activity = {
 			'activityId': activityId,

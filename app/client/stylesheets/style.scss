@@ -70,10 +70,31 @@ $loading-font-size: 22px;
 .notifications {
 	margin-top: 35px;
 	
-	#homeNotifications {
-		padding:10px;
-		font-size: 10pt;		
+	.homeNotifications {
+		padding: 5px;
+		max-height: 160px;
+		overflow-y: auto;
+
+		.notificationItem {
+			display: inline-block;
+		}
+
+		.remove-notification {
+			display: inline-block;
+		}
 	}
+
+	.homeNotification {
+		padding: 5px;
+	}
+
+	.notifMessage {
+		font-size: 8pt;
+		display: inline-block;
+		vertical-align: middle;
+		margin-left: 3px;
+	}
+
 }
 
 /****** Activity List *********/
