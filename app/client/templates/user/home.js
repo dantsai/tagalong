@@ -5,6 +5,12 @@ Template.home.helpers({
 	notHost: function() {		
 		return this.host._id === Meteor.userId(); 
 	},
+	isClickable: function() {
+		var isAvailable = Activities.find({_id:this._id, available:true}).count()
+		if (this.type != 'cancel' && isAvailable>0)
+			return true;
+		return false;
+	},
 	getUserPicUrl: function() {
 		user = Meteor.users.findOne(this.host._id)
 		return user.profile.names.pic;
@@ -51,8 +57,10 @@ Template.home.events({
 	'click #logoutBtn': function() {
 		Meteor.logout();
 	},
-	'click #remove-notification': function () {
-		console.log(this)
+	'click .remove-notification': function () {
 		Meteor.call('removeNotification', this)
+	},
+	'click .clickable': function() {
+		Router.go('activity',  {_id: this._id});
 	}
 })

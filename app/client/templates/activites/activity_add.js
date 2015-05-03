@@ -102,7 +102,7 @@ Template.activityNew.events({
 		Meteor.call('activityInsert', activity, function(error, result) { 	
 			if (error)
 				return alert(error.reason);
-			IonModal.close()
+			IonModal.close();
 	      	Router.go('activity',  {_id: result._id});
 		});
 	},
