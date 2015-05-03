@@ -7,11 +7,8 @@ Meteor.publish('userNameInfo', function () {
 		fields: {
 			'profile': 1 , 
 			'emails':1,
-			'activities':1
+			'activities':1,
+			'notifications':1
 		}
 	});
 });
-
-Meteor.publish('messages', function() {
-	return Messages.find();
-})

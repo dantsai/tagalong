@@ -142,5 +142,6 @@ groupActivities = function (activities) {
 	    return [value];
 	});
 
+	console.log(grouped_activities);
 	return grouped_activities	
 }
