@@ -83,7 +83,7 @@ Template.userPreferences.events({
 	      buttons: [
 	        { text: 'Take Picture' },
 	        { text: 'Choose From Library' },
-	        { text: 'calendar test'}
+	        { text: 'Calendar test'}
 	      ],
 	      cancelText: 'Cancel',
 	      buttonClicked: function(index) {
@@ -101,6 +101,29 @@ Template.userPreferences.events({
 	    });
 	}
 });
+
+	// 'click #change-photo': function(event) {
+	// 	// test photo upload
+	// 	console.log("choose photo...");
+	// 	navigator.camera.getPicture(uploadPhoto,
+ //            function(message) { console.log('get picture failed'); },
+ //            { quality: 50, 
+ //            destinationType: navigator.camera.DestinationType.FILE_URI,
+ //            sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY }
+ //            );
+
+	// 	function win(result) {
+	// 	    // console.log("Code = " + r.responseCode);
+	// 	    console.log("Response = " + result.response);
+	// 	    // console.log("Sent = " + r.bytesSent);
+	// 	    // console.log(r.response);
+		    
+	// 		Meteor.call('updateProfilePic', result.response), function(error, result) { 	
+	// 			if (error)
+	// 				return alert(error.reason);
+	// 		};		    
+	// 	}
+
 
 function calendarTest() {
 	var startDate = new Date(2015,4,15,18,30,0,0,0); // beware: month 0 = january, 11 = december

@@ -43,12 +43,16 @@ Template.home.helpers({
 		return upcoming;
 	},
 	messages: function() {
-		return Messages.find({'user': Meteor.userId()})
+		return Meteor.user().notifications
 	}
 });
 
 Template.home.events({
 	'click #logoutBtn': function() {
 		Meteor.logout();
+	},
+	'click #remove-notification': function () {
+		console.log(this)
+		Meteor.call('removeNotification', this)
 	}
 })
