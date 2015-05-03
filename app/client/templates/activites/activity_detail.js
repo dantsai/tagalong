@@ -85,30 +85,13 @@ Template.activity.events({
 			$('#messageInput').val('');
 		}
 	},
-	'click #tagalong': function(event) {
-		Meteor.call('tagalong', this._id)
-
-		var name = Meteor.user().profile.names.first + ' ' + Meteor.user().profile.names.last
-		var notification = { message: name + ' is tagging along ' + this.type,
-							 _id: this._id }
-		
-		Meteor.call('addNotification', notification, this.host._id)
-
-		var notification = { message: name + ' is tagging along ' + this.host.name + ' ' + this.type,
-							_id: this._id }			
-
-		this.tagalongs.forEach(function(taggee) {
-			console.log(taggee)
-			Meteor.call('addNotification', notification, taggee)
-		})
-
-	},
 	'click #message-self': function(event) {
 		// just as a test of camera functionality
 
 		// alert('camera...')
 		console.log('camera...')
-		// console.log(Meteor.userId());
+		console.log(this);
+		console.log(Meteor.userId());
 		// success callback
 	    function captureSuccess(mediaFiles) {
 	        var i, len, path;
@@ -144,14 +127,12 @@ Template.activity.events({
 	                console.log('response: ' + result.response); // url of video. SAVE THIS
 	                console.log(result.bytesSent + ' bytes sent');
 
-					var message = { 'activity_id': this._id,
-									'activity_type': this.type,	                				
-			    					'messageUrl' : result.response
-								}
+	                message = {'activity_id': this._id,
+	                			'user': Meteor.userId(),
+	                			'messageUrl' : result.response
+	            				}
 
-				    Meteor.call('addMessageToSelf', message);
-				    Meteor.call('addMessageToActivity', result.response);   
-	                // var msgId = Messages.insert(message);
+	                var msgId = Messages.insert(message);
 	                //place to store the url for video.
 	            },
 	            function(error) {
@@ -162,6 +143,24 @@ Template.activity.events({
 
 		// start video capture
 		navigator.device.capture.captureVideo(captureSuccess, captureError, {limit:1});
+	},
+	'click #tagalong': function(event) {
+		Meteor.call('tagalong', this._id)
+
+		var name = Meteor.user().profile.names.first + ' ' + Meteor.user().profile.names.last
+		var notification = { message: name + ' is tagging along ' + this.type,
+							 _id: this._id }
+		
+		Meteor.call('addNotification', notification, this.host._id)
+
+		var notification = { message: name + ' is tagging along ' + this.host.name + ' ' + this.type,
+							_id: this._id }			
+
+		this.tagalongs.forEach(function(taggee) {
+			console.log(taggee)
+			Meteor.call('addNotification', notification, taggee)
+		})
+
 	},
 	'click #activity-cancel': function(event,template) {
 		var actId = this._id;
@@ -181,7 +180,7 @@ Template.activity.events({
 					Meteor.call('addNotification', notification, taggee)
 				});		
 
-				Meteor.call('activityCancel', this._id);
+				Meteor.call('activityCancel', actId);
 				Router.go('tagalongs');
 	        }
 	        return true;
@@ -194,7 +193,7 @@ Template.activity.events({
 		var hostId = this.host._id;
 		var actType = this.type;
 		IonActionSheet.show({
-	      titleText: 'Bail on '+host+ '?',
+	      titleText: 'Are you sure you want to bail on '+host+ '?',
 	      buttons: [
 	        { text: 'Yes, bail. <i class="icon ion-ios-cancel"></i>' },
 	      ],
@@ -214,7 +213,7 @@ Template.activity.events({
 	        return true;
 	      }
 	    });
-	}			
+	},
 });
 
 function recordVideo(activityId) {
@@ -226,18 +225,113 @@ function recordVideo(activityId) {
 	console.log(Meteor.userId());
 
 	//ADD CODE FOR RECORDING VIDEO HERE.
+
+	// just as a test of camera functionality
+
+	// alert('camera...')
+	console.log('camera...')
+	console.log(this);
+	console.log(Meteor.userId());
+	// success callback
+    function captureSuccess(mediaFiles) {
+        var i, len, path;
+        for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+            path = mediaFiles[i].fullPath;
+            alert(path);
+            uploadFile(mediaFiles[i]);
+        }
+    }
+
+	// capture error callback
+	function captureError(error) {
+	    console.log('Error code: ' + error.code, null, 'Capture Error');
+	    navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
+	};
+
+    // function : Upload files to server
+    function uploadFile(mediaFile) {
+        var ft = new FileTransfer(),
+            path = mediaFile.fullPath,
+            name = mediaFile.name;
+        var options = new FileUploadOptions();
+        options.fileName=name;
+        options.mimeType= 'video/quicktime';
+
+
+        ft.upload(path,
+            "http://dantsai.com/_/upload.php",
+            function(result) {
+                console.log('Upload success: ' + result.responseCode);
+                console.log(result.bytesSent + ' bytes sent');
+                console.log('Upload success: ' + result.responseCode);
+                console.log('response: ' + result.response); // url of video. SAVE THIS
+                console.log(result.bytesSent + ' bytes sent');
+
+	    		// do we need to include a flag indicating if the "message to self" is a video or photo?
+                message = {'activity_id': this._id,
+                			'user': Meteor.userId(),
+                			'messageUrl' : result.response
+            				}
+
+                var msgId = Messages.insert(message);
+                //place to store the url for video.
+            },
+            function(error) {
+                alert('Error uploading file ' + path + ': ' + error.code + '. source: ' + error.source + '. target: ' + error.target);
+            },
+            { fileName: name });   
+    }
+
+	// start video capture
+	navigator.device.capture.captureVideo(captureSuccess, captureError, {limit:1});
 }
 
 function takePhoto(activityId) {
 	//passing the activity as a parameter so you can access the id.
 
 	// alert('camera...')
-	console.log('Photo...')
+	console.log('Take photo...')
 	console.log(activityId);
 	console.log(Meteor.userId());
 
 	//ADD CODE FOR TAKING PHOTO HERE.
-  
+	navigator.camera.getPicture(uploadPhoto,
+        function(message) { console.log('get picture failed'); },
+        { quality: 50, 
+        destinationType: navigator.camera.DestinationType.FILE_URI,
+        sourceType: navigator.camera.PictureSourceType.CAMERA }
+        );
+
+	function win(r) {
+	    // console.log("Code = " + r.responseCode);
+	    console.log("Response = " + r.response);
+	    // console.log("Sent = " + r.bytesSent);
+	    // console.log(r.response);
+
+	    // do we need to include a flag indicating if the "message to self" is a video or photo?
+        message = {'activity_id': this._id,
+        			'user': Meteor.userId(),
+        			'messageUrl' : r.response
+    				}
+
+        var msgId = Messages.insert(message);
+	}
+
+	function fail(error) {
+	    console.log("An error has occurred: Code = " + error.code + '. source: ' + error.source + '. target: ' + error.target);
+	    console.log("upload error source " + error.source);
+	    console.log("upload error target " + error.target);
+	}
+
+    function uploadPhoto(imageURI) {
+        var options = new FileUploadOptions();
+        options.fileKey="file";
+        options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+        options.mimeType="image/jpeg";
+
+        var ft = new FileTransfer();
+        ft.upload(imageURI, encodeURI("http://dantsai.com/_/upload.php"), win, fail, options, true);
+    }
 }
 
 Meteor.startup(function () {

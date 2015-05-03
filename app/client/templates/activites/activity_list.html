@@ -30,31 +30,38 @@
 		{{/ionSubheaderBar}}
 
 		{{#ionContent}}
-			{{#ionList}}
-				{{#each activityDisplay}}
-					<h5 class="listSubHeader">{{this.name}}</h5>
-					{{#each this.activities}}
-						{{#ionItem buttonRight=true class="item-icon-right activityItem" path="activity"}}
-							{{> ionIcon icon="ios-arrow-forward" class='positive'}}
-							<div class="activityImage">
-								<!-- <img class="activity_img" src="http://dantsai.com/_/profile.jpg"> -->
-								<img class="activity_img" src="{{getUserPicUrl}}">
-							</div>
-							<div class="activityInfo">
-								<h2>{{type}}</h2>
-								with <strong>{{host.name}}</strong><br>
-								<div class="activityLogistics">
-									{{> ionIcon icon='calendar' class="activityLogistic"}}{{time.time}} &nbsp;&nbsp;&nbsp;
-									{{> ionIcon icon='ios-stopwatch'}}{{duration}} hours&nbsp;&nbsp;&nbsp;
-									{{#if location}}
-										{{> ionIcon icon='ios-location'}}{{location.name}}
-									{{/if}}
-								</div> 							
-							</div>
-						{{/ionItem}}
+			{{#if hasCompleteSettings}}
+				{{#ionList}}
+					{{#each activityDisplay}}
+						<h5 class="listSubHeader">{{this.name}}</h5>
+						{{#each this.activities}}
+							{{#ionItem buttonRight=true class="item-icon-right activityItem" path="activity"}}
+								{{> ionIcon icon="ios-arrow-forward" class='positive'}}
+								<div class="activityImage">
+									<!-- <img class="activity_img" src="http://dantsai.com/_/profile.jpg"> -->
+									<img class="activity_img" src="{{getUserPicUrl}}">
+								</div>
+								<div class="activityInfo">
+									<h2>{{type}}</h2>
+									with <strong>{{host.name}}</strong><br>
+									<div class="activityLogistics">
+										{{> ionIcon icon='calendar' class="activityLogistic"}}{{time.time}} &nbsp;&nbsp;&nbsp;
+										{{> ionIcon icon='ios-stopwatch'}}{{duration}} hours&nbsp;&nbsp;&nbsp;
+										{{#if location}}
+											{{> ionIcon icon='ios-location'}}{{location.name}}
+										{{/if}}
+									</div> 							
+								</div>
+							{{/ionItem}}
+						{{/each}}
 					{{/each}}
-				{{/each}}
-			{{/ionList}}
+				{{/ionList}}
+			{{else}}
+				<div class="emptyPref">
+					<p>Select the activities and people you want to Tagalong. This will help us give you better recommendations and keep you posted when activities you might be interested are created.</p>
+					<button id="user-preferences-edit" class="button button-stable" data-ion-modal="userPreferences">{{> ionIcon icon="ios-gear-outline"}} Set Preferences</button> 
+				</div>
+			{{/if}}
 			<!-- {{activitiesRecommend}} -->
 		{{/ionContent}}
 	{{/ionView}}

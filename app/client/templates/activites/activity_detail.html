@@ -91,9 +91,15 @@
 			{{#if activityMember}}
 				<!-- {{#ionItem body=true}} -->
 					{{#if isHost}}
-						<button id="activity-cancel" class="button button-block button-assertive" path="tagalongs">Cancel Activity</button>
+<!-- <<<<<<< HEAD
+						<button id="activity-cancel" class="button button-block button-assertive" path="tagalongs" data-action="cancelActionSheet">Cancel Activity</button>
 					{{else}}
-						<button id="activity-flake" class="button button-block button-assertive">Bail from Tagalong</button>
+						<button id="activity-flake" class="button button-block button-assertive" data-action="bailActionSheet">Bail from Tagalong</button>
+======= -->
+						<button id="activity-cancel" class="button button-block button-assertive">Cancel Activity</button>
+					{{else}}
+						<button id="activity-flake" class="button button-block button-assertive">Bail on {{ this.host.name }}</button>
+<!-- >>>>>>> master -->
 					{{/if}}
 				<!-- {{/ionItem}} -->
 			{{/if}}
@@ -108,7 +114,7 @@
 			
 		{{else}}
 			<div id="activity-join">
-				<button id="message-self" class="button button-full button-balanced" data-action="showCameraActionSheet">{{> ionIcon icon="ios-videocam"}} Record Message to myself</button>
+				<button id="message-self" class="button button-full button-balanced">{{> ionIcon icon="ios-videocam"}} Record Message to myself</button>
 			</div>
 			
 			{{#if isHost}}

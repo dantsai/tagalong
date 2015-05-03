@@ -76,44 +76,134 @@ Template.userPreferences.events({
 		    IonModal.close();
 		});
 	},
-	'click #change-photo': function(event) {
-		// test photo upload
-		console.log("choose photo...");
-		navigator.camera.getPicture(uploadPhoto,
-            function(message) { console.log('get picture failed'); },
-            { quality: 50, 
-            destinationType: navigator.camera.DestinationType.FILE_URI,
-            sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY }
-            );
+	'click [data-action=changePhotoActionSheet]': function (event,template) {
+		var actId = this._id;
+		IonActionSheet.show({
+	      // titleText: '',
+	      buttons: [
+	        { text: 'Take Picture' },
+	        { text: 'Choose From Library' },
+	        { text: 'Calendar test'}
+	      ],
+	      cancelText: 'Cancel',
+	      buttonClicked: function(index) {
+	        if (index === 0) {
+	          takePhoto();
+	        }
+	        if (index === 1) {
+	          choosePhoto();
+	        }
+	        if(index === 2) {
+	        	calendarTest();
+	        }
+	        return true;
+	      }
+	    });
+	}
+});
 
-		function win(result) {
-		    // console.log("Code = " + r.responseCode);
-		    console.log("Response = " + result.response);
-		    // console.log("Sent = " + r.bytesSent);
-		    // console.log(r.response);
+	// 'click #change-photo': function(event) {
+	// 	// test photo upload
+	// 	console.log("choose photo...");
+	// 	navigator.camera.getPicture(uploadPhoto,
+ //            function(message) { console.log('get picture failed'); },
+ //            { quality: 50, 
+ //            destinationType: navigator.camera.DestinationType.FILE_URI,
+ //            sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY }
+ //            );
+
+	// 	function win(result) {
+	// 	    // console.log("Code = " + r.responseCode);
+	// 	    console.log("Response = " + result.response);
+	// 	    // console.log("Sent = " + r.bytesSent);
+	// 	    // console.log(r.response);
 		    
-			Meteor.call('updateProfilePic', result.response), function(error, result) { 	
-				if (error)
-					return alert(error.reason);
-			};		    
-		}
+	// 		Meteor.call('updateProfilePic', result.response), function(error, result) { 	
+	// 			if (error)
+	// 				return alert(error.reason);
+	// 		};		    
+	// 	}
 
-		function fail(error) {
-		    console.log("An error has occurred: Code = " + error.code + '. source: ' + error.source + '. target: ' + error.target);
-		    console.log("upload error source " + error.source);
-		    console.log("upload error target " + error.target);
-		}
 
-        function uploadPhoto(imageURI) {
-            var options = new FileUploadOptions();
-            options.fileKey="file";
-            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-            options.mimeType="image/jpeg";
+function calendarTest() {
+	var startDate = new Date(2015,4,15,18,30,0,0,0); // beware: month 0 = january, 11 = december
+	var endDate = new Date(2015,4,15,19,30,0,0,0);
+	var title = "Event Title";
+	var eventLocation = "Home";
+	var notes = "Some notes about this event.";
+	var success = function(message) { alert("Success: " + JSON.stringify(message)); };
+	var error = function(message) { alert("Error: " + message); };
+	window.plugins.calendar.createEventInteractively(title,eventLocation,notes,startDate,endDate,success,error);
+}
+function takePhoto() {
+	console.log('Take photo...')
 
-            var ft = new FileTransfer();
-            ft.upload(imageURI, encodeURI("http://dantsai.com/_/upload.php"), win, fail, options, true);
-        }
+	navigator.camera.getPicture(uploadPhoto,
+        function(message) { console.log('get picture failed'); },
+        { quality: 50, 
+        destinationType: navigator.camera.DestinationType.FILE_URI,
+        sourceType: navigator.camera.PictureSourceType.CAMERA }
+        );
 
-	}	
-})
+	function win(r) {
+	    // console.log("Code = " + r.responseCode);
+	    console.log("Response = " + r.response);
+	    // console.log("Sent = " + r.bytesSent);
+	    // console.log(r.response);
+		Meteor.call('updateProfilePic', r.response), function(error, result) { 	
+			if (error)
+				return alert(error.reason);
+		};		    
 
+	}
+
+	function fail(error) {
+	    console.log("An error has occurred: Code = " + error.code + '. source: ' + error.source + '. target: ' + error.target);
+	}
+
+    function uploadPhoto(imageURI) {
+        var options = new FileUploadOptions();
+        options.fileKey="file";
+        options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+        options.mimeType="image/jpeg";
+
+        var ft = new FileTransfer();
+        ft.upload(imageURI, encodeURI("http://dantsai.com/_/upload.php"), win, fail, options, true);
+    }
+}
+function choosePhoto() {
+	console.log('Take photo...')
+
+	navigator.camera.getPicture(uploadPhoto,
+        function(message) { console.log('get picture failed'); },
+        { quality: 50, 
+        destinationType: navigator.camera.DestinationType.FILE_URI,
+        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY }
+        );
+
+	function win(r) {
+	    // console.log("Code = " + r.responseCode);
+	    console.log("Response = " + r.response);
+	    // console.log("Sent = " + r.bytesSent);
+	    // console.log(r.response);
+		Meteor.call('updateProfilePic', r.response), function(error, result) { 	
+			if (error)
+				return alert(error.reason);
+		};		    
+
+	}
+
+	function fail(error) {
+	    console.log("An error has occurred: Code = " + error.code + '. source: ' + error.source + '. target: ' + error.target);
+	}
+
+    function uploadPhoto(imageURI) {
+        var options = new FileUploadOptions();
+        options.fileKey="file";
+        options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+        options.mimeType="image/jpeg";
+
+        var ft = new FileTransfer();
+        ft.upload(imageURI, encodeURI("http://dantsai.com/_/upload.php"), win, fail, options, true);
+    }
+}
