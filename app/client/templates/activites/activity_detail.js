@@ -42,13 +42,13 @@ Template.activity.helpers({
 	},
 	exampleMapOptions: function() {
 	  // Make sure the maps API has loaded
-	  console.log(this.location.position.A, this.location.position.F);
+	  // console.log(this.location.position.A, this.location.position.F);
 
 	  if (GoogleMaps.loaded()) {
 	    // Map initialization options
 	    return {
 	      center: new google.maps.LatLng(this.location.position.A, this.location.position.F),
-	      zoom: 8
+	      zoom: 17
 	    };
 	  }
 	}	
@@ -96,66 +96,110 @@ Template.activity.events({
 		Meteor.call('activityFlake', this._id,Meteor.userId());
 		// Router.go('tagalongs');
 	},
-	'click #message-self': function(event) {
-		// just as a test of camera functionality
+	// 'click #message-self': function(event) {
+	// 	// just as a test of camera functionality
 
-		// alert('camera...')
-		console.log('camera...')
-		console.log(this);
-		console.log(Meteor.userId());
-		// success callback
-	    function captureSuccess(mediaFiles) {
-	        var i, len, path;
-	        for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-	            path = mediaFiles[i].fullPath;
-	            alert(path);
-	            uploadFile(mediaFiles[i]);
+	// 	// alert('camera...')
+	// 	console.log('camera...')
+	// 	console.log(this);
+	// 	console.log(Meteor.userId());
+	// 	// success callback
+	//     function captureSuccess(mediaFiles) {
+	//         var i, len, path;
+	//         for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+	//             path = mediaFiles[i].fullPath;
+	//             alert(path);
+	//             uploadFile(mediaFiles[i]);
+	//         }
+	//     }
+
+	// 	// capture error callback
+	// 	function captureError(error) {
+	// 	    console.log('Error code: ' + error.code, null, 'Capture Error');
+	// 	    navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
+	// 	};
+
+	//     // function : Upload files to server
+	//     function uploadFile(mediaFile) {
+	//         var ft = new FileTransfer(),
+	//             path = mediaFile.fullPath,
+	//             name = mediaFile.name;
+	//         var options = new FileUploadOptions();
+	//         options.fileName=name;
+	//         options.mimeType= 'video/quicktime';
+
+
+	//         ft.upload(path,
+	//             "http://dantsai.com/_/upload.php",
+	//             function(result) {
+	//                 console.log('Upload success: ' + result.responseCode);
+	//                 console.log(result.bytesSent + ' bytes sent');
+	//                 console.log('Upload success: ' + result.responseCode);
+	//                 console.log('response: ' + result.response); // url of video. SAVE THIS
+	//                 console.log(result.bytesSent + ' bytes sent');
+
+	//                 message = {'activity_id': this._id,
+	//                 			'user': Meteor.userId(),
+	//                 			'messageUrl' : result.response
+	//             				}
+
+	//                 var msgId = Messages.insert(message);
+	//                 //place to store the url for video.
+	//             },
+	//             function(error) {
+	//                 alert('Error uploading file ' + path + ': ' + error.code + '. source: ' + error.source + '. target: ' + error.target);
+	//             },
+	//             { fileName: name });   
+	//     }
+
+	// 	// start video capture
+	// 	navigator.device.capture.captureVideo(captureSuccess, captureError, {limit:1});
+	// },
+	'click [data-action=showCameraActionSheet]': function (event,template) {
+		var actId = this._id;
+
+		IonActionSheet.show({
+	      // titleText: '',
+	      buttons: [
+	        { text: 'Record Video <i class="icon ion-ios-videocam"></i>' },
+	        { text: 'Take Photo <i class="icon ion-ios-camera"></i>' },
+	      ],
+	      cancelText: 'Cancel',
+	      buttonClicked: function(index) {
+	        if (index === 0) {
+	          recordVideo(actId);
 	        }
-	    }
-
-		// capture error callback
-		function captureError(error) {
-		    console.log('Error code: ' + error.code, null, 'Capture Error');
-		    navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
-		};
-
-	    // function : Upload files to server
-	    function uploadFile(mediaFile) {
-	        var ft = new FileTransfer(),
-	            path = mediaFile.fullPath,
-	            name = mediaFile.name;
-	        var options = new FileUploadOptions();
-	        options.fileName=name;
-	        options.mimeType= 'video/quicktime';
-
-
-	        ft.upload(path,
-	            "http://dantsai.com/_/upload.php",
-	            function(result) {
-	                console.log('Upload success: ' + result.responseCode);
-	                console.log(result.bytesSent + ' bytes sent');
-	                console.log('Upload success: ' + result.responseCode);
-	                console.log('response: ' + result.response); // url of video. SAVE THIS
-	                console.log(result.bytesSent + ' bytes sent');
-
-	                message = {'activity_id': this._id,
-	                			'user': Meteor.userId(),
-	                			'messageUrl' : result.response
-	            				}
-
-	                var msgId = Messages.insert(message);
-	                //place to store the url for video.
-	            },
-	            function(error) {
-	                alert('Error uploading file ' + path + ': ' + error.code + '. source: ' + error.source + '. target: ' + error.target);
-	            },
-	            { fileName: name });   
-	    }
-
-		// start video capture
-		navigator.device.capture.captureVideo(captureSuccess, captureError, {limit:1});
+	        if (index === 1) {
+	          takePhoto(actId);
+	        }
+	        return true;
+	      }
+	    });
 	}			
 });
+
+function recordVideo(activityId) {
+	//passing the activity as a parameter so you can access the id.
+
+	// alert('camera...')
+	console.log('Video...')
+	console.log(activityId);
+	console.log(Meteor.userId());
+
+	//ADD CODE FOR RECORDING VIDEO HERE.
+}
+
+function takePhoto(activityId) {
+	//passing the activity as a parameter so you can access the id.
+
+	// alert('camera...')
+	console.log('Photo...')
+	console.log(activityId);
+	console.log(Meteor.userId());
+
+	//ADD CODE FOR TAKING PHOTO HERE.
+  
+}
 
 Meteor.startup(function () {
 	if(Meteor.isClient) {

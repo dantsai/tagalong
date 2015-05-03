@@ -169,7 +169,7 @@ if (Activities.find().count() === 0 ) {
 	        time: '19:00'
 	    },
 	    tagalongs: [],
-	    message:[],
+	    messages:[],
 	    duration: 2,
 	    pictures: [],
 	    status: 'Available',
