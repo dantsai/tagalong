@@ -108,65 +108,60 @@ Template.activity.events({
 
 		// alert('camera...')
 		console.log('camera...')
-		console.log(this.type);
 		// console.log(Meteor.userId());
 		// success callback
-	 //    function captureSuccess(mediaFiles) {
-	 //        var i, len, path;
-	 //        for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-	 //            path = mediaFiles[i].fullPath;
-	 //            alert(path);
-	 //            uploadFile(mediaFiles[i]);
-	 //        }
-	 //    }
+	    function captureSuccess(mediaFiles) {
+	        var i, len, path;
+	        for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+	            path = mediaFiles[i].fullPath;
+	            alert(path);
+	            uploadFile(mediaFiles[i]);
+	        }
+	    }
 
-		// // capture error callback
-		// function captureError(error) {
-		//     console.log('Error code: ' + error.code, null, 'Capture Error');
-		//     navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
-		// };
+		// capture error callback
+		function captureError(error) {
+		    console.log('Error code: ' + error.code, null, 'Capture Error');
+		    navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
+		};
 
-	 //    // function : Upload files to server
-	 //    function uploadFile(mediaFile) {
-	 //        var ft = new FileTransfer(),
-	 //            path = mediaFile.fullPath,
-	 //            name = mediaFile.name;
-	 //        var options = new FileUploadOptions();
-	 //        options.fileName=name;
-	 //        options.mimeType= 'video/quicktime';
+	    // function : Upload files to server
+	    function uploadFile(mediaFile) {
+	        var ft = new FileTransfer(),
+	            path = mediaFile.fullPath,
+	            name = mediaFile.name;
+	        var options = new FileUploadOptions();
+	        options.fileName=name;
+	        options.mimeType= 'video/quicktime';
 
 
-	 //        ft.upload(path,
-	 //            "http://dantsai.com/_/upload.php",
-	 //            function(result) {
-	 //                console.log('Upload success: ' + result.responseCode);
-	 //                console.log(result.bytesSent + ' bytes sent');
-	 //                console.log('Upload success: ' + result.responseCode);
-	 //                console.log('response: ' + result.response); // url of video. SAVE THIS
-	 //                console.log(result.bytesSent + ' bytes sent');
- 	// 				var message = { 'activity_id': this._id,	                				
-	 //                				'messageUrl' : result.response
-	 //            				}
-	 //                Meteor.call('addMessageToSelf', message);
-	 //                // var msgId = Messages.insert(message);
-	 //                //place to store the url for video.
-	 //            },
-	 //            function(error) {
-	 //                alert('Error uploading file ' + path + ': ' + error.code + '. source: ' + error.source + '. target: ' + error.target);
-	 //            },
-	 //            { fileName: name });   
-	 //    }
+	        ft.upload(path,
+	            "http://dantsai.com/_/upload.php",
+	            function(result) {
+	                console.log('Upload success: ' + result.responseCode);
+	                console.log(result.bytesSent + ' bytes sent');
+	                console.log('Upload success: ' + result.responseCode);
+	                console.log('response: ' + result.response); // url of video. SAVE THIS
+	                console.log(result.bytesSent + ' bytes sent');
 
-		// // start video capture
-		// navigator.device.capture.captureVideo(captureSuccess, captureError, {limit:1});
-		var message = { 'activity_id': this._id,
-						'activity_type': this.type,	                				
-    					'messageUrl' : '/img/Dan2.jpg'
-					}
+					var message = { 'activity_id': this._id,
+									'activity_type': this.type,	                				
+			    					'messageUrl' : result.response
+								}
 
-	    Meteor.call('addMessageToSelf', message);
-	    Meteor.call('addMessageToActivity', '/img/Dan2.jpg');   
+				    Meteor.call('addMessageToSelf', message);
+				    Meteor.call('addMessageToActivity', result.response);   
+	                // var msgId = Messages.insert(message);
+	                //place to store the url for video.
+	            },
+	            function(error) {
+	                alert('Error uploading file ' + path + ': ' + error.code + '. source: ' + error.source + '. target: ' + error.target);
+	            },
+	            { fileName: name });   
+	    }
 
+		// start video capture
+		navigator.device.capture.captureVideo(captureSuccess, captureError, {limit:1});
 	},
 	'click #activity-cancel': function(event,template) {
 		var actId = this._id;
