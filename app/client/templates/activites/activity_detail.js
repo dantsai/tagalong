@@ -85,20 +85,30 @@ Template.activity.events({
 			$('#messageInput').val('');
 		}
 	},
-	'click #activity-join': function(event) {
-		Meteor.call('tagalong', this._id, Meteor.userId())		
+	'click #tagalong': function(event) {
+		Meteor.call('tagalong', this._id)
+
+		var name = Meteor.user().profile.names.first + ' ' + Meteor.user().profile.names.last
+		var notification = { message: name + ' is tagging along ' + this.type,
+							 _id: this._id }
+		
+		Meteor.call('addNotification', notification, this.host._id)
+
+		var notification = { message: name + ' is tagging along ' + this.host.name + ' ' + this.type,
+							_id: this._id }			
+
+		this.tagalongs.forEach(function(taggee) {
+			console.log(taggee)
+			Meteor.call('addNotification', notification, taggee)
+		})
+
 	},
-	// 'click #activity-flake': function(event) {
-	// 	Meteor.call('activityFlake', this._id,Meteor.userId());
-	// 	// Router.go('tagalongs');
-	// },
 	'click #message-self': function(event) {
 		// just as a test of camera functionality
 
 		// alert('camera...')
 		console.log('camera...')
-		console.log(this);
-		console.log(Meteor.userId());
+		// console.log(Meteor.userId());
 		// success callback
 	    function captureSuccess(mediaFiles) {
 	        var i, len, path;
@@ -134,12 +144,14 @@ Template.activity.events({
 	                console.log('response: ' + result.response); // url of video. SAVE THIS
 	                console.log(result.bytesSent + ' bytes sent');
 
-	                message = {'activity_id': this._id,
-	                			'user': Meteor.userId(),
-	                			'messageUrl' : result.response
-	            				}
+					var message = { 'activity_id': this._id,
+									'activity_type': this.type,	                				
+			    					'messageUrl' : result.response
+								}
 
-	                var msgId = Messages.insert(message);
+				    Meteor.call('addMessageToSelf', message);
+				    Meteor.call('addMessageToActivity', result.response);   
+	                // var msgId = Messages.insert(message);
 	                //place to store the url for video.
 	            },
 	            function(error) {
@@ -154,6 +166,8 @@ Template.activity.events({
 	},
 	'click #activity-cancel': function(event,template) {
 		var actId = this._id;
+		var tagalongs = this.tagalongs;
+		var notification = { message: this.host.name + ' cancelled ' + this.type }
 		IonActionSheet.show({
 	      titleText: 'Are you sure you want to Cancel the activity?',
 	      buttons: [
@@ -163,13 +177,14 @@ Template.activity.events({
 	      buttonClicked: function(index) {
 	        if (index === 0) {
 	          	console.log('Canceled');
-	          	Meteor.call('activityCancel', actId);
+				
+				tagalongs.forEach(function(taggee) {
+					Meteor.call('addNotification', notification, taggee)
+				});		
+
+				Meteor.call('activityCancel', this._id);
 				Router.go('tagalongs');
 	        }
-	        return true;
-	      },
-	      destructiveButtonClicked: function() {
-	        console.log('Destructive Action!');
 	        return true;
 	      }
 	    });
@@ -177,6 +192,8 @@ Template.activity.events({
 	'click #activity-flake': function(event,template) {
 		var actId = this._id;
 		var host = this.host.name;
+		var hostId = this.host._id;
+		var actType = this.type;
 		IonActionSheet.show({
 	      titleText: 'Are you sure you want to bail on '+host+ '?',
 	      buttons: [
@@ -184,13 +201,17 @@ Template.activity.events({
 	      ],
 	      cancelText: 'No, take me back!',
 	      buttonClicked: function(index) {
+	      	// console.log(this)
 	        if (index === 0) {
-	          	Meteor.call('activityFlake', actId,Meteor.userId());
+				Meteor.call('activityFlake', actId);
+				
+				var name = Meteor.user().profile.names.first + ' ' + Meteor.user().profile.names.last
+				var notification = { message: name + ' bailed on ' + actType,
+									 _id: actId }
+				
+				Meteor.call('addNotification', notification, hostId)
+
 	        }
-	        return true;
-	      },
-	      destructiveButtonClicked: function() {
-	        console.log('Destructive Action!');
 	        return true;
 	      }
 	    });

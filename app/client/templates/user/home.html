@@ -71,10 +71,16 @@
 		    <div class="notifications">
 		    	<h5 class="listSubHeader">Notifications</h5>
 		    	<div id="homeNotifications">
-		    		You don't have new notifications.
-		    		{{#each messages}}
-		    			<a href="{{messageUrl}}"></a>
-		    		{{/each}}
+		    		{{#ionList show-delete="shouldShowDelete"}}
+			    		{{#each messages}}
+			    			<!-- {{#ionItem buttonRight=true path="this.activity"}} -->
+
+			    			{{#ionItem path="activity"}}
+			    				{{this.message}}{{this.activity}}
+			    				<ion-delete-button id = 'remove-notification' class='ion-close-circled'></ion-delete-button>			    				
+			    			{{/ionItem}}			    			
+			    		{{/each}}		    		
+		    		{{/ionList}}
 		    	</div>
 		    </div>	
 		{{/ionContent}}
