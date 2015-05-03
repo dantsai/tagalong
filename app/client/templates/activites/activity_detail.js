@@ -88,90 +88,108 @@ Template.activity.events({
 	'click #activity-join': function(event) {
 		Meteor.call('tagalong', this._id, Meteor.userId())		
 	},
-	'click #activity-cancel': function(event) {
-		Meteor.call('activityCancel', this._id);
-		Router.go('tagalongs');
-	},
-	'click #activity-flake': function(event) {
-		Meteor.call('activityFlake', this._id,Meteor.userId());
-		// Router.go('tagalongs');
-	},
-	// 'click #message-self': function(event) {
-	// 	// just as a test of camera functionality
-
-	// 	// alert('camera...')
-	// 	console.log('camera...')
-	// 	console.log(this);
-	// 	console.log(Meteor.userId());
-	// 	// success callback
-	//     function captureSuccess(mediaFiles) {
-	//         var i, len, path;
-	//         for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-	//             path = mediaFiles[i].fullPath;
-	//             alert(path);
-	//             uploadFile(mediaFiles[i]);
-	//         }
-	//     }
-
-	// 	// capture error callback
-	// 	function captureError(error) {
-	// 	    console.log('Error code: ' + error.code, null, 'Capture Error');
-	// 	    navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
-	// 	};
-
-	//     // function : Upload files to server
-	//     function uploadFile(mediaFile) {
-	//         var ft = new FileTransfer(),
-	//             path = mediaFile.fullPath,
-	//             name = mediaFile.name;
-	//         var options = new FileUploadOptions();
-	//         options.fileName=name;
-	//         options.mimeType= 'video/quicktime';
-
-
-	//         ft.upload(path,
-	//             "http://dantsai.com/_/upload.php",
-	//             function(result) {
-	//                 console.log('Upload success: ' + result.responseCode);
-	//                 console.log(result.bytesSent + ' bytes sent');
-	//                 console.log('Upload success: ' + result.responseCode);
-	//                 console.log('response: ' + result.response); // url of video. SAVE THIS
-	//                 console.log(result.bytesSent + ' bytes sent');
-
-	//                 message = {'activity_id': this._id,
-	//                 			'user': Meteor.userId(),
-	//                 			'messageUrl' : result.response
-	//             				}
-
-	//                 var msgId = Messages.insert(message);
-	//                 //place to store the url for video.
-	//             },
-	//             function(error) {
-	//                 alert('Error uploading file ' + path + ': ' + error.code + '. source: ' + error.source + '. target: ' + error.target);
-	//             },
-	//             { fileName: name });   
-	//     }
-
-	// 	// start video capture
-	// 	navigator.device.capture.captureVideo(captureSuccess, captureError, {limit:1});
+	// 'click #activity-flake': function(event) {
+	// 	Meteor.call('activityFlake', this._id,Meteor.userId());
+	// 	// Router.go('tagalongs');
 	// },
-	'click [data-action=showCameraActionSheet]': function (event,template) {
-		var actId = this._id;
+	'click #message-self': function(event) {
+		// just as a test of camera functionality
 
+		// alert('camera...')
+		console.log('camera...')
+		console.log(this);
+		console.log(Meteor.userId());
+		// success callback
+	    function captureSuccess(mediaFiles) {
+	        var i, len, path;
+	        for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+	            path = mediaFiles[i].fullPath;
+	            alert(path);
+	            uploadFile(mediaFiles[i]);
+	        }
+	    }
+
+		// capture error callback
+		function captureError(error) {
+		    console.log('Error code: ' + error.code, null, 'Capture Error');
+		    navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
+		};
+
+	    // function : Upload files to server
+	    function uploadFile(mediaFile) {
+	        var ft = new FileTransfer(),
+	            path = mediaFile.fullPath,
+	            name = mediaFile.name;
+	        var options = new FileUploadOptions();
+	        options.fileName=name;
+	        options.mimeType= 'video/quicktime';
+
+
+	        ft.upload(path,
+	            "http://dantsai.com/_/upload.php",
+	            function(result) {
+	                console.log('Upload success: ' + result.responseCode);
+	                console.log(result.bytesSent + ' bytes sent');
+	                console.log('Upload success: ' + result.responseCode);
+	                console.log('response: ' + result.response); // url of video. SAVE THIS
+	                console.log(result.bytesSent + ' bytes sent');
+
+	                message = {'activity_id': this._id,
+	                			'user': Meteor.userId(),
+	                			'messageUrl' : result.response
+	            				}
+
+	                var msgId = Messages.insert(message);
+	                //place to store the url for video.
+	            },
+	            function(error) {
+	                alert('Error uploading file ' + path + ': ' + error.code + '. source: ' + error.source + '. target: ' + error.target);
+	            },
+	            { fileName: name });   
+	    }
+
+		// start video capture
+		navigator.device.capture.captureVideo(captureSuccess, captureError, {limit:1});
+	},
+	'click #activity-cancel': function(event,template) {
+		var actId = this._id;
 		IonActionSheet.show({
-	      // titleText: '',
+	      titleText: 'Are you sure you want to Cancel the activity?',
 	      buttons: [
-	        { text: 'Record Video <i class="icon ion-ios-videocam"></i>' },
-	        { text: 'Take Photo <i class="icon ion-ios-camera"></i>' },
+	        { text: 'Yes, Cancel <i class="icon ion-ios-cancel"></i>' },
 	      ],
-	      cancelText: 'Cancel',
+	      cancelText: 'No, take me back!',
 	      buttonClicked: function(index) {
 	        if (index === 0) {
-	          recordVideo(actId);
+	          	console.log('Canceled');
+	          	Meteor.call('activityCancel', actId);
+				Router.go('tagalongs');
 	        }
-	        if (index === 1) {
-	          takePhoto(actId);
+	        return true;
+	      },
+	      destructiveButtonClicked: function() {
+	        console.log('Destructive Action!');
+	        return true;
+	      }
+	    });
+	},
+	'click #activity-flake': function(event,template) {
+		var actId = this._id;
+		var host = this.host.name;
+		IonActionSheet.show({
+	      titleText: 'Bail on '+host+ '?',
+	      buttons: [
+	        { text: 'Yes, bail. <i class="icon ion-ios-cancel"></i>' },
+	      ],
+	      cancelText: 'No, take me back!',
+	      buttonClicked: function(index) {
+	        if (index === 0) {
+	          	Meteor.call('activityFlake', actId,Meteor.userId());
 	        }
+	        return true;
+	      },
+	      destructiveButtonClicked: function() {
+	        console.log('Destructive Action!');
 	        return true;
 	      }
 	    });
