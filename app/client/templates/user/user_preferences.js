@@ -105,12 +105,12 @@ Template.userPreferences.events({
 function calendarTest() {
 	var startDate = new Date(2015,4,15,18,30,0,0,0); // beware: month 0 = january, 11 = december
 	var endDate = new Date(2015,4,15,19,30,0,0,0);
-	var title = "My nice event";
+	var title = "Event Title";
 	var eventLocation = "Home";
 	var notes = "Some notes about this event.";
 	var success = function(message) { alert("Success: " + JSON.stringify(message)); };
 	var error = function(message) { alert("Error: " + message); };
-	window.plugins.calendar.createEvent(title,location,notes,startDate,endDate,success,error);
+	window.plugins.calendar.createEventInteractively(title,eventLocation,notes,startDate,endDate,success,error);
 }
 function takePhoto() {
 	console.log('Take photo...')
