@@ -82,7 +82,8 @@ Template.userPreferences.events({
 	      // titleText: '',
 	      buttons: [
 	        { text: 'Take Picture' },
-	        { text: 'Choose From Library' }
+	        { text: 'Choose From Library' },
+	        { text: 'calendar test'}
 	      ],
 	      cancelText: 'Cancel',
 	      buttonClicked: function(index) {
@@ -92,51 +93,25 @@ Template.userPreferences.events({
 	        if (index === 1) {
 	          choosePhoto();
 	        }
+	        if(index === 2) {
+	        	calendarTest();
+	        }
 	        return true;
 	      }
 	    });
 	}
-	// 'click #change-photo': function(event) {
-	// 	// test photo upload
-	// 	console.log("choose photo...");
-	// 	navigator.camera.getPicture(uploadPhoto,
- //            function(message) { console.log('get picture failed'); },
- //            { quality: 50, 
- //            destinationType: navigator.camera.DestinationType.FILE_URI,
- //            sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY }
- //            );
-
-	// 	function win(r) {
-	// 	    // console.log("Code = " + r.responseCode);
-	// 	    console.log("Response = " + r.response);
-	// 	    // console.log("Sent = " + r.bytesSent);
-	// 	    // console.log(r.response);
-		    
-	// 		Meteor.call('updateProfilePic', r.response), function(error, result) { 	
-	// 			if (error)
-	// 				return alert(error.reason);
-	// 		};		    
-	// 	}
-
-	// 	function fail(error) {
-	// 	    console.log("An error has occurred: Code = " + error.code + '. source: ' + error.source + '. target: ' + error.target);
-	// 	    console.log("upload error source " + error.source);
-	// 	    console.log("upload error target " + error.target);
-	// 	}
-
- //        function uploadPhoto(imageURI) {
- //            var options = new FileUploadOptions();
- //            options.fileKey="file";
- //            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
- //            options.mimeType="image/jpeg";
-
- //            var ft = new FileTransfer();
- //            ft.upload(imageURI, encodeURI("http://dantsai.com/_/upload.php"), win, fail, options, true);
- //        }
-
-	// }	
 });
 
+function calendarTest() {
+	var startDate = new Date(2015,4,15,18,30,0,0,0); // beware: month 0 = january, 11 = december
+	var endDate = new Date(2015,4,15,19,30,0,0,0);
+	var title = "My nice event";
+	var eventLocation = "Home";
+	var notes = "Some notes about this event.";
+	var success = function(message) { alert("Success: " + JSON.stringify(message)); };
+	var error = function(message) { alert("Error: " + message); };
+	window.plugins.calendar.createEvent(title,location,notes,startDate,endDate,success,error);
+}
 function takePhoto() {
 	console.log('Take photo...')
 
