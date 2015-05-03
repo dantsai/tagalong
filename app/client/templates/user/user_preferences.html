@@ -10,7 +10,7 @@
 		{{#ionContent class='padding editProfile'}}
 			{{#with getUser}}
 				{{#ionItem avatar=true class='header'}}
-					<img class="activity_img" id = 'change-photo' src="{{this.profile.names.pic}}">
+					<img class="activity_img" id = 'change-photo' data-action="changePhotoActionSheet" src="{{this.profile.names.pic}}">
 					<span class="editLabel">First:</span><input id="editFirstName" type="text" value="{{profile.names.first}}"><br>
 					<span class="editLabel">Last:</span><input id="editLastName" type="text" value="{{profile.names.last}}">
 					<p>
