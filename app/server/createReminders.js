@@ -81,14 +81,15 @@ Meteor.startup(function () {
 		
 		timeEnd = new Date();
 
+		console.log(timeStart)
 		activitiesPast.forEach(function(activity) {
-			console.log(activity._id )
+			// console.log(activity._id )
 	
 			var activityEnd = activity.time.date
 			activityEnd.setHours(activityEnd.getHours() + Math.floor(activity.duration));
 			var minutes =  ( activity.duration % 1) * 60;
-			activityEnd.setMinutes(endDate.getMinutes() + minutes );	
-
+			activityEnd.setMinutes(activityEnd.getMinutes() + minutes );	
+			console.log(activityEnd);
 			if (activityEnd >= timeStart && activityEnd <= timeEnd) {
 				//Ask feedback from host
 				Meteor.users.update(activity.host._id, {

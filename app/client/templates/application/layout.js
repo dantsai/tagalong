@@ -7,5 +7,14 @@ Template.layout.helpers({
 	topReminder: function() {
 		var actId = Meteor.user().reminders[0];
 		return Activities.findOne({_id:actId});
+	},
+	hasFeebacks: function() {
+		if (Meteor.user().feedback.length)
+			return true;
+		return false;
+	},
+	topFeeback: function() {
+		var actId = Meteor.user().feedback[0];
+		return Activities.findOne({_id:actId});
 	}
 })

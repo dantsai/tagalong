@@ -3,16 +3,22 @@
 		{{#if currentUser}}  
 			{{>ionNavBar class='bar-positive'}}
 
-			{{#if hasReminders }} 
-				{{#with topReminder}}
-					{{> activityReminder}}
-				{{/with}}
+			{{#if hasFeebacks }}
+				{{#with topFeeback }}
+					{{> activityFeedback}}
+				{{/with}}				
 			{{else}}
-				{{#ionNavView}}
-					{{> yield}} 
-				{{/ionNavView}}
+				{{#if hasReminders }} 
+					{{#with topReminder}}
+						{{> activityReminder}}
+					{{/with}}
+				{{else}}
+					{{#ionNavView}}
+						{{> yield}} 
+					{{/ionNavView}}
 
-				{{> footer}}
+					{{> footer}}
+				{{/if}}
 			{{/if}}
 		{{else}}		      
 	        {{> login}}

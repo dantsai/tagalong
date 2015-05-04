@@ -61,6 +61,9 @@ Meteor.methods({
 	},
 	removeFirstReminder: function() {
 		Meteor.users.update(Meteor.userId(), { $pop: {reminders:-1 } });
+	},
+	removeFirstFeedback: function() {
+		Meteor.users.update(Meteor.userId(), { $pop: {feedback:-1 } });
 	}
 });
 

@@ -89,9 +89,9 @@ Template.activity.events({
 		// just as a test of camera functionality
 
 		// alert('camera...')
-		console.log('camera...')
-		console.log(this);
-		console.log(Meteor.userId());
+		// console.log('camera...')
+		// console.log(this);
+		// console.log(Meteor.userId());
 		// success callback
 	    function captureSuccess(mediaFiles) {
 	        var i, len, path;
@@ -121,11 +121,11 @@ Template.activity.events({
 	        ft.upload(path,
 	            "http://dantsai.com/_/upload.php",
 	            function(result) {
-	                console.log('Upload success: ' + result.responseCode);
-	                console.log(result.bytesSent + ' bytes sent');
-	                console.log('Upload success: ' + result.responseCode);
-	                console.log('response: ' + result.response); // url of video. SAVE THIS
-	                console.log(result.bytesSent + ' bytes sent');
+	                // console.log('Upload success: ' + result.responseCode);
+	                // console.log(result.bytesSent + ' bytes sent');
+	                // console.log('Upload success: ' + result.responseCode);
+	                // console.log('response: ' + result.response); // url of video. SAVE THIS
+	                // console.log(result.bytesSent + ' bytes sent');
 
 					var message = { 'activity_id': this._id,
 									'activity_type': this.type,	                				
@@ -168,7 +168,7 @@ Template.activity.events({
 			}			
 
 		this.tagalongs.forEach(function(taggee) {
-			console.log(taggee)
+			// console.log(taggee)
 			Meteor.call('addNotification', notification, taggee)
 		});
 
