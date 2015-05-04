@@ -52,7 +52,7 @@ Template.tagalongs.helpers({
 			);
 
 		}
-
+		console.log(activities.fetch());
 		return groupActivities(activities);
 	},
 
