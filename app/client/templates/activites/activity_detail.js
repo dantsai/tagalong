@@ -48,7 +48,7 @@ Template.activity.helpers({
 	    // Map initialization options
 	    return {
 	      center: new google.maps.LatLng(this.location.position.A, this.location.position.F),
-	      zoom: 17
+	      zoom: 15
 	    };
 	  }
 	}	

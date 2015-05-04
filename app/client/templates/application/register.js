@@ -31,18 +31,18 @@ function createUser() {
     	console.log('aaa')
         Accounts.createUser({
             	email: $('#register-email').val(),
-            	password: $('#register-password').val(),
-                activities:[],
-                friends : {},
+            	password: $('#register-password').val(),                
             	profile: { names: {
             				first: $('#first-name').val(),
             				last: $('#last-name').val(),
             				pic: '/img/default-avatar.png'
             			}
             		},
-                notifications: {
-                    new : []
-                }
+                activities:[],
+                friends : [],
+                notifications: [],
+                videos: [],
+                history: []
         	},
         	function(error) { 	
 				if ( error ) {

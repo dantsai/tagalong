@@ -35,7 +35,7 @@ Meteor.methods({
 		})					
 	},
 	removeAllNotifications: function () {
-		Meteor.users.update(Meteor.userId(), { $unset: { notifications: "" }} )
+		Meteor.users.update(Meteor.userId(), { $set: { notifications: [] }} )
 	}
 });
 

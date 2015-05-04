@@ -44,3 +44,10 @@ Router.route('/tagalongs',{
 Router.route('/testing', {
 	name: 'testing'
 })
+
+Router.route('/reminder/:_id', {
+	name: 'activityReminder',
+	data: function() { 
+		return Activities.findOne(this.params._id);
+	}
+})
