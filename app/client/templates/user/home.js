@@ -2,8 +2,16 @@ Template.home.helpers({
 	friendCount: function() {
 		return this.tagalongs.length;
 	},
+	hasNotifications: function() {
+		if (Meteor.user().notifications.length) 
+			return true
+		return false; 
+	},
 	notHost: function() {		
 		return this.host._id === Meteor.userId(); 
+	},
+	getNotificationsLength: function() {
+		return Meteor.user().notifications.length;
 	},
 	isClickable: function() {
 		var isAvailable = Activities.find({_id:this._id, available:true}).count()
@@ -62,5 +70,8 @@ Template.home.events({
 	},
 	'click .clickable': function() {
 		Router.go('activity',  {_id: this._id});
+	},
+	'click #removeNotifications': function() {
+		Meteor.call('removeAllNotifications');
 	}
 })

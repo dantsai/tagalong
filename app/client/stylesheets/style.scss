@@ -69,32 +69,50 @@ $loading-font-size: 22px;
 
 .notifications {
 	margin-top: 35px;
+
+	h5 {
+		button {
+			top:-6px;
+		}
+	}
 	
 	.homeNotifications {
 		padding: 5px;
 		max-height: 160px;
 		overflow-y: auto;
 
+
 		.notificationItem {
 			display: inline-block;
+			width:	90%;
+
+			.notifMessage {
+				font-size: 8pt;
+				display: inline-block;
+				vertical-align: middle;
+				margin-left: 3px;
+				white-space: normal;
+		  		line-height: 12px;
+			}
 		}
 
 		.remove-notification {
 			display: inline-block;
 		}
+
+		
 	}
 
 	.homeNotification {
 		padding: 5px;
 	}
+}
 
-	.notifMessage {
-		font-size: 8pt;
-		display: inline-block;
-		vertical-align: middle;
-		margin-left: 3px;
-	}
-
+.prompt {
+	text-align: center;
+	font-size: 10pt;
+	color:#666;
+	padding: 10px;
 }
 
 /****** Activity List *********/
