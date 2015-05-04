@@ -1,13 +1,19 @@
 <template name='layout'>
     {{#ionBody}}
-		{{#if currentUser}}    	
+		{{#if currentUser}}  
 			{{>ionNavBar class='bar-positive'}}
 
-			{{#ionNavView}}
-				{{> yield}}
-			{{/ionNavView}}
+			{{#if hasReminders }} 
+				{{#with topReminder}}
+					{{> activityReminder}}
+				{{/with}}
+			{{else}}
+				{{#ionNavView}}
+					{{> yield}} 
+				{{/ionNavView}}
 
-			{{> footer}}
+				{{> footer}}
+			{{/if}}
 		{{else}}		      
 	        {{> login}}
 	    {{/if}}	

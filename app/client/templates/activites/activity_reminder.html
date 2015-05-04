@@ -1,23 +1,21 @@
 <template name="activityReminder">
 	{{#contentFor "headerButtonLeft"}}
-	    {{>ionNavBackButton}}
+	    <!-- {{>ionNavBackButton path="layout"}} -->
 	{{/contentFor}}
 
 	{{#contentFor 'headerTitle'}}
-		<h1 class="title">Reminder</h1>
-
-		<button class="button button-clear pull-right" id="dismissBtn">Dismiss</button>
+		<h1 class="title">Activity Reminder</h1>
 	{{/contentFor}}
 
 	{{#ionView}}
 		{{#ionContent class='padding activityReminder'}}
-			<h5 class="listSubHeader">{{prettifyDate time.date}}</h5>
+			<h5 class="listSubHeader">{{prettifyDate this.time.date}}</h5>
 			{{#ionItem class="padding myActivityItem card" path="activity"}}
 				<!-- {{> ionIcon icon="ios-arrow-forward" class='positive'}} -->
 				<div class="timeDetails">
-					{{time.time}} <span class="activityDuration">{{> ionIcon icon='ios-stopwatch'}}  {{duration}} hours</span>
+					{{this.time.time}} <span class="activityDuration">{{> ionIcon icon='ios-stopwatch'}}  {{this.duration}} hours</span>
 
-					<div class="timeline" style="max-width:{{getTimeLength duration 3}};"></div>
+					<div class="timeline" style="max-width:{{getTimeLength this.duration 3}};"></div>
 				</div>
 				<h2>{{type}} {{>ionIcon icon="android-bicycle"}}</h2>
 				
@@ -27,11 +25,11 @@
 					{{#if notHost}}
 						My Activity
 					{{else}}
-						with <strong>{{host.name}}</strong>
+						with <strong>{{this.host.name}}</strong>
 					{{/if}}
 
 					<div class="location">
-						{{> ionIcon icon="ios-location"}} {{ location.name}}
+						{{> ionIcon icon="ios-location"}} {{ this.location.name}}
 					</div>	
 				</div>					
 
@@ -40,7 +38,7 @@
 						{{> ionIcon icon="ios-people-outline" title="Friends"}}
 
 						{{#if friendCount}}
-							<label>{{friendCount}}</label>
+							<label>{{this.friendCount}}</label>
 						{{/if}}
 
 					</li>
@@ -75,6 +73,7 @@
 
 			{{> currentStreak }}
 
+			<button class="button button-block button-assertive" id="dismissBtn">Dismiss</button>
 		{{/ionContent}}
 	{{/ionView}}
 
