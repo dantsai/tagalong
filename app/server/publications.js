@@ -11,6 +11,7 @@ Meteor.publish('userNameInfo', function () {
 			'notifications':1,
 			'videos':1,
 			'history': 1,
+			'reminders':1,
 			'friends':1
 		}
 	});
