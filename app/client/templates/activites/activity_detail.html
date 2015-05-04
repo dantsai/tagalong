@@ -46,6 +46,12 @@
 					{{/ionItem}}
 				{{/if}}
 
+				{{#if activityMember }}
+					{{#ionItem body=true }}
+						<button id="add-to-calendar" class="button button-block button-positive">{{>ionIcon icon="ios-calendar-outline"}} Add To Calendar</button>
+					{{/ionItem}}
+				{{/if }}
+
 				<!-- Tagalongs Information-->
 				{{#if tagalongs}}
 					{{#ionItem body=true class="activityTagalongs"}}
@@ -83,9 +89,6 @@
 						<input type="text" id="messageInput" placeholder="Leave a message..."><button class="button button-empty button-small" id='submitMessage'>Send</button>
 					{{/ionItem}}
 				{{/if }}
-
-
-				
 
 			{{/ionList}}
 

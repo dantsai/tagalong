@@ -45,7 +45,6 @@ Meteor.methods({
 	},
 
 	removeFromHistory: function (userHistory, userId) {
-		console.log('Here');
 		Meteor.users.update(userId, {
 			$pull: { history: userHistory }
 		});
