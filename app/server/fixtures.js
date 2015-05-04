@@ -268,7 +268,8 @@ if (Meteor.users.find().count() === 0) {
 	    },
         "activities":[],
         "friends": [],
-        "notifications": [],
+        "notifications": [], 
+        "reminders":[],
         "videos": [],
         "history": [],
 	    "activities": ['Running','Swimming','Hiking','Soccer']
@@ -299,7 +300,8 @@ if (Meteor.users.find().count() === 0) {
 	    },
         "activities":[],
         "friends": [],
-        "notifications": [],
+        "notifications": [], 
+        "reminders":["RgixjrZ6ur4HyAPKs","Xr2EvDwzRzgJZPNyd","hQcwzAfePhHBR6iLt"],
         "videos": [],
         "history": [],
 	    "activities": ['Soccer','Hiking','Walking']
@@ -329,7 +331,8 @@ if (Meteor.users.find().count() === 0) {
 	    },
         "activities":[],
         "friends": [],
-        "notifications": [],
+        "notifications": [], 
+        "reminders":[],
         "videos": [],
         "history": [],
 	    "activities": ['Running','Swimming','Cycling']
@@ -359,7 +362,8 @@ if (Meteor.users.find().count() === 0) {
 	    },
         "activities":[],
         "friends": [],
-        "notifications": [],
+        "notifications": [], 
+        "reminders":[],
         "videos": [],
         "history": [],
 	    "activities": ['Running','Swimming','Cycling']
