@@ -42,6 +42,7 @@ function createUser() {
                 reminders: [],
                 friends : [],
                 notifications: [],
+                feedback: [],
                 videos: [],
                 history: []
         	},

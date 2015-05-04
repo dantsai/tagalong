@@ -1,14 +1,14 @@
-<template name="activityReminder">
+<template name="activityFeedback">
 	{{#contentFor "headerButtonLeft"}}
 	    <!-- {{>ionNavBackButton path="layout"}} -->
 	{{/contentFor}}
 
 	{{#contentFor 'headerTitle'}}
-		<h1 class="title">Activity Reminder</h1>
+		<h1 class="title">Feedback!</h1>
 	{{/contentFor}}
 
 	{{#ionView}}
-		{{#ionContent class='padding activityReminder'}}
+		{{#ionContent class='padding activityFeedback'}}
 			<h5 class="listSubHeader">{{prettifyDate this.time.date}}</h5>
 			{{#ionItem class="padding myActivityItem card" path="activity"}}
 				<!-- {{> ionIcon icon="ios-arrow-forward" class='positive'}} -->
@@ -60,16 +60,8 @@
 				</ul>
 			{{/ionItem}}
 
-			{{#if hasVideos}}
-				<h5 class="listSubHeader">Here's some motivation!</h5>
-				{{#with getSelfMessage}}
-					<video class='videoSelfMessage' src="{{this.url}}"></video>
-				{{/with}}
-			{{else}}
-				<button id="message-self" class="button button-block button-energized">{{> ionIcon icon="ios-videocam"}} Record Message to myself</button>
-			{{/if}}
-			
-
+			<h5 class="listSubHeader">Record motivation</h5>
+			<button id="message-self" class="button button-block button-energized">{{> ionIcon icon="ios-videocam"}} Record Message to your future self!</button>
 
 			{{> currentStreak }}
 
