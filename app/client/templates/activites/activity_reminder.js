@@ -23,3 +23,11 @@ Template.activityReminder.helpers({
 		return Meteor.user().videos[0];
 	}
 })
+
+Template.activityReminder.events({
+	'click #dismissBtn': function() {
+		Meteor.call('removeFirstReminder');
+
+		// Router.go('layout');
+	}
+})

@@ -59,6 +59,9 @@ Meteor.methods({
 
 	removeAllNotifications: function () {
 		Meteor.users.update(Meteor.userId(), { $set: { notifications: [] }} )
+	},
+	removeFirstReminder: function() {
+		Meteor.users.update(Meteor.userId(), { $pop: {reminders:-1 } });
 	}
 });
 
