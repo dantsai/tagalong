@@ -21,7 +21,7 @@ Meteor.methods({
 	addMessageToSelf: function (message) {
 		console.log(message)
 		Meteor.users.update(Meteor.userId(), {
-			$push: { messages: { $each: [ message ], $position: 0 } }
+			$push: { videos: { $each: [ message ], $position: 0 } }
 		});
 	},
 

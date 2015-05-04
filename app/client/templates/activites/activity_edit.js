@@ -58,13 +58,14 @@ Template.activityEdit.helpers({
 Template.activityEdit.events({
 	'click #activity-save': function(event) {
 		// console.log(activityId);
-
 		var dateToSet = new Date($(".dayofweek.selected").attr('value'))
 		var hourToSet = $('#activityTime').val().substring(0,2)
 		var minsToSet = $('#activityTime').val().slice(-2)
 		
 		dateToSet.setHours(hourToSet)
 		dateToSet.setMinutes(minsToSet)
+
+		console.log(this);
 
 		var activityDetails = {
 			'activityId': this.id,
@@ -86,13 +87,15 @@ Template.activityEdit.events({
 		};
 
 		var activity = Activities.findOne({_id: this.id});
-		var name = activity.host.name;
-		var notification = { message: name + ' changed details for ' + $(".activityIcon.selected").attr('activity'),
-							type: 'edit',
-							_id: this.id }			
+		var hostname = activity.host.name;
+		var notification = { 
+				message: hostname + ' changed an activity you are tagging along',
+				type: 'update',
+				_id: this.id 
+			}
 
 		activity.tagalongs.forEach(function(taggee) {
-			console.log(taggee)
+			// console.log(taggee)
 			Meteor.call('addNotification', notification, taggee)
 		})
 
@@ -102,10 +105,6 @@ Template.activityEdit.events({
 			 IonModal.close();
 		});
 
-	},
-
-	'click #activity-edit': function(event) {
-		pushToEdit(this.id);
 	},
 	'click .modal .activityIcon': function (event) {
 		

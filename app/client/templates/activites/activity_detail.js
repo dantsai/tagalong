@@ -127,12 +127,14 @@ Template.activity.events({
 	                console.log('response: ' + result.response); // url of video. SAVE THIS
 	                console.log(result.bytesSent + ' bytes sent');
 
-	                message = {'activity_id': this._id,
-	                			'user': Meteor.userId(),
-	                			'messageUrl' : result.response
-	            				}
+					var message = { 'activity_id': this._id,
+									'activity_type': this.type,	                				
+			    					'url' : result.response
+								}
 
-	                var msgId = Messages.insert(message);
+				    Meteor.call('addMessageToSelf', message);
+				    // Meteor.call('addMessageToActivity', result.response);   
+	                
 	                //place to store the url for video.
 	            },
 	            function(error) {
@@ -151,13 +153,19 @@ Template.activity.events({
 
 		//Notifications
 		var name = Meteor.user().profile.names.first + ' ' + Meteor.user().profile.names.last
-		var notification = { message: name + ' is tagging along ' + this.type,
-							 _id: this._id }
+		var notification = { 
+				message: name + ' is tagging along your ' + this.type +' activity.',
+				type: 'tagalong',
+				_id: this._id 
+			}
 		
 		Meteor.call('addNotification', notification, this.host._id)
 
-		var notification = { message: name + ' is tagging along ' + this.host.name + ' ' + this.type,
-							_id: this._id }			
+		var notification = { 
+				message: name + ' is also tagging along ' + this.host.name + '\'s ' + this.type +' activity.',
+				type: 'tagalong',
+				_id: this._id 
+			}			
 
 		this.tagalongs.forEach(function(taggee) {
 			console.log(taggee)
@@ -182,7 +190,11 @@ Template.activity.events({
 		var actType = this.type;
 		var actDate = this.time.date
 
-		var notification = { message: this.host.name + ' cancelled ' + this.type }
+		var notification = { 
+				message: this.host.name + ' cancelled ' + this.type,
+				type: 'canceled' 
+			};
+
 		IonActionSheet.show({
 	      titleText: 'Are you sure you want to Cancel the activity?',
 	      buttons: [
@@ -249,8 +261,11 @@ Template.activity.events({
 				Meteor.call('activityFlake', actId);
 				
 				var name = Meteor.user().profile.names.first + ' ' + Meteor.user().profile.names.last
-				var notification = { message: name + ' bailed on ' + actType,
-									 _id: actId }
+				var notification = { 
+						message: name + ' bailed on your' + actType +' activity.',
+						type: 'bail',
+						_id: actId 
+					}
 				
 				Meteor.call('addNotification', notification, hostId);
 

@@ -69,19 +69,36 @@
 		    </div>
 
 		    <div class="notifications">
-		    	<h5 class="listSubHeader">Notifications</h5>
-		    	<div id="homeNotifications">
-		    		{{#ionList show-delete="shouldShowDelete"}}
+	    		{{#if hasNotifications}}
+	    			<h5 class="listSubHeader">
+	    				Notifications ({{ getNotificationsLength}})
+	    				<button class="pull-right button button-small button-clear button-stable" id="removeNotifications">Clear</button>
+			    	</h5>
+		    		{{#ionList show-delete="shouldShowDelete" class="homeNotifications"}}
 			    		{{#each messages}}
-			    			<!-- {{#ionItem buttonRight=true path="this.activity"}} -->
-
-			    			{{#ionItem path="activity"}}
-			    				{{this.message}}{{this.activity}}
-			    				<ion-delete-button id = 'remove-notification' class='ion-close-circled'></ion-delete-button>			    				
-			    			{{/ionItem}}			    			
+		    				{{#ionItem  class="homeNotification"}}
+		    					{{#if isClickable}}
+		    						<div class="notificationItem clickable" actid="{{this._id}}">
+		    							{{> ionIcon icon="ios-information"}}
+				    					<p class="notifMessage">{{this.message}}{{this.activity}}</p>
+			    					</div>
+		    					{{else}}
+		    						<div class="notificationItem">
+		    							{{> ionIcon icon="ios-information"}}
+				    					<p class="notifMessage">{{this.message}}{{this.activity}}</p>
+			    					</div>
+		    					{{/if}}
+		    					<ion-delete-button class='remove-notification pull-right ion-close-circled'></ion-delete-button>
+			    							    				
+			    			{{/ionItem}}
 			    		{{/each}}		    		
 		    		{{/ionList}}
-		    	</div>
+	    		{{else }}
+	    			<h5 class="listSubHeader">
+	    				Notifications 
+			    	</h5>
+	    			<div class="prompt">You don't have notifications.</div>
+	    		{{/if}}
 		    </div>	
 		{{/ionContent}}
 	{{/ionView}}

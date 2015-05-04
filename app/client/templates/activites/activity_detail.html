@@ -89,13 +89,11 @@
 
 
 			{{#if activityMember}}
-				<!-- {{#ionItem body=true}} -->
-					{{#if isHost}}
-						<button id="activity-cancel" class="button button-block button-assertive">Cancel Activity</button>
-					{{else}}
-						<button id="activity-flake" class="button button-block button-assertive">Bail on {{ this.host.name }}</button>
-					{{/if}}
-				<!-- {{/ionItem}} -->
+				{{#if isHost}}
+					<button id="activity-cancel" class="button button-block button-assertive">Cancel Activity</button>
+				{{else}}
+					<button id="activity-flake" class="button button-block button-assertive">Bail on {{ this.host.name }}</button>
+				{{/if}}
 			{{/if}}
 
 
