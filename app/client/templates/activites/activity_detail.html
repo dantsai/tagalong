@@ -91,15 +91,9 @@
 			{{#if activityMember}}
 				<!-- {{#ionItem body=true}} -->
 					{{#if isHost}}
-<!-- <<<<<<< HEAD
-						<button id="activity-cancel" class="button button-block button-assertive" path="tagalongs" data-action="cancelActionSheet">Cancel Activity</button>
-					{{else}}
-						<button id="activity-flake" class="button button-block button-assertive" data-action="bailActionSheet">Bail from Tagalong</button>
-======= -->
 						<button id="activity-cancel" class="button button-block button-assertive">Cancel Activity</button>
 					{{else}}
 						<button id="activity-flake" class="button button-block button-assertive">Bail on {{ this.host.name }}</button>
-<!-- >>>>>>> master -->
 					{{/if}}
 				<!-- {{/ionItem}} -->
 			{{/if}}

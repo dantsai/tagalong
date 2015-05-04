@@ -24,16 +24,39 @@ Meteor.methods({
 			$push: { messages: { $each: [ message ], $position: 0 } }
 		});
 	},
+
 	addNotification: function (notification, user) {
 		Meteor.users.update(user, {
 			$push: { notifications: { $each: [ notification ], $position: 0 } }
-		})		
+		});		
 	},
+
+	addToHistory: function (userHistory) {
+		Meteor.users.update(Meteor.userId(), {
+			$push: { history: { $each: [ userHistory ], $position: 0 } }
+		});
+	},
+
+	updateHistory: function (activityID) {
+		Meteor.users.update(
+			{ '_id' : Meteor.userId(), 'history._id': activityID }, 
+			{ $set: { 'history.$.attended': false } }
+		);
+	},
+
+	removeFromHistory: function (userHistory, userId) {
+		console.log('Here');
+		Meteor.users.update(userId, {
+			$pull: { history: userHistory }
+		});
+	},
+
 	removeNotification: function (notification) {
 		Meteor.users.update(Meteor.userId(), {
 			$pull: { notifications: notification }
 		})					
 	},
+
 	removeAllNotifications: function () {
 		Meteor.users.update(Meteor.userId(), { $unset: { notifications: "" }} )
 	}
