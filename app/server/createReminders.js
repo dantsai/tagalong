@@ -1,7 +1,25 @@
 Meteor.startup(function () {
 	var oneHour = 3600000;
 	var thirtyMinutes = 1800000;
-	Meteor.setInterval( function () {
+
+	function postReminders (activities) {
+		activities.forEach(function(activity) {
+			console.log(activity._id )
+			//Add reminder for host
+			Meteor.users.update(activity.host._id, {
+				$push: { reminders: { $each: [ activity._id ], $position: 0 } }
+			});
+
+			//Add reminders for taggees
+			activity.tagalongs.forEach(function(taggee) {
+				// console.log(taggee)
+				Meteor.users.update(taggee, {
+					$push: { reminders: { $each: [ activity._id ], $position: 0 } }
+				});					
+			})				
+		});  		
+	}
+	function setNightReminder () {
         now = new Date();
         if (now.getHours() == 22) {
         	dateStart = new Date();
@@ -18,28 +36,22 @@ Meteor.startup(function () {
         			  'time.date' : { $gte: dateStart  , $lt: dateEnd } 
         			}
         	);
-			
-			activitiesForReminders.forEach(function(activity) {
-				console.log(activity._id )
-				//Add reminder for host
-				Meteor.users.update(activity.host._id, {
-					$push: { reminders: { $each: [ activity._id ], $position: 0 } }
-				});
 
-				//Add reminders for taggees
-				activity.tagalongs.forEach(function(taggee) {
-					// console.log(taggee)
-					Meteor.users.update(taggee, {
-						$push: { reminders: { $each: [ activity._id ], $position: 0 } }
-					});					
-				})				
-			});  
+        	if (activitiesForReminders) {
+        		postReminders( activitiesForReminders );
+        	}			
 		}      
-    }, oneHour );
+	};
+
+	function hourlyReminder () {
+		
+	}
+
+	Meteor.setInterval( setNightReminder, oneHour );
 
 	Meteor.setInterval( function () {
         now = new Date();
-        if (now.getHours() == 22) {
+        if (now.getHours() == 23) {
         	timeStart = new Date();
         	timeStart.setMinutes(0);
         	timeEnd = new Date();
@@ -51,21 +63,9 @@ Meteor.startup(function () {
         			}
         	);
 			
-			activitiesForReminders.forEach(function(activity) {
-				console.log(activity._id )
-				//Add reminder for host
-				Meteor.users.update(activity.host._id, {
-					$push: { reminders: { $each: [ activity._id ], $position: 0 } }
-				});
-
-				//Add reminders for taggees
-				activity.tagalongs.forEach(function(taggee) {
-					// console.log(taggee)
-					Meteor.users.update(taggee, {
-						$push: { reminders: { $each: [ activity._id ], $position: 0 } }
-					});					
-				})				
-			});  
+        	if (activitiesForReminders) {
+        		postReminders( activitiesForReminders );
+        	}			 
 		}      
     }, thirtyMinutes );
 
