@@ -6,8 +6,6 @@ Template.layout.helpers({
 	},
 	topReminder: function() {
 		var actId = Meteor.user().reminders[0];
-		console.log(Meteor.user().reminders);
-		// return actId
 		return Activities.findOne({_id:actId});
 	}
 })
