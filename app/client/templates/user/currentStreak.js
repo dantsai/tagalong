@@ -12,7 +12,7 @@ Template.currentStreak.helpers({
 
 		//Need to change this back to history.date: lt today. This was to test functionality of streak algo.
 		var user = Meteor.users.findOne({ '_id' : Meteor.userId(), 'history.date': { $lt: new Date(date_now) } });
-		console.log(user);
+		// console.log(user);
 		if (user) {
 			var userHistory = user.history;
 			userHistory.sort(function (a, b) {
@@ -41,7 +41,7 @@ Template.currentStreak.helpers({
 			});
 		}
 
-		console.log(maxStreak, currentStreak);
+		// console.log(maxStreak, currentStreak);
 		var streaks = { 
 			currentStreak : currentStreak,
 			maxStreak : maxStreak 

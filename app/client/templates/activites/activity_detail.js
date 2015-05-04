@@ -292,6 +292,31 @@ Template.activity.events({
 	      }
 	    });
 	},
+	'click #add-to-calendar': function () {
+		// startDate
+		// endDate
+		// Title (change it to something like “{activityType} Tagalong with {activityHost}”
+		// eventLocation
+		// notes (i don’t know what to put here, maybe leave it blank)
+		var withHost = '';
+		var myName = user.profile.names.first + ' ' + user.profile.names.last;
+		if (this.host.name != myName) {
+			withHost =  ' with ' + this.host.name;
+		}
+		var startDate = this.time.date; // beware: month 0 = january, 11 = december
+		var endDate = this.time.date
+		endDate.setHours(endDate.getHours() + Math.floor(this.duration));
+		var minutes =  ( this.duration % 1) * 60;
+		endDate.setMinutes(endDate.getMinutes() + minutes );
+		var title = this.type + withHost;
+		var eventLocation = this.location.name;
+		var notes = this.comments;
+		console.log(startDate, endDate);
+		var success = function(message) { alert("Success: " + JSON.stringify(message)); };
+		var error = function(message) { alert("Error: " + message); };
+		window.plugins.calendar.createEventInteractively(title,eventLocation,notes,startDate,endDate,success,error);
+
+	}
 });
 
 function recordVideo(activityId) {
