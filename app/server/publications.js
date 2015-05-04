@@ -9,6 +9,8 @@ Meteor.publish('userNameInfo', function () {
 			'emails':1,
 			'activities':1,
 			'notifications':1,
+			'videos':1,
+			'history': 1,
 			'friends':1
 		}
 	});

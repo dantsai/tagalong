@@ -103,7 +103,16 @@ Template.activityNew.events({
 		Meteor.call('activityInsert', activity, function(error, result) { 	
 			if (error)
 				return alert(error.reason);
-			IonModal.close();
+
+			//Add to user history
+			var userHistory = { _id : result._id,
+								type: activity.type,
+								attended: true
+								};
+
+			Meteor.call('addToHistory', userHistory);			
+
+			IonModal.close()
 	      	Router.go('activity',  {_id: result._id});
 		});
 	},

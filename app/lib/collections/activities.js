@@ -74,12 +74,6 @@ Meteor.methods({
 		});
 	},
 	addMessageToActivity: function(messageUrl) {
-		// Activities.update(activityId, {
-		// 	$addToSet : { messages: {
-		// 					user: Meteor.userId(), message: message.messageUrl
-		// 				}
-		// 		}
-		// });
 		Activities.users.update(Meteor.userId(), {
 			$push: { messages: { $each: [ {
 							user: Meteor.userId(), message: messageUrl

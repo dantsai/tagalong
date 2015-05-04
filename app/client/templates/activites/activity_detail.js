@@ -127,12 +127,14 @@ Template.activity.events({
 	                console.log('response: ' + result.response); // url of video. SAVE THIS
 	                console.log(result.bytesSent + ' bytes sent');
 
-	                message = {'activity_id': this._id,
-	                			'user': Meteor.userId(),
-	                			'messageUrl' : result.response
-	            				}
+					var message = { 'activity_id': this._id,
+									'activity_type': this.type,	                				
+			    					'url' : result.response
+								}
 
-	                var msgId = Messages.insert(message);
+				    Meteor.call('addMessageToSelf', message);
+				    // Meteor.call('addMessageToActivity', result.response);   
+	                
 	                //place to store the url for video.
 	            },
 	            function(error) {
@@ -145,8 +147,11 @@ Template.activity.events({
 		navigator.device.capture.captureVideo(captureSuccess, captureError, {limit:1});
 	},
 	'click #tagalong': function(event) {
+
+		//Add to activity tagalongs list
 		Meteor.call('tagalong', this._id)
 
+		//Notifications
 		var name = Meteor.user().profile.names.first + ' ' + Meteor.user().profile.names.last
 		var notification = { 
 				message: name + ' is tagging along your ' + this.type +' activity.',
@@ -165,12 +170,26 @@ Template.activity.events({
 		this.tagalongs.forEach(function(taggee) {
 			console.log(taggee)
 			Meteor.call('addNotification', notification, taggee)
-		})
+		});
+
+		//Add to user history
+		var userHistory = { _id : this._id,
+							type: this.type,
+							date: this.time.date,
+							attended: true
+							};
+
+		Meteor.call('addToHistory', userHistory);
 
 	},
 	'click #activity-cancel': function(event,template) {
 		var actId = this._id;
 		var tagalongs = this.tagalongs;
+		var host = this.host.name;
+		var hostId = this.host._id;
+		var actType = this.type;
+		var actDate = this.time.date
+
 		var notification = { 
 				message: this.host.name + ' cancelled ' + this.type,
 				type: 'canceled' 
@@ -192,6 +211,32 @@ Template.activity.events({
 
 				Meteor.call('activityCancel', actId);
 				Router.go('tagalongs');
+
+				//Change to user history
+				var now = new Date(); 
+				var timeDiff = Math.abs(actDate.getTime() - now.getTime());
+				var dateDiff = Math.floor(timeDiff / (1000 * 3600 * 24)); 
+
+				console.log(dateDiff);
+
+				var userHistory = { _id : actId,
+									type: actType,
+									date: actDate,
+									attended: true
+								  };
+
+				if (dateDiff > 3) {
+					Meteor.call('removeFromHistory', userHistory, Meteor.userId());
+				}
+				else {
+					Meteor.call('updateHistory', actId);
+				}
+		
+				tagalongs.forEach(function(taggee) {
+					console.log(taggee)
+					Meteor.call('addNotification', notification, taggee);
+					Meteor.call('removeFromHistory', userHistory, taggee);
+				});
 	        }
 	        return true;
 	      }
@@ -202,6 +247,8 @@ Template.activity.events({
 		var host = this.host.name;
 		var hostId = this.host._id;
 		var actType = this.type;
+		var actDate = this.time.date
+		
 		IonActionSheet.show({
 	      titleText: 'Are you sure you want to bail on '+host+ '?',
 	      buttons: [
@@ -220,8 +267,26 @@ Template.activity.events({
 						_id: actId 
 					}
 				
-				Meteor.call('addNotification', notification, hostId)
+				Meteor.call('addNotification', notification, hostId);
 
+				//Change to user history
+				now = new Date(); 
+				var timeDiff = Math.abs(actDate.getTime() - now.getTime());
+				var dateDiff = Math.floor(timeDiff / (1000 * 3600 * 24)); 
+
+				console.log(dateDiff);
+
+				if (dateDiff > 2) {
+					var userHistory = { _id : actId,
+										type: actType,
+										date: actDate,
+										attended: true
+									  };
+					Meteor.call('removeFromHistory', userHistory, Meteor.userId());
+				}
+				else {
+					Meteor.call('updateHistory', actId);
+				}
 	        }
 	        return true;
 	      }

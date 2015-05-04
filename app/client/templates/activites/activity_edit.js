@@ -1,8 +1,6 @@
 Template.activityEdit.helpers({
 	activity: function() {
 		var template = Template.instance();
-		a = Activities.findOne({_id: template.data.id});
-		console.log(a);
 		return Activities.findOne({_id: template.data.id})
 	},
 
@@ -59,7 +57,54 @@ Template.activityEdit.helpers({
 
 Template.activityEdit.events({
 	'click #activity-save': function(event) {
-		pushToEdit(this.id, this.host.name, this.tagalongs);
+		// console.log(activityId);
+		var dateToSet = new Date($(".dayofweek.selected").attr('value'))
+		var hourToSet = $('#activityTime').val().substring(0,2)
+		var minsToSet = $('#activityTime').val().slice(-2)
+		
+		dateToSet.setHours(hourToSet)
+		dateToSet.setMinutes(minsToSet)
+
+		console.log(this);
+
+		var activityDetails = {
+			'activityId': this.id,
+			'properties': {
+				'type': $(".activityIcon.selected").attr('activity'),
+				'location': { 
+					'name' : $('#activityLocation').val()
+				},
+			    'time': {
+				        'epoch': '',
+				        'date': dateToSet, //Need proper handling of this
+						'time': $('#activityTime').val(),
+			    	},
+				'duration': $('#activityDuration').val(),
+				// 'invitations': [],
+				'comments': $('#editActivityComments').val(),
+				'available': true
+			}
+		};
+
+		var activity = Activities.findOne({_id: this.id});
+		var hostname = activity.host.name;
+		var notification = { 
+				message: hostname + ' changed an activity you are tagging along',
+				type: 'update',
+				_id: this.id 
+			}
+
+		activity.tagalongs.forEach(function(taggee) {
+			// console.log(taggee)
+			Meteor.call('addNotification', notification, taggee)
+		})
+
+		Meteor.call('activityUpdate', activityDetails, function(error, result) { 	
+			if (error)
+				return alert(error.reason);
+			 IonModal.close();
+		});
+
 	},
 	'click .modal .activityIcon': function (event) {
 		
@@ -86,52 +131,3 @@ Template.activityEdit.events({
 
 	}
 })
-
-function pushToEdit(activityId, hostname,tagalongs) {
-		console.log(activityId);
-
-		var dateToSet = new Date($(".dayofweek.selected").attr('value'))
-		var hourToSet = $('#activityTime').val().substring(0,2)
-		var minsToSet = $('#activityTime').val().slice(-2)
-		
-		dateToSet.setHours(hourToSet)
-		dateToSet.setMinutes(minsToSet)
-		console.log(dateToSet)
-
-		var notification = { 
-				message: hostname + ' changed an activity you are tagging along',
-				type: 'update',
-				_id: activityId 
-			}
-
-		tagalongs.forEach(function(taggee) {
-			console.log(notification)
-			Meteor.call('addNotification', notification, taggee)
-		});
-
-		var activity = {
-			'activityId': activityId,
-			'properties': {
-				'type': $(".activityIcon.selected").attr('activity'),
-				'location': { 
-					'name' : $('#activityLocation').val()
-				},
-			    'time': {
-				        'epoch': '',
-				        'date': dateToSet, //Need proper handling of this
-						'time': $('#activityTime').val(),
-			    	},
-				'duration': $('#activityDuration').val(),
-				// 'invitations': [],
-				'comments': $('#editActivityComments').val(),
-				'available': true
-			}
-		};
-
-		Meteor.call('activityUpdate', activity, function(error, result) { 	
-			if (error)
-				return alert(error.reason);
-			 IonModal.close();
-		});
-
-}
