@@ -50,4 +50,11 @@ Router.route('/reminder/:_id', {
 	data: function() { 
 		return Activities.findOne(this.params._id);
 	}
-})
+});
+
+Router.route('/feedback/:_id', {
+	name: 'activityFeedback',
+	data: function() { 
+		return Activities.findOne(this.params._id);
+	}
+});

@@ -12,7 +12,8 @@ Meteor.publish('userNameInfo', function () {
 			'videos':1,
 			'history': 1,
 			'reminders':1,
-			'friends':1
+			'friends':1,
+			'feedback':1
 		}
 	});
 });
