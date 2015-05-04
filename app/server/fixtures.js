@@ -266,7 +266,11 @@ if (Meteor.users.find().count() === 0) {
 		        "pic": "/img/Pablo.jpg"
 	    	}
 	    },
-	    "friends":[],
+        "activities":[],
+        "friends": [],
+        "notifications": [],
+        "videos": [],
+        "history": [],
 	    "activities": ['Running','Swimming','Hiking','Soccer']
 
 	}); 
@@ -293,7 +297,11 @@ if (Meteor.users.find().count() === 0) {
 		        "pic": "/img/Chalenge.jpg"
 	    	}
 	    },
-	    "friends":[],
+        "activities":[],
+        "friends": [],
+        "notifications": [],
+        "videos": [],
+        "history": [],
 	    "activities": ['Soccer','Hiking','Walking']
 	});
 	console.log("Added user: chalenge@gmail.com"); 
@@ -319,7 +327,11 @@ if (Meteor.users.find().count() === 0) {
 		        "pic": "/img/Suhaib.jpg"
 	    	}
 	    },
-	    "friends":[],
+        "activities":[],
+        "friends": [],
+        "notifications": [],
+        "videos": [],
+        "history": [],
 	    "activities": ['Running','Swimming','Cycling']
 	}); 
 	console.log("Added user: suhaib@gmail.com");
@@ -345,7 +357,11 @@ if (Meteor.users.find().count() === 0) {
 		        "pic": "/img/Dan.jpg"
 		    }
 	    },
-	    "friends":[],
+        "activities":[],
+        "friends": [],
+        "notifications": [],
+        "videos": [],
+        "history": [],
 	    "activities": ['Running','Swimming','Cycling']
 	});
 	console.log("Added user: dan@gmail.com");
