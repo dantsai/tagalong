@@ -39,6 +39,7 @@ function createUser() {
             			}
             		},
                 activities:[],
+                reminders: [],
                 friends : [],
                 notifications: [],
                 videos: [],
