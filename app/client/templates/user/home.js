@@ -57,7 +57,7 @@ Template.home.helpers({
 		return upcoming;
 	},
 	messages: function() {
-		return Meteor.user().notifications
+		return user.notifications
 	}
 });
 
