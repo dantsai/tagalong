@@ -615,8 +615,8 @@ $loading-font-size: 22px;
 
 	.mapmarker {
 		position: absolute;
-		left: 120px;
-		top: 118px;
+		left: 45%;
+		top: 40%;
 	}
 
 	input {
@@ -921,6 +921,14 @@ $loading-font-size: 22px;
 		width: 100%;
 	}
 
+}
+
+.activityReminder {
+
+	#message-self {
+		padding:15px;
+		margin-bottom: 15px;
+	}
 }
 
 

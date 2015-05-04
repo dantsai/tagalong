@@ -21,7 +21,7 @@
 				{{#each activityDisplay}}
 					<h5 class="listSubHeader">{{this.name}}</h5>
 					{{#each this.activities}}
-						{{#ionItem class="myActivityItem" path="activity"}}
+						{{#ionItem class="card myActivityItem" path="activity"}}
 							<!-- {{> ionIcon icon="ios-arrow-forward" class='positive'}} -->
 							<div class="timeDetails">
 								{{time.time}} <span class="activityDuration">{{> ionIcon icon='ios-stopwatch'}}  {{duration}} hours</span>

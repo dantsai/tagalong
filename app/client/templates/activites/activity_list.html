@@ -35,7 +35,7 @@
 					{{#each activityDisplay}}
 						<h5 class="listSubHeader">{{this.name}}</h5>
 						{{#each this.activities}}
-							{{#ionItem buttonRight=true class="item-icon-right activityItem" path="activity"}}
+							{{#ionItem buttonRight=true class="card item-icon-right activityItem" path="activity"}}
 								{{> ionIcon icon="ios-arrow-forward" class='positive'}}
 								<div class="activityImage">
 									<img class="activity_img" src="{{getUserPicUrl}}">

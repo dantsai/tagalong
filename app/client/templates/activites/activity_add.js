@@ -92,6 +92,7 @@ Template.activityNew.events({
 		    	},
 			'duration': $('#activityDuration').val(),
 			'invitations': [],
+			'videos':[],
 			'tagalongs':[],
 			'public': true, //default to true for now.
 			'comments': $('#activityComments').text(),
