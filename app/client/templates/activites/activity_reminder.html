@@ -60,10 +60,13 @@
 				</ul>
 			{{/ionItem}}
 
+
+			<video class='videoSelfMessage' src="http://dantsai.com/_/uploads/capturedvideo.MOV"></video>
+
 			{{#if hasVideos}}
 				<h5 class="listSubHeader">Here's some motivation!</h5>
 				{{#with getSelfMessage}}
-					<video class='videoSelfMessage' src="{{this.url}}"></video>
+					<video class='videoSelfMessage' src="http://dantsai.com/_/uploads/capturedvideo.MOV"></video>
 				{{/with}}
 			{{else}}
 				<button id="message-self" class="button button-block button-energized">{{> ionIcon icon="ios-videocam"}} Record Message to myself</button>
