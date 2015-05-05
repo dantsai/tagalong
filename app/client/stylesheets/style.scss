@@ -833,12 +833,17 @@ $loading-font-size: 22px;
 	
 }
 
+.videoSelfMessage {
+	width:100%;
+}
+
 #userActivityHistory {
 
 	white-space: nowrap;
 	overflow-x: auto;
 	overflow-y: hidden; 
 	height: 90px;
+	float:right;
 
 	.activityHistoryGroup {
 		vertical-align: top;
