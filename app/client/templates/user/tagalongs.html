@@ -24,7 +24,10 @@
 						{{#ionItem class="card myActivityItem" path="activity"}}
 							<!-- {{> ionIcon icon="ios-arrow-forward" class='positive'}} -->
 							<div class="timeDetails">
-								{{time.time}} <span class="activityDuration">{{> ionIcon icon='ios-stopwatch'}}  {{duration}} hours</span>
+								{{time.time}} <span class="activityDuration">
+								<i class="icon-{{type}} {{activityStatus}} activityIcon"></i>  
+								{{duration}} hours
+								</span>
 
 								<div class="timeline" style="max-width:{{getTimeLength}};"></div>
 							</div>

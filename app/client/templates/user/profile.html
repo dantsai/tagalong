@@ -30,6 +30,8 @@
 				{{#if getProfileSectionSelection 'History'}}
 					{{#ionItem class='body stats'}}
 						{{> currentStreak }}
+
+						{{> userHistory }}
 					{{/ionItem}}
 				{{else}}
 					{{#if getProfileSectionSelection 'Preferences'}}
