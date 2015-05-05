@@ -80,16 +80,12 @@ Template.activity.helpers({
 	      zoom: 15
 	    };
 	  }
-<<<<<<< HEAD
 	},
 	scrollTop: function() {
 		setTimeout(function() {
 			$(".activityDetail").scrollTop(0);
 		},300);
-	},	
-=======
 	}
->>>>>>> 6048cb812675947322e9350063472c5a5d709bca
 });
 
 Template.activity.onCreated(function() {
