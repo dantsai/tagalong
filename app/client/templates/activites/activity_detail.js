@@ -80,7 +80,7 @@ Template.activity.helpers({
 	      zoom: 15
 	    };
 	  }
-	}	
+	}
 });
 
 Template.activity.onCreated(function() {

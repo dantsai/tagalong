@@ -182,3 +182,65 @@ body {
   float: left;
   width: 33%;  
 }
+
+.lab_item {
+  width: 83px;
+  height: 90px;
+  position: relative;
+  display: inline-block;
+}
+
+article {
+  padding-top: 1em;
+  width: 375px;
+  margin: 0 auto;
+  white-space: nowrap;
+}
+
+.lab_item:nth-child(n+5) {
+  margin-top: -25px;
+}
+
+
+.h2 {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  display: inline-block;
+  width: 83px;
+  height: 90px;
+  overflow: hidden;
+  color: #fff;
+  -webkit-mask-image: url('http://tagalong.fit/img/mask_lg1_83_90.png');
+  text-align: center;
+  background: #C5F2CD;
+}
+
+.h2in {
+  display: inline-block;
+  width: 83px;
+  height: 90px;
+  overflow: hidden;
+  color: #fff;
+  -webkit-mask-image: url('http://tagalong.fit/img/mask_lg1_83_90in.png');
+  text-align: center;
+}
+
+.row1, .row2, .row3 {
+  white-space: nowrap;
+  width: 375px;
+  margin: 0 0 0 -20px;
+  padding: 0;
+  font-size: 0;
+}
+.row2, .row3 {
+  margin-top: -41px;
+}
+
+.row2 {
+  margin-left: -62px;
+}
+
+.row2 .lab_item, .row3 .lab_item {
+  margin-top: 0px;
+}
