@@ -80,6 +80,11 @@ Template.activity.helpers({
 	      zoom: 15
 	    };
 	  }
+	},
+	scrollTop: function() {
+		setTimeout(function() {
+			$(".activityDetail").scrollTop(0);
+		},300);
 	}
 });
 
