@@ -1,0 +1,23 @@
+<template name="userHistory">
+	<div id="userActivityHistory">
+		{{#if hasHistory }}
+			<div id="historyLine"></div>
+			{{#each doneActivity}}
+				<div class=" activityHistoryGroup {{attended}}" >
+					<i class="icon-{{type}} "></i>
+					<p>{{ shortDate }}</p>
+				</div>
+				<div class="historySpace"></div>
+			{{/each}}
+
+			<div id="bigStreakContainer">
+				<div class="currentStreakBig">
+					Current<div class="streakNumber">{{getStreaks.currentStreak}}</div>
+				</div>
+			</div>
+			{{scrollHistory}}
+		{{else}}
+
+		{{/if}}
+	</div>
+</template>

@@ -1,6 +1,6 @@
 Template.layout.helpers({
 	hasReminders: function() {
-		if (Meteor.user().reminders.length)
+		if (Meteor.user().reminders.length>0)
 			return true;
 		return false;
 	},
@@ -9,7 +9,7 @@ Template.layout.helpers({
 		return Activities.findOne({_id:actId});
 	},
 	hasFeebacks: function() {
-		if (Meteor.user().feedback.length)
+		if (Meteor.user().feedback.length>0)
 			return true;
 		return false;
 	},
