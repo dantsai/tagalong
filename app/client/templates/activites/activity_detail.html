@@ -41,7 +41,7 @@
 						</div>
 						<!-- <img src="/img/RSF.png" class="locationMap"> -->
 						<div class="map-container">
-							{{> googleMap name="exampleMap" options=exampleMapOptions}}
+							{{> googleMap name="detailMap" options=detailMapOptions}}
 						</div>						
 					{{/ionItem}}
 				{{/if}}
@@ -95,10 +95,12 @@
 
 
 			{{#if activityMember}}
-				{{#if isHost}}
-					<button id="activity-cancel" class="button button-block button-assertive">Cancel Activity</button>
-				{{else}}
-					<button id="activity-flake" class="button button-block button-assertive">Bail on {{ this.host.name }}</button>
+				{{#if notPast}}
+					{{#if isHost}}
+						<button id="activity-cancel" class="button button-block button-assertive">Cancel Activity</button>
+					{{else}}
+						<button id="activity-flake" class="button button-block button-assertive">Bail on {{ this.host.name }}</button>
+					{{/if}}				
 				{{/if}}
 			{{/if}}
 

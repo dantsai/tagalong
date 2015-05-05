@@ -66,10 +66,12 @@ Template.userPreferences.events({
 		})
 
 		userPrefs = {
-			'user' : Meteor.userId(),
+			'first' : $('#editFirstName').val(),
+			'last' : $('#editLastName').val(),
 			'activities': activitiesSelected,
 			'friends': friendsSelected
 		}
+		
 		Meteor.call('setPreferences', userPrefs, function(error, result) { 	
 			if (error)
 				return alert(error.reason);
