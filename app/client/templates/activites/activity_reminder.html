@@ -61,12 +61,13 @@
 			{{/ionItem}}
 
 
-			<video class='videoSelfMessage' src="http://dantsai.com/_/uploads/capturedvideo.MOV" controls preload></video>
+			<!-- <video class='videoSelfMessage' src="http://dantsai.com/_/uploads/capturedvideo.MOV" controls preload></video> -->
 
 			{{#if hasVideos}}
 				<h5 class="listSubHeader">Here's some motivation!</h5>
 				{{#with getSelfMessage}}
-					<video class='videoSelfMessage' src="http://dantsai.com/_/uploads/capturedvideo.MOV" controls preload></video>
+					<!-- <video class='videoSelfMessage' src="http://dantsai.com/_/uploads/capturedvideo.MOV" controls preload></video> -->
+					<video class='videoSelfMessage' src="{{}}" controls preload></video>
 				{{/with}}
 			{{else}}
 				<button id="message-self" class="button button-block button-energized">{{> ionIcon icon="ios-videocam"}} Record Message to future self</button>
