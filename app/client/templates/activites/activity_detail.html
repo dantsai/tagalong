@@ -42,7 +42,7 @@
 						</div>
 						<!-- <img src="/img/RSF.png" class="locationMap"> -->
 						<div class="map-container">
-							{{> googleMap name="exampleMap" options=exampleMapOptions}}
+							{{> googleMap name="detailMap" options=detailMapOptions}}
 						</div>						
 					{{/ionItem}}
 				{{/if}}
@@ -59,13 +59,8 @@
 						<p>
 							<strong>{{friendCount}}</strong> tagging along with <strong>{{host.name}}</strong>
 						</p>
-						<div class="friends">
-							{{#each taggers}}
-								<li>
-									<img class="tinyPic" src="{{profile.names.pic}}"><span class="userNames">{{profile.names.first}} {{profile.names.last}}</span>
-								</li>
-							{{/each}}
-						</div>
+						{{> tagalongList}}
+						{{populateTagalongList}}
 					{{/ionItem}}
 				{{/if}}
 
@@ -97,10 +92,12 @@
 			{{scrollTop}}
 			
 			{{#if activityMember}}
-				{{#if isHost}}
-					<button id="activity-cancel" class="button button-block button-assertive">Cancel Activity</button>
-				{{else}}
-					<button id="activity-flake" class="button button-block button-assertive">Bail on {{ this.host.name }}</button>
+				{{#if notPast}}
+					{{#if isHost}}
+						<button id="activity-cancel" class="button button-block button-assertive">Cancel Activity</button>
+					{{else}}
+						<button id="activity-flake" class="button button-block button-assertive">Bail on {{ this.host.name }}</button>
+					{{/if}}				
 				{{/if}}
 			{{/if}}
 
