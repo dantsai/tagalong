@@ -49,6 +49,17 @@ Template.activity.helpers({
 			'_id': { $in: this.tagalongs } 
 		});
 	},
+	activityStatus: function() {
+		if (this.time.date < new Date()) {
+			return 'past';
+		}
+		else {
+			if (this.host._id == Meteor.userId())
+				return 'host';
+			else 
+				return 'tagalonger';
+		}
+	},
 	getUserPicUrl: function() {
 		user = Meteor.users.findOne(this.host._id)
 		return user.profile.names.pic;

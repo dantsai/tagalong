@@ -215,6 +215,30 @@ $loading-font-size: 22px;
 			width:0px;
 		}
 	}
+
+	.activityIcon {
+		font-size: 140pt;
+		padding-top: 15px;
+		color: lightgray;
+		float: right;
+		z-index: 0;
+		opacity: .3;
+		position: absolute;
+		top: -45px;
+		left: 120px;
+
+		&.past {
+			color: lightgray;
+		}
+
+		&.host {
+			color: #FFA437;
+		}
+
+		&.tagalonger {
+			color: #5ED1EC;
+		}
+	}
 }
 
 /******* Activity Detail ********/
@@ -251,10 +275,27 @@ $loading-font-size: 22px;
 	}
 
 	.activityIcon {
-		font-size: 25pt;
+		font-size: 140pt;
 		padding-top: 15px;
 		color: lightgray;
 		float: right;
+		z-index: 0;
+		opacity: .3;
+		position: absolute;
+		top: -45px;
+		left: 120px;
+
+		&.past {
+			color: lightgray;
+		}
+
+		&.host {
+			color: #FFA437;
+		}
+
+		&.tagalonger {
+			color: #5ED1EC;
+		}
 	}
 
 	.details {
@@ -504,6 +545,30 @@ $loading-font-size: 22px;
 			font-size: 7pt;
 			color: white;
 			font-weight: bolder;
+		}
+	}
+
+	.activityIcon {
+		font-size: 140pt;
+		padding-top: 15px;
+		color: lightgray;
+		float: right;
+		z-index: 0;
+		opacity: .3;
+		position: absolute;
+		top: -45px;
+		left: 120px;
+
+		&.past {
+			color: lightgray;
+		}
+
+		&.host {
+			color: #FFA437;
+		}
+
+		&.tagalonger {
+			color: #5ED1EC;
 		}
 	}
 }
@@ -765,6 +830,99 @@ $loading-font-size: 22px;
 			text-align: center;
 		}
 	}
+
+	#userActivityHistory {
+
+		white-space: nowrap;
+		overflow-x: auto;
+		overflow-y: hidden; 
+		height: 90px;
+
+		.activityHistoryGroup {
+			vertical-align: top;
+			display: inline-block;
+			font-size: 45pt;
+			border: solid 2px;
+			border-radius: 50%;
+			width: 65px;
+			height: 65px;
+			text-align: center;
+			margin-top: 5px;
+			margin-right: -4px;
+			background-color: white;
+
+			&.attended {
+				color: rgba(0,204,102,1);
+				border-color: rgba(0,204,102,1);
+				background-color: rgba(0,204,102,.1)
+			}
+
+			&.missed {
+				color: red;
+				border-color: red;
+				background-color: rgba(255,0,0,.1);
+			}
+
+			i {	
+				position: relative;
+				left: -11px;
+
+
+			}
+
+			p{
+				text-align: center;
+				margin:5px;
+				font-size: 8pt;
+			}
+		}
+
+		.historySpace {
+			display: inline-block;
+			width: 20px;
+			/* border-top: solid 5px lightgray; */
+			margin: 0px;
+			/* height: 100%; */
+			background-color: lightgray;
+			padding: 2px;
+			vertical-align: top;
+			margin-top: 35px;
+			margin-right: -5px;
+		}
+
+		#bigStreakContainer {
+			width: 80px;
+			height: 100%;
+			overflow: hidden;
+			margin-left: 0px;
+			display: inline-block;
+
+			.currentStreakBig {
+				display: inline-block;
+				border-radius: 50%;
+				border: solid 2px #5ed1ec;
+				background-color: rgba(94, 209, 236, 0.2);
+				height: 130px;
+				width: 130px;
+				position: relative;
+				top: -22px;
+				text-align: center;
+				padding: 29px;
+				padding-left: 2px;
+				font-size: 9pt;
+				color: #5ed1ec;
+				font-weight: bold;
+
+				.streakNumber {
+					font-size: 30pt;
+					padding-top: 10px;
+				}
+			}
+		}
+
+	}
+
+	
 }
 
 

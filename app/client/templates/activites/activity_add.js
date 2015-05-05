@@ -107,6 +107,7 @@ Template.activityNew.events({
 			//Add to user history
 			var userHistory = { _id : result._id,
 								type: activity.type,
+								date: activity.time.date,
 								attended: true
 								};
 

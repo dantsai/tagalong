@@ -13,6 +13,17 @@ Template.activityList.helpers({
 		if(option == Session.get('activityFilter'))
 			return 'selected';
 	},
+	activityStatus: function() {
+		if (this.time.date < new Date()) {
+			return 'past';
+		}
+		else {
+			if (this.host._id == Meteor.userId())
+				return 'host';
+			else 
+				return 'tagalonger';
+		}
+	},
 	hasCompleteSettings: function() {
 		if (Meteor.user().activities.length && Meteor.user().friends.length)
 			return true;

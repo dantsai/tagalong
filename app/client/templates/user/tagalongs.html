@@ -24,11 +24,14 @@
 						{{#ionItem class="card myActivityItem" path="activity"}}
 							<!-- {{> ionIcon icon="ios-arrow-forward" class='positive'}} -->
 							<div class="timeDetails">
-								{{time.time}} <span class="activityDuration">{{> ionIcon icon='ios-stopwatch'}}  {{duration}} hours</span>
+								{{time.time}} <span class="activityDuration">
+								<i class="icon-{{type}} {{activityStatus}} activityIcon"></i>  
+								{{duration}} hours
+								</span>
 
 								<div class="timeline" style="max-width:{{getTimeLength}};"></div>
 							</div>
-							<h2>{{type}} {{>ionIcon icon="android-bicycle"}}</h2>
+							<h2>{{type}} <i class="icon icon-{{type}}"></i></h2>
 							
 							<img class="activity_img" src="{{getUserPicUrl}}">
 
