@@ -23,6 +23,9 @@ Template.activityList.helpers({
 		now = new Date();
 		date_now = now.setSeconds(0);
 
+		var searchString = ".*" + Session.get('activitySearchQuery') + ".*";		
+		var searchRegex = new RegExp(searchString, 'i')
+		
 		if (Session.get('activityFilter') =='All') {
 			activities = Activities.find(
 				{ 
@@ -31,9 +34,9 @@ Template.activityList.helpers({
 						{ $gte: new Date(date_now) },
 					// 'friends': { $in : Meteor.user().friends },
 					$or: [ 
-						{'type': {$regex: ".*"+Session.get('activitySearchQuery')+".*"}}, 
-						{'host.name' :{$regex: ".*"+Session.get('activitySearchQuery')+".*"}},
-						{'location.name': {$regex: ".*"+Session.get('activitySearchQuery')+".*"}} 
+						{'type': searchRegex}, 
+						{'host.name' : searchRegex },
+						{'location.name': searchRegex } 
 					]
 				},						 
 				{ 
@@ -59,9 +62,9 @@ Template.activityList.helpers({
 						{'host._id': { $in: Meteor.user().friends}}
 					],
 					$or: [ 
-						{'type': {$regex: ".*"+Session.get('activitySearchQuery')+".*"}}, 
-						{'host.name' :{$regex: ".*"+Session.get('activitySearchQuery')+".*"}} ,
-						{'location.name': {$regex: ".*"+Session.get('activitySearchQuery')+".*"}} 
+						{'type': searchRegex}, 
+						{'host.name' :searchRegex} ,
+						{'location.name': searchRegex} 
 					]
 				},						 
 				{ 
@@ -87,9 +90,9 @@ Template.activityList.helpers({
 							{'host._id': { $in: Meteor.user().friends}}
 						],
 						$or: [ 
-							{'type': {$regex: ".*"+Session.get('activitySearchQuery')+".*"}}, 
-							{'host.name' :{$regex: ".*"+Session.get('activitySearchQuery')+".*"}},
-							{'location.name': {$regex: ".*"+Session.get('activitySearchQuery')+".*"}}  
+							{'type': searchRegex}, 
+							{'host.name' :searchRegex},
+							{'location.name': searchRegex}  
 						] 
 					},						 
 					{ 

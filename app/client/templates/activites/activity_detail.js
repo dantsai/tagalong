@@ -1,6 +1,19 @@
+var latitude = 37.871667;
+var longitude = -122.272778;
+
 Template.activity.helpers({ 
+	notPast: function () {
+		var activityEnd = this.time.date
+		activityEnd.setHours(activityEnd.getHours() + Math.floor(this.duration));
+		var minutes =  ( this.duration % 1) * 60;
+		activityEnd.setMinutes(activityEnd.getMinutes() + minutes );	
+		timeNow = new Date();
+		
+		console.log(activityEnd, timeNow);
+		return timeNow <= activityEnd;
+	},
 	isHost: function() {		
-		return this.host._id === Meteor.userId(); 
+		return this.host._id === Meteor.userId(); 		
 	},
 	notTagalong: function () {
 		var inTagalongs = true;
@@ -40,14 +53,19 @@ Template.activity.helpers({
 		user = Meteor.users.findOne(this.host._id)
 		return user.profile.names.pic;
 	},
-	exampleMapOptions: function() {
+	detailMapOptions: function() {
 	  // Make sure the maps API has loaded
 	  // console.log(this.location.position.A, this.location.position.F);
+	  // Make sure the maps API has loaded
+	  if (this.location.position) {
+	  	latitude = this.location.position.A;
+	  	longitude = this.location.position.F;
+	  }
 
 	  if (GoogleMaps.loaded()) {
 	    // Map initialization options
 	    return {
-	      center: new google.maps.LatLng(this.location.position.A, this.location.position.F),
+	      center: new google.maps.LatLng(latitude, longitude),
 	      zoom: 15
 	    };
 	  }
@@ -55,7 +73,7 @@ Template.activity.helpers({
 });
 
 Template.activity.onCreated(function() {
-	GoogleMaps.ready('exampleMap', function(map) {
+	GoogleMaps.ready('detailMap', function(map) {
 		var marker = new google.maps.Marker({
 			position: map.options.center,
 			map: map.instance
@@ -436,9 +454,3 @@ function takePhoto(activityId) {
         ft.upload(imageURI, encodeURI("http://dantsai.com/_/upload.php"), win, fail, options, true);
     }
 }
-
-Meteor.startup(function () {
-	if(Meteor.isClient) {
-		GoogleMaps.load();
-	}
-});

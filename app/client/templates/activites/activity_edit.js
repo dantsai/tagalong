@@ -1,3 +1,6 @@
+var latitude = 37.871667;
+var longitude = -122.272778;
+
 Template.activityEdit.helpers({
 	activity: function() {
 		var template = Template.instance();
@@ -50,10 +53,34 @@ Template.activityEdit.helpers({
 			};
 			week.push(t);
 		}
-		console.log(week);
+		// console.log(week);
 		return week;
-	}
+	},
+	editMapOptions: function(location_position) {
+
+	  var template = Template.instance();
+	  var activity = Activities.findOne({_id: template.data.id})		
+	  
+	  // Make sure the maps API has loaded
+	  if (activity.location.position) {
+	  	latitude = activity.location.position.A;
+	  	longitude = activity.location.position.F;
+	  }
+	  // console.log(this.location.position.A, this.location.position.F);
+
+	  if (GoogleMaps.loaded()) {
+	    // Map initialization options
+	    return {
+	      center: new google.maps.LatLng(latitude, longitude),
+	      zoom: 15
+	    };
+	  }
+	}		
 })
+
+Template.activityEdit.onCreated(function() {
+	GoogleMaps.ready('editMap', function(map) {	});
+});
 
 Template.activityEdit.events({
 	'click #activity-save': function(event) {
@@ -65,14 +92,15 @@ Template.activityEdit.events({
 		dateToSet.setHours(hourToSet)
 		dateToSet.setMinutes(minsToSet)
 
-		console.log(this);
+		// console.log(this);
 
 		var activityDetails = {
 			'activityId': this.id,
 			'properties': {
 				'type': $(".activityIcon.selected").attr('activity'),
 				'location': { 
-					'name' : $('#activityLocation').val()
+					'name' : $('#activityLocation').val(),
+					'position' : GoogleMaps.maps.editMap.instance.getCenter()	//get map center
 				},
 			    'time': {
 				        'epoch': '',
