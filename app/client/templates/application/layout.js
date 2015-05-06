@@ -18,3 +18,9 @@ Template.layout.helpers({
 		return Activities.findOne({_id:actId});
 	}
 })
+
+Template.layout.events({
+	'click #logBtn': function() {
+		Meteor.logout();
+	}	
+})
