@@ -69,10 +69,18 @@ Template.activityNew.events({
 			return false;
 		}
 
-		var dateToSet = new Date($(".dayofweek.selected").attr('value'))
-		var hourToSet = $('#activityTime').val().substring(0,2)
-		var minsToSet = $('#activityTime').val().slice(-2)
+		var dateToSet = '';
+		if ($(".dayofweek.selected").attr('value')) {
+			dateToSet = new Date($(".dayofweek.selected").attr('value'));
+		}
+		else {
+			dateToSet = new Date();
+		}
 		
+		var hourToSet = $('#activityTime').val().substring(0,2);
+		var minsToSet = $('#activityTime').val().slice(-2);
+		
+		console.log(dateToSet, hourToSet, minsToSet);
 		dateToSet.setHours(hourToSet)
 		dateToSet.setMinutes(minsToSet)
 		//console.log(dateToSet)

@@ -62,10 +62,6 @@ Template.home.helpers({
 });
 
 Template.home.events({
-	'click #logBtn': function() {
-		console.log('Here');
-		Meteor.logout();
-	},
 	'click .remove-notification': function () {
 		Meteor.call('removeNotification', this)
 	},
@@ -74,8 +70,5 @@ Template.home.events({
 	},
 	'click #removeNotifications': function() {
 		Meteor.call('removeAllNotifications');
-	},
-	'click #activity-search': function () {
-		console.log('Here');
 	}
 })
