@@ -9,7 +9,6 @@ Template.activity.helpers({
 		activityEnd.setMinutes(activityEnd.getMinutes() + minutes );	
 		timeNow = new Date();
 		
-		console.log(activityEnd, timeNow);
 		return timeNow <= activityEnd;
 	},
 	isHost: function() {		

@@ -29,6 +29,7 @@ Template.currentStreak.helpers({
 			userHistory.forEach(function(tagalong) {
 				if (tagalong.attended) {
 					currentStreak = currentStreak + 1;
+
 					if (maxStreak < currentStreak) {
 						maxStreak = currentStreak;
 					}
@@ -36,7 +37,6 @@ Template.currentStreak.helpers({
 				else {
 					currentStreak = 0;
 				}
-
 			});
 		}
 

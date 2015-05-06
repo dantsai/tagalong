@@ -301,7 +301,7 @@ if (Meteor.users.find().count() === 0) {
         "activities":[],
         "friends": [],
         "notifications": [], "feedback":[], 
-        "reminders":["RgixjrZ6ur4HyAPKs","Xr2EvDwzRzgJZPNyd","hQcwzAfePhHBR6iLt"],
+        "reminders":[],
         "videos": [],
         "history": [],
 	    "activities": ['Soccer','Hiking','Walking']
