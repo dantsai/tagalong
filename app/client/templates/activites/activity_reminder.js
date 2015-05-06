@@ -15,7 +15,7 @@ Template.activityReminder.helpers({
 		return this.tagalongs.length;
 	},
 	hasVideos: function () {
-		if (Meteor.user().videos) 
+		if (Meteor.user().videos.length>0) 
 			return true;
 		return false;
 	},

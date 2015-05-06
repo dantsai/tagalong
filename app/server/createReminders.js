@@ -1,6 +1,9 @@
 Meteor.startup(function () {
 	var oneHour = 3600000;
+	//var oneHour = 120000;
 	var tenMins = 600000;
+
+	var skip = 0;
 
 	function postReminders (activities) {
 		activities.forEach(function(activity) {
@@ -24,7 +27,7 @@ Meteor.startup(function () {
 
 		//Create a reminder for activities happening  tomorrow
         now = new Date();
-        if (now.getHours() == 20) {
+        if (now.getHours() == 20 || skip == 1) {
         	dateStart = new Date();
         	dateStart.setDate(dateStart.getDate() + 1);
         	dateStart.setHours(0);

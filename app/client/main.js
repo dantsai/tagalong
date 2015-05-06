@@ -10,6 +10,7 @@ Session.set('activitySearchQuery','');
 Session.set('activityFilter','Recommended');
 Session.set('myActivitiesFilter','Upcoming');
 Session.set('profileSection','History');
+Session.set('activityhost','');
 
 Meteor.startup(function () {
 	//console.log('startup function...');

@@ -4,8 +4,8 @@ Template.userHistory.helpers({
 		// var activities = Activities.find({_id: {$in: Meteor.user().history}}).fetch();
 
 		var results = $.map(Meteor.user().history, function(obj,i) {
-			// if (obj.date < new Date()) {}
-			if ('date' in obj) {
+			if (obj.date < new Date()) {
+			// if ('date' in obj) {
 				return obj;
 			}
 		});
@@ -16,8 +16,8 @@ Template.userHistory.helpers({
 	hasHistory: function() {
 		var has = false;
 		var results = $.map(Meteor.user().history, function(obj,i) {
-			//if (obj.date < new Date()) {}
-			if ('date' in obj) {
+			if (obj.date < new Date()) {
+			// if ('date' in obj) {
 				has = true;
 				return obj;
 			}
