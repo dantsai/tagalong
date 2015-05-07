@@ -36,56 +36,7 @@
 						<h5 class="listSubHeader">{{this.name}}</h5>
 						{{#each this.activities}}
 							{{#ionItem  class="myActivityItem" path="activity"}}
-								<!-- {{> ionIcon icon="ios-arrow-forward" class='positive'}} -->
-								<!-- <i class="icon-{{type}} {{activityStatus}} activityIcon"></i>
-								<div class="userPicture">
-									<div class="h2">
-										<div class="h2in">
-											<img src="{{getUserPicUrl}}">
-										</div>
-									</div>
-								</div>
-								<div class="activityInfo">
-									<h2>{{type}}</h2>
-									with <strong>{{host.name}}</strong><br>
-									<div class="activityLogistics">
-										{{> ionIcon icon='calendar' class="activityLogistic"}}{{time.time}} &nbsp;&nbsp;&nbsp;
-										{{> ionIcon icon='ios-stopwatch'}}{{duration}} hours&nbsp;&nbsp;&nbsp;
-										{{#if location}}
-											{{> ionIcon icon='ios-location'}}{{location.name}}
-										{{/if}}
-									</div> 							
-								</div> -->
-								<div class="timeDetails">
-									{{time.time}} <span class="activityDuration">  
-									{{duration}} hours
-									</span>
-
-									<div class="timeline" style="max-width:{{getTimeLength}};"></div>
-								</div>
-								<div class="activityInfo">
-									<div class="userPicture">
-										<div class="h2">
-											<div class="h2in">
-												<!-- <img class="activity_img" src="{{getUserPicUrl}}"> -->
-												<img src="{{getUserPicUrl}}">
-											</div>
-										</div>
-									</div>
-									<div class="activityDetails">
-										<h2>{{type}}</h2>
-										<i class="icon-{{type}} {{activityStatus}} activityIcon"></i>
-										{{#if notHost}}
-											created by <strong>you</strong>
-										{{else}}
-											with <strong>{{host.name}}</strong>
-										{{/if}}
-
-										<div class="location">
-											{{> ionIcon icon="ios-location"}} {{ location.name}}
-										</div>
-									</div>	
-								</div>
+								{{> myActivityCard }}
 							{{/ionItem}}
 						{{/each}}
 					{{/each}}

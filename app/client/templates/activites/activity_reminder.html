@@ -11,57 +11,8 @@
 		{{#ionContent class='padding activityReminder'}}
 			<h5 class="listSubHeader">{{prettifyDate this.time.date}}</h5>
 			{{#ionItem class="padding myActivityItem card" path="activity"}}
-				<!-- {{> ionIcon icon="ios-arrow-forward" class='positive'}} -->
-				<div class="timeDetails">
-					{{this.time.time}} <span class="activityDuration">{{> ionIcon icon='ios-stopwatch'}}  {{this.duration}} hours</span>
-
-					<div class="timeline" style="max-width:{{getTimeLength this.duration 3}};"></div>
-				</div>
-				<h2>{{type}} {{>ionIcon icon="android-bicycle"}}</h2>
-				
-				<img class="activity_img" src="{{getUserPicUrl}}">
-
-				<div class="activityInfo">
-					{{#if notHost}}
-						My Activity
-					{{else}}
-						with <strong>{{this.host.name}}</strong>
-					{{/if}}
-
-					<div class="location">
-						{{> ionIcon icon="ios-location"}} {{ this.location.name}}
-					</div>	
-				</div>					
-
-				<ul class="submenu">
-					<li class="submenuItem">
-						{{> ionIcon icon="ios-people-outline" title="Friends"}}
-
-						{{#if friendCount}}
-							<label>{{this.friendCount}}</label>
-						{{/if}}
-
-					</li>
-					<li class="submenuItem">
-						{{> ionIcon icon="ios-chatboxes-outline" title="Messages"}}
-
-						<!-- {{#if friendCount}}
-							<label>{{friendCount}}</label>
-						{{/if}} -->
-					</li>
-
-					<li class="submenuItem">
-						{{> ionIcon icon='ios-information-outline' title="updates"}}
-
-						<!-- {{#if friendCount}}
-							<label>{{friendCount}}</label>
-						{{/if}} -->
-					</li>
-				</ul>
+				{{> myActivityCard}}
 			{{/ionItem}}
-
-
-			<!-- <video class='videoSelfMessage' src="http://dantsai.com/_/uploads/capturedvideo.MOV" controls preload></video> -->
 
 			{{#if hasVideos}}
 				<h5 class="listSubHeader">Here's some motivation!</h5>

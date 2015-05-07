@@ -9,28 +9,35 @@
 	{{/contentFor}}
 
 	{{#ionView }}
-		{{#ionContent class='padding activityDetail'}}
-			{{#ionList class="card"}}
-				{{#ionItem avatar=true class='header'}}
-					<img class="activity_img" src="{{getUserPicUrl}}">
-					<h1>{{type}} </h1>
-					<i class="icon-{{type}} {{activityStatus}} activityIcon"></i>
+		{{#ionContent class='activityDetail'}}
+			<div class="subsectionHeader">{{prettifyDate time.date}}</div>
+			{{#ionList}}
+				{{#ionItem class='header myActivityItem'}}
+					<div class="timeDetails">
+						{{time.time}} <span class="activityDuration">  
+						{{duration}} hours
+						</span>
 
-					<p>with <span>{{host.name}}</span></p>
-
-				{{/ionItem}}
-
-				<!-- Date time Details -->
-				{{#ionItem body=true class='details'}}
-					<div>
-						{{>ionIcon icon="ios-calendar-outline"}}
-						{{prettifyDate time.date}}
+						<div class="timeline" style="max-width:{{getTimeLength}};"></div>
 					</div>
-					<div>
-						{{>ionIcon icon="ios-clock-outline"}}
-						{{time.time}} for {{duration}} hrs
+					<div class="activityInfo">
+						<div class="userPicture">
+							<div class="h2">
+								<div class="h2in">
+									<img src="{{getUserPicUrl}}">
+								</div>
+							</div>
+						</div>
+						<div class="activityDetails">
+							<h2>{{type}}</h2>
+							<i class="icon-{{type}} {{activityStatus}} activityIcon"></i>
+							{{#if notHost}}
+								created by <strong>you</strong>
+							{{else}}
+								with <strong>{{host.name}}</strong>
+							{{/if}}
+						</div>	
 					</div>
-
 				{{/ionItem}}
 
 				<!-- Location Details -->
@@ -46,18 +53,16 @@
 					{{/ionItem}}
 				{{/if}}
 
-				{{#if activityMember }}
-					{{#ionItem body=true }}
-						<button id="add-to-calendar" class="button button-block button-positive">{{>ionIcon icon="ios-calendar-outline"}} Add To Calendar</button>
-					{{/ionItem}}
-				{{/if }}
+				{{#ionItem body=true class="calendar-section"}}
+					<button id="add-to-calendar" class="button button-full button-clear">{{>ionIcon icon="ios-calendar-outline"}}  Add this activity to your Calendar {{> ionIcon icon="ios-arrow-forward" class='pull-right'}}</button>
+					
+				{{/ionItem}}
 
 				<!-- Tagalongs Information-->
+
 				{{#if tagalongs}}
+					<div class="subsectionHeader"><strong>{{friendCount}} tagalongs</strong> with <strong>{{host.name}}</strong></div>
 					{{#ionItem body=true class="activityTagalongs"}}
-						<p>
-							<strong>{{friendCount}}</strong> tagging along with <strong>{{host.name}}</strong>
-						</p>
 						{{> tagalongList}}
 						{{populateTagalongList}}
 					{{/ionItem}}
@@ -72,6 +77,7 @@
 
 				<!-- Messages section -->
 				{{#if activityMember }}
+					<div class="subsectionHeader">{{messages.length}} Messages in this activity</div>
 					{{#ionItem body=true class="activityMessages"}}
 						<ul class="messageArea">
 							{{#if hasMessages}}

@@ -15,6 +15,10 @@ Template.activity.helpers({
 	isHost: function() {		
 		return this.host._id === Meteor.userId(); 		
 	},
+	getTimeLength: function() {
+		var aprox = (this.duration/3)*100 ;
+		return aprox +"%";
+	},
 	notTagalong: function () {
 		var inTagalongs = true;
 		if ($.inArray(Meteor.userId(),this.tagalongs) ==-1)
@@ -39,9 +43,9 @@ Template.activity.helpers({
 	},
 	friendCount: function() {
 		if (this.tagalongs.length === 1 ) {
-			return this.tagalongs.length + ' friend'
+			return this.tagalongs.length
 		} else {
-			return this.tagalongs.length + ' friends'
+			return this.tagalongs.length
 		}		
 	},
 	taggers: function() {
