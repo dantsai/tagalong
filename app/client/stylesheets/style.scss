@@ -95,6 +95,7 @@ $loading-font-size: 22px;
 	padding-left: 15px;
 	padding-top: 10px;
 	margin-top: 0px;
+	font-family: "GothamRnd-Book";
 	/*border-bottom: solid thin #999;*/
 }
 /********** HOME SCREEN ******/
@@ -103,8 +104,10 @@ $loading-font-size: 22px;
 
 	.streakViz {
 		padding:10px;
-		font-size: 10pt;
+		font-size: 8pt;
 		background-color: white;
+		font-family: "GothamRnd-Book";
+		color: #787878;
 
 		span {
 			float: right;
@@ -151,10 +154,17 @@ $loading-font-size: 22px;
 	}
 	
 	.homeNotifications {
-		padding: 5px;
 		max-height: 160px;
 		overflow-y: auto;
-
+		width: 100%;
+		background-color: white;
+		
+		.homeNotification {
+			padding: 10px;
+			width: 100%;
+			border-right: 0px;
+			border-left: 0px;
+		}	
 
 		.notificationItem {
 			display: inline-block;
@@ -185,8 +195,9 @@ $loading-font-size: 22px;
 .prompt {
 	text-align: center;
 	font-size: 10pt;
-	color:#666;
+	color:#787878;
 	padding: 10px;
+	background-color: white;
 }
 
 /****** Activity List *********/
@@ -484,12 +495,23 @@ $loading-font-size: 22px;
 	}
 
 	.activityMessages {
-		
+
+		padding:0px;
+		font-size: 12px;
+
+		h5 {
+			padding:5px;
+			padding-left: 10px;
+			color: white;
+			font-size: 12px;
+			background-color: #D8D8D8;
+		}
+
 
 		#messageInput {
 			width: 80%;
 			display: inline-block;
-			border: solid thin lightgray;
+			/*border: solid thin lightgray;*/
 			margin: 5px;
 			margin-left: 0px;
 			vertical-align: top;
@@ -500,11 +522,12 @@ $loading-font-size: 22px;
 		button {
 			width: 18%;
 			margin-top: 5px;
+			color: white;
 		}
 
 		.messageArea {
-			min-height: 90px;
-			max-height: 150px;
+			min-height: 120px;
+			max-height: 120px;
 			border-radius: 3px;
 			border: solid thin lightgray;
 			padding: 5px;
@@ -858,6 +881,8 @@ $loading-font-size: 22px;
 
 .userProfile {
 
+	font-family: "GothamRnd-Book";
+
 	h3 {
 		border-bottom: solid 1px black;
 		padding: 5px;
@@ -873,17 +898,17 @@ $loading-font-size: 22px;
 		/*height: 130px;*/
 		text-align: center;
 		background-color: rgba(94,209,236,.2);
+		font-family: "GothamRnd-Book";
 
-		img {
-			height: 70px;
-			border-radius: 50%;
-			border: solid 2px #5ED1EC;
+		h2 {
+			font-family: "GothamRnd-Book";
 		}
 	}
 
 	.profileMenu {
 		padding: 5px;
 		color: #5ED1EC;
+		font-family: "GothamRnd-Book";
 
 		li {
 			font-weight: bold;
@@ -946,7 +971,7 @@ $loading-font-size: 22px;
 	}
 
 	.friends {
-
+/*
 		img {
 			max-width: none;
 			max-height: none;
@@ -954,7 +979,7 @@ $loading-font-size: 22px;
 			width: 50px;
 			height: 50px;
 			border-radius:50%;
-		}
+		}*/
 
 		span.userNames {
 			font-size: 8pt;
@@ -983,7 +1008,7 @@ $loading-font-size: 22px;
 	overflow-x: auto;
 	overflow-y: hidden; 
 	height: 90px;
-	float:right;
+	/*float:right;*/
 
 	.activityHistoryGroup {
 		vertical-align: top;
@@ -1075,14 +1100,34 @@ $loading-font-size: 22px;
 	padding:5px;
 	.activityIconGroup {
 		display: inline-block;
-		margin:4px;
+		margin: 4px;
 		vertical-align: top;
-		width: 20%;
 		font-size: 8pt;
 		text-align: center;
-		line-height: 10px;	
-	}
+		line-height: 17px;
 
+		p {
+			border-radius: 50%;
+			border: solid 2px #9B9B9B;
+			color: #9B9B9B;
+			height: 50px;
+			width: 50px;
+			background-color: white;	
+
+			&.selected {
+				border: solid 2px #4CD764;
+				color: #4CD764;
+			}
+
+			i {
+				
+				font-size: 30pt;
+				position: relative;
+				left: -4px;
+				top: 2px;
+			}
+		}	
+	}
 }
 /****** EDIT PROFILE *********/
 
@@ -1165,36 +1210,69 @@ $loading-font-size: 22px;
 
 /*********** REGISTER USER ***********/
 .registerUser {
-
-	padding:25px;
-
+	text-align: center;
+	font-family: "GothamRnd-Book";
 	h3 {
 		text-align: center;
 	}
 
-	.loginForm {
-		margin-top: 20px;
-		border: solid thin #5ED1EC;
-		border-radius: 5px;
-		padding: 10px;
+	#loginHeader {
+		height:40%;
+		background-color: #5ED1EC;
+		color: white;
+		font-family: "GothamRnd-Medium";
+		text-align: center;
+		padding:20px;
+		padding-top: 20%;
+		font-size: 20px;
 
-		font-size: 10pt;
-
-		h5 {
-			font-size: 9pt;
+		h1 {
+			font-family: "GothamRnd-Medium";
+			color : white;
+			margin:10px;
+			font-size: 48px;
+			/*-webkit-text-stroke: thin black;*/
 		}
+	}
+
+
+	.loginForm {
+		font-size: 20px;
 
 		input {
-			padding: 10px;
-			background-color: ghostwhite;
-			height: 40px;
+			padding: 15px;
+			height: 50px;
 			font-size: 12pt;
+			margin-top: 20px;
+			font-family: "GothamRnd-Book";
+		}
+
+		a {
+			margin-top:20px;
+			font-size: 20px;
+			font-family: "GothamRnd-Book";
+			color:#9B9B9B;
 		}
 
 
 	}
 
+	#login {
+		color: white;
+		font-size: 20px;
+		position:fixed;
+		border:none;
+		bottom:60px;
+		background-color: #FEC178;
+		height:60px;
+		font-family: "GothamRnd-Medium";
+	}
+
 }
+
+/*.content.registerUser {
+	padding: 0px;
+}*/
 
 #signUpSection {
 	font-size: 9pt;
@@ -1206,55 +1284,85 @@ $loading-font-size: 22px;
 	}
 }
 
-.modal .registerUser {
-	padding:20px;
+.modal {
 
+	color: white;
+	.bar {
+		background-color: #5ED1EC;
+		color: white;
+
+		button {
+			color:white;
+		}
+	}
+
+}
+
+.modal .registerUser {
 
 	h4 {
 		vertical-align: center;
+		color: white;
+		font-family: "GothamRnd-Book";
+	}
+
+	#loginHeader {
+		height:25%;
+		padding-top: 30px;
+
 	}
 
 	input {
-		height: 25px;
+		padding: 15px;
+		height: 40px;
+		font-size: 12pt;
+		margin-top: 10px;
+		font-family: "GothamRnd-Book";
 	}
 
-	.button-assertive {
-		margin-top: 15px;
-		width: 100%;
+	.button {
+		color: white;
+		font-size: 20px;
+		position:fixed;
+		border:none;
+		bottom:60px;
+		background-color: #FEC178;
+		height:60px;
+		font-family: "GothamRnd-Medium";
 	}
 
 }
 
-.activityReminder {
-
-	#message-self {
-		padding:15px;
-		margin-bottom: 15px;
-	}
-
-	#dismissBtn {
-
-	}
-}
-
-.activityFeedback {
-	#message-self {
-		padding:10px;
-		margin-bottom: 15px;
-	}
-}
-
-#activity-cancel,
-#activity-flake {
-	background-color: #4A4A4A;
-	border-color: #4A4A4A;
+#message-self {
+	/*padding:15px;*/
+	margin-bottom: 15px;
+	background-color: #FEC178;
+	height:40px;
 	font-size: 14px;
 	font-family: "GothamRnd-Medium";
 }
 
-#message-self {
-	background-color: #FEC178;
-	height:50px;
+.activityReminder {
+
+	.bar-positive {
+		display: none;
+	}
+
+	#dismissBtn {
+		position:fixed;
+		bottom: 0px;
+	}
+
+	#message-self {
+		height:60px;
+	}
+}
+
+#activity-cancel,
+#dismissBtn,
+#activity-flake {
+	background-color: #4A4A4A;
+	border-color: #4A4A4A;
 	font-size: 14px;
 	font-family: "GothamRnd-Medium";
 }
@@ -1308,6 +1416,46 @@ $loading-font-size: 22px;
 	img {
 		height: 90px;
 		width:90px;
+	}
+}
+
+.userPictureSmall {
+	width: 65px;
+	height: 70px;
+	position: relative;
+	display: inline-block;
+
+	.h2 {
+		margin: 0;
+		padding: 0;
+		position: relative;
+		display: inline-block;
+		width: 65px;
+		height: 70px;
+		overflow: hidden;
+		color: #fff;
+		-webkit-mask-image: url('/img/mask_lg1_83_90SM.png');
+		text-align: center;
+		background: rgb(94,209,236);
+	}
+
+	&:nth-child(n+5) {
+		margin-top: -25px;
+	}
+
+	.h2in {
+		display: inline-block;
+		width: 65px;
+		height: 70px;
+		overflow: hidden;
+		color: #fff;
+		-webkit-mask-image: url('/img/mask_lg1_83_90inSM.png');
+		text-align: center;
+	}
+
+	img {
+		height: 70px;
+		width:70px;
 	}
 }
 

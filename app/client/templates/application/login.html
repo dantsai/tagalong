@@ -1,17 +1,25 @@
 <template name='login'>
 	{{#ionView}}
-	    {{#ionContent class='padding registerUser'}}
-	    	
-	    	<h3>Welcome to <strong>Tagalong!</strong></h3>
+	    {{#ionContent class='registerUser'}}
+	    	<div id="loginHeader">
+	    		Welcome to
+	    		<h1>Tagalong</h1>
+
+	    	</div>
 	    	<div class="loginForm">
-			    <h5>Email: <input type="email" id="login-email" required placeholder="me@example.com"> </h5>
-			    <h5>Password: <input type="password" id="login-password"> </h5>
-			    <button class="button button-positive button-block" id="login"> Log In  {{> ionIcon icon="log-in"}}</button>
+			    <h5>
+			    	<input type="email" id="login-email" required placeholder="Email address"> 
+			    </h5>
+			    <h5>
+			    	<input type="password" id="login-password" placeholder="Password"> 
+			    </h5>
+			    
+			    <a data-ion-modal='register'>Create account</a>
+			    
+			    <button class="button button-full" id="login"> log in </button>
+			    
 			    
 			</div>
-			<div id="signUpSection">
-		    	Not a user? Join us!<button class="button button-outline button-positive button-small" data-ion-modal="register">Sign up for Tagalong!</button>
-		    </div>
 	    {{/ionContent}}
 	{{/ionView}}	    
 </template>

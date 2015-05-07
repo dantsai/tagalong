@@ -1,16 +1,16 @@
 <template name="activityReminder">
-	{{#contentFor "headerButtonLeft"}}
-	    <!-- {{>ionNavBackButton path="layout"}} -->
-	{{/contentFor}}
+	<!-- {{#contentFor "headerButtonLeft"}}
+	    {{>ionNavBackButton path="layout"}}
+	{{/contentFor}} -->
 
 	{{#contentFor 'headerTitle'}}
-		<h1 class="title">Activity Reminder</h1>
+		<h1 class="title">Tagalong</h1>
 	{{/contentFor}}
 
 	{{#ionView}}
-		{{#ionContent class='padding activityReminder'}}
-			<h5 class="listSubHeader">{{prettifyDate this.time.date}}</h5>
-			{{#ionItem class="padding myActivityItem card" path="activity"}}
+		{{#ionContent class='activityReminder'}}
+			<h5 class="listSubHeader">Your activity has ended. How did it go?</h5>
+			{{#ionItem class="myActivityItem"}}
 				{{> myActivityCard}}
 			{{/ionItem}}
 
@@ -21,6 +21,7 @@
 					<video class='videoSelfMessage' src="{{this.url}}" controls preload></video>
 				{{/with}}
 			{{else}}
+				<h5 class="listSubHeader">Keep yourself motivated for next time!</h5>
 				<button id="message-self" class="button button-block button-energized">{{> ionIcon icon="ios-videocam"}} Record Message to future self</button>
 			{{/if}}
 			
