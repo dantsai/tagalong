@@ -1,22 +1,28 @@
 <template name='register'>	
 	{{#ionModal customTemplate=true}}
-		<!-- <div class="bar bar-header bar-stable">
-	        <button data-dismiss="modal" type="button" class="button button-clear">Cancel</button>
-	        <h2 class="title">Create User Account</h2>
-	     	<button id="create" class="button button-positive button-clear">Create</button>
-	    </div> -->
+		<div class="bar bar-header bar-stable">
+	        <button data-dismiss="modal" type="button" class="button button-clear">{{> ionIcon icon='ios-arrow-back'}}</button>
+	        <!-- <h2 class="title">Create User Account</h2>
+	     	<button id="create" class="button button-positive button-clear">Create</button> -->
+	    </div>
 
 		{{#ionView}}
-		    {{#ionContent class='padding registerUser'}}
-		    	<h3> Join Tagalong!</h3>
+		    {{#ionContent class='registerUser'}}
+		    	<!-- {{> ionIcon icon="ios-arrow-back" data-dismiss="modal" class='pull-left'}} -->
+		    	<div id="loginHeader">
+		    		<h1>Tagalong</h1>
+
+		    		<h4>Start by creating an account</h4>
+		    	</div>
+
 		    	<div class='loginForm'>
-				    <h5>First Name: <input type="text" id="first-name"> </h5>
-				    <h5>Last Name: <input type="text" id="last-name"> </h5>
-				    <h5>Email: <input type="email" id="register-email" required placeholder="me@example.com"> </h5>
-				    <h5>Password: <input type="password" id="register-password"> </h5>
-				    <h5>Confirm Password: <input type="password" id="confirm-password"> </h5>
-				    <button class="button button-positive button-block" id="create">Sign me up!</button>
-				    <button class="button button-assertive button-outline button-small" data-dismiss="modal">Cancel</button>
+				    <h5><input type="text" id="first-name" placeholder="First name"> </h5>
+				    <h5><input type="text" id="last-name" placeholder="Last name"> </h5>
+				    <h5><input type="email" id="register-email" required placeholder="Email address"> </h5>
+				    <h5><input type="password" id="register-password" placeholder="Password"> </h5>
+				    <h5><input type="password" id="confirm-password" placeholder="Confirm Password"> </h5>
+				    <button class="button button-block" id="create">Create account</button>
+				   <!--  <button class="button button-assertive button-outline button-small" data-dismiss="modal">Cancel</button> -->
 				</div>
 		    {{/ionContent}}
 		{{/ionView}}

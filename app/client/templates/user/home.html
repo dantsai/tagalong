@@ -21,54 +21,8 @@
 				{{#ionSlideBox }}
 					{{#each upcomingTagalongs}}
 						{{#ionSlide}}
-							{{#ionItem class="card myActivityItem" path="activity"}}
-								<!-- {{> ionIcon icon="ios-arrow-forward" class='positive'}} -->
-								<div class="timeDetails">
-									{{time.time}} <span class="activityDuration">{{> ionIcon icon='ios-stopwatch'}}  {{duration}} hours</span>
-
-									<div class="timeline" style="max-width:{{getTimeLength this.duration 3}};"></div>
-								</div>
-								<h2>{{type}} <i class="icon icon-{{type}}"></i></h2>
-								
-								<img class="activity_img" src="{{getUserPicUrl}}">
-
-								<div class="activityInfo">
-									{{#if notHost}}
-										My Activity
-									{{else}}
-										with <strong>{{host.name}}</strong>
-									{{/if}}
-
-									<div class="location">
-										{{> ionIcon icon="ios-location"}} {{ location.name}}
-									</div>	
-								</div>					
-
-								<ul class="submenu">
-									<li class="submenuItem">
-										{{> ionIcon icon="ios-people-outline" title="Friends"}}
-
-										{{#if friendCount}}
-											<label>{{friendCount}}</label>
-										{{/if}}
-
-									</li>
-									<li class="submenuItem">
-										{{> ionIcon icon="ios-chatboxes-outline" title="Messages"}}
-
-										<!-- {{#if friendCount}}
-											<label>{{friendCount}}</label>
-										{{/if}} -->
-									</li>
-
-									<li class="submenuItem">
-										{{> ionIcon icon='ios-information-outline' title="updates"}}
-
-										<!-- {{#if friendCount}}
-											<label>{{friendCount}}</label>
-										{{/if}} -->
-									</li>
-								</ul>
+							{{#ionItem class=" myActivityItem" path="activity"}}
+								{{> myActivityCard}}
 							{{/ionItem}}
 						{{/ionSlide}}
 					{{/each}}
@@ -86,12 +40,12 @@
 		    				{{#ionItem  class="homeNotification"}}
 		    					{{#if isClickable}}
 		    						<div class="notificationItem clickable" actid="{{this._id}}">
-		    							{{> ionIcon icon="ios-information"}}
+		    							{{> ionIcon icon="ios-information-outline"}}
 				    					<p class="notifMessage">{{this.message}}{{this.activity}}</p>
 			    					</div>
 		    					{{else}}
 		    						<div class="notificationItem">
-		    							{{> ionIcon icon="ios-information"}}
+		    							{{> ionIcon icon="ios-information-outline"}}
 				    					<p class="notifMessage">{{this.message}}{{this.activity}}</p>
 			    					</div>
 		    					{{/if}}

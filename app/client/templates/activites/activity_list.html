@@ -35,23 +35,8 @@
 					{{#each activityDisplay}}
 						<h5 class="listSubHeader">{{this.name}}</h5>
 						{{#each this.activities}}
-							{{#ionItem buttonRight=true class="card item-icon-right activityItem" path="activity"}}
-								{{> ionIcon icon="ios-arrow-forward" class='positive'}}
-								<i class="icon-{{type}} {{activityStatus}} activityIcon"></i>
-								<div class="activityImage">
-									<img class="activity_img" src="{{getUserPicUrl}}">
-								</div>
-								<div class="activityInfo">
-									<h2>{{type}}</h2>
-									with <strong>{{host.name}}</strong><br>
-									<div class="activityLogistics">
-										{{> ionIcon icon='calendar' class="activityLogistic"}}{{time.time}} &nbsp;&nbsp;&nbsp;
-										{{> ionIcon icon='ios-stopwatch'}}{{duration}} hours&nbsp;&nbsp;&nbsp;
-										{{#if location}}
-											{{> ionIcon icon='ios-location'}}{{location.name}}
-										{{/if}}
-									</div> 							
-								</div>
+							{{#ionItem  class="myActivityItem" path="activity"}}
+								{{> myActivityCard }}
 							{{/ionItem}}
 						{{/each}}
 					{{/each}}

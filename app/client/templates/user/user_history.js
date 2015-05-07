@@ -89,6 +89,12 @@ Template.userHistory.helpers({
 	}
 });
 
+Template.userHistory.rendered = function() {
+	setTimeout(function() {
+		$("#userActivityHistory").scrollLeft($("#userActivityHistory").prop("scrollWidth"));
+	},300);
+}
+
 function SortByDate(a, b){
   var aDate = a.date;
   var bDate = b.date; 

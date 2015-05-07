@@ -3,7 +3,17 @@ Template.tagalongs.helpers({
 		if(option == Session.get('myActivitiesFilter'))
 			return 'selected';
 	},
-
+	// activityStatus: function() {
+	// 	if (this.time.date < new Date()) {
+	// 		return 'past';
+	// 	}
+	// 	else {
+	// 		if (this.host._id == Meteor.userId())
+	// 			return 'host';
+	// 		else 
+	// 			return 'tagalonger';
+	// 	}
+	// },
 	activityDisplay: function () {
 		now = new Date();
 		date_now = now.setSeconds(0);
@@ -55,21 +65,20 @@ Template.tagalongs.helpers({
 		console.log(activities.fetch());
 		return groupActivities(activities);
 	},
-
-	friendCount: function() {
-		return this.tagalongs.length;
-	},
-	notHost: function() {		
-		return this.host._id === Meteor.userId(); 
-	},
-	getUserPicUrl: function() {
-		user = Meteor.users.findOne(this.host._id)
-		return user.profile.names.pic;
-	},
-	getTimeLength: function() {
-		var aprox = (this.duration/3)*100 ;
-		return aprox +"%";
-	}
+	// friendCount: function() {
+	// 	return this.tagalongs.length;
+	// },
+	// notHost: function() {		
+	// 	return this.host._id === Meteor.userId(); 
+	// },
+	// getUserPicUrl: function() {
+	// 	user = Meteor.users.findOne(this.host._id)
+	// 	return user.profile.names.pic;
+	// },
+	// getTimeLength: function() {
+	// 	var aprox = (this.duration/3)*100 ;
+	// 	return aprox +"%";
+	// }
 });
 
 Template.tagalongs.events({

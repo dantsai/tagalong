@@ -7,7 +7,7 @@ Meteor.startup(function () {
 
 	function postReminders (activities) {
 		activities.forEach(function(activity) {
-			console.log(activity._id )
+			// console.log(activity._id )
 			//Add reminder for host
 			Meteor.users.update(activity.host._id, {
 				$push: { reminders: { $each: [ activity._id ], $position: 0 } }
