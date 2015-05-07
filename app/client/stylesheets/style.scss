@@ -1,7 +1,61 @@
 $loading-font-size: 22px;
 
+@font-face {
+  font-family: 'GothamRnd-Bold';
+  src: url('fonts/GothamRnd-Bold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GothamRnd-BoldItal';
+  src: url('/fonts/GothamRnd-BoldItal.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GothamRnd-Book';
+  src: url('/fonts/GothamRnd-Book.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GothamRnd-Light';
+  src: url('/fonts/GothamRnd-Light.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GothamRnd-lightItal';
+  src: url('/fonts/GothamRnd-LightItal.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GothamRnd-MedItal';
+  src: url('/fonts/GothamRnd-MedItal.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GothamRnd-Medium';
+  src: url('/fonts/GothamRnd-Medium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @import '.meteor/local/build/programs/server/assets/packages/meteoric_ionic-sass/ionic';
 @import '.meteor/local/build/programs/server/assets/packages/meteoric_ionicons-sass/ionicons';
+
+
+.body {
+	font-family: "GothamRnd-Book";
+}
 
 .contact-detail {
   background: $stable;
@@ -15,13 +69,19 @@ $loading-font-size: 22px;
 .btn.btn-positive {
 	background-color:#5ED1EC;
 }
+
+.list {
+	background-color: #F3F3F3;
+}
+
 .listSubHeader {
-	background-color: lightgray;
-	color: #666;
+	/*background-color: lightgray;*/
+	color: #9B9B9B;
 	width : 100%;
-	padding: 10px;
+	padding-left: 15px;
+	padding-top: 10px;
 	margin-top: 0px;
-	border-bottom: solid thin #999;
+	/*border-bottom: solid thin #999;*/
 }
 /********** HOME SCREEN ******/
 
@@ -174,14 +234,17 @@ $loading-font-size: 22px;
 
 	.activityInfo {
 		padding: 2px;
+		vertical-align: top;
+		margin: 5px;
+
 		span {
 			vertical-align: middle;
 		}
 
 		h2 {
 			vertical-align: top;
-			/*display: inline-block;*/
-			font-size:24px;
+			font-size: 24px;
+			margin-bottom: 10px;
 		}
 
 		h4 {
@@ -194,7 +257,9 @@ $loading-font-size: 22px;
 	.activityLogistics {
 		padding: 0px;
 		text-align: left;
-		left:-10px;
+		left: -10px;
+		margin-top: 5px;
+
 		i {
 
 			right: 0px;
@@ -473,13 +538,15 @@ $loading-font-size: 22px;
 
 .myActivityItem {
 	font-size: 10pt;
-	padding: 10px;
-
+	padding: 5px;
+	font-family: "GothamRnd-Book"; 
+	max-height: 168px;
+	color: #787878;
 
 	h2 {
-		margin-left: 10px;
-		vertical-align: bottom;
-		font-size:24px;
+		font-size: 24px;
+		margin-bottom: 10px;
+		color: #787878;
 
 		i {
 			float:right;
@@ -494,6 +561,9 @@ $loading-font-size: 22px;
 
 	.timeDetails {
 		border-bottom: solid thin lightgray;
+		color: #FFA437;
+		font-size: 14px;
+		/*font-family: "GothamRnd-Book"; */
 
 		span {
 			margin-right: 15px;
@@ -507,11 +577,27 @@ $loading-font-size: 22px;
 
 	.activityInfo {
 		display: inline-block;
-		padding: 10px;
-		vertical-align: top;
+		padding: 5px;
+		height: 100px;
+		color: #787878;
 
 		.icon {
 			font-size: 12pt;
+		}
+
+		.activityDetails {
+			display: inline-block;
+			vertical-align: top;
+			padding-left: 15px;
+			padding-top: 5px;
+		}
+
+		.location {
+			margin-top: 5px;
+			overflow: hidden;
+			width: 90%;
+			white-space: nowrap;
+			text-overflow: ellipsis;
 		}
 	}
 
@@ -522,7 +608,10 @@ $loading-font-size: 22px;
 	.submenu {
 		text-align: center;
 		margin-right: 20px;
-		margin-left: 20px;
+		/*margin-left: 20px;*/
+		color: #787878;
+		background-color: white;
+		width: 102%;
 
 		li {
 			display: inline-block;
@@ -531,7 +620,7 @@ $loading-font-size: 22px;
 		}
 
 		.icon {
-			font-size: 25pt;
+			font-size: 20pt;
 		}
 
 		label {
@@ -549,15 +638,16 @@ $loading-font-size: 22px;
 	}
 
 	.activityIcon {
-		font-size: 140pt;
+		font-size: 150pt;
 		padding-top: 15px;
 		color: lightgray;
 		float: right;
 		z-index: 0;
-		opacity: .3;
+		opacity: .2;
 		position: absolute;
-		top: -45px;
-		left: 120px;
+		top: -10px;
+		left: 115px;
+		z-index: -1;
 
 		&.past {
 			color: lightgray;
@@ -1102,6 +1192,48 @@ $loading-font-size: 22px;
 		padding:10px;
 		margin-bottom: 15px;
 	}
+}
+
+
+.userPicture {
+	width: 83px;
+	height: 90px;
+	position: relative;
+	display: inline-block;
+
+	.h2 {
+		margin: 0;
+		padding: 0;
+		position: relative;
+		display: inline-block;
+		width: 83px;
+		height: 90px;
+		overflow: hidden;
+		color: #fff;
+		-webkit-mask-image: url('/img/mask_lg1_83_90.png');
+		text-align: center;
+		background: rgb(94,209,236);
+	}
+
+	&:nth-child(n+5) {
+		margin-top: -25px;
+	}
+
+	.h2in {
+		display: inline-block;
+		width: 83px;
+		height: 90px;
+		overflow: hidden;
+		color: #fff;
+		-webkit-mask-image: url('/img/mask_lg1_83_90in.png');
+		text-align: center;
+	}
+
+	img {
+		height: 90px;
+		width:90px;
+	}
+
 }
 
 

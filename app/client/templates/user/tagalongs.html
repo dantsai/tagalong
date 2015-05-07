@@ -21,33 +21,40 @@
 				{{#each activityDisplay}}
 					<h5 class="listSubHeader">{{this.name}}</h5>
 					{{#each this.activities}}
-						{{#ionItem class="card myActivityItem" path="activity"}}
+						{{#ionItem class=" myActivityItem" path="activity"}}
 							<!-- {{> ionIcon icon="ios-arrow-forward" class='positive'}} -->
 							<div class="timeDetails">
-								{{time.time}} <span class="activityDuration">
-								<i class="icon-{{type}} {{activityStatus}} activityIcon"></i>  
+								{{time.time}} <span class="activityDuration">  
 								{{duration}} hours
 								</span>
 
 								<div class="timeline" style="max-width:{{getTimeLength}};"></div>
 							</div>
-							<h2>{{type}} <i class="icon icon-{{type}}"></i></h2>
-							
-							<img class="activity_img" src="{{getUserPicUrl}}">
-
 							<div class="activityInfo">
-								{{#if notHost}}
-									My Activity
-								{{else}}
-									with <strong>{{host.name}}</strong>
-								{{/if}}
+								<div class="userPicture">
+									<div class="h2">
+										<div class="h2in">
+											<!-- <img class="activity_img" src="{{getUserPicUrl}}"> -->
+											<img src="{{getUserPicUrl}}">
+										</div>
+									</div>
+								</div>
+								<div class="activityDetails">
+									<h2>{{type}}</h2>
+									<i class="icon-{{type}} {{activityStatus}} activityIcon"></i>
+									{{#if notHost}}
+										created by <strong>you</strong>
+									{{else}}
+										with <strong>{{host.name}}</strong>
+									{{/if}}
 
-								<div class="location">
-									{{> ionIcon icon="ios-location"}} {{ location.name}}
+									<div class="location">
+										{{> ionIcon icon="ios-location"}} {{ location.name}}
+									</div>
 								</div>	
 							</div>					
 
-							<ul class="submenu">
+							<div class="submenu">
 								<li class="submenuItem">
 									{{> ionIcon icon="ios-people-outline" title="Friends"}}
 
@@ -71,7 +78,7 @@
 										<label>{{friendCount}}</label>
 									{{/if}} -->
 								</li>
-							</ul>
+							</div>
 						{{/ionItem}}					
 					{{/each}}
 				{{/each}}	

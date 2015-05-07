@@ -8,7 +8,10 @@ Template.activityList.helpers({
 	getSearchQuery: function() {
 		return Session.get('activitySearchQuery');
 	},
-
+	getTimeLength: function() {
+		var aprox = (this.duration/3)*100 ;
+		return aprox +"%";
+	},
 	selectedFilter : function(option) {
 		if(option == Session.get('activityFilter'))
 			return 'selected';

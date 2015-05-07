@@ -7,7 +7,7 @@ Meteor.startup(function () {
 
 	function postReminders (activities) {
 		activities.forEach(function(activity) {
-			console.log(activity._id )
+			// console.log(activity._id )
 			//Add reminder for host
 			Meteor.users.update(activity.host._id, {
 				$push: { reminders: { $each: [ activity._id ], $position: 0 } }
@@ -84,7 +84,7 @@ Meteor.startup(function () {
 		
 		timeEnd = new Date();
 
-		console.log(timeStart)
+		// console.log(timeStart)
 		activitiesPast.forEach(function(activity) {
 			// console.log(activity._id )
 	
@@ -92,7 +92,7 @@ Meteor.startup(function () {
 			activityEnd.setHours(activityEnd.getHours() + Math.floor(activity.duration));
 			var minutes =  ( activity.duration % 1) * 60;
 			activityEnd.setMinutes(activityEnd.getMinutes() + minutes );	
-			console.log(activityEnd);
+			// console.log(activityEnd);
 			if (activityEnd >= timeStart && activityEnd <= timeEnd) {
 				//Ask feedback from host
 				Meteor.users.update(activity.host._id, {

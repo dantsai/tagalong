@@ -3,7 +3,17 @@ Template.tagalongs.helpers({
 		if(option == Session.get('myActivitiesFilter'))
 			return 'selected';
 	},
-
+	activityStatus: function() {
+		if (this.time.date < new Date()) {
+			return 'past';
+		}
+		else {
+			if (this.host._id == Meteor.userId())
+				return 'host';
+			else 
+				return 'tagalonger';
+		}
+	},
 	activityDisplay: function () {
 		now = new Date();
 		date_now = now.setSeconds(0);
