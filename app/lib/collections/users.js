@@ -46,6 +46,13 @@ Meteor.methods({
 		);
 	},
 
+	updateHistoryDetails: function (activityID, userId, actType, newDate) {
+		Meteor.users.update(
+			{ '_id' : userId, 'history._id': activityID }, 
+			{ $set: { 'history.$.date': newDate, 'history.$.type': actType } }
+		);
+	},
+
 	removeFromHistory: function (userHistory, userId) {
 		Meteor.users.update(userId, {
 			$pull: { history: userHistory }

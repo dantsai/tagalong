@@ -122,9 +122,13 @@ Template.activityEdit.events({
 				_id: this.id 
 			}
 
+		var actType = $(".activityIcon.selected").attr('activity');
+		Meteor.call('updateHistoryDetails', this.id, Meteor.userId(), actType, dateToSet);
+
 		activity.tagalongs.forEach(function(taggee) {
 			// console.log(taggee)
-			Meteor.call('addNotification', notification, taggee)
+			Meteor.call('addNotification', notification, taggee);
+			Meteor.call('updateHistoryDetails', this.id, taggee, actType, dateToSet);
 		})
 
 		Meteor.call('activityUpdate', activityDetails, function(error, result) { 	

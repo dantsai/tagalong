@@ -1,9 +1,16 @@
 <template name="home">
+<!--	{{#ionView}}
+ 		{{#contentFor 'headerTitle'}}
+			<h1 class="title">Tagalong</h1>
+			
+				<button id="logBtn" onclick='alert("Hello World")'>Logout</button>	
+		{{/contentFor}}
+ -->
 	{{#ionView}}
 		{{#contentFor 'headerTitle'}}
 			<h1 class="title">Tagalong</h1>
-			
-			<button id="logBtn">Logout</button>
+
+			<button id="logBtn" class="button button-clear pull-right" >Logout</button>
 		{{/contentFor}}
 
 		{{#ionContent}}

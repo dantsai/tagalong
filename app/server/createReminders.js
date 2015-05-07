@@ -84,7 +84,6 @@ Meteor.startup(function () {
 		
 		timeEnd = new Date();
 
-		// console.log(timeStart)
 		activitiesPast.forEach(function(activity) {
 			// console.log(activity._id )
 	
