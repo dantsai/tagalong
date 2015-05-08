@@ -6,7 +6,7 @@ Tagalong helps people get fitter and healthier by lowering the barrier to creati
 * Pablo Arvizu - @parvizu
 * Chalenge Masekera - @chalenge
 * Suhaib Syaed - @suhaibsaqib
-* 
+
 ##Technologies
 * Meteor
 * Meterioc
