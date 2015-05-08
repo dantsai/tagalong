@@ -103,7 +103,7 @@ Template.activityNew.events({
 			'videos':[],
 			'tagalongs':[],
 			'public': true, //default to true for now.
-			'comments': $('#activityComments').text(),
+			// 'comments': $('#activityComments').text(),
 			'messages':[]					
 		};
 

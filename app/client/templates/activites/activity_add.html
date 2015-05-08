@@ -6,20 +6,11 @@
 	     	<button id="activity-add" class="button button-positive button-clear">Save</button>
 	    </div>
 
-		{{#ionContent class='padding addActivity'}}
-			<div class="activityTypes">	
-				<h5>Activity Type: <span></span></h5>
-					<div>
-						<img src="/icons/walking.svg" activity="Walking" class='activityIcon'>
-						<img src="/icons/running.svg" activity="Running" class='activityIcon'>
-						<img src="/icons/hiking.svg" activity="Hiking" class='activityIcon'>
-						<img src="/icons/swimming.svg" activity="Swimming" class='activityIcon'>
-						<img src="/icons/cycling.svg" activity="Cycling" class='activityIcon'>
-						<img src="/icons/gym.svg" activity="Gym" class='activityIcon'>
-						<img src="/icons/meditation.svg" class='activityIcon' activity="Meditation">
-						<img src="/icons/soccer.svg" activity="Soccer" class='activityIcon'>
-				</div>
-			</div>
+		{{#ionContent class='addActivity'}}
+			<h5 class="listSubHeader">Select the activities you are interested in</h5>
+		    {{#ionItem class='addActivity'}}
+		    	{{>allActivities}}
+			{{/ionItem}}
 
 			<div class="activityDay"> 
 				<h5>Date: <span></span></h5>
@@ -41,9 +32,9 @@
 				<div class="mapmarker"><img src="http://dantsai.com/_/mapmarker.png" width="32" height="32"></div>
 			</div>
 			
-
+<!-- 
 			<h5>Comments: </h5>
-			<textarea id='activityComments'></textarea>
+			<textarea id='activityComments'></textarea> -->
 
 		{{/ionContent}}
 	{{/ionModal}}

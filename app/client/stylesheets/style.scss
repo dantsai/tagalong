@@ -760,10 +760,10 @@ $loading-font-size: 22px;
 
 	h5 {
 		/*color: white;*/
-		border-bottom: solid 1px black;
+		/*border-bottom: solid 1px black;
 		padding: 5px;
 		margin-top: 15px;
-		vertical-align: bottom;
+		vertical-align: bottom;*/
 
 		span {
 			margin-left: 10px;
@@ -1229,7 +1229,7 @@ $loading-font-size: 22px;
 
 
 		/*background: url('/img/hexBG.png') repeat;*/
-		height:320px;
+		height:300px;
 		background-color: #5ED1EC;
 		color: white;
 		font-family: "GothamRnd-Medium";
@@ -1324,6 +1324,8 @@ $loading-font-size: 22px;
 
 		.title {
 			color: white;
+			font-family: "GothamRnd-Book";
+
 		}
 	}
 
@@ -1334,7 +1336,13 @@ $loading-font-size: 22px;
 }
 
 .logoHeader {
-	height:25px;	
+	height: 50%;
+	margin-top: 13px;
+}
+
+.title {
+	color: white;
+	font-family: "GothamRnd-Book";
 }
 
 .modal .registerUser {
