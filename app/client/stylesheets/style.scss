@@ -1227,15 +1227,15 @@ $loading-font-size: 22px;
 	#loginHeader {
 
 
+
 		/*background: url('/img/hexBG.png') repeat;*/
-		height:40%;
+		height:320px;
 		background-color: #5ED1EC;
 		color: white;
 		font-family: "GothamRnd-Medium";
 		text-align: center;
 		padding:20px;
-		padding-top: 20%;
-		font-size: 20px;
+		font-size: 12px;
 
 		.headerTag {
 			/*color: #FEC178;*/
@@ -1252,7 +1252,9 @@ $loading-font-size: 22px;
 		}
 
 		.logo {
-			width: 70%;
+			margin-bottom: 30px;
+
+			width: 100%;
 		}
 	}
 
@@ -1314,6 +1316,7 @@ $loading-font-size: 22px;
 	.bar {
 		background-color: #5ED1EC;
 		color: white;
+		border: none;
 
 		.button {
 			color:white;
@@ -1326,6 +1329,14 @@ $loading-font-size: 22px;
 
 }
 
+.logo {
+	width: 100%;
+}
+
+.logoHeader {
+	height:25px;	
+}
+
 .modal .registerUser {
 
 	h4 {
@@ -1334,8 +1345,13 @@ $loading-font-size: 22px;
 		font-family: "GothamRnd-Book";
 	}
 
+	.logo {
+		margin-bottom:0px !important; 
+		margin-top: 15px;
+	}
+
 	#loginHeader {
-		height:30%;
+		height:145px;
 		padding-top: 30px;
 
 	}
