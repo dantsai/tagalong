@@ -90,9 +90,7 @@ Template.userHistory.helpers({
 });
 
 Template.userHistory.rendered = function() {
-	setTimeout(function() {
-		$("#userActivityHistory").scrollLeft($("#userActivityHistory").prop("scrollWidth"));
-	},300);
+	$("#userActivityHistory").scrollLeft($("#userActivityHistory").prop("scrollWidth"));
 }
 
 function SortByDate(a, b){

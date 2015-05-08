@@ -7,48 +7,57 @@
 	    </div>
 
 
-		{{#ionContent class='padding editProfile'}}
+		{{#ionContent class='editProfile'}}
 			{{#with getUser}}
-				{{#ionItem avatar=true class='header'}}
-					<img class="activity_img" id='change-photo' data-action="changePhotoActionSheet" src="{{this.profile.names.pic}}">
-					<span class="editLabel">First:</span><input id="editFirstName" type="text" value="{{profile.names.first}}"><br>
-					<span class="editLabel">Last:</span><input id="editLastName" type="text" value="{{profile.names.last}}">
-					<p>
-						<span class="editLabel">Email:</span><input id="editEmail" type="email" value="{{emailAddress emails}}">
-					</p>
+				<h5 class="listSubHeader">Tap on the profile picture to change it</h5>
+				{{#ionItem class='header'}}
+					<div class="userPicture">
+						<div class="h2">
+							<div class="h2in">
+								<img src="{{this.profile.names.pic}}" data-action="changePhotoActionSheet">
+							</div>
+						</div>
+					</div>
+					<div class="userDetails">
+						<h2>{{this.profile.names.first}} {{this.profile.names.last}}</h2>
+
+						<p><span>{{emailAddress this.emails}}</span></p>
+					</div>
 
 				{{/ionItem}}
 
-				{{#ionItem class="body friends"}}
-					<h5 class="listSubHeader">Select the people you want to see on Tagalong</h5>
+				<h5 class="listSubHeader">Select the people you want to see on Tagalong</h5>
+				{{#ionItem class=" friends"}}
+					
 						{{#each getFriends}}
 							<li uid='{{this._id}}' class="friendAvatar selected">
-								<img class="tinyPic" src="{{this.profile.names.pic}}"><span class="userNames">{{this.profile.names.first}} {{this.profile.names.last}}</span>
+								<div class="userPictureSmall">
+									<div class="h2">
+										<div class="h2in">
+											<img src="{{this.profile.names.pic}}"><span class="userNames">{{this.profile.names.first}} {{this.profile.names.last}}</span>
+										</div>
+									</div>
+								</div>
+								
 							</li>
 						{{/each}}
 
 						{{#each getUsers}} 
 							<li uid='{{this._id}}' class="friendAvatar">
-								<img class="tinyPic" src="{{this.profile.names.pic}}"><span class="userNames">{{this.profile.names.first}} {{this.profile.names.last}}</span>
+								<div class="userPictureSmall">
+									<div class="h2">
+										<div class="h2in">
+											<img src="{{this.profile.names.pic}}"><span class="userNames">{{this.profile.names.first}} {{this.profile.names.last}}</span>
+										</div>
+									</div>
+								</div>
 							</li>
 						{{/each}}
 				{{/ionItem}}
 
-				
-			    {{#ionItem body=true class='addActivity'}}
-					<div class="activityTypes">	
-						<h5>Activities:</h5>
-							<div>
-								<img src="/icons/walking.svg" activity="Walking" class='activityIcon {{ inActivities "Walking"}}'>
-								<img src="/icons/running.svg" activity="Running" class='activityIcon {{ inActivities "Running"}}'>
-								<img src="/icons/hiking.svg" activity="Hiking" class='activityIcon {{ inActivities "Hiking"}}'>
-								<img src="/icons/swimming.svg" activity="Swimming" class='activityIcon {{ inActivities "Swimming"}}'>
-								<img src="/icons/cycling.svg" activity="Cycling" class='activityIcon {{ inActivities "Cycling"}}'>
-								<img src="/icons/gym.svg" activity="Gym" class='activityIcon {{ inActivities "Gym"}}'>
-								<img src="/icons/meditation.svg" class='activityIcon {{ inActivities "Meditation"}}' activity="Meditation">
-								<img src="/icons/soccer.svg" activity="Soccer" class='activityIcon {{ inActivities "Soccer"}}'>
-						</div>
-					</div>
+				<h5 class="listSubHeader">Select the activities you are interested in</h5>
+			    {{#ionItem class='addActivity'}}
+			    	{{>allActivities}}
 				{{/ionItem}}
 			{{/with}}
 		{{/ionContent}}
