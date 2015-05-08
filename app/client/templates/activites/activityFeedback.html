@@ -8,13 +8,13 @@
 	{{/contentFor}}
 
 	{{#ionView}}
-		{{#ionContent class='padding activityFeedback'}}
+		{{#ionContent class='activityFeedback'}}
 			<h5 class="listSubHeader">{{prettifyDate this.time.date}}</h5>
-			{{#ionItem class="padding myActivityItem card" path="activity"}}
+			{{#ionItem class="myActivityItem" path="activity"}}
 				{{> myActivityCard}}
 			{{/ionItem}}
 
-			<h5 class="listSubHeader">Record motivation</h5>
+			<h5 class="listSubHeader">Keep yourself motivated.</h5>
 			<button id="message-self" class="button button-block button-energized">{{> ionIcon icon="ios-videocam"}} Record Message to your future self!</button>
 
 			{{> currentStreak }}

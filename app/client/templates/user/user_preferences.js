@@ -46,10 +46,9 @@ Template.userPreferences.helpers({
 });
 
 Template.userPreferences.events({
-	'click .modal .activityIcon': function (event) {
+	'click .modal .activityIconGroup p': function (event) {
 		var selection = $(event.currentTarget);
 		selection.toggleClass('selected');
-
 	},
 	'click .modal .friendAvatar': function(event) {
 		$(event.currentTarget).toggleClass('selected');
@@ -57,7 +56,7 @@ Template.userPreferences.events({
 
 	'click #user-preferences-save': function(event) {	
 
-		var activitiesSelected = $.map($('.modal .activityIcon.selected'), function(obj,i) {
+		var activitiesSelected = $.map($('.modal .activityIconGroup p.selected i'), function(obj,i) {
 			return $(obj).attr('activity');
 		})
 
@@ -66,8 +65,10 @@ Template.userPreferences.events({
 		})
 
 		userPrefs = {
-			'first' : $('#editFirstName').val(),
-			'last' : $('#editLastName').val(),
+			// 'first' : $('#editFirstName').val(),
+			// 'last' : $('#editLastName').val(),
+			'first' : 'Pablo',
+			'last' : 'Arvizu',
 			'activities': activitiesSelected,
 			'friends': friendsSelected
 		}
@@ -84,8 +85,8 @@ Template.userPreferences.events({
 	      // titleText: '',
 	      buttons: [
 	        { text: 'Take Picture' },
-	        { text: 'Choose From Library' },
-	        { text: 'Calendar test'}
+	        { text: 'Choose From Library' }
+	        // { text: 'Calendar test'}
 	      ],
 	      cancelText: 'Cancel',
 	      buttonClicked: function(index) {
@@ -95,9 +96,9 @@ Template.userPreferences.events({
 	        if (index === 1) {
 	          choosePhoto();
 	        }
-	        if(index === 2) {
-	        	calendarTest();
-	        }
+	        // if(index === 2) {
+	        // 	calendarTest();
+	        // }
 	        return true;
 	      }
 	    });

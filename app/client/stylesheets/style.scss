@@ -912,10 +912,10 @@ $loading-font-size: 22px;
 
 		li {
 			font-weight: bold;
-			width: 32%;
+			width: 30%;
 			display: inline-block;
 			text-align: center;
-			font-size: 10pt;
+			font-size: 9pt;
 			padding: 7px;
 			border-radius: 2px;
 
@@ -983,6 +983,7 @@ $loading-font-size: 22px;
 
 		span.userNames {
 			font-size: 8pt;
+			white-space: normal;
 		}
 
 		li {
@@ -996,6 +997,15 @@ $loading-font-size: 22px;
 		}
 	}
 	
+
+}
+
+.modal .userProfile {
+	.userDetails {
+		display: inline-block;
+		vertical-align: top;
+		margin-top: 25px;
+	}
 }
 
 .videoSelfMessage {
@@ -1136,6 +1146,12 @@ $loading-font-size: 22px;
 .editProfile {
 	vertical-align: bottom;
 
+	.userDetails {
+		display: inline-block;
+		vertical-align: top;
+		margin-top: 25px;
+	}
+
 	input {
 		width: 50%;
 		display: inline-block;
@@ -1160,27 +1176,20 @@ $loading-font-size: 22px;
 		margin-right: 5px;
 	}
 
+	.activityTypeGroups {
+		padding:0px;
+		
+		.activityIconGroup {
+			width:20%;
+		}
+	}
+	
+
 	.item {
 		white-space: normal;
 	}
 
 	.friends {
-
-		img {
-			max-width: none;
-			max-height: none;
-			margin:3px;
-			width: 50px;
-			height: 50px;
-			border-radius:50%;
-			opacity: .5;
-			filter: grayscale(100%);
-			-webkit-filter: grayscale(100%);
-		}
-
-		span.userNames {
-			font-size: 8pt;
-		}
 
 		li {
 			width: 20%;
@@ -1190,13 +1199,12 @@ $loading-font-size: 22px;
 			line-height: 10px;
 			vertical-align: top;
 			text-align: center;
+			-webkit-filter: grayscale(100%);	
 
 			&.selected {
 				
-
+				-webkit-filter: grayscale(0%);
 				img {
-					-webkit-filter: grayscale(0%);
-					border:solid 3px #5ED1EC;
 					opacity: 1;
 				}
 
@@ -1217,6 +1225,9 @@ $loading-font-size: 22px;
 	}
 
 	#loginHeader {
+
+
+		/*background: url('/img/hexBG.png') repeat;*/
 		height:40%;
 		background-color: #5ED1EC;
 		color: white;
@@ -1226,12 +1237,22 @@ $loading-font-size: 22px;
 		padding-top: 20%;
 		font-size: 20px;
 
+		.headerTag {
+			/*color: #FEC178;*/
+			color: #9B9B9B;
+		}
+
 		h1 {
 			font-family: "GothamRnd-Medium";
+			/*font-family: "Orator";*/
 			color : white;
 			margin:10px;
 			font-size: 48px;
 			/*-webkit-text-stroke: thin black;*/
+		}
+
+		.logo {
+			width: 70%;
 		}
 	}
 
@@ -1259,14 +1280,17 @@ $loading-font-size: 22px;
 
 	#login {
 		color: white;
+		margin-top:20px;
 		font-size: 20px;
-		position:fixed;
+		/*position:fixed;*/
 		border:none;
-		bottom:60px;
+		/*bottom:60px;*/
 		background-color: #FEC178;
 		height:60px;
 		font-family: "GothamRnd-Medium";
 	}
+
+
 
 }
 
@@ -1291,8 +1315,12 @@ $loading-font-size: 22px;
 		background-color: #5ED1EC;
 		color: white;
 
-		button {
+		.button {
 			color:white;
+		}
+
+		.title {
+			color: white;
 		}
 	}
 
@@ -1307,7 +1335,7 @@ $loading-font-size: 22px;
 	}
 
 	#loginHeader {
-		height:25%;
+		height:30%;
 		padding-top: 30px;
 
 	}
@@ -1323,9 +1351,9 @@ $loading-font-size: 22px;
 	.button {
 		color: white;
 		font-size: 20px;
-		position:fixed;
+		/*position:fixed;*/
 		border:none;
-		bottom:60px;
+		/*bottom:60px;*/
 		background-color: #FEC178;
 		height:60px;
 		font-family: "GothamRnd-Medium";
@@ -1417,6 +1445,11 @@ $loading-font-size: 22px;
 		height: 90px;
 		width:90px;
 	}
+
+	.userNames {
+		font-size: 8pt;
+		white-space: normal;
+	}
 }
 
 .userPictureSmall {
@@ -1443,6 +1476,7 @@ $loading-font-size: 22px;
 		margin-top: -25px;
 	}
 
+
 	.h2in {
 		display: inline-block;
 		width: 65px;
@@ -1456,6 +1490,11 @@ $loading-font-size: 22px;
 	img {
 		height: 70px;
 		width:70px;
+	}
+
+	.userNames {
+		font-size: 8pt;
+		white-space: normal;
 	}
 }
 
