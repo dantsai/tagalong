@@ -2,6 +2,9 @@ var latitude = 37.871667;
 var longitude = -122.272778;
 
 Template.activityNew.helpers({
+	firstLetter: function(day) {
+		return day.charAt(0);
+	},
 	dateTomorrow: function() {
 		now = new Date(); 
 		return now.setDate(now.getDate() + 1)
@@ -87,7 +90,7 @@ Template.activityNew.events({
 
 		//Bug when user is selecting a current day. Should not set time that has passed.
 		var activity = {
-			'type': $(".activityIcon.selected").attr('activity'),
+			'type': $(".activityIconGroup p.selected").attr('activity'),
 			'location': { 
 				'name' : $('#activityLocation').val(),
 				'position' : GoogleMaps.maps.activityaddmap.instance.getCenter()	//get map center
@@ -126,16 +129,14 @@ Template.activityNew.events({
 		});
 	},
 
-	'click .activityIcon': function (event) {
+	'click .activityIconGroup p': function (event) {
 		
 		var selection = $(event.currentTarget);
-		if ($(".activityIcon.selected").attr('activity') != selection.attr('activity')) {
-			$(".activityIcon").removeClass('selected');
+		if ($(".activityIconGroup p.selected").attr('activity') != selection.attr('activity')) {
+			$(".activityIconGroup p").removeClass('selected');
 		}
 
 		selection.toggleClass('selected');
-		$(".activityTypes h5 span").text(selection.attr('activity')); // setting the value selected to the text in the h4
-
 		return selection.attr('activity');
 	},
 

@@ -7,34 +7,32 @@
 	    </div>
 
 		{{#ionContent class='addActivity'}}
-			<h5 class="listSubHeader">Select the activities you are interested in</h5>
-		    {{#ionItem class='addActivity'}}
-		    	{{>allActivities}}
+			<h5 class="listSubHeader">Select the activities you want to create</h5>
+		    <!-- {{#ionItem class='addActivity'}} -->
+		    {{#ionItem}}
+		    	{{>allActivitiesForm}}
 			{{/ionItem}}
 
-			<div class="activityDay"> 
-				<h5>Date: <span></span></h5>
+			<h5 class="listSubHeader">Select the day and time</h5>
+			{{#ionItem class="activityDay"}}
 				<ul>
 					{{#each getWeek}}
-						<li class='dayofweek' date="{{ this.full }}" value="{{this.date}}">{{ this.weekdayShort }}<div>{{ this.day }}</div></li>	
+						<li class='dayofweek' date="{{ this.full }}" value="{{this.date}}"><div>{{ firstLetter this.weekdayShort }}</div>{{ this.day }}</li>	
 					{{/each}}
 				</ul>
+				<h5>Time <input id='activityTime' type='time' value="{{defaultTime}}"></h5>    
+				<h5>Duration (hours)<input id='activityDuration' type='number' min='0' max='3'></h5>
+			{{/ionItem}}
 
-				<h5>Time: <input id='activityTime' type='time' value="{{defaultTime}}">    Duration: <input id='activityDuration' type='number' min='0' max='3'></h5>
-			</div>
+			<h5 class="listSubHeader">Select the location for you activity</h5>
+			{{#ionItem class="mapSection"}}
+				<h5>{{>ionIcon icon="ios-location"}} <input id='activityLocation' type='text' placeholder='Location name'></h5>
+				<div class="map-container">
+					{{> googleMap name="activityaddmap" options=activityaddMapOptions}}
+					<div class="mapmarker"><img src="http://dantsai.com/_/mapmarker.png" width="32" height="32"></div>
+				</div>
 
-
-			<h5>Location: <input id='activityLocation' type='text'></h5>
-
-			<!-- <img src='/img/RSF.png'> -->
-			<div class="map-container">
-				{{> googleMap name="activityaddmap" options=activityaddMapOptions}}
-				<div class="mapmarker"><img src="http://dantsai.com/_/mapmarker.png" width="32" height="32"></div>
-			</div>
-			
-<!-- 
-			<h5>Comments: </h5>
-			<textarea id='activityComments'></textarea> -->
+			{{/ionItem}}
 
 		{{/ionContent}}
 	{{/ionModal}}
