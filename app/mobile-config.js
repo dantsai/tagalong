@@ -10,8 +10,8 @@ App.info({
 
 App.icons({
   // iOS
-  'iphone': 'resources/icons/icon-60x60.png',
-  'iphone_2x': 'resources/icons/icon-60x60@2x.png'
+  'iphone': '/img/appicon_white_sm.png',
+  'iphone_2x': '/img/appicon_white_sm.png'
 //   // 'ipad': 'resources/icons/icon-72x72.png',
 //   // 'ipad_2x': 'resources/icons/icon-72x72@2x.png'
 
@@ -25,10 +25,10 @@ App.icons({
 
 App.launchScreens({
   // // iOS
-  'iphone': 'resources/splash/splash-320x480.png',
-  'iphone_2x': 'resources/splash/splash-320x480@2x.png',
-//   // 'iphone5': 'resources/splash/splash-320x568@2x.png',
-//   // 'iphone6': 'resources/splash/splash-375x667@2x.png'
+  'iphone': '/img/Splashscreen_dots.png',
+  'iphone_2x': '/img/Splashscreen_dots.png',
+  'iphone5': '/img/320x568_puntos.png',
+  'iphone6': '/img/Splashscreen_6dots.png'
 
 //   // 'ipad_portrait': 'resources/splash/splash-768x1024.png',
 //   // 'ipad_portrait_2x': 'resources/splash/splash-768x1024@2x.png',
