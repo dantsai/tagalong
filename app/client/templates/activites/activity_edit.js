@@ -2,6 +2,9 @@ var latitude = 37.871667;
 var longitude = -122.272778;
 
 Template.activityEdit.helpers({
+	firstLetter: function(day) {
+		return day.charAt(0);
+	},
 	activity: function() {
 		var template = Template.instance();
 		return Activities.findOne({_id: template.data.id})
@@ -97,7 +100,7 @@ Template.activityEdit.events({
 		var activityDetails = {
 			'activityId': this.id,
 			'properties': {
-				'type': $(".activityIcon.selected").attr('activity'),
+				'type': $(".activityIconGroup p.selected").attr('activity'),
 				'location': { 
 					'name' : $('#activityLocation').val(),
 					'position' : GoogleMaps.maps.editMap.instance.getCenter()	//get map center
@@ -109,7 +112,7 @@ Template.activityEdit.events({
 			    	},
 				'duration': $('#activityDuration').val(),
 				// 'invitations': [],
-				'comments': $('#editActivityComments').val(),
+				// 'comments': $('#editActivityComments').val(),
 				'available': true
 			}
 		};
@@ -138,16 +141,14 @@ Template.activityEdit.events({
 		});
 
 	},
-	'click .modal .activityIcon': function (event) {
+	'click .activityIconGroup p': function (event) {
 		
 		var selection = $(event.currentTarget);
-		if ($(".activityIcon.selected").attr('activity') != selection.attr('activity')) {
-			$(".activityIcon").removeClass('selected');
+		if ($(".activityIconGroup p.selected").attr('activity') != selection.attr('activity')) {
+			$(".activityIconGroup p").removeClass('selected');
 		}
 
 		selection.toggleClass('selected');
-		$(".activityTypes h5 span").text($(event.currentTarget).attr('activity')); // setting the value selected to the text in the h4
-
 		return selection.attr('activity');
 	},
 	'click .modal .dayofweek': function (event) {
