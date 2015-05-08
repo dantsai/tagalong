@@ -67,8 +67,8 @@ Template.userPreferences.events({
 		userPrefs = {
 			// 'first' : $('#editFirstName').val(),
 			// 'last' : $('#editLastName').val(),
-			'first' : 'Pablo',
-			'last' : 'Arvizu',
+			// 'first' : 'Pablo',
+			// 'last' : 'Arvizu',
 			'activities': activitiesSelected,
 			'friends': friendsSelected
 		}
