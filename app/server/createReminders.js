@@ -1,9 +1,10 @@
 Meteor.startup(function () {
 	var oneHour = 3600000;
-	//var oneHour = 120000;
+	// var oneHour = 120000;
 	var tenMins = 600000;
+	// var tenMins = 120000;
 
-	var skip = 0;
+	var skip = 1;
 
 	function postReminders (activities) {
 		activities.forEach(function(activity) {

@@ -9,25 +9,27 @@
 
 	{{#ionView}}
 		{{#ionContent class='activityReminder'}}
-			<h5 class="listSubHeader">Your activity has ended. How did it go?</h5>
+			<h5 class="listSubHeader">Don't forget your upcoming activity!</h5>
 			{{#ionItem class="myActivityItem"}}
 				{{> myActivityCard}}
 			{{/ionItem}}
-
+<!-- 
 			{{#if hasVideos}}
 				<h5 class="listSubHeader">Here's some motivation!</h5>
 				{{#with getSelfMessage}}
-					<!-- <video class='videoSelfMessage' src="http://dantsai.com/_/uploads/capturedvideo.MOV" controls preload></video> -->
+					
 					<video class='videoSelfMessage' src="{{this.url}}" controls preload></video>
 				{{/with}}
 			{{else}}
 				<h5 class="listSubHeader">Keep yourself motivated for next time!</h5>
 				<button id="message-self" class="button button-block button-energized">{{> ionIcon icon="ios-videocam"}} Record Message to future self</button>
-			{{/if}}
+			{{/if}} -->
+			{{> currentStreak }}
+			<h5 class="listSubHeader">Here's some motivation!</h5>
+			<video class='videoSelfMessage' src="http://dantsai.com/_/uploads/demovideo.mp4" controls preload></video>	
 			
 
-
-			{{> currentStreak }}
+			
 
 			<button class="button button-block button-assertive" id="dismissBtn">Dismiss</button>
 		{{/ionContent}}
