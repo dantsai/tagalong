@@ -4,8 +4,8 @@ Meteor.methods({
 		Meteor.users.update(Meteor.userId(), 
 			{ $set: 
 				{ 
-					'profile.names.first': userActivities.first,
-					'profile.names.last': userActivities.last,
+					// 'profile.names.first': userActivities.first,
+					// 'profile.names.last': userActivities.last,
 					activities: userActivities.activities,
 					friends: userActivities.friends 
 				} 
